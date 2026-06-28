@@ -1,0 +1,386 @@
+{% comment %} faq-teaser.liquid {% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .faq-teaser{
+    background: {{ section.settings.section_bg }};
+    padding: {{ section.settings.section_padding_desktop }};
+  }
+
+  #shopify-section-{{ section.id }} .faq-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:4rem;
+    align-items:center;
+    max-width:1300px;
+    margin:0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .faq-col .lead{
+    margin-bottom:1.2rem;
+    font-size:.95rem;
+    color: {{ section.settings.lead_color }};
+  }
+
+  #shopify-section-{{ section.id }} .faq-col h2{
+    margin-bottom:1rem;
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .faq-col h2 .serif-italic,
+  #shopify-section-{{ section.id }} .faq-col h2 em,
+  #shopify-section-{{ section.id }} .faq-col h2 i{
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    color: {{ section.settings.heading_italic_color }};
+  }
+
+  #shopify-section-{{ section.id }} .eyebrow{
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.25em;
+    color: {{ section.settings.eyebrow_color }};
+    margin-bottom:.9rem;
+    font-weight:500;
+  }
+
+  #shopify-section-{{ section.id }} .faq-btn{
+    display:inline-block;
+    padding:.95rem 1.8rem;
+    border-radius: var(--radius-md, 4px);
+    font-size:.7rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:.3s;
+    cursor:pointer;
+    line-height:1;
+    text-decoration:none;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+    border:1px solid {{ section.settings.button_bg }};
+  }
+
+  #shopify-section-{{ section.id }} .faq-btn:hover{
+    background: {{ section.settings.button_hover_bg }};
+    border-color: {{ section.settings.button_hover_bg }};
+    box-shadow:0 12px 30px rgba(115,17,87,.3);
+  }
+
+  #shopify-section-{{ section.id }} .faq-item{
+    border-bottom:1px solid {{ section.settings.border_color }};
+    padding:1rem 0;
+    cursor:pointer;
+  }
+
+  #shopify-section-{{ section.id }} .faq-item summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-size:1.05rem;
+    list-style:none;
+    cursor:pointer;
+    gap:1rem;
+    color: {{ section.settings.question_color }};
+    padding:0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-item summary::-webkit-details-marker{
+    display:none;
+  }
+
+  #shopify-section-{{ section.id }} .faq-icon{
+    font-size:1.4rem;
+    color: {{ section.settings.icon_color }};
+    font-weight:300;
+    transition:transform .3s;
+    flex-shrink:0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-item[open] .faq-icon{
+    transform:rotate(45deg);
+  }
+
+  #shopify-section-{{ section.id }} .faq-item p{
+    margin-top:.6rem;
+    font-size:.88rem;
+    color: {{ section.settings.answer_color }};
+  }
+
+  @media(max-width:980px){
+    #shopify-section-{{ section.id }} .faq-teaser{
+      padding: {{ section.settings.section_padding_mobile }};
+    }
+
+    #shopify-section-{{ section.id }} .faq-grid{
+      grid-template-columns:1fr;
+      gap:2rem;
+    }
+  }
+</style>
+
+<section class="faq-teaser" id="faq-{{ section.id }}">
+  <div class="faq-grid">
+
+    <div class="faq-col reveal-left">
+      {% if section.settings.eyebrow != blank %}
+        <p class="eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <div>
+          {{ section.settings.heading }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.lead != blank %}
+        <p class="lead">
+          {{ section.settings.lead }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="faq-btn"
+        >
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="faq-col reveal-right">
+      {% for block in section.blocks %}
+        <details
+          class="faq-item"
+          {% if block.settings.open_by_default %}
+            open
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary>
+            {{ block.settings.question }}
+            <span class="faq-icon">+</span>
+          </summary>
+
+          <p>
+            {{ block.settings.answer }}
+          </p>
+        </details>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Teaser",
+  "tag": "section",
+  "class": "section-faq-teaser",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_desktop",
+      "label": "Desktop Padding",
+      "default": "5rem 2rem"
+    },
+    {
+      "type": "text",
+      "id": "section_padding_mobile",
+      "label": "Mobile Padding",
+      "default": "3rem 1.2rem"
+    },
+
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ Curious?"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Questions? <em>We've got answers.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Lead Text",
+      "default": "From ingredient sourcing to skincare routines — everything you want to know about AMYZA."
+    },
+
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Visit the FAQ →"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "lead_color",
+      "label": "Lead Color",
+      "default": "#5A3545"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Color",
+      "default": "#666655"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color"
+    },
+
+    {
+      "type": "header",
+      "content": "Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#4E0A3A"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Is Golden Nectar suitable for sensitive skin?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Yes — it's free of alcohol, parabens, and artificial fragrance. The Pegaga and Aloe Vera actively calm reactive skin."
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "FAQ Teaser",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Golden Nectar suitable for sensitive skin?",
+            "answer": "Yes — it's free of alcohol, parabens, and artificial fragrance. The Pegaga and Aloe Vera actively calm reactive skin.",
+            "open_by_default": true
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "When should I use the serum?",
+            "answer": "Use AM and PM after cleansing, before moisturiser. Press gently into skin as part of your ritual."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long before I see results?",
+            "answer": "Most see visible glow within 7 days, with deeper skin transformation around 4 weeks of consistent use."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "We ship across Malaysia and Singapore. Free shipping on orders over RM150."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

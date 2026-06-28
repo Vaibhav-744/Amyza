@@ -1,0 +1,257 @@
+{% comment %} ritual.liquid {% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .ritual {
+    background: {{ section.settings.section_bg }};
+    padding: 5rem 2rem;
+  }
+  #shopify-section-{{ section.id }} .ritual-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  #shopify-section-{{ section.id }} .ritual-card {
+    background: {{ section.settings.card_bg }};
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-md, 4px);
+    transition: .4s;
+    border: 1px solid rgba(115,17,87,.08);
+  }
+  {% comment %} #shopify-section-{{ section.id }} .ritual-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(115,17,87,.12);
+    border-color: var(--plum, #731157);
+  } {% endcomment %}
+  #shopify-section-{{ section.id }} .ritual-num {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    font-size: 2.6rem;
+    color: {{ section.settings.number_color }};
+    margin-bottom: .4rem;
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .ritual-card h3 {
+    margin-bottom: .4rem;
+    color: {{ section.settings.card_title_color }};
+  }
+  #shopify-section-{{ section.id }} .ritual-card p {
+    font-size: .85rem;
+    color: {{ section.settings.card_desc_color }};
+  }
+
+  /* Section header */
+  #shopify-section-{{ section.id }} .eyebrow {
+    color: {{ section.settings.eyebrow_color }};
+  }
+  #shopify-section-{{ section.id }} .section-header h2 {
+    color: {{ section.settings.heading_color }};
+  }
+  #shopify-section-{{ section.id }} .section-header h2 em,
+  #shopify-section-{{ section.id }} .section-header h2 i {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    color: {{ section.settings.heading_italic_color }};
+  }
+  #shopify-section-{{ section.id }} .section-sub {
+    color: {{ section.settings.subheading_color }};
+  }
+
+  @media (max-width: 1200px) {
+    #shopify-section-{{ section.id }} .ritual-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 980px) {
+    #shopify-section-{{ section.id }} .ritual {
+      padding: 3.5rem 1.2rem;
+    }
+    #shopify-section-{{ section.id }} .ritual-grid { gap: .8rem; }
+    #shopify-section-{{ section.id }} .ritual-card { padding: 1.3rem 1rem; }
+    #shopify-section-{{ section.id }} .ritual-num { font-size: 2rem; }
+  }
+  @media (max-width: 640px) {
+    #shopify-section-{{ section.id }} .ritual-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem;
+    }
+  }
+</style>
+
+<section class="ritual" id="ritual">
+  <div class="section-header reveal-up">
+    <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    <div>{{ section.settings.heading }}</div>
+    <p class="section-sub">{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="ritual-grid">
+    {% for block in section.blocks %}
+      <div class="ritual-card reveal-up" {{ block.shopify_attributes }}>
+        <div class="ritual-num">{{ block.settings.number }}</div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ritual",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background Color",
+      "default": "#E8E2E0"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ Step into"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap italic words in <em> — they use the Italic Color below.",
+      "default": "<p>The <em>Ritual<\/em> You Need<\/p>"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Four intentional moments. One glowing result."
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#666655"
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Step Number Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "card_desc_color",
+      "label": "Card Description Color",
+      "default": "#666655"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ritual_card",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Cleanse"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Prepare your canvas. Pat skin until just damp."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ritual",
+      "blocks": [
+        {
+          "type": "ritual_card",
+          "settings": {
+            "number": "01",
+            "title": "Cleanse",
+            "description": "Prepare your canvas. Pat skin until just damp."
+          }
+        },
+        {
+          "type": "ritual_card",
+          "settings": {
+            "number": "02",
+            "title": "Drop",
+            "description": "3–4 drops of Golden Nectar into your palm."
+          }
+        },
+        {
+          "type": "ritual_card",
+          "settings": {
+            "number": "03",
+            "title": "Press",
+            "description": "Warm between hands, press gently into skin."
+          }
+        },
+        {
+          "type": "ritual_card",
+          "settings": {
+            "number": "04",
+            "title": "Glow",
+            "description": "Seal with moisturiser. Step into your day."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

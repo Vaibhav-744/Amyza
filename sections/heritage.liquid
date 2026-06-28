@@ -1,0 +1,415 @@
+{% comment %} heritage.liquid {% endcomment %}
+
+<style>
+  /* ── Layout & structure (from theme CSS) ── */
+  #shopify-section-{{ section.id }} .heritage {
+    padding: 7rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: {{ section.settings.section_bg }};
+  }
+  #shopify-section-{{ section.id }} .heritage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .heritage-text h2 {
+    margin-bottom: 1.8rem;
+    color: {{ section.settings.heading_color }};
+  }
+  #shopify-section-{{ section.id }} .heritage-text h2 em,
+  #shopify-section-{{ section.id }} .heritage-text h2 .serif-italic {
+    color: {{ section.settings.heading_italic_color }};
+  }
+  #shopify-section-{{ section.id }} .heritage-text p {
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+    color: {{ section.settings.body_color }};
+  }
+  #shopify-section-{{ section.id }} .heritage-text p em {
+    font-style: italic;
+    color: {{ section.settings.body_em_color }};
+  }
+  #shopify-section-{{ section.id }} .eyebrow {
+    color: {{ section.settings.eyebrow_color }};
+  }
+  #shopify-section-{{ section.id }} .link-arrow {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: .82rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid {{ section.settings.link_color }};
+    color: {{ section.settings.link_color }};
+    padding-bottom: .3rem;
+    transition: letter-spacing .3s;
+  }
+  #shopify-section-{{ section.id }} .link-arrow:hover {
+    letter-spacing: .25em;
+  }
+
+  /* ── Visual column ── */
+  #shopify-section-{{ section.id }} .heritage-visual {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .heritage-visual img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 560px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+  }
+
+  /* ── Floating card ── */
+  #shopify-section-{{ section.id }} .floating-card {
+    position: absolute;
+    bottom: -40px;
+    left: -30px;
+    background: {{ section.settings.card_bg }};
+    color: {{ section.settings.card_text_color }};
+    padding: 2.2rem 2rem 1.8rem;
+    border-radius: 12px;
+    max-width: 280px;
+    box-shadow: 0 30px 60px rgba(115,17,87,.25);
+    z-index: 2;
+    border: 1px solid rgba(115,17,87,.08);
+  }
+  #shopify-section-{{ section.id }} .floating-card .quote-mark {
+    font-family: var(--serif);
+    font-size: 4rem;
+    line-height: .5;
+    color: {{ section.settings.card_text_color }};
+    opacity: .25;
+    display: block;
+    margin-bottom: -.5rem;
+  }
+  #shopify-section-{{ section.id }} .floating-card p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: {{ section.settings.card_text_color }};
+    margin: 0 0 1rem;
+  }
+  #shopify-section-{{ section.id }} .floating-card .quote-author {
+    font-family: var(--sans);
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: {{ section.settings.card_text_color }};
+    opacity: .6;
+    font-weight: 500;
+  }
+
+  /* ── Spinning sticker ── */
+  #shopify-section-{{ section.id }} .heritage-visual .sticker {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    z-index: 5;
+    animation: spinSlow 18s linear infinite;
+  }
+  #shopify-section-{{ section.id }} .heritage-visual .sticker svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  #shopify-section-{{ section.id }} .heritage-visual .sticker text {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    fill: {{ section.settings.sticker_color }};
+  }
+  #shopify-section-{{ section.id }} .heritage-visual .sticker-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4rem;
+    color: {{ section.settings.sticker_color }};
+  }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+  /* ── Responsive ── */
+  @media(max-width:1200px){
+    #shopify-section-{{ section.id }} .heritage{padding:6rem 1.2rem}
+    #shopify-section-{{ section.id }} .floating-card {max-width:260px;padding:1.8rem 1.6rem 1.5rem}
+    #shopify-section-{{ section.id }} .floating-card p{font-size:1.3rem}
+  }
+  @media (max-width: 980px) {
+    #shopify-section-{{ section.id }} .heritage-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    #shopify-section-{{ section.id }} .heritage-text h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1.2rem;
+    }
+    #shopify-section-{{ section.id }} .heritage-text p {
+      font-size: .95rem;
+      margin-bottom: .9rem;
+    }
+    #shopify-section-{{ section.id }} .heritage-visual img {
+      max-height: 440px;
+    }
+    #shopify-section-{{ section.id }} .floating-card {
+      position: static;
+      max-width: 100%;
+      margin-top: 1.5rem;
+      padding: 1.6rem 1.5rem;
+      bottom: auto;
+      left: auto;
+    }
+    #shopify-section-{{ section.id }} .floating-card p {
+      font-size: 1.2rem;
+    }
+    #shopify-section-{{ section.id }} .heritage-visual .sticker {
+      width: 80px;
+      height: 80px;
+      top: -15px;
+      right: -10px;
+    }
+    #shopify-section-{{ section.id }} .heritage-visual .sticker text {
+      font-size: 13px;
+    }
+  }
+  @media (max-width: 640px) {
+    #shopify-section-{{ section.id }} .heritage{padding: 3.5rem 1.2rem;}
+    #shopify-section-{{ section.id }} .heritage-visual .sticker {
+      width: 70px;
+      height: 70px;
+    }
+  }
+</style>
+
+<section class="heritage" id="heritage">
+  <div class="heritage-grid">
+
+    <div class="heritage-text reveal-left">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <div>{{ section.settings.heading }}</div>
+
+      {% if section.settings.body_1 != blank %}
+        {{ section.settings.body_1 }}
+      {% endif %}
+
+      {% if section.settings.body_2 != blank %}
+        {{ section.settings.body_2 }}
+      {% endif %}
+
+      {% if section.settings.link_label != blank and section.settings.link_url != blank %}
+        <a href="{{ section.settings.link_url }}" class="link-arrow">{{ section.settings.link_label }}</a>
+      {% endif %}
+    </div>
+
+    <div class="heritage-visual reveal-right">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 700 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          width="700"
+          height="700"
+          loading="lazy"
+        />
+      {% else %}
+        <img
+          src="https://placehold.co/700x700/731157/F1EDEC?text=Heritage"
+          alt="Heritage"
+          width="700"
+          height="700"
+        />
+      {% endif %}
+
+      <div class="floating-card">
+        <span class="quote-mark">"</span>
+        <p>{{ section.settings.quote_text }}</p>
+        <span class="quote-author">{{ section.settings.quote_author }}</span>
+      </div>
+
+      <div class="sticker">
+        <svg viewBox="0 0 120 120">
+          <defs>
+            <path id="circ-{{ section.id }}" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
+          </defs>
+          <text><textPath href="#circ-{{ section.id }}">{{ section.settings.sticker_text }}</textPath></text>
+        </svg>
+        <span class="sticker-center">{{ section.settings.sticker_icon }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heritage",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ Our Heritage"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157",
+      "info": "Default: --plum (#731157)"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap italic words in <em> — styled by Heading Italic Color.",
+      "default": "<p>An ode to the <em>women who raised us.<\/em><\/p>"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20",
+      "info": "Default: --ink (#2A0A20)"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#731157",
+      "info": "Default: --plum (#731157)"
+    },
+    {
+      "type": "richtext",
+      "id": "body_1",
+      "label": "Paragraph 1",
+      "default": "<p>AMYZA merges two Arabic names — <em>MYZA<\/em> (grace) and <em>AMARAH<\/em> (eternal beauty). A tribute to the grandmothers whose recipes inspired every drop.<\/p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_2",
+      "label": "Paragraph 2",
+      "default": "<p>Rooted in South Asian heritage, blended with Malaysian healing heroes — we bridge cultures with one intentional ritual.<\/p>"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Paragraph Color",
+      "default": "#5a3545",
+      "info": "Default: #5a3545"
+    },
+    {
+      "type": "color",
+      "id": "body_em_color",
+      "label": "Paragraph Emphasis Color",
+      "default": "#731157",
+      "info": "Default: --plum (#731157)"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link Text",
+      "default": "Read our story →"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#731157",
+      "info": "Default: --plum (#731157)"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Floating Card"
+    },
+    {
+      "type": "text",
+      "id": "quote_text",
+      "label": "Quote",
+      "default": "Bottled generational wisdom."
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Author",
+      "default": "— The AMYZA Story"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#731157",
+      "info": "Default: --plum (#731157)"
+    },
+    {
+      "type": "header",
+      "content": "Sticker"
+    },
+    {
+      "type": "text",
+      "id": "sticker_text",
+      "label": "Sticker Text",
+      "default": "✦ MADE WITH LOVE ✦ SINCE HERITAGE ✦ "
+    },
+    {
+      "type": "text",
+      "id": "sticker_icon",
+      "label": "Center Icon",
+      "default": "♥"
+    },
+    {
+      "type": "color",
+      "id": "sticker_color",
+      "label": "Sticker Color",
+      "default": "#731157",
+      "info": "Default: --plum (#731157)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heritage"
+    }
+  ]
+}
+{% endschema %}

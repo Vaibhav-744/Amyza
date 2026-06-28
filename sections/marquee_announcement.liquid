@@ -1,0 +1,150 @@
+<style>
+  #shopify-section-{{ section.id }} .announcement{
+    position: relative;
+    z-index: 1;
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding | append:'px' }} 0;
+    overflow: hidden;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .marquee-track{
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: marquee-{{ section.id }} {{ section.settings.animation_speed }}s linear infinite;
+  }
+
+  #shopify-section-{{ section.id }} .marquee-track:hover{
+    {% if section.settings.pause_on_hover %}
+      animation-play-state: paused;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .marquee-group{
+    font-size: .72rem;
+    letter-spacing: .22em;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .marquee-group div{
+    padding: 0 1rem;
+    white-space: nowrap;
+    color: {{ section.settings.text_color }};
+    flex-shrink: 0;
+  }
+  #shopify-section-{{ section.id }} .marquee-group div em{
+        color: var(--blush);
+        font-style:normal;
+  }
+
+  @keyframes marquee-{{ section.id }}{
+    0%{
+      transform: translateX(0);
+    }
+    100%{
+      transform: translateX(-20%);
+    }
+  }
+
+  @media(max-width:767px){
+    #shopify-section-{{ section.id }} .marquee-group div{
+      padding: 0 1rem;
+    }
+  }
+</style>
+
+<div class="announcement">
+  <div class="marquee-track">
+
+    {% for i in (1..5) %}
+      <div class="marquee-group" {% if i != 1 %}aria-hidden="true"{% endif %}>
+        {% for block in section.blocks %}
+          <div {{ block.shopify_attributes }}>
+            {{ block.settings.text }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "tag": "section",
+  "class": "section-announcement-bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Spacing",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Animation Speed",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "unit": "s",
+      "default": 40
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause Animation on Hover",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement Item",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>✦ Free shipping on orders over RM150</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+    }
+  ]
+}
+{% endschema %}

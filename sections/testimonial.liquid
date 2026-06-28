@@ -1,0 +1,522 @@
+{% comment %} testimonials.liquid {% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .testimonials{
+    padding: 5rem 2rem;
+    background: {{ section.settings.section_bg }};
+  }
+
+  /* =========================================================
+     SECTION HEADER
+  ========================================================= */
+  #shopify-section-{{ section.id }} .eyebrow{
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  #shopify-section-{{ section.id }} .section-header h2{
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .section-header h2 em,
+  #shopify-section-{{ section.id }} .section-header h2 i{
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    color: {{ section.settings.heading_italic_color }};
+  }
+
+  #shopify-section-{{ section.id }} .section-sub{
+    color: {{ section.settings.subheading_color }};
+  }
+
+  /* =========================================================
+     CAROUSEL
+  ========================================================= */
+  #shopify-section-{{ section.id }} .carousel{
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-viewport{
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-track{
+    display: flex;
+    gap: 1rem;
+    transition: transform .7s cubic-bezier(.22,.61,.36,1);
+    will-change: transform;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-slide{
+    flex: 0 0 calc((100% - 2rem) / 3);
+    min-width: 0;
+  }
+
+  /* =========================================================
+     TESTIMONIAL CARD
+  ========================================================= */
+  #shopify-section-{{ section.id }} .testimonial{
+    background: {{ section.settings.card_bg }};
+    padding: 1.8rem;
+    border-radius: var(--radius-md, 4px);
+    border: 1px solid rgba(115,17,87,.06);
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial.featured{
+    background: {{ section.settings.featured_bg }};
+    border-color: {{ section.settings.featured_bg }};
+    color: {{ section.settings.featured_text }};
+  }
+
+  /* Stars */
+  #shopify-section-{{ section.id }} .testimonial .stars{
+    color: {{ section.settings.star_color }};
+    margin-bottom: .6rem;
+    font-size: .8rem;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial.featured .stars{
+    color: {{ section.settings.featured_star_color }};
+  }
+
+  /* Richtext */
+  #shopify-section-{{ section.id }} .testimonial-content{
+    margin-bottom: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-content p{
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin: 0 0 .8rem;
+    color: {{ section.settings.review_color }};
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-content p:last-child{
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-content strong{
+    font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-content em{
+    font-style: italic;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial.featured .testimonial-content p,
+  #shopify-section-{{ section.id }} .testimonial.featured .testimonial-content strong,
+  #shopify-section-{{ section.id }} .testimonial.featured .testimonial-content em{
+    color: {{ section.settings.featured_text }};
+  }
+
+  /* Author */
+  #shopify-section-{{ section.id }} .testimonial .author{
+    font-size: .68rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    opacity: .7;
+    color: {{ section.settings.author_color }};
+  }
+
+  #shopify-section-{{ section.id }} .testimonial.featured .author{
+    color: {{ section.settings.featured_text }};
+  }
+
+  /* =========================================================
+     NAVIGATION
+  ========================================================= */
+  #shopify-section-{{ section.id }} .carousel-btn{
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md, 4px);
+    background: {{ section.settings.nav_bg }};
+    border: 1px solid rgba(115,17,87,.15);
+    color: {{ section.settings.nav_color }};
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    box-shadow: 0 10px 30px rgba(115,17,87,.1);
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn:hover{
+    background: {{ section.settings.nav_hover_bg }};
+    color: {{ section.settings.nav_hover_color }};
+    border-color: {{ section.settings.nav_hover_bg }};
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn.prev{
+    left: .5rem;
+    transform: translateY(-50%);
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn.next{
+    right: .5rem;
+    transform: translateY(-50%);
+  }
+
+  /* Dots */
+  #shopify-section-{{ section.id }} .carousel-dots{
+    display: flex;
+    justify-content: center;
+    gap: .4rem;
+    margin-top: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dots button{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: none;
+    background: {{ section.settings.dot_color }};
+    cursor: pointer;
+    transition: .3s;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dots button.active{
+    background: {{ section.settings.dot_active_color }};
+    width: 22px;
+    border-radius: 10px;
+  }
+
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+  @media(max-width:1200px){
+    #shopify-section-{{ section.id }} .carousel-slide{
+      flex-basis: calc((100% - 1rem) / 2);
+    }
+  }
+
+  @media(max-width:980px){
+    #shopify-section-{{ section.id }} .testimonials{
+      padding: 3.5rem 1.2rem;
+    }
+
+    #shopify-section-{{ section.id }} .carousel{
+      padding: 0 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-slide{
+      flex-basis: 100%;
+      min-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-btn{
+      width: 34px;
+      height: 34px;
+      font-size: .85rem;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-btn.prev{
+      left: .2rem;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-btn.next{
+      right: .2rem;
+    }
+  }
+</style>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal-up">
+    <p class="eyebrow">
+      {{ section.settings.eyebrow }}
+    </p>
+
+    <div>
+      {{ section.settings.heading }}
+    </div>
+
+    <p class="section-sub">
+      {{ section.settings.subheading }}
+    </p>
+  </div>
+
+  <div class="carousel" data-carousel="testimonials">
+
+    <button class="carousel-btn prev" aria-label="Previous">
+      ←
+    </button>
+
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+
+        {% for block in section.blocks %}
+          <div
+            class="testimonial {% if block.settings.featured %}featured{% endif %} carousel-slide"
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="stars">
+              {{ block.settings.stars }}
+            </div>
+
+            <div class="testimonial-content rte">
+              {{ block.settings.review }}
+            </div>
+
+            <span class="author">
+              — {{ block.settings.author }}
+            </span>
+
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <button class="carousel-btn next" aria-label="Next">
+      →
+    </button>
+
+    <div class="carousel-dots" aria-hidden="true"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#F7F4F3"
+    },
+
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ Word of Mouth"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>From <em>our girls.</em></p>"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Italic Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Over 500 5-star reviews and counting."
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#666655"
+    },
+
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "review_color",
+      "label": "Review Text",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "author_color",
+      "label": "Author Color",
+      "default": "#666655"
+    },
+
+    {
+      "type": "header",
+      "content": "Featured Card"
+    },
+    {
+      "type": "color",
+      "id": "featured_bg",
+      "label": "Featured Background",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "featured_text",
+      "label": "Featured Text",
+      "default": "#F1EDEC"
+    },
+
+    {
+      "type": "header",
+      "content": "Stars"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#9F9F46"
+    },
+    {
+      "type": "color",
+      "id": "featured_star_color",
+      "label": "Featured Star Color",
+      "default": "#EAACC9"
+    },
+
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "color",
+      "id": "nav_bg",
+      "label": "Nav Background",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "color",
+      "id": "nav_color",
+      "label": "Nav Icon Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_bg",
+      "label": "Nav Hover Background",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "nav_hover_color",
+      "label": "Nav Hover Icon",
+      "default": "#F1EDEC"
+    },
+
+    {
+      "type": "header",
+      "content": "Dots"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dot Color"
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active Dot Color",
+      "default": "#731157"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stars",
+          "label": "Stars",
+          "default": "★★★★★"
+        },
+        {
+          "type": "richtext",
+          "id": "review",
+          "label": "Review",
+          "default": "<p>Feels like a spa moment every morning. The jasmine scent is unreal — and my glow has never been better.</p>"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Aisyah, 28 · KL"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured Card",
+          "default": false
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>Feels like a spa moment every morning. The jasmine scent is unreal — and my glow has never been better.</p>",
+            "author": "Aisyah, 28 · KL",
+            "featured": false
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>This is the serum I've been searching for. Luxurious, effective, and it smells like my grandmother's garden.</p>",
+            "author": "Priya, 31 · Penang",
+            "featured": true
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>The bottle alone is vanity goals. But the formula? Melts in like silk. Obsessed.</p>",
+            "author": "Mei Ling, 26 · Singapore",
+            "featured": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,372 @@
+{% comment %} botanicals.liquid {% endcomment %}
+
+<style>
+  /* ── Section ── */
+  #shopify-section-{{ section.id }} .botanicals {
+    background: {{ section.settings.section_bg }};
+    color: {{ section.settings.section_text_color }};
+    padding: 5rem 2rem;
+  }
+
+  /* ── Cards ── */
+  #shopify-section-{{ section.id }} .botanical-card {
+    background: rgba(241,237,236,.06);
+    border: 1px solid rgba(241,237,236,.15);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    transition: .4s;
+  }
+  #shopify-section-{{ section.id }} .botanical-card:hover {
+    background: rgba(241,237,236,.1);
+    transform: translateY(-5px);
+  }
+
+  /* ── Botanical image ── */
+  #shopify-section-{{ section.id }} .botanical-img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    margin-bottom: .8rem;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Card text ── */
+  #shopify-section-{{ section.id }} .botanical-card h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    margin-bottom: .3rem;
+    color: {{ section.settings.card_title_color }};
+    font-size: 1.2rem;
+  }
+  #shopify-section-{{ section.id }} .botanical-card p {
+    font-size: .82rem;
+    opacity: .85;
+    color: {{ section.settings.card_desc_color }};
+  }
+
+  /* ── Section header overrides (light variant) ── */
+  #shopify-section-{{ section.id }} .eyebrow {
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  #shopify-section-{{ section.id }} .section-header h2 {
+    color: {{ section.settings.heading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .section-header h2 em,
+  #shopify-section-{{ section.id }} .section-header h2 .serif-italic {
+    color: {{ section.settings.heading_italic_color }};
+  }
+
+  #shopify-section-{{ section.id }} .section-sub {
+    color: {{ section.settings.subheading_color }};
+  }
+
+  #shopify-section-{{ section.id }} .botanicals-btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  #shopify-section-{{ section.id }} .botanicals-btn {
+    display: inline-block;
+    padding: .95rem 1.8rem;
+    border-radius: 4px;
+    font-size: .7rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: .3s;
+    cursor: pointer;
+    line-height: 1;
+    text-decoration: none;
+    background: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_text_color }};
+  }
+  #shopify-section-{{ section.id }} .botanicals-btn:hover {
+    background: {{ section.settings.btn_hover_bg }};
+  }
+  @media(max-width:980px){
+    #shopify-section-{{ section.id }} .botanicals {
+        padding: 3.5rem 1.2rem;
+    }
+  }
+</style>
+
+<section class="botanicals" id="botanicals">
+  <div class="section-header light reveal-up">
+    <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    <div>{{ section.settings.heading }}</div>
+    <p class="section-sub">{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="carousel dark" data-carousel="botanicals">
+    <button class="carousel-btn prev" aria-label="Previous">←</button>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        {% for block in section.blocks %}
+          <div class="botanical-card carousel-slide" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              <img
+                class="botanical-img"
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              />
+            {% else %}
+              <div class="botanical-img" style="background: {{ block.settings.fallback_bg }};"></div>
+            {% endif %}
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <button class="carousel-btn next" aria-label="Next">→</button>
+    <div class="carousel-dots" aria-hidden="true"></div>
+    {% if section.settings.btn_text != blank %}
+      <div class="botanicals-btn-wrap">
+        <a
+          href="{{ section.settings.btn_url }}"
+          class="botanicals-btn">
+          {{ section.settings.btn_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Botanicals",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#1D4F3B",
+      "info": "Default: --emerald (#1D4F3B)"
+    },
+    {
+      "type": "color",
+      "id": "section_text_color",
+      "label": "Section Text Color",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ The Catalogue"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#EAACC9",
+      "info": "Default: --blush (#EAACC9)"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap italic words in <em> — styled by Heading Italic Color.",
+      "default": "<p>Our <em>Botanicals<\/em><\/p>"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#EAACC9",
+      "info": "Default: --blush (#EAACC9)"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every ingredient tells a story."
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#EAACC9",
+      "info": "Default: --blush (#EAACC9)"
+    },
+    {
+      "type": "color",
+      "id": "card_desc_color",
+      "label": "Card Description Color",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+       {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text",
+          "default": "Explore All Botanicals",
+          "info": "Leave blank to hide the button."
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button URL"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg",
+          "label": "Button Background",
+          "default": "#731157"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button Text",
+          "default": "#F1EDEC"
+        },
+        {
+          "type": "color",
+          "id": "btn_hover_bg",
+          "label": "Button Hover Background",
+          "default": "#4E0A3A"
+        }
+  ],
+  "blocks": [
+    {
+      "type": "botanical",
+      "name": "Botanical",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_bg",
+          "label": "Fallback Background",
+          "default": "linear-gradient(135deg,#9F9F46,#731157)",
+          "info": "Shown while no image is uploaded. CSS gradient or hex color."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name",
+          "default": "Saffron"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "The golden thread of heritage. Delivers unparalleled radiance."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Botanicals",
+      "blocks": [
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Saffron",
+            "description": "The golden thread of heritage. Delivers unparalleled radiance.",
+            "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Jasmine",
+            "description": "Our fragrant base. Replaces water with a floral kiss.",
+            "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Rose",
+            "description": "A centuries-old symbol of softness and renewal.",
+            "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Turmeric",
+            "description": "The ancestral glow-giver. Anti-inflammatory, luminous.",
+            "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Pegaga",
+            "description": "Malaysia's local hero. Calms, restores, strengthens.",
+            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Tremella",
+            "description": "The supreme hydrator, revered in TCM.",
+            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Sandalwood",
+            "description": "Grounding, warming, an ancient skin soother.",
+            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)"
+          }
+        },
+        {
+          "type": "botanical",
+          "settings": {
+            "title": "Aloe Vera",
+            "description": "The bridge between cultures — soothing, timeless.",
+            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

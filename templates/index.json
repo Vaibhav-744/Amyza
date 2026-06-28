@@ -1,0 +1,807 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_video_Y9yRha": {
+      "type": "custom-video",
+      "name": "Custom Hero Video",
+      "settings": {
+        "video": "shopify://files/videos/14912587_1920_1080_50fps (1).mp4",
+        "fallback_bg": "#731157",
+        "eyebrow": "✦ Introducing the Golden Nectar",
+        "eyebrow_color": "#eaacc9",
+        "heading": "<h1><em>The Glow</em><br/>You Deserve.</h1>",
+        "heading_color": "#f1edec",
+        "heading_italic_color": "#eaacc9",
+        "subheading": "A slow-luxury ritual rooted in ancestral botanical wisdom — reimagined for the modern woman.",
+        "subheading_color": "#f1edeceb",
+        "primary_button_label": "Shop The Serum",
+        "primary_button_link": "",
+        "primary_button_bg": "#731157",
+        "primary_button_text": "#f1edec",
+        "primary_button_border": "#731157",
+        "primary_button_hover_bg": "#4e0a3a",
+        "secondary_button_label": "Discover The Ritual",
+        "secondary_button_link": "",
+        "secondary_button_text": "#f1edec",
+        "secondary_button_border": "#f1edec",
+        "secondary_button_hover_bg": "#f1edec",
+        "secondary_button_hover_text": "#731157",
+        "overlay_top": "rgba(42,10,32,0.25)",
+        "overlay_middle": "rgba(42,10,32,0.5)",
+        "overlay_bottom": "rgba(42,10,32,0.85)",
+        "overlay_glow": "rgba(115,17,87,0.35)",
+        "show_mute_button": true,
+        "mute_button_bg": "rgba(42,10,32,0.45)",
+        "mute_button_border": "#ffffff",
+        "mute_button_icon": "#f1edec",
+        "mute_button_hover_bg": "rgba(42,10,32,0.7)",
+        "show_scroll_hint": true,
+        "scroll_text": "Scroll",
+        "scroll_text_color": "#f1edec",
+        "scroll_line_color": "#f1edec",
+        "scroll_animation_speed": 2,
+        "text_color": "#f1edec"
+      }
+    },
+    "marquee_announcement_acFEcL": {
+      "type": "marquee_announcement",
+      "blocks": {
+        "announcement_RhTUyh": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Botanical Heritage</p>"
+          }
+        },
+        "announcement_mfYn3r": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Cruelty-Free</p>"
+          }
+        },
+        "announcement_JbAH48": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Paraben-Free</p>"
+          }
+        },
+        "announcement_6xJQcY": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>✦ Crafted in Malaysia</p>"
+          }
+        },
+        "announcement_QCAXP6": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Slow Luxury</p>"
+          }
+        },
+        "announcement_C3Lp4Q": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Alcohol-Free</p>"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_RhTUyh",
+        "announcement_mfYn3r",
+        "announcement_JbAH48",
+        "announcement_6xJQcY",
+        "announcement_QCAXP6",
+        "announcement_C3Lp4Q"
+      ],
+      "name": "Announcement Bar",
+      "settings": {
+        "bg_color": "#731157",
+        "text_color": "#f1edec",
+        "padding": 10,
+        "animation_speed": 40,
+        "pause_on_hover": true
+      }
+    },
+    "product_block_VRB8WC": {
+      "type": "product-block",
+      "name": "t:sections.product_block.presets.name",
+      "settings": {
+        "unique_class": "home_ritual-products",
+        "container": "1770",
+        "padding_full_width": 0,
+        "disable_padding_content": false,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "border_height": 1,
+        "color_border_bottom": "#e8e8e8",
+        "enable_minus_mg_top": false,
+        "minus_spacing_top": 0,
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "product_block_layout": "slider",
+        "product_bg": "#f7f4f3",
+        "product_bg_gradient": "",
+        "style_block_header": "style4",
+        "pd_top_title": 30,
+        "product_small_tagline": "<p>✦ The Collection</p>",
+        "product_small_description": "<p>Botanical heritage, bottled with intention.</p>",
+        "product_block_title": "<h2>Shop <em>The Ritual</em></h2>",
+        "enable_border_title": false,
+        "enable_border_title_style2": false,
+        "fontsize_title": 16,
+        "fontsize_title_mb": 16,
+        "mg_bottom_title": 5,
+        "mg_bottom_title_mb": 5,
+        "border_color_title": "#232323",
+        "color_title": "#2a0a20",
+        "view_all": "View All Products",
+        "view_all_align": "center",
+        "font_weight_view_all": "400",
+        "mg_bottom_view": 30,
+        "mg_bottom_view_mb": 0,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "icon_view_all": "",
+        "color_view_all_icon": "#eb492f",
+        "title_align": "center",
+        "button_text": "",
+        "button_text_font_size": 14,
+        "button_text_font_weight": "500",
+        "button_text_text_transform": "uppercase",
+        "product_button_width": 270,
+        "pd_top_product_button": 12,
+        "pd_bottom_product_button": 12,
+        "button_icon": "",
+        "mg_bottom_button": 55,
+        "enable_button_shadow": false,
+        "color_button": "#fff",
+        "border_color_button": "#232323",
+        "bg_color_button": "#232323",
+        "bg_color_gradient_button": "",
+        "color_button_hover": "",
+        "border_color_button_hover": "",
+        "bg_color_button_hover": "",
+        "bg_color_gradient_button_hover": "",
+        "product_block_collection": "the-ritual",
+        "product_block_limit": 3,
+        "grid_gap": 30,
+        "pb_style": "style1",
+        "style_countdown": "style_1",
+        "countdown": "",
+        "font_size_countdown_text": 14,
+        "color_countdown": "#f42b23",
+        "countdown_margin_left": 15,
+        "product_block_per_row": "3",
+        "product_block_infinite_scroll": true,
+        "product_block_swipe_on_mobile": true,
+        "enable_product_card_pd_bottom": false,
+        "product_card_pd_bottom": 40,
+        "product_block_dots": true,
+        "product_block_dots_mb": true,
+        "spacing_top_dots": 0,
+        "product_block_arrows": true,
+        "product_block_arrows_mb": true,
+        "product_block_progress_bar": false,
+        "product_block_counter_number": false,
+        "enable_hover_arrow": false,
+        "enable_infinite": true,
+        "product_block_show": "3",
+        "position_vertical_arrow": "70px",
+        "product_block_per_view": "3",
+        "show_half": true,
+        "scroll_height": 4,
+        "scroll_track_bg": "#f1f1f1",
+        "scroll_thumb_color": "#000",
+        "scroll_thumb_hover_color": "#444",
+        "enable_hover_drag_icon": true,
+        "position": "left",
+        "width_banner": 40,
+        "display_list_collection": false,
+        "collection_color": "#202020",
+        "collection_color_hover": "#3e8cc4",
+        "collection_bg_color": "#fff",
+        "collection_bg_color_gradient": "",
+        "text_list": "View all categories",
+        "url_list": "",
+        "enable_layout_special": false,
+        "bg_card": "#fff",
+        "padding_card": 15,
+        "border_radius_card": 5,
+        "border_layout_card": "full",
+        "border_width_card": 5,
+        "border_color_card": "#f0f1f4"
+      }
+    },
+    "featured_product_9RJ63M": {
+      "type": "featured-product",
+      "blocks": {
+        "product_text_aV9Dgj": {
+          "type": "product_text",
+          "settings": {
+            "text": "",
+            "text_icon": "",
+            "text_description": "✦ The Hero Product",
+            "fontsize_text": 12,
+            "content_spacing": 0,
+            "custom_block_align": "left",
+            "color_title": "#731157",
+            "background_color_block": "rgba(0,0,0,0)",
+            "background_gradient_color_block": "",
+            "spacing_top": 0,
+            "spacing_bottom": 5
+          }
+        },
+        "title_QN9TXh": {
+          "type": "title",
+          "settings": {
+            "fontsize_text": 40,
+            "fontsize_text_mb": 24,
+            "color_title": "#2a0a20",
+            "spacing_top": 0,
+            "spacing_bottom": 10
+          }
+        },
+        "product_text_XGkaGx": {
+          "type": "product_text",
+          "settings": {
+            "text": "",
+            "text_icon": "",
+            "text_description": "<em>A sunrise in a bottle — hydrate, soothe, glow.</em>",
+            "fontsize_text": 16,
+            "content_spacing": 0,
+            "custom_block_align": "left",
+            "color_title": "#731157",
+            "background_color_block": "rgba(0,0,0,0)",
+            "background_gradient_color_block": "",
+            "spacing_top": 0,
+            "spacing_bottom": 15
+          }
+        },
+        "product_text_Bd89r4": {
+          "type": "product_text",
+          "settings": {
+            "text": "",
+            "text_icon": "",
+            "text_description": "Saffron, Jasmine, Rose, Sandalwood & Turmeric — traditional recipes treasured for centuries, bottled into a ritual that actually works.",
+            "fontsize_text": 16,
+            "content_spacing": 0,
+            "custom_block_align": "left",
+            "color_title": "#731157",
+            "background_color_block": "rgba(0,0,0,0)",
+            "background_gradient_color_block": "",
+            "spacing_top": 0,
+            "spacing_bottom": 20
+          }
+        },
+        "price_CjTbjH": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "fontsize_text": 30,
+            "spacing_top": 0,
+            "spacing_bottom": 24
+          }
+        },
+        "image_text_6RdzHP": {
+          "type": "image_text",
+          "settings": {
+            "icon": "shopify://shop_images/drop-energy-fuel-svgrepo-com.svg",
+            "title": "<p>Hydrate</p>",
+            "description": "<p>Tremella Mushroom & Aloe Vera drench thirsty skin.</p>"
+          }
+        },
+        "image_text_AadaUb": {
+          "type": "image_text",
+          "settings": {
+            "icon": "shopify://shop_images/leaf-svgrepo-com.svg",
+            "title": "<p>Soothe</p>",
+            "description": "<p>Centella Asiatica (Pegaga) calms and restores.</p>"
+          }
+        },
+        "image_text_qr6ciB": {
+          "type": "image_text",
+          "settings": {
+            "icon": "shopify://shop_images/sparkles-svgrepo-com.svg",
+            "title": "<p>Glow</p>",
+            "description": "<p>Saffron & Turmeric awaken unparalleled radiance.</p>"
+          }
+        },
+        "variant_picker_rAqEPr": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "show_variant_image_group": false,
+            "color_label": "#ffffff",
+            "enable_border_top": false,
+            "enable_border_bottom": false,
+            "color_border": "#e6e6e6",
+            "spacing_top": 0,
+            "spacing_bottom": 0
+          }
+        },
+        "buy_buttons_fWnVWw": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "fontsize_text": 14,
+            "checkbox_color": "#ffffff",
+            "checkbox_border_color": "#494a4d",
+            "spacing_top": 0,
+            "spacing_bottom": 15,
+            "color_qty_label": "#ffffff",
+            "color_qty_icon": "#5a5a5a",
+            "color_qty_input": "#f2f5ff",
+            "bg_color_qty_input": "#ffffff",
+            "wishlist_color": "#ffffff",
+            "wishlist_border_color": "#232323",
+            "wishlist_bg_color": "#232323",
+            "wishlist_color_hover": "#232323",
+            "wishlist_border_color_hover": "#232323",
+            "wishlist_bg_color_hover": "#ffffff",
+            "atc_animation": "none",
+            "atc_color": "#F1EDEC",
+            "atc_border_color": "#731157",
+            "atc_bg_color": "#731157",
+            "atc_bg_color_gradient": "",
+            "atc_color_hover": "#f1edec",
+            "atc_border_color_hover": "#4e0a3a",
+            "atc_bg_color_hover": "#4e0a3a",
+            "atc_bg_color_gradient_hover": "",
+            "bin_color": "#232323",
+            "bin_border_color": "#acacac",
+            "bin_bg_color": "#ffffff",
+            "bin_bg_color_gradient": "",
+            "bin_color_hover": "#ffffff",
+            "bin_border_color_hover": "#232323",
+            "bin_bg_color_hover": "#232323",
+            "bin_bg_color_hover_gradient": ""
+          }
+        },
+        "product_text_6UH4b7": {
+          "type": "product_text",
+          "settings": {
+            "text": "",
+            "text_icon": "",
+            "text_description": "✦ Free shipping over RM150  ·  30-day returns",
+            "fontsize_text": 14,
+            "content_spacing": 0,
+            "custom_block_align": "left",
+            "color_title": "#F1EDEC",
+            "background_color_block": "rgba(0,0,0,0)",
+            "background_gradient_color_block": "",
+            "spacing_top": 0,
+            "spacing_bottom": 26
+          }
+        }
+      },
+      "block_order": [
+        "product_text_aV9Dgj",
+        "title_QN9TXh",
+        "product_text_XGkaGx",
+        "product_text_Bd89r4",
+        "price_CjTbjH",
+        "image_text_6RdzHP",
+        "image_text_AadaUb",
+        "image_text_qr6ciB",
+        "variant_picker_rAqEPr",
+        "buy_buttons_fWnVWw",
+        "product_text_6UH4b7"
+      ],
+      "name": "t:sections.product_block.settings.header__2.feature_product",
+      "settings": {
+        "id_section": "",
+        "container": "1770",
+        "padding_full_width": 0,
+        "show_sticky_info": false,
+        "mg_top_desktop": 60,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 40,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 30,
+        "mg_bottom_mobile": 30,
+        "bg_color_product": "#EAACC9",
+        "title": "",
+        "color_title": "#ffffff",
+        "fontsize_title": 60,
+        "fontsize_title_mb": 34,
+        "margin_bottom_title": 43,
+        "margin_bottom_title_mb": 20,
+        "des": "",
+        "color_des": "#ffffff",
+        "fontsize_des": 16,
+        "margin_bottom_des": 45,
+        "margin_bottom_des_mb": 30,
+        "title_align": "center",
+        "featured_product": "golden-nectar",
+        "main_image_arrows_desktop": true,
+        "main_image_counter_mobile": true,
+        "main_image_position": "left",
+        "main_image_bg_color": "#f1edec",
+        "show_thumbnail_mobile": true,
+        "thumnail_layout": "2",
+        "thumbnail_to_show": 4,
+        "thumbnail_active_color": "#e11ecb",
+        "thumbnail_arrow_color_mb": "#ffffff",
+        "thumbnail_image_bg_color": "#121212",
+        "product_image_ratio": "adapt",
+        "portrait_aspect_ratio": 100,
+        "media_fit": "unset",
+        "product_image_popup": "fancybox",
+        "video_layout": "thumbnail",
+        "show_badge": false,
+        "show_qty": false
+      }
+    },
+    "rituals_yhwWfj": {
+      "type": "rituals",
+      "blocks": {
+        "ritual_card_zFpAhg": {
+          "type": "ritual_card",
+          "settings": {
+            "number": "01",
+            "title": "Cleanse",
+            "description": "Prepare your canvas. Pat skin until just damp."
+          }
+        },
+        "ritual_card_VknpEw": {
+          "type": "ritual_card",
+          "settings": {
+            "number": "02",
+            "title": "Drop",
+            "description": "3–4 drops of Golden Nectar into your palm."
+          }
+        },
+        "ritual_card_eYHaKh": {
+          "type": "ritual_card",
+          "settings": {
+            "number": "03",
+            "title": "Press",
+            "description": "Warm between hands, press gently into skin."
+          }
+        },
+        "ritual_card_kajbkc": {
+          "type": "ritual_card",
+          "settings": {
+            "number": "04",
+            "title": "Glow",
+            "description": "Seal with moisturiser. Step into your day."
+          }
+        }
+      },
+      "block_order": [
+        "ritual_card_zFpAhg",
+        "ritual_card_VknpEw",
+        "ritual_card_eYHaKh",
+        "ritual_card_kajbkc"
+      ],
+      "name": "Ritual",
+      "settings": {
+        "section_bg": "#e8e2e0",
+        "card_bg": "#f1edec",
+        "eyebrow": "✦ Step into",
+        "eyebrow_color": "#731157",
+        "heading": "<h2>The <em>Ritual</em> You Need</h2>",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "subheading": "Four intentional moments. One glowing result.",
+        "subheading_color": "#666655",
+        "number_color": "#731157",
+        "card_title_color": "#2a0a20",
+        "card_desc_color": "#666655"
+      }
+    },
+    "heritage_xH3aVg": {
+      "type": "heritage",
+      "name": "Heritage",
+      "settings": {
+        "section_bg": "#f1edec",
+        "eyebrow": "✦ Our Heritage",
+        "eyebrow_color": "#731157",
+        "heading": "<h2>An ode to the <em>women who raised us.</em></h2>",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "body_1": "<p>AMYZA merges two Arabic names — <em>MYZA</em> (grace) and <em>AMARAH</em> (eternal beauty). A tribute to the grandmothers whose recipes inspired every drop.</p>",
+        "body_2": "<p>Rooted in South Asian heritage, blended with Malaysian healing heroes — we bridge cultures with one intentional ritual.</p>",
+        "body_color": "#5a3545",
+        "body_em_color": "#731157",
+        "link_label": "Read our story →",
+        "link_url": "#",
+        "link_color": "#731157",
+        "image": "shopify://shop_images/amz_ritual.png",
+        "quote_text": "Bottled generational wisdom.",
+        "quote_author": "— The AMYZA Story",
+        "card_bg": "#f1edec",
+        "card_text_color": "#731157",
+        "sticker_text": "✦ MADE WITH LOVE ✦ SINCE HERITAGE ✦",
+        "sticker_icon": "♥",
+        "sticker_color": "#731157"
+      }
+    },
+    "botanicals_JzPkmR": {
+      "type": "botanicals",
+      "blocks": {
+        "botanical_eCqRRC": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
+            "title": "Saffron",
+            "description": "The golden thread of heritage. Delivers unparalleled radiance."
+          }
+        },
+        "botanical_jDjycM": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
+            "title": "Jasmine",
+            "description": "Our fragrant base. Replaces water with a floral kiss."
+          }
+        },
+        "botanical_WemzmL": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
+            "title": "Rose",
+            "description": "A centuries-old symbol of softness and renewal."
+          }
+        },
+        "botanical_DAw7fr": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)",
+            "title": "Turmeric",
+            "description": "The ancestral glow-giver. Anti-inflammatory, luminous."
+          }
+        },
+        "botanical_eVGAMX": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
+            "title": "Pegaga",
+            "description": "Malaysia's local hero. Calms, restores, strengthens."
+          }
+        },
+        "botanical_CyKxHi": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
+            "title": "Tremella",
+            "description": "The supreme hydrator, revered in TCM."
+          }
+        },
+        "botanical_fzErJT": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
+            "title": "Sandalwood",
+            "description": "Grounding, warming, an ancient skin soother."
+          }
+        },
+        "botanical_8YmYeH": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
+            "title": "Aloe Vera",
+            "description": "The bridge between cultures — soothing, timeless."
+          }
+        }
+      },
+      "block_order": [
+        "botanical_eCqRRC",
+        "botanical_jDjycM",
+        "botanical_WemzmL",
+        "botanical_DAw7fr",
+        "botanical_eVGAMX",
+        "botanical_CyKxHi",
+        "botanical_fzErJT",
+        "botanical_8YmYeH"
+      ],
+      "name": "Botanicals",
+      "settings": {
+        "section_bg": "#1d4f3b",
+        "section_text_color": "#f1edec",
+        "eyebrow": "✦ The Catalogue",
+        "eyebrow_color": "#eaacc9",
+        "heading": "<h2>Our <em>Botanicals</em></h2>",
+        "heading_color": "#f1edec",
+        "heading_italic_color": "#eaacc9",
+        "subheading": "Every ingredient tells a story.",
+        "subheading_color": "#f1edec",
+        "card_title_color": "#eaacc9",
+        "card_desc_color": "#f1edec",
+        "btn_text": "Explore Botanicals",
+        "btn_url": "",
+        "btn_bg": "#731157",
+        "btn_text_color": "#f1edec",
+        "btn_hover_bg": "#4e0a3a"
+      }
+    },
+    "testimonial_MtGxfE": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_6PedhM": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>Feels like a spa moment every morning. The jasmine scent is unreal — and my glow has never been better.</p>",
+            "author": "Aisyah, 28 · KL",
+            "featured": false
+          }
+        },
+        "testimonial_ktynNU": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>This is the serum I've been searching for. Luxurious, effective, and it smells like my grandmother's garden.</p>",
+            "author": "Priya, 31 · Penang",
+            "featured": true
+          }
+        },
+        "testimonial_WGGqkd": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>The bottle alone is vanity goals. But the formula? Melts in like silk. Obsessed.</p>",
+            "author": "Mei Ling, 26 · Singapore",
+            "featured": false
+          }
+        },
+        "testimonial_LA4pea": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>This is the serum I've been searching for. Luxurious, effective, and it smells like my grandmother's garden.</p>",
+            "author": "Priya, 31 · Penang",
+            "featured": true
+          }
+        },
+        "testimonial_me9VnR": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>The bottle alone is vanity goals. But the formula? Melts in like silk. Obsessed.</p>",
+            "author": "Mei Ling, 26 · Singapore",
+            "featured": false
+          }
+        },
+        "testimonial_AmLLbV": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>Feels like a spa moment every morning. The jasmine scent is unreal — and my glow has never been better.</p>",
+            "author": "Aisyah, 28 · KL",
+            "featured": false
+          }
+        },
+        "testimonial_NxyTHw": {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "review": "<p>The bottle alone is vanity goals. But the formula? Melts in like silk. Obsessed.</p>",
+            "author": "Mei Ling, 26 · Singapore",
+            "featured": false
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_6PedhM",
+        "testimonial_ktynNU",
+        "testimonial_WGGqkd",
+        "testimonial_LA4pea",
+        "testimonial_me9VnR",
+        "testimonial_AmLLbV",
+        "testimonial_NxyTHw"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "section_bg": "#f7f4f3",
+        "eyebrow": "✦ Word of Mouth",
+        "eyebrow_color": "#731157",
+        "heading": "<h2>From <em>our girls.</em></h2>",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "subheading": "Over 500 5-star reviews and counting.",
+        "subheading_color": "#666655",
+        "card_bg": "#ffffff",
+        "review_color": "#2a0a20",
+        "author_color": "#666655",
+        "featured_bg": "#731157",
+        "featured_text": "#f1edec",
+        "star_color": "#9f9f46",
+        "featured_star_color": "#eaacc9",
+        "nav_bg": "#f1edec",
+        "nav_color": "#2a0a20",
+        "nav_hover_bg": "#731157",
+        "nav_hover_color": "#f1edec",
+        "dot_color": "",
+        "dot_active_color": "#731157"
+      }
+    },
+    "custom_faq_fkRWCi": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_item_9f89GU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Golden Nectar suitable for sensitive skin?",
+            "answer": "Yes — it's free of alcohol, parabens, and artificial fragrance. The Pegaga and Aloe Vera actively calm reactive skin.",
+            "open_by_default": true
+          }
+        },
+        "faq_item_didALq": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When should I use the serum?",
+            "answer": "Use AM and PM after cleansing, before moisturiser. Press gently into skin as part of your ritual.",
+            "open_by_default": false
+          }
+        },
+        "faq_item_7BTc7f": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long before I see results?",
+            "answer": "Most see visible glow within 7 days, with deeper skin transformation around 4 weeks of consistent use.",
+            "open_by_default": false
+          }
+        },
+        "faq_item_LFDLDM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "We ship across Malaysia and Singapore. Free shipping on orders over RM150.",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_9f89GU",
+        "faq_item_didALq",
+        "faq_item_7BTc7f",
+        "faq_item_LFDLDM"
+      ],
+      "name": "FAQ Teaser",
+      "settings": {
+        "section_bg": "#f1edec",
+        "section_padding_desktop": "5rem 2rem",
+        "section_padding_mobile": "3rem 1.2rem",
+        "eyebrow": "✦ Curious?",
+        "heading": "<h2>Questions? <em>We've got answers.</em></h2>",
+        "lead": "From ingredient sourcing to skincare routines — everything you want to know about AMYZA.",
+        "button_label": "Visit the FAQ",
+        "button_link": "shopify://pages/faqs",
+        "eyebrow_color": "#731157",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "lead_color": "#5a3545",
+        "question_color": "#2a0a20",
+        "answer_color": "#666655",
+        "icon_color": "#731157",
+        "border_color": "",
+        "button_bg": "#731157",
+        "button_text": "#f1edec",
+        "button_hover_bg": "#4e0a3a"
+      }
+    }
+  },
+  "order": [
+    "custom_video_Y9yRha",
+    "marquee_announcement_acFEcL",
+    "product_block_VRB8WC",
+    "featured_product_9RJ63M",
+    "rituals_yhwWfj",
+    "heritage_xH3aVg",
+    "botanicals_JzPkmR",
+    "testimonial_MtGxfE",
+    "custom_faq_fkRWCi"
+  ]
+}
