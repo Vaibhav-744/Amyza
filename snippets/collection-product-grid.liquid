@@ -72,7 +72,11 @@
         body { background: var(--body-bg)}
     {%- endif -%}
 
-    #CollectionSection-{{ section.id }}{padding-top: {{ padding_top }};padding-bottom: {{ padding_bottom }}}
+    #CollectionSection-{{ section.id }}{
+        padding-top: {{ padding_top }};
+        padding-bottom: {{ padding_bottom }};
+        background-color:{{colors_bg}};
+        }
 
     {%- if has_sidebar -%}
         #CollectionSection-{{ section.id }} .sidebarBlock-heading, .sidebarBlock .sidebarBlock-slide__content-close{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }}}

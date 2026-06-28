@@ -163,9 +163,9 @@ option.soldout {
         width: 10%;
     }
 
-    .wrapper-body {
+    /* .wrapper-body {
         padding-bottom: 80px;
-    }
+    } */
 
     .template-index .wrapper-body {
         padding-bottom: 0px;
@@ -4895,9 +4895,9 @@ summary::-webkit-details-marker {
             padding-right: 8px;
         }
 
-        .wrapper-body {
+        /* .wrapper-body {
             padding-bottom: 50px;
-        }
+        } */
     /* END: Container; */
 
     /* START: Halo Row */

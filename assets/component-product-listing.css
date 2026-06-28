@@ -50,7 +50,7 @@
 .productListing {
     font-size: 0;
     letter-spacing: 0;
-    margin: 0 0 30px 0;
+    /* margin: 0 0 30px 0; */
 }
 
 .productListing > .product {
@@ -1148,9 +1148,9 @@ body.product-card-layout-05 .productList .product-item.quickshop-popup-show .car
 }
 
 @media (min-width: 1025px) {
-    .productListing {
+    /* .productListing {
         margin-bottom: 60px;
-    }
+    } */
 
     .productListing.halo-row--masonry {
         margin-bottom: 0;

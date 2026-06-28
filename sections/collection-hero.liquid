@@ -1,0 +1,271 @@
+{% comment %} collection-hero.liquid {% endcomment %}
+
+<style>
+  /* ── Section shell — mirrors .collection-hero from shop CSS ── */
+  #shopify-section-{{ section.id }} .collection-hero {
+    background: linear-gradient(135deg, var(--plum) 0%, var(--plum-deep) 55%, #8C4C70 100%);
+    {% if section.settings.bg_gradient != blank %}
+      background: {{ section.settings.bg_gradient }};
+    {% endif %}
+    color: var(--porcelain);
+    padding: {{ section.settings.padding_desktop }}rem 6vw 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Eyebrow ── */
+  #shopify-section-{{ section.id }} .collection-hero .eyebrow {
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  /* ── Heading — mirrors .collection-hero h1 ── */
+  #shopify-section-{{ section.id }} .collection-hero .ch-heading {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    color: var(--porcelain);
+    line-height: 1.02;
+  }
+
+  #shopify-section-{{ section.id }} .collection-hero .ch-heading .serif-italic,
+  #shopify-section-{{ section.id }} .collection-hero .ch-heading em {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    color: {{ section.settings.heading_italic_color }};
+  }
+
+  /* ── Subtext — mirrors .collection-hero .ch-sub ── */
+  #shopify-section-{{ section.id }} .collection-hero .ch-sub {
+    max-width: 560px;
+    margin: 1.4rem auto 0;
+    color: rgba(241, 237, 236, .82);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  /* ── Marquee wrapper — mirrors .ingredient-marquee ── */
+  #shopify-section-{{ section.id }} .ingredient-marquee {
+    margin-top: 2.6rem;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  /* ── Track — mirrors .ingredient-marquee .marquee-track ── */
+  #shopify-section-{{ section.id }} .ingredient-marquee .marquee-track {
+    display: inline-flex;
+    gap: 3rem;
+    white-space: nowrap;
+    animation: amyza-marquee-{{ section.id }} {{ section.settings.marquee_speed }}s linear infinite;
+  }
+
+  {% if section.settings.pause_on_hover %}
+  #shopify-section-{{ section.id }} .ingredient-marquee .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  {% endif %}
+
+  @keyframes amyza-marquee-{{ section.id }} {
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── Individual ingredient items — mirrors .ingredient-marquee span ── */
+  #shopify-section-{{ section.id }} .ingredient-marquee .marquee-track span {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: {{ section.settings.marquee_text_color }};
+    flex-shrink: 0;
+  }
+
+  /* ── Separator — mirrors .ingredient-marquee span::after ── */
+  #shopify-section-{{ section.id }} .ingredient-marquee .marquee-track span::after {
+    content: '✦';
+    margin-left: 3rem;
+    color: {{ section.settings.marquee_separator_color }};
+    font-style: normal;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    #shopify-section-{{ section.id }} .collection-hero {
+      padding-top: 7rem;
+    }
+    #shopify-section-{{ section.id }} .collection-hero .ch-heading {
+      font-size: clamp(2.2rem, 10vw, 3rem);
+    }
+    #shopify-section-{{ section.id }} .collection-hero .ch-sub {
+      font-size: .95rem;
+    }
+    #shopify-section-{{ section.id }} .ingredient-marquee .marquee-track span {
+      font-size: 1.05rem;
+    }
+  }
+</style>
+
+<section class="collection-hero" id="collection-hero-{{ section.id }}">
+
+  {% if section.settings.eyebrow != blank %}
+    <p class="eyebrow reveal-up">{{ section.settings.eyebrow }}</p>
+  {% endif %}
+
+  {% if section.settings.heading != blank %}
+    <{{ section.settings.heading_tag }} class="ch-heading reveal-up">
+      {{ section.settings.heading }}
+    </{{ section.settings.heading_tag }}>
+  {% endif %}
+
+  {% if section.settings.subtext != blank %}
+    <p class="ch-sub reveal-up">{{ section.settings.subtext }}</p>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <div class="ingredient-marquee" aria-hidden="true">
+      <div class="marquee-track">
+        {% comment %}
+          Each block is rendered twice back-to-back.
+          The keyframe only moves -50%, so the second copy
+          seamlessly wraps into view — zero JS required.
+        {% endcomment %}
+        {% for i in (1..2) %}
+          {% for block in section.blocks %}
+            <span {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+</section>
+
+{% schema %}
+{
+  "name": "Collection Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "text",
+      "id": "bg_gradient",
+      "label": "Background Gradient (CSS)",
+      "info": "Overrides the default plum gradient. e.g. radial-gradient(ellipse at 60% 40%, #8B1A6B 0%, #4e0a3a 60%, #2a0a20 100%)"
+    },
+    {
+      "type": "range",
+      "id": "padding_desktop",
+      "label": "Top Padding — Desktop (rem)",
+      "min": 4,
+      "max": 14,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 9
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The AMYZA Collection"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#EAACC9"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap italic words in <em> — they use the Italic Color below.",
+      "default": "<p>Every <em>Ritual.<\/em><\/p>"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading Tag",
+      "options": [
+        { "value": "h1", "label": "H1 (use on collection page)" },
+        { "value": "h2", "label": "H2 (use on homepage)" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#EAACC9"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Slow-luxury skincare rooted in ancestral botanical wisdom — crafted in small batches, made for the woman who knows her worth."
+    },
+    {
+      "type": "header",
+      "content": "Ingredient Marquee"
+    },
+    {
+      "type": "color",
+      "id": "marquee_text_color",
+      "label": "Ingredient Text Color",
+      "default": "#EAACC9"
+    },
+    {
+      "type": "color",
+      "id": "marquee_separator_color",
+      "label": "Separator ✦ Color",
+      "default": "rgba(234,172,201,0.4)"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Marquee Speed",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "s",
+      "default": 26
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on Hover",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Ingredient Name",
+          "default": "Saffron"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Hero",
+      "blocks": [
+        { "type": "ingredient", "settings": { "label": "Saffron" } },
+        { "type": "ingredient", "settings": { "label": "Rose" } },
+        { "type": "ingredient", "settings": { "label": "Jasmine" } },
+        { "type": "ingredient", "settings": { "label": "Turmeric" } },
+        { "type": "ingredient", "settings": { "label": "Pegaga" } },
+        { "type": "ingredient", "settings": { "label": "Tremella" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
