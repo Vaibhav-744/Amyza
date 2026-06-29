@@ -103,7 +103,12 @@
       "settings": {
         "bg_color": "#731157",
         "text_color": "#f1edec",
-        "padding": 10,
+        "padding_top_desktop": 10,
+        "padding_bottom_desktop": 10,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10,
+        "font_size_min": 1,
+        "font_size_max": 1,
         "animation_speed": 40,
         "pause_on_hover": true
       }

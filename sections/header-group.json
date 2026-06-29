@@ -57,7 +57,10 @@
       "settings": {
         "bg_color": "#731157",
         "text_color": "#f1edec",
-        "padding": 5,
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 50,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10,
         "animation_speed": 40,
         "pause_on_hover": true
       }
@@ -128,7 +131,7 @@
         "enable_announcement": true,
         "layout": "slider",
         "enable_close": false,
-        "color_text": "#F1EDEC",
+        "color_text": "#f1edec",
         "bg_color_text": "#731157",
         "bg_color_text_gradient": "",
         "font_size_text": 12,

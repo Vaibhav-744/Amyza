@@ -1,0 +1,280 @@
+{% comment %} about-founder.liquid — Founder letter + image {% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .about-founder {
+    padding: clamp(4rem, 9vw, 8rem) 6vw;
+    background: {{ section.settings.section_bg }};
+  }
+  #shopify-section-{{ section.id }} .about-founder-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Text side ── */
+  #shopify-section-{{ section.id }} .about-founder-text {
+    position: relative;
+    {%- if section.settings.image_position == 'left' -%}
+    order: 2;
+    {%- endif -%}
+  }
+  #shopify-section-{{ section.id }} .founder-eyebrow {
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+    margin-bottom: 1.6rem;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .founder-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: {{ section.settings.body_color }};
+    margin-bottom: 1.2rem;
+  }
+  #shopify-section-{{ section.id }} .founder-body p {
+    margin-bottom: 1rem;
+  }
+  #shopify-section-{{ section.id }} .founder-body p:last-child {
+    margin-bottom: 0;
+  }
+  #shopify-section-{{ section.id }} .founder-closing {
+    font-size: 1rem;
+    color: {{ section.settings.body_color }};
+    margin-top: 1.6rem;
+    margin-bottom: .6rem;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .founder-sig-img {
+    display: block;
+    max-height: 56px;
+    width: auto;
+    margin-bottom: 1.2rem;
+    /* filter allows a dark image to match any bg */
+  }
+  #shopify-section-{{ section.id }} .founder-sig-text strong {
+    display: block;
+    font-size: .95rem;
+    color: {{ section.settings.sign_name_color }};
+    letter-spacing: .04em;
+    font-weight: 600;
+  }
+  #shopify-section-{{ section.id }} .founder-sig-text span {
+    font-size: .82rem;
+    color: {{ section.settings.sign_role_color }};
+  }
+
+  /* ── Image side ── */
+  #shopify-section-{{ section.id }} .about-founder-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    overflow: hidden;
+    {%- if section.settings.image_position == 'left' -%}
+    order: 1;
+    {%- endif -%}
+  }
+  #shopify-section-{{ section.id }} .about-founder-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Mobile — image always first ── */
+  @media (max-width: 860px) {
+    #shopify-section-{{ section.id }} .about-founder-inner {
+      grid-template-columns: 1fr;
+      gap: 2.2rem;
+    }
+    #shopify-section-{{ section.id }} .about-founder-media {
+      order: -1 !important;
+      max-width: 480px;
+      margin: 0 auto;
+      aspect-ratio: 3/4;
+    }
+    #shopify-section-{{ section.id }} .about-founder-text {
+      order: 0 !important;
+    }
+    #shopify-section-{{ section.id }} .about-founder {
+      padding: 3.5rem 1.2rem;
+    }
+  }
+</style>
+
+<section class="about-founder" id="about-founder-{{ section.id }}">
+  <div class="about-founder-inner">
+
+    <div class="about-founder-text reveal-up">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="founder-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="founder-body">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.closing != blank -%}
+        <span class="founder-closing">{{ section.settings.closing }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.signature_image != blank -%}
+        <img
+          class="founder-sig-img"
+          src="{{ section.settings.signature_image | image_url: width: 300 }}"
+          alt="Founder signature"
+          width="150"
+          height="56"
+          loading="lazy"
+        >
+      {%- endif -%}
+
+      <div class="founder-sig-text">
+        {%- if section.settings.founder_name != blank -%}
+          <strong>{{ section.settings.founder_name }}</strong>
+        {%- endif -%}
+        {%- if section.settings.founder_role != blank -%}
+          <span>{{ section.settings.founder_role }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="about-founder-media reveal-up">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 900 }}"
+          alt="{{ section.settings.image.alt | default: 'Founder' | escape }}"
+          width="900"
+          height="1125"
+          loading="lazy"
+        >
+      {%- else -%}
+        <img
+          src="https://placehold.co/900x1125/F7F4F3/731157?text=Founder"
+          alt="Founder"
+          width="900"
+          height="1125"
+        >
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About — Founder",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        { "value": "right", "label": "Right (text left)" },
+        { "value": "left",  "label": "Left (text right)" }
+      ],
+      "default": "right",
+      "info": "On mobile, image is always shown first regardless of this setting."
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder Photo"
+    },
+    {
+      "type": "header",
+      "content": "Letter"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Label",
+      "default": "✦ A note from our Founder"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#8a7280"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body (paragraphs)",
+      "default": "<p>I built AMYZA for the girl I was — the one who watched her mother and grandmother glow without a single fancy product, and wondered where that wisdom went. It never left. We just had to listen.</p><p>Those recipes were never written down. They lived in hands, in scent, in the quiet confidence of women who knew their worth. We bottled that knowing — and gave it a modern soul.</p><p>AMYZA is a love letter to ancestral botanical wisdom — bottled with bold, modern femininity for the woman who refuses to choose between heritage and now.</p>"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#5c4350"
+    },
+    {
+      "type": "text",
+      "id": "closing",
+      "label": "Closing Line",
+      "default": "With love,",
+      "info": "e.g. With love, / With warmth, / Yours,"
+    },
+    {
+      "type": "header",
+      "content": "Signature"
+    },
+    {
+      "type": "image_picker",
+      "id": "signature_image",
+      "label": "Signature Image",
+      "info": "Upload a handwritten signature PNG (transparent background works best). Displayed at max 56px height."
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder Name",
+      "default": "The AMYZA Founder"
+    },
+    {
+      "type": "text",
+      "id": "founder_role",
+      "label": "Role / Location",
+      "default": "Kuala Lumpur, Malaysia"
+    },
+    {
+      "type": "color",
+      "id": "sign_name_color",
+      "label": "Name Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "sign_role_color",
+      "label": "Role Color",
+      "default": "#8a7280"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About — Founder"
+    }
+  ]
+}
+{% endschema %}

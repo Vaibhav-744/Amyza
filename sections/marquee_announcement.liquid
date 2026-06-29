@@ -4,9 +4,14 @@
     z-index: 1;
     background: {{ section.settings.bg_color }};
     color: {{ section.settings.text_color }};
-    padding: {{ section.settings.padding | append:'px' }} 0;
+    padding: {{ section.settings.padding_top_desktop }}px 0 {{ section.settings.padding_bottom_desktop }}px;
     overflow: hidden;
-    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .announcement {
+      padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px;
+    }
   }
 
   #shopify-section-{{ section.id }} .marquee-track{
@@ -23,12 +28,13 @@
   }
 
   #shopify-section-{{ section.id }} .marquee-group{
-    font-size: .72rem;
-    letter-spacing: .22em;
+    font-size: clamp({{ section.settings.font_size_min }}rem, 4vw, {{ section.settings.font_size_max }}rem);
+    font-style:italic;
     display: flex;
     align-items: center;
     flex-shrink: 0;
     white-space: nowrap;
+    opacity:0.85;
   }
 
   #shopify-section-{{ section.id }} .marquee-group div{
@@ -39,7 +45,7 @@
   }
   #shopify-section-{{ section.id }} .marquee-group div em{
         color: var(--blush);
-        font-style:normal;
+        font-family: var(--serif);
   }
 
   @keyframes marquee-{{ section.id }}{
@@ -55,8 +61,7 @@
     #shopify-section-{{ section.id }} .marquee-group div{
       padding: 0 1rem;
     }
-  }
-</style>
+  }</style>
 
 <div class="announcement">
   <div class="marquee-track">
@@ -97,14 +102,76 @@
       "default": "#F1EDEC"
     },
     {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
       "type": "range",
-      "id": "padding",
-      "min": 2,
-      "max": 30,
+      "id": "padding_top_desktop",
+      "label": "Desktop — Padding Top",
+      "min": 0,
+      "max": 100,
       "step": 1,
       "unit": "px",
-      "label": "Spacing",
       "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop — Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile — Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile — Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size_min",
+      "label": "Font Size — Mobile",
+      "min": 0.5,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.6
+    },
+    {
+      "type": "range",
+      "id": "font_size_max",
+      "label": "Font Size — Desktop",
+      "min": 1,
+      "max": 6,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 3.0
     },
     {
       "type": "header",
@@ -143,7 +210,7 @@
   ],
   "presets": [
     {
-      "name": "Announcement Bar",
+      "name": "Announcement Bar"
     }
   ]
 }

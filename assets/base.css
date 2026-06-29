@@ -7139,7 +7139,7 @@ h3{font-size:1.3rem}
 }
 .btn-wide{width:100%;padding:1.15rem 2rem}
 .btn-primary{background:var(--plum);color:var(--porcelain);border-color:var(--plum)}
-.btn-primary:hover{background:var(--plum-deep);border-color:var(--plum-deep);box-shadow:0 12px 30px rgba(115,17,87,.3)}
+.btn-primary:hover{background:var(--plum-deep);border-color:var(--plum-deep);}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn-ghost:hover{background:var(--plum);color:var(--porcelain)!important;border-color:var(--plum);}
 .btn-ghost-light{background:transparent;color:var(--porcelain);border-color:rgba(241,237,236,.6)}

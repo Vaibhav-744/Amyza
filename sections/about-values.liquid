@@ -1,0 +1,314 @@
+{% comment %} about-values.liquid — Values / principles grid {% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .about-values {
+    padding: clamp(5rem, 10vw, 9rem) 6vw;
+    background: {{ section.settings.section_bg }};
+  }
+  #shopify-section-{{ section.id }} .about-values .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  }
+  #shopify-section-{{ section.id }} .about-values .section-header .eyebrow {
+    color: {{ section.settings.eyebrow_color }};
+  }
+  #shopify-section-{{ section.id }} .about-values .section-header h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    color: {{ section.settings.heading_color }};
+    margin: .6rem 0 .8rem;
+  }
+  #shopify-section-{{ section.id }} .about-values .section-header h2 em,
+  #shopify-section-{{ section.id }} .about-values .section-header h2 .serif-italic {
+    color: {{ section.settings.heading_italic_color }};
+  }
+  #shopify-section-{{ section.id }} .about-values .section-sub {
+    color: {{ section.settings.sub_color }};
+  }
+  #shopify-section-{{ section.id }} .about-values-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat({{ section.blocks.size | at_most: 5 }}, 1fr);
+    gap: 1.4rem;
+  }
+  #shopify-section-{{ section.id }} .value-card {
+    background: {{ section.settings.card_bg }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .4s, transform .4s;
+  }
+  
+  #shopify-section-{{ section.id }} .value-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.6rem;
+    color: {{ section.settings.num_color }};
+    margin-bottom: 1rem;
+  }
+  #shopify-section-{{ section.id }} .value-icon {
+    width: 100%;
+    max-width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #shopify-section-{{ section.id }} .value-card h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: {{ section.settings.card_title_color }};
+    margin-bottom: .7rem;
+  }
+  #shopify-section-{{ section.id }} .value-card p {
+    font-size: .92rem;
+    line-height: 1.65;
+    color: {{ section.settings.card_body_color }};
+  }
+
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .about-values-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 860px) {
+    #shopify-section-{{ section.id }} .about-values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .about-values-grid {
+      grid-template-columns: 1fr;
+    }
+    #shopify-section-{{ section.id }} .about-values {
+      padding: 3.5rem 1.2rem;
+    }
+  }
+</style>
+
+<section class="about-values" id="about-values-{{ section.id }}">
+  <div class="section-header reveal-up">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="section-sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="about-values-grid">
+    {%- for block in section.blocks -%}
+      <div class="value-card reveal-up" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <img
+            class="value-icon"
+            src="{{ block.settings.image | image_url: width: 60 }}"
+            alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+            width="60"
+            height="60"
+            loading="lazy"
+          >
+        {%- else block.settings.number != blank -%}
+          <div class="value-num">{{ block.settings.number }}</div>
+        {%- endif -%}
+        {%- if block.settings.title != blank -%}
+          <h3>{{ block.settings.title }}</h3>
+        {%- endif -%}
+        {%- if block.settings.body != blank -%}
+          <p>{{ block.settings.body }}</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About — Values",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#EDE8E6",
+      "info": "Default: --porcelain-soft"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ What We Stand For"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Five quiet promises."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The principles behind every drop."
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subheading Color",
+      "default": "#7a6270"
+    },
+    {
+      "type": "header",
+      "content": "Cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card Border",
+      "default": "#ead9e4"
+    },
+    {
+      "type": "color",
+      "id": "num_color",
+      "label": "Number Color",
+      "default": "#EAACC9",
+      "info": "Default: --blush (#EAACC9)"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "card_body_color",
+      "label": "Card Body Color",
+      "default": "#6a5260"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon Image",
+          "info": "Max display size: 100px. If set, the number is hidden."
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01",
+          "info": "Shown only when no image is uploaded."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Heritage First"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Every formula begins with a recipe treasured for generations, then validated by modern science."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About — Values",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "number": "01",
+            "title": "Heritage First",
+            "body": "Every formula begins with a recipe treasured for generations, then validated by modern science."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "number": "02",
+            "title": "Slow by Design",
+            "body": "We make in small, intentional batches. No shortcuts, no fillers, no rush."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "number": "03",
+            "title": "Bold Femininity",
+            "body": "Soft is strong. We celebrate the woman who is gentle with herself and unapologetic in the world."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "number": "04",
+            "title": "Clean & Kind",
+            "body": "Cruelty-free, paraben-free, alcohol-free. Kind to your skin, kinder to the planet."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "number": "05",
+            "title": "Made in Malaysia",
+            "body": "Proudly crafted at home, bridging South Asian roots with Malaysian botanical heroes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
