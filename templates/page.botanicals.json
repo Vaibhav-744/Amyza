@@ -1,0 +1,323 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_banner_text_r7f6m7": {
+      "type": "image-banner-text",
+      "name": "Image Banner — Text",
+      "settings": {
+        "image": "shopify://shop_images/photo-1556228453-efd6c1ff04f6.jpg",
+        "fallback_bg": "#2a0a20",
+        "focal_point": "center center",
+        "aspect_ratio": "21/9",
+        "overlay": "linear-gradient(180deg, rgba(42, 10, 32, 0.2), rgba(42, 10, 32, 0.58) 100%)",
+        "align_x": "center",
+        "align_y": "center",
+        "text_align": "center",
+        "eyebrow": "✦ The AMYZA Apothecary",
+        "eyebrow_color": "#f7f4f3",
+        "heading": "Our Ingredients",
+        "heading_color": "#f1edec",
+        "heading_italic_color": "#eaacc9",
+        "heading_size_min": 2.2,
+        "heading_size_max": 4.4,
+        "subtext": "Eight ingredients. Centuries of wisdom. Each one chosen not for trend, but for the truth our grandmothers already knew — that real skin care grows from the earth.",
+        "sub_color": "#f1edecd9",
+        "btn1_text": "",
+        "btn1_url": "",
+        "btn1_bg": "#731157",
+        "btn1_text_color": "#f1edec",
+        "btn1_hover_bg": "#4e0a3a",
+        "btn2_text": "",
+        "btn2_url": "",
+        "btn2_color": "#f1edec"
+      }
+    },
+    "bot_catalogue_EKMTWa": {
+      "type": "bot-catalogue",
+      "blocks": {
+        "botanical_MJAaxx": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
+            "name": "Saffron",
+            "description": "The golden thread of heritage. Unrivalled radiance.",
+            "tag": "Brightening"
+          }
+        },
+        "botanical_JjgtH4": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
+            "name": "Rose",
+            "description": "A centuries-old symbol of softness and renewal.",
+            "tag": "Soothing"
+          }
+        },
+        "botanical_HGLXPA": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
+            "name": "Jasmine",
+            "description": "Our fragrant base. A floral kiss in place of water.",
+            "tag": "Aromatic"
+          }
+        },
+        "botanical_AjVLPi": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)",
+            "name": "Turmeric",
+            "description": "The ancestral glow-giver. Anti-inflammatory, luminous.",
+            "tag": "Calming"
+          }
+        },
+        "botanical_HFjfYT": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
+            "name": "Pegaga",
+            "description": "Malaysia's local hero. Calms, restores, strengthens.",
+            "tag": "Barrier"
+          }
+        },
+        "botanical_rbe3pB": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
+            "name": "Tremella",
+            "description": "The supreme hydrator, revered in TCM.",
+            "tag": "Hydrating"
+          }
+        },
+        "botanical_dzy77j": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
+            "name": "Sandalwood",
+            "description": "Grounding, warming, an ancient skin soother.",
+            "tag": "Grounding"
+          }
+        },
+        "botanical_zBrWiR": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
+            "name": "Aloe Vera",
+            "description": "The bridge between cultures — soothing, timeless.",
+            "tag": "Replenishing"
+          }
+        }
+      },
+      "block_order": [
+        "botanical_MJAaxx",
+        "botanical_JjgtH4",
+        "botanical_HGLXPA",
+        "botanical_AjVLPi",
+        "botanical_HFjfYT",
+        "botanical_rbe3pB",
+        "botanical_dzy77j",
+        "botanical_zBrWiR"
+      ],
+      "name": "Bot — Catalogue",
+      "settings": {
+        "section_bg": "#f7f4f3",
+        "eyebrow": "✦ The Full Apothecary",
+        "eyebrow_color": "#731157",
+        "heading": "Every botanical, decoded.",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "subheading": "Eight ingredients we trust enough to name on the front of the bottle.",
+        "sub_color": "#7a6270",
+        "card_bg": "#ffffff",
+        "card_border": "#73115714",
+        "swatch_fallback": "#ead9e4",
+        "card_title_color": "#4E0A3A",
+        "card_desc_color": "#2a0a20",
+        "tag_color": "#731157",
+        "tag_bg": "#eaacc938"
+      }
+    },
+    "bot_promise_fJWRFk": {
+      "type": "bot-promise",
+      "blocks": {
+        "step_4rCim4": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Chosen by hand",
+            "body": "We work with small growers who farm the way their families always have — slowly, seasonally, without shortcuts."
+          }
+        },
+        "step_4hUggA": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Proven, then trusted",
+            "body": "Every botanical is tested for potency and purity. Heritage gets the first word; the lab gets the last."
+          }
+        },
+        "step_V7D3Ha": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Whole, never wasted",
+            "body": "Cruelty-free, paraben-free, and formulated in small batches so nothing sits, and nothing is lost."
+          }
+        }
+      },
+      "block_order": [
+        "step_4rCim4",
+        "step_4hUggA",
+        "step_V7D3Ha"
+      ],
+      "name": "Bot — Promise",
+      "settings": {
+        "section_bg": "#731157",
+        "eyebrow": "✦ The Sourcing Promise",
+        "eyebrow_color": "#EAACC9",
+        "heading": "From soil to skin.",
+        "heading_color": "#F1EDEC",
+        "heading_italic_color": "#EAACC9",
+        "step_border_color": "rgba(241,237,236,0.25)",
+        "step_num_color": "#EAACC9",
+        "step_title_color": "#F1EDEC",
+        "step_body_color": "#F1EDEC"
+      }
+    },
+    "product_block_krFWEJ": {
+      "type": "product-block",
+      "name": "t:sections.product_block.presets.name",
+      "settings": {
+        "unique_class": "home_ritual-products",
+        "container": "1770",
+        "padding_full_width": 0,
+        "disable_padding_content": false,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "border_height": 1,
+        "color_border_bottom": "#e8e8e8",
+        "enable_minus_mg_top": false,
+        "minus_spacing_top": 0,
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "product_block_layout": "slider",
+        "product_bg": "#f7f4f3",
+        "product_bg_gradient": "",
+        "style_block_header": "style4",
+        "pd_top_title": 30,
+        "product_small_tagline": "<p>✦ The Collection</p>",
+        "product_small_description": "<p>Botanical heritage, bottled with intention.</p>",
+        "product_block_title": "<h2>Shop <em>The Ritual</em></h2>",
+        "enable_border_title": false,
+        "enable_border_title_style2": false,
+        "fontsize_title": 16,
+        "fontsize_title_mb": 16,
+        "mg_bottom_title": 5,
+        "mg_bottom_title_mb": 5,
+        "border_color_title": "#232323",
+        "color_title": "#2a0a20",
+        "view_all": "View All Products",
+        "view_all_align": "center",
+        "font_weight_view_all": "400",
+        "mg_bottom_view": 30,
+        "mg_bottom_view_mb": 0,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "icon_view_all": "",
+        "color_view_all_icon": "#eb492f",
+        "title_align": "center",
+        "button_text": "",
+        "button_text_font_size": 14,
+        "button_text_font_weight": "500",
+        "button_text_text_transform": "uppercase",
+        "product_button_width": 270,
+        "pd_top_product_button": 12,
+        "pd_bottom_product_button": 12,
+        "button_icon": "",
+        "mg_bottom_button": 55,
+        "enable_button_shadow": false,
+        "color_button": "#fff",
+        "border_color_button": "#232323",
+        "bg_color_button": "#232323",
+        "bg_color_gradient_button": "",
+        "color_button_hover": "",
+        "border_color_button_hover": "",
+        "bg_color_button_hover": "",
+        "bg_color_gradient_button_hover": "",
+        "product_block_collection": "the-ritual",
+        "product_block_limit": 3,
+        "grid_gap": 30,
+        "pb_style": "style1",
+        "style_countdown": "style_1",
+        "countdown": "",
+        "font_size_countdown_text": 14,
+        "color_countdown": "#f42b23",
+        "countdown_margin_left": 15,
+        "product_block_per_row": "3",
+        "product_block_infinite_scroll": true,
+        "product_block_swipe_on_mobile": true,
+        "enable_product_card_pd_bottom": false,
+        "product_card_pd_bottom": 40,
+        "product_block_dots": true,
+        "product_block_dots_mb": true,
+        "spacing_top_dots": 0,
+        "product_block_arrows": true,
+        "product_block_arrows_mb": true,
+        "product_block_progress_bar": false,
+        "product_block_counter_number": false,
+        "enable_hover_arrow": false,
+        "enable_infinite": true,
+        "product_block_show": "3",
+        "position_vertical_arrow": "70px",
+        "product_block_per_view": "3",
+        "show_half": true,
+        "scroll_height": 4,
+        "scroll_track_bg": "#f1f1f1",
+        "scroll_thumb_color": "#000",
+        "scroll_thumb_hover_color": "#444",
+        "enable_hover_drag_icon": true,
+        "position": "left",
+        "width_banner": 40,
+        "display_list_collection": false,
+        "collection_color": "#202020",
+        "collection_color_hover": "#3e8cc4",
+        "collection_bg_color": "#fff",
+        "collection_bg_color_gradient": "",
+        "text_list": "View all categories",
+        "url_list": "",
+        "enable_layout_special": false,
+        "bg_card": "#fff",
+        "padding_card": 15,
+        "border_radius_card": 5,
+        "border_layout_card": "full",
+        "border_width_card": 5,
+        "border_color_card": "#f0f1f4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_text_r7f6m7",
+    "bot_catalogue_EKMTWa",
+    "bot_promise_fJWRFk",
+    "product_block_krFWEJ"
+  ]
+}

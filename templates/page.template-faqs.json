@@ -69,6 +69,7 @@
         "15d9d2f4-1bdd-49c8-9a99-58246020f05c",
         "f4d12560-a07c-4bd4-a934-2a8eddeaccc9"
       ],
+      "disabled": true,
       "settings": {
         "show_breadcrumb": true,
         "breadcrumb_alignment": "left",
@@ -89,10 +90,8 @@
         "faqs_text": "<p>Below FAQ are some common concerns of our clients before purchasing the theme.\n<br> If you have other questions, please just send it to <a href=\"mailto:example@domain.com\" style=\"text-decoration: underline;\">example@domain.com</a>.</p>",
         "faqs_message_heading": "Need Help?",
         "faqs_message_text": "<span>If you have an issue or question that requires immediate assistance, you can click the button below to chat live with a Customer Service representative.   \n<br> \n<br>\nIf we aren’t available, drop us an email and we will get back to you within 20-36 hours!</span>",
-        "message_method_icon_1": "shopify://shop_images/messenger.jpg",
         "message_method_link_1": "https://facebook.com",
         "message_method_text_1": "Message Us",
-        "message_method_icon_2": "shopify://shop_images/envelope.jpg",
         "message_method_link_2": "https://gmail.com",
         "message_method_text_2": "Contact Us",
         "contact_content_text": "Unable to find satisfactory answers ?",
@@ -107,9 +106,108 @@
         "contact_color_bg_hover": "#e93d29",
         "contact_color_bg_gradient_hover": ""
       }
+    },
+    "faq_eFRbGw": {
+      "type": "faq",
+      "blocks": {
+        "item_PGehAt": {
+          "type": "item",
+          "settings": {
+            "category": "General",
+            "question": "What makes AMYZA different?",
+            "answer": "<p>AMYZA is rooted in ancestral botanical wisdom — every formula begins with a recipe passed down through generations, then validated by modern science.</p>"
+          }
+        },
+        "item_6jJhNB": {
+          "type": "item",
+          "settings": {
+            "category": "General",
+            "question": "Are your products cruelty-free?",
+            "answer": "<p>Yes — 100%. We are cruelty-free, paraben-free, and alcohol-free. Kind to your skin, kinder to the planet.</p>"
+          }
+        },
+        "item_Hq4Th9": {
+          "type": "item",
+          "settings": {
+            "category": "Orders",
+            "question": "How do I place an order?",
+            "answer": "<p>Simply add your chosen products to your ritual bag and proceed to checkout. We accept all major payment methods.</p>"
+          }
+        },
+        "item_RQYcKd": {
+          "type": "item",
+          "settings": {
+            "category": "Orders",
+            "question": "Can I cancel or edit my order?",
+            "answer": "<p>Orders can be cancelled or edited within 24 hours of placement. Please contact our Concierge team as soon as possible.</p>"
+          }
+        },
+        "item_VbGVzT": {
+          "type": "item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does delivery take?",
+            "answer": "<p>West Malaysia: 3–5 working days. East Malaysia: 5–7 working days. International orders: 7–14 working days.</p>"
+          }
+        },
+        "item_zUD9iY": {
+          "type": "item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Yes — free shipping on all orders over RM150 within Malaysia.</p>"
+          }
+        },
+        "item_dGhryk": {
+          "type": "item",
+          "settings": {
+            "category": "Returns",
+            "question": "What is your return policy?",
+            "answer": "<p>We accept returns within 14 days of delivery for unused, unopened products. Please reach out to our Concierge to initiate a return.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_PGehAt",
+        "item_6jJhNB",
+        "item_Hq4Th9",
+        "item_RQYcKd",
+        "item_VbGVzT",
+        "item_zUD9iY",
+        "item_dGhryk"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "section_bg": "#f1edec",
+        "header_align": "left",
+        "eyebrow": "✦ Support",
+        "eyebrow_color": "#731157",
+        "heading": "Frequently asked questions.",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "subtext": "Can't find what you're looking for? Reach out to our Concierge.",
+        "sub_color": "#666655",
+        "image": "shopify://shop_images/amz_texture.png",
+        "contact_note": "<p>For any questions or concerns, please email us at <a href=\"mailto:hello@amyza.com\">hello@amyza.com</a> or</p>",
+        "contact_text_color": "#666655",
+        "btn_text": "WhatsApp Us",
+        "btn_url": "#",
+        "btn_bg": "#731157",
+        "btn_border_color": "#4E0A3A",
+        "btn_text_color": "#F1EDEC",
+        "btn_hover_bg": "#4E0A3A",
+        "btn_hover_text_color": "#f1edec",
+        "nav_color": "#8a7280",
+        "nav_active_color": "#731157",
+        "group_label_color": "#4e0a3a",
+        "divider_color": "#7311571f",
+        "question_color": "#2a0a20",
+        "answer_color": "#666655"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "faq_eFRbGw"
   ]
 }

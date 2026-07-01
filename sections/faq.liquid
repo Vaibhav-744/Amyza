@@ -1,0 +1,636 @@
+{% comment %} faq.liquid — Categorised FAQ accordion with image sidebar {% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .faq-section {
+    padding: clamp(5rem, 10vw, 9rem) 6vw;
+    background: {{ section.settings.section_bg }};
+  }
+
+  /* ── Section header ── */
+  #shopify-section-{{ section.id }} .faq-header {
+    max-width: 1100px;
+    margin: 0 auto clamp(3rem, 6vw, 5rem);
+    text-align: {{ section.settings.header_align }};
+  }
+  #shopify-section-{{ section.id }} .faq-header .eyebrow {
+    color: {{ section.settings.eyebrow_color }};
+  }
+  #shopify-section-{{ section.id }} .faq-header h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    color: {{ section.settings.heading_color }};
+    margin: .6rem 0 .8rem;
+    line-height: 1.1;
+  }
+  #shopify-section-{{ section.id }} .faq-header h2 em {
+    color: {{ section.settings.heading_italic_color }};
+  }
+  #shopify-section-{{ section.id }} .faq-header .faq-sub {
+    font-size: 1.04rem;
+    color: {{ section.settings.sub_color }};
+    line-height: 1.7;
+  }
+
+  /* ── Main two-col grid ── */
+  #shopify-section-{{ section.id }} .faq-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 0 clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  /* ── Left sidebar ── */
+  #shopify-section-{{ section.id }} .faq-sidebar {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  /* Image */
+  #shopify-section-{{ section.id }} .faq-sidebar-img {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+  }
+  #shopify-section-{{ section.id }} .faq-sidebar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Contact note */
+  #shopify-section-{{ section.id }} .faq-contact-note {
+    font-size: .92rem;
+    line-height: 1.7;
+    color: {{ section.settings.contact_text_color }};
+    font-style: italic;
+  }
+  #shopify-section-{{ section.id }} .faq-contact-note a {
+    color: {{ section.settings.nav_active_color }};
+    text-decoration: underline;
+  }
+
+  /* CTA button — uses theme .btn base, colors from settings */
+  #shopify-section-{{ section.id }} .faq-cta-btn {
+    display: block;
+    text-align: center;
+    background: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_text_color }};
+    border-color: {{ section.settings.btn_border_color }};
+  }
+  #shopify-section-{{ section.id }} .faq-cta-btn:hover {
+    background: {{ section.settings.btn_hover_bg }};
+    color: {{ section.settings.btn_hover_text_color }};
+    border-color: {{ section.settings.btn_hover_bg }};
+  }
+
+  /* Category nav */
+  #shopify-section-{{ section.id }} .faq-nav {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  #shopify-section-{{ section.id }} .faq-nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: .55rem .8rem;
+    border-radius: 6px;
+    font-size: .76rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: {{ section.settings.nav_color }};
+    transition: background .25s, color .25s;
+    font-family: var(--sans);
+  }
+  #shopify-section-{{ section.id }} .faq-nav-btn:hover,
+  #shopify-section-{{ section.id }} .faq-nav-btn.active {
+    background: rgba(115,17,87,.08);
+    color: {{ section.settings.nav_active_color }};
+  }
+
+  /* ── FAQ groups (right col) ── */
+  #shopify-section-{{ section.id }} .faq-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  #shopify-section-{{ section.id }} .faq-group-label {
+    font-size: .7rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: {{ section.settings.group_label_color }};
+    margin-bottom: 1rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid {{ section.settings.divider_color }};
+  }
+
+  /* ── Accordion ── */
+  #shopify-section-{{ section.id }} .faq-item {
+    border-bottom: 1px solid {{ section.settings.divider_color }};
+  }
+  #shopify-section-{{ section.id }} .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.05rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .97rem;
+    color: {{ section.settings.question_color }};
+    font-weight: 500;
+    gap: 1rem;
+    transition: color .25s;
+  }
+  #shopify-section-{{ section.id }} .faq-item summary::-webkit-details-marker { display: none; }
+  #shopify-section-{{ section.id }} .faq-item summary:hover { color: {{ section.settings.nav_active_color }}; }
+  #shopify-section-{{ section.id }} .faq-item summary::after {
+    content: '+';
+    flex-shrink: 0;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: {{ section.settings.nav_active_color }};
+    transition: transform .3s cubic-bezier(.16,1,.3,1);
+    line-height: 1;
+  }
+  #shopify-section-{{ section.id }} .faq-item[open] summary::after { transform: rotate(45deg); }
+  #shopify-section-{{ section.id }} .faq-item[open] summary { color: {{ section.settings.nav_active_color }}; }
+  #shopify-section-{{ section.id }} .faq-answer {
+    padding: 0 1.5rem 1.2rem 0;
+    font-size: .94rem;
+    line-height: 1.75;
+    color: {{ section.settings.answer_color }};
+  }
+  #shopify-section-{{ section.id }} .faq-answer a {
+    color: {{ section.settings.nav_active_color }};
+    text-decoration: underline;
+  }
+
+  /* ── Scroll offset for sticky header ── */
+  #shopify-section-{{ section.id }} .faq-group {
+    scroll-margin-top: 100px;
+  }
+  @media (max-width: 860px) {
+    #shopify-section-{{ section.id }} .faq-body {
+      grid-template-columns: 1fr;
+    }
+    #shopify-section-{{ section.id }} .faq-sidebar {
+      position: static;
+    }
+    #shopify-section-{{ section.id }} .faq-sidebar-img {
+      max-width: 360px;
+      aspect-ratio: 3/2;
+    }
+    #shopify-section-{{ section.id }} .faq-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    #shopify-section-{{ section.id }} .faq-nav-btn {
+      border: 1px solid rgba(115,17,87,.2);
+      border-radius: 999px;
+      padding: .45rem .9rem;
+    }
+  }
+  @media (max-width: 600px) {
+    #shopify-section-{{ section.id }} .faq-section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+
+<section class="faq-section" id="faq-{{ section.id }}">
+
+  {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+    <div class="faq-header reveal-up">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="faq-sub">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Collect unique categories from blocks {%- endcomment -%}
+  {%- assign categories = '' -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'item' -%}
+      {%- assign cat = block.settings.category | strip -%}
+      {%- unless categories contains cat -%}
+        {%- assign categories = categories | append: cat | append: '|' -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign category_list = categories | split: '|' -%}
+
+  <div class="faq-body">
+
+    {%- comment -%} ── LEFT SIDEBAR ── {%- endcomment -%}
+    <aside class="faq-sidebar">
+
+      {%- if section.settings.image != blank -%}
+        <div class="faq-sidebar-img">
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="{{ section.settings.image.alt | default: 'FAQ' | escape }}"
+            width="600"
+            height="800"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.contact_note != blank -%}
+        <div class="faq-contact-note">{{ section.settings.contact_note }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.btn_text != blank -%}
+        <a
+          href="{{ section.settings.btn_url | default: '#' }}"
+          class="btn btn-wide faq-cta-btn"
+        >{{ section.settings.btn_text }}</a>
+      {%- endif -%}
+
+      {%- if category_list.size > 1 -%}
+        <nav class="faq-nav" aria-label="FAQ categories">
+          {%- for cat in category_list -%}
+            {%- if cat != blank -%}
+              <button
+                class="faq-nav-btn{% if forloop.first %} active{% endif %}"
+                data-faq-nav="{{ cat | handleize }}"
+                type="button"
+              >{{ cat }}</button>
+            {%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+
+    </aside>
+
+    {%- comment -%} ── RIGHT: FAQ GROUPS ── {%- endcomment -%}
+    <div class="faq-groups">
+      {%- for cat in category_list -%}
+        {%- if cat != blank -%}
+          <div
+            class="faq-group"
+            id="faq-group-{{ cat | handleize }}"
+            data-faq-group="{{ cat | handleize }}"
+          >
+            <p class="faq-group-label">{{ cat }}</p>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'item' and block.settings.category == cat -%}
+                <details class="faq-item" {{ block.shopify_attributes }}>
+                  <summary>{{ block.settings.question }}</summary>
+                  <div class="faq-answer">{{ block.settings.answer }}</div>
+                </details>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var section = document.getElementById('faq-{{ section.id }}');
+    if (!section) return;
+    var navBtns = section.querySelectorAll('[data-faq-nav]');
+    if (!navBtns.length) return;
+
+    navBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        navBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var target = section.querySelector('[data-faq-group="' + btn.dataset.faqNav + '"]');
+        if (target) {
+          var top = target.getBoundingClientRect().top + window.scrollY - 96;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    var groups = section.querySelectorAll('[data-faq-group]');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.dataset.faqGroup;
+          navBtns.forEach(function (b) {
+            b.classList.toggle('active', b.dataset.faqNav === id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    groups.forEach(function (g) { observer.observe(g); });
+
+    /* ── Handle URL hash on page load ── */
+    function activateHash() {
+      var hash = window.location.hash; /* e.g. #faq-group-shipping--returns */
+      if (!hash) return;
+      var target = document.querySelector(hash);
+      if (target) {
+        /* small delay so page layout is settled */
+        setTimeout(function () {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+      var groupId = hash.replace('#faq-group-', '');
+      navBtns.forEach(function (b) {
+        b.classList.toggle('active', b.dataset.faqNav === groupId);
+      });
+    }
+    /* Run after a tick so the browser's own hash scroll has already fired */
+    setTimeout(activateHash, 100);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "select",
+      "id": "header_align",
+      "label": "Header Alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Header Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ Support"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently asked questions."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "info": "Leave blank to hide.",
+      "default": "Can't find what you're looking for? Reach out to our Concierge."
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subtext Color",
+      "default": "#7a6270"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar — Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Sidebar Image",
+      "info": "Displayed at top of the left sidebar. Leave blank to hide."
+    },
+    {
+      "type": "header",
+      "content": "Sidebar — Contact Note"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_note",
+      "label": "Contact Note",
+      "default": "<p>For any questions or concerns, please email us at <a href='mailto:hello@amyza.com'>hello@amyza.com</a> or</p>",
+      "info": "Supports links. Leave blank to hide."
+    },
+    {
+      "type": "color",
+      "id": "contact_text_color",
+      "label": "Contact Note Color",
+      "default": "#5c4350"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar — Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "WhatsApp Us",
+      "info": "Leave blank to hide."
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Border Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Text Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover Background",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text_color",
+      "label": "Hover Text Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "nav_color",
+      "label": "Category Nav Color",
+      "default": "#8a7280"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_color",
+      "label": "Active / Accent Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "group_label_color",
+      "label": "Group Label Color",
+      "default": "#8a7280"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider Color",
+      "default": "rgba(115,17,87,0.12)"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Color",
+      "default": "#5c4350"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "General",
+          "info": "Items with the same category name are grouped together."
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What makes AMYZA different?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>AMYZA is rooted in ancestral botanical wisdom — every formula begins with a recipe passed down through generations, then validated by modern science.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "category": "General",
+            "question": "What makes AMYZA different?",
+            "answer": "<p>AMYZA is rooted in ancestral botanical wisdom — every formula begins with a recipe passed down through generations, then validated by modern science.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "category": "General",
+            "question": "Are your products cruelty-free?",
+            "answer": "<p>Yes — 100%. We are cruelty-free, paraben-free, and alcohol-free. Kind to your skin, kinder to the planet.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "category": "Orders",
+            "question": "How do I place an order?",
+            "answer": "<p>Simply add your chosen products to your ritual bag and proceed to checkout. We accept all major payment methods.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "category": "Orders",
+            "question": "Can I cancel or edit my order?",
+            "answer": "<p>Orders can be cancelled or edited within 24 hours of placement. Please contact our Concierge team as soon as possible.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does delivery take?",
+            "answer": "<p>West Malaysia: 3–5 working days. East Malaysia: 5–7 working days. International orders: 7–14 working days.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Yes — free shipping on all orders over RM150 within Malaysia.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "category": "Returns",
+            "question": "What is your return policy?",
+            "answer": "<p>We accept returns within 14 days of delivery for unused, unopened products. Please reach out to our Concierge to initiate a return.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

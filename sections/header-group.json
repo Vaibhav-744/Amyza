@@ -61,6 +61,8 @@
         "padding_bottom_desktop": 50,
         "padding_top_mobile": 10,
         "padding_bottom_mobile": 10,
+        "font_size_min": 1.6,
+        "font_size_max": 3,
         "animation_speed": 40,
         "pause_on_hover": true
       }
@@ -257,7 +259,7 @@
           "type": "logo",
           "settings": {
             "logo_mobile": "shopify://shop_images/High-res_AMYZA_Logo-01-plum.png",
-            "logo_width_mobile": 50,
+            "logo_width_mobile": 80,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
@@ -273,6 +275,7 @@
         },
         "20dae707-64c0-4ea3-a05e-561cae9836d8": {
           "type": "customer",
+          "disabled": true,
           "settings": {
             "icon": "1",
             "color": "#731157"
