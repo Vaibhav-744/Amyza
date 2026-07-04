@@ -7653,3 +7653,486 @@ h3{font-size:1.3rem}
     padding: 3.5rem 1.4rem 3.5rem;
   }
 }
+
+
+/* ============================================================
+   VARIANT OPTION PRICE + ATC PRICE
+   ============================================================ */
+.product-form__label .amz-variant-price {
+  display: block;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--plum);
+  margin-top: .15rem;
+  line-height: 1.2;
+  font-family: var(--sans);
+}
+.product-form__label .amz-variant-compare {
+  color: #998;
+  text-decoration: line-through;
+  margin-left: .35rem;
+  font-weight: 400;
+}
+/* ATC price via ::after so theme JS can't wipe it */
+.amz-btn-price::after {
+  content: " — " attr(data-amz-atc-price);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+
+/* ============================================================
+   PDP — Info column (right side only)
+   Scoped to .halo-productView-right — no layout/gallery changes
+   ============================================================ */
+
+/* Short description */
+.halo-productView-right .productView-shortDes,
+.halo-productView-right .productView-shortDes p {
+  color: #5a4350;
+  line-height: 1.7;
+  font-size: .97rem;
+}
+
+
+.halo-productView-right .product-form__input .form__label,
+.halo-productView-right .form__label {
+  font-size: .7rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #998;
+  margin-bottom: .3rem;
+  font-weight: 400;
+  display: block;
+}
+.halo-productView-right .form__label span[data-header-option] {
+  display: none;
+}
+/* variant row = .variant-row */
+.halo-productView-right .product-form__input fieldset,
+.halo-productView-right variant-radios {
+  display: flex !important;
+  gap: .7rem !important;
+  flex-wrap: wrap !important;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+/* clearfix override — floats break flex gap */
+.halo-productView-right .product-form__input.clearfix::after,
+.halo-productView-right .product-form__input fieldset.clearfix::after {
+  display: none !important;
+}
+
+.halo-productView-right .product-form__radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+/* show selected variant beside label e.g. "Size: Heritage Edit" */
+.halo-productView-right .form__label span[data-header-option] {
+  display: inline !important;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: none;
+  font-size: .78rem;
+  margin-left: .3rem;
+}
+/* variant button = .variant-opt */
+.halo-productView-right .product-form__label {
+  display: inline-flex !important;
+  flex-direction: column;
+  border: 1px solid rgba(115,17,87,.25);
+  background: transparent;
+  cursor: pointer;
+  padding: .8rem 1.1rem;
+  border-radius: 12px;
+  text-align: left;
+  transition: border-color .3s, background .3s;
+  min-width: 130px;
+  vertical-align: top;
+}
+.halo-productView-right .product-form__label:hover {
+  border-color: var(--plum);
+}
+/* selected = .variant-opt.active */
+.halo-productView-right .product-form__radio:checked + .product-form__label,
+.halo-productView-right .product-form__label.active {
+  border-color: var(--plum);
+  background: rgba(115,17,87,.06);
+}
+/* name = .variant-opt strong — reset theme's inner-box bg */
+.halo-productView-right .product-form__label .text,
+.halo-productView-right .product-form__radio:checked + .product-form__label .text {
+  display: block !important;
+  font-size: .9rem !important;
+  color: var(--ink) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin-bottom: .15rem;
+  font-weight: 600;
+  font-family: var(--sans);
+  width: auto !important;
+  min-width: auto;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  line-height: normal !important;
+  height:auto;
+  text-align: left;
+}
+/* price = .variant-opt em */
+.halo-productView-right .product-form__label .amz-variant-price {
+  font-style: normal;
+  font-size: .8rem;
+  color: var(--plum);
+  font-weight: 400;
+}
+/* compare = .variant-opt em s */
+.halo-productView-right .product-form__label .amz-variant-compare {
+  color: #bba;
+  margin-left: .3rem;
+  text-decoration: line-through;
+  font-size: .75rem;
+}
+
+/* Tab accordion */
+.halo-productView-right .tab-content {
+  border-top: 1px solid rgba(115,17,87,.14);
+}
+.halo-productView-right .tab-content .toggleLink,
+.halo-productView-right .toggle-title .toggleLink {
+  font-size: .95rem;
+  color: var(--ink);
+  font-weight: 500;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(115,17,87,.14);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.halo-productView-right .toggle-content {
+  color: #5a4350;
+  line-height: 1.7;
+  font-size: .9rem;
+  padding: 0 0 1.2rem;
+}
+
+/* custom_information block */
+.halo-productView-right .moreItem-productCustomInformation .custom-information-title {
+  font-size: .76rem;
+  letter-spacing: .08em;
+  color: #8a7280;
+}
+
+
+
+/* ============================================================
+   PRODUCT METAFIELD RICH_TEXT BLOCK STYLES
+   ============================================================ */
+
+/* product_tag_information — inline eyebrow with dot separator */
+.product-custom_taginfo .metafield-rich_text_field ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+.product-custom_taginfo .metafield-rich_text_field li {
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--plum);
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  line-height: 1.4;
+  margin:0;
+}
+.product-custom_taginfo .metafield-rich_text_field li + li::before {
+  content: ' · ';
+  margin: 0 .5rem;
+  color: var(--plum);
+  font-weight: 300;
+}
+
+/* product_info — serif italic inline tagline with dots */
+.product-custom_info .metafield-rich_text_field p {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--plum);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.product-custom_info .metafield-rich_text_field ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5;
+}
+.product-custom_info .metafield-rich_text_field li {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--plum);
+  padding: 0;
+  line-height: 1.3;
+  margin:0;
+}
+.product-custom_info .metafield-rich_text_field li + li::before {
+  content: ' · ';
+  margin: 0 .2rem;
+  color: var(--plum);
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* product_usp — rounded pill chips */
+.product-custom_usp .metafield-rich_text_field ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+.product-custom_usp .metafield-rich_text_field li {
+  font-size: .88rem;
+  color: var(--plum);
+  background: var(--porcelain-soft);
+  border: 1px solid rgba(115,17,87,.15);
+  padding: .5rem 1.1rem;
+  border-radius: 999px;
+  line-height: 1.4;
+  margin:0;
+  font-weight: 400;
+}
+.product-custom_usp .metafield-rich_text_field li::before {
+  display: none;
+}
+
+
+/* ============================================================
+   PDP — Qty / ATC / Note / Accordion
+   ============================================================ */
+
+/* ── Quantity stepper — matches .qty-stepper from pages.css ── */
+.halo-productView-right .quantity__container,
+.halo-productView-right .productView-quantityItem,
+.halo-productView-right .quantity {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(115,17,87,.25);
+  border-radius: 12px;
+  overflow: hidden;
+  /* background: #fff; */
+  height: 52px;
+}
+.halo-productView-right .quantity__container .quantity__button,
+.halo-productView-right .productView-quantityItem .quantity__button,
+.halo-productView-right .quantity .quantity__button,
+.halo-productView-right .quantity__container button,
+.halo-productView-right .productView-quantityItem button,
+.halo-productView-right .quantity button {
+  background: none;
+  border: none;
+  color: var(--plum);
+  font-size: 1.2rem;
+  font-weight: 300;
+  width: 44px;
+  height: 100%;
+  cursor: pointer;
+  transition: background .25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.halo-productView-right .quantity__container .quantity__button:hover,
+.halo-productView-right .productView-quantityItem .quantity__button:hover,
+.halo-productView-right .quantity .quantity__button:hover,
+.halo-productView-right .quantity__container button:hover,
+.halo-productView-right .productView-quantityItem button:hover,
+.halo-productView-right .quantity button:hover {
+  background: rgba(115,17,87,.08);
+}
+.halo-productView-right .quantity__container input,
+.halo-productView-right .productView-quantityItem input,
+.halo-productView-right .quantity input,
+.halo-productView-right .quantity__container .quantity__input,
+.halo-productView-right .productView-quantityItem .quantity__input,
+.halo-productView-right .quantity .quantity__input {
+  min-width: 40px;
+  text-align: center;
+  font-size: .95rem;
+  font-family: var(--sans);
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  height: 100%;
+  -moz-appearance: textfield;
+}
+.halo-productView-right .quantity__container input:focus,
+.halo-productView-right .productView-quantityItem input:focus,
+.halo-productView-right .quantity input:focus {
+  outline: none;
+}
+@media (max-width: 600px) {
+  .halo-productView-right .quantity__container,
+  .halo-productView-right .productView-quantityItem,
+  .halo-productView-right .quantity {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ── ATC button ── */
+.halo-productView-right .product-form__submit {
+  height: 52px;
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s, box-shadow .3s, transform .3s;
+  border: none;
+  width: 100%;
+}
+.halo-productView-right .product-form__submit.button--primary,
+.halo-productView-right .product-form__submit.button--secondary {
+  background: var(--plum);
+  color: var(--porcelain);
+}
+.halo-productView-right .product-form__submit.button--primary:hover,
+.halo-productView-right .product-form__submit.button--secondary:hover {
+  background: var(--plum-deep);
+}
+
+/* ── Qty + ATC row layout ── */
+.halo-productView-right .pvGroup-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+/* ── Free shipping note ── */
+.halo-productView-right .moreItem-productCustomInformation .custom-information-title,
+.halo-productView-right .moreItem-productCustomInformation .text {
+  font-size: .78rem;
+  color: #8a7280;
+  letter-spacing: .04em;
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+/* ── Accordion tabs — exact .pdp-accordion summary from pages.css ── */
+.halo-productView-right .productView-tab .tab-content {
+  border-bottom: 1px solid rgba(115,17,87,.14);
+}
+.halo-productView-right .productView-tab .tabs-contents {
+  border-top: 1px solid rgba(115,17,87,.14);
+}
+/* title row = summary */
+.halo-productView-right .productView-tab .toggle-title .toggleLink {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .95rem !important;
+  color: var(--ink);
+  font-weight: 500 !important;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+/* hide SVG chevron */
+.halo-productView-right .productView-tab .toggle-title .toggleLink .icon-dropdown,
+.halo-productView-right .productView-tab .toggle-title .toggleLink .icon-plus {
+  display: none;
+}
+/* + icon = summary::after */
+.halo-productView-right .productView-tab .toggle-title .toggleLink::after {
+  content: '+';
+  color: var(--plum);
+  font-size: 1.3rem;
+  font-weight: 300;
+  transition: transform .3s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+/* rotate when open = details[open] summary::after */
+.product-default .halo-productView-right .productView-tab .toggle-title .toggleLink.is-open::after {
+  transform: rotate(45deg);
+}
+/* body = .acc-body */
+.product-default .halo-productView-right .productView-tab .toggle-content {
+  padding: 0 0 1.2rem;
+  color: #5a4350;
+  line-height: 1.7;
+  font-size: .9rem;
+}
+
+.product-default .productView-image.fit-unset .productView-img-container img{
+    background: #efe7ea;
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    object-fit: cover !important;
+}
+@media (max-width: 600px) {
+  .halo-productView-right .pvGroup-row {
+    grid-template-columns: 1fr;
+  }
+  .halo-productView-right .productView-quantityItem,
+  .halo-productView-right .quantity {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ── Product title — .pdp-title from pages.css ── */
+.halo-productView-right .productView-title {
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem) !important;
+  line-height: 1.04 !important;
+  color: var(--ink) !important;
+  font-family: var(--serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -.01em !important;
+}
+
+/* ── Main product image — .pdp-main from pages.css ── */
+/* Target only the primary image, not thumbs */
+.productView-images-wrapper > .productView-image .productView-img-container,
+.productView-mainImage .productView-img-container,
+.halo-productView-left > .productView-image-wrapper > .productView-image:first-child .productView-img-container {
+  border-radius: 20px;
+  overflow: hidden;
+  background: #efe7ea;
+}
+/* images fill the container */
+.productView-images-wrapper > .productView-image .productView-img-container img:not(.zoomImg),
+.productView-mainImage .productView-img-container img:not(.zoomImg) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity .35s ease;
+}

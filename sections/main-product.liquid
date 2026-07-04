@@ -1677,6 +1677,16 @@
                     "step": 1,
                     "unit": "t:sections.layout.mg_desktop.unit",
                     "default": 15
+                },
+                {
+                    "type": "header",
+                    "content": "Price Display"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_price_on_variants",
+                    "label": "Show price on variant options",
+                    "default": true
                 }
             ]
         },
@@ -2102,6 +2112,16 @@
                     "step": 1,
                     "unit": "t:sections.layout.mg_desktop.unit",
                     "default": 15
+                },
+                {
+                    "type": "header",
+                    "content": "Price Display"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "show_price_on_atc",
+                    "label": "Show price on Add to Cart button",
+                    "default": true
                 },
                 {
                     "type": "header",
@@ -3174,6 +3194,63 @@
                     "id": "custom_liquid",
                     "label": "t:sections.custom-liquid.settings.custom_liquid.label",
                     "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+                }
+            ]
+        },
+        {
+            "type": "rich_text",
+            "name": "Custom Richtext",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "unique_class",
+                    "label": "Unique Class",
+                    "info": "Add a custom CSS class for targeted styling."
+                },
+                {
+                    "type": "richtext",
+                    "id": "content",
+                    "label": "Content"
+                },
+                {
+                    "type": "color",
+                    "id": "color_text",
+                    "label": "Text Color",
+                    "default": "#3c3c3c"
+                },
+                {
+                    "type": "range",
+                    "id": "fontsize_text",
+                    "label": "Font Size",
+                    "min": 8,
+                    "max": 60,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 14
+                },
+                {
+                    "type": "header",
+                    "content": "Spacing"
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_top",
+                    "label": "Padding Top",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "spacing_bottom",
+                    "label": "Padding Bottom",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "px",
+                    "default": 0
                 }
             ]
         },

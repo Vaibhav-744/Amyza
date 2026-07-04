@@ -32,10 +32,6 @@
     margin: 0 auto 30px auto;
 }
 
-.product-default .productView {
-    padding-top: 0px;
-}
-
 /* Page Full Width 2 */
 .product-full-width-2 .halo-banner-wrapper .flex-box__banner .content-box {
     padding: 22px 15px;
@@ -1822,7 +1818,7 @@
     position: absolute;
     width: 12px;
     height: 2px;
-    left: 10px;
+    /* left: 10px; */
     top: 21px;
     background: #5a5a5a;
 }
@@ -1837,7 +1833,7 @@
     position: absolute;
     width: 12px;
     height: 2px;
-    left: 10px;
+    /* left: 10px; */
     top: 21px;
     background: #5a5a5a;
 }
@@ -1847,7 +1843,7 @@
     position: absolute;
     width: 12px;
     height: 2px;
-    left: 10px;
+    /* left: 10px; */
     top: 21px;
     background: #5a5a5a;
     transform: rotate(90deg);
@@ -2002,7 +1998,6 @@ quantity-input.disabled {
     color: var(--color-title);
     font-weight: 500;
     margin-top: 0;
-    margin-bottom: 4px;
     font-size: var(--fontsize-text);
     line-height: unset;
 }
@@ -2733,10 +2728,6 @@ quantity-input.disabled {
         align-items: flex-end;
     }
 
-    .pvGroup-row .quantity__group--1 {
-        margin-right: 15px;
-    }
-
     .product-full-width .productView-groupTop,
     .product-full-width-2 .productView-groupTop {
         flex-direction: row-reverse;
@@ -3049,12 +3040,12 @@ quantity-input.disabled {
 
 @media (min-width: 1200px) {
     .halo-productView-left{
-        width: 62.4%;
-        padding-right: 60px;
+        width: 50%;
+        padding-right: 50px;
     }
 
     .halo-productView-right{
-        width: 37.6%;
+        width: 50%;
     }
 
     .product-full-width .halo-productView-left{

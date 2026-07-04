@@ -1205,6 +1205,31 @@
                                                 %}
                                             </div>
                                         </div>
+                                    {%- when 'rich_text' -%}
+                                        {%- liquid
+                                            assign rt_content = block.settings.content
+                                            assign rt_class   = block.settings.unique_class
+                                            if rt_class == 'product-custom_taginfo'
+                                                assign rt_content = product.metafields.custom.product_tag_information | metafield_tag
+                                            elsif rt_class == 'product-custom_info'
+                                                assign rt_content = product.metafields.custom.product_info | metafield_tag
+                                            elsif rt_class == 'product-custom_usp'
+                                                assign rt_content = product.metafields.custom.product_usp | metafield_tag
+                                            endif
+                                        -%}
+                                        <div class="productView-moreItem{% if rt_class != blank %} {{ rt_class }}{% endif %}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
+                                            style="--spacing-top: {{ block.settings.spacing_top | append: 'px' }};
+                                            --spacing-bottom: {{ block.settings.spacing_bottom | append: 'px' }};"
+                                            {{ block.shopify_attributes }}
+                                        >
+                                            {%- if rt_content != blank -%}
+                                                <div class="halo-text-format"
+                                                    style="{% if block.settings.color_text != blank and block.settings.color_text != 'rgba(0,0,0,0)' %}color: {{ block.settings.color_text }};{% endif %}font-size: {{ block.settings.fontsize_text | append: 'px' }};"
+                                                >
+                                                    {{ rt_content }}
+                                                </div>
+                                            {%- endif -%}
+                                        </div>
                                     {%- when 'custom_information' -%}
                                         <div class="productView-moreItem{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"
                                             style="--spacing-top: {{ spacing_top | append: 'px' }};

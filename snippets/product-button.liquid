@@ -68,26 +68,26 @@
                                              assign allowOutStockSale = false
                                            endif
                                         -%}
-                                        <button type="submit" name="add" data-btn-addToCart data-inventory-quantity="{{ current_variant.inventory_quantity }}" data-available="{{ allowOutStockSale }}" class="product-form__submit button button--primary an-{{ atc_animation }}{% if first_inventory == 0 %} button-text-change{% else %}{% if show_subtotal_text %} button-text-change{% endif %}{% endif %}{% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %} button-not-animation{% endif %}" id="product-add-to-cart">
+                                        <button type="submit" name="add" data-btn-addToCart data-inventory-quantity="{{ current_variant.inventory_quantity }}" data-available="{{ allowOutStockSale }}" class="product-form__submit button button--primary an-{{ atc_animation }}{% if first_inventory == 0 %} button-text-change{% else %}{% if show_subtotal_text %} button-text-change{% endif %}{% endif %}{% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %} button-not-animation{% endif %}{% if block.settings.show_price_on_atc %} amz-btn-price{% endif %}" id="product-add-to-cart" {% if block.settings.show_price_on_atc %}data-amz-atc-price="{{ current_variant.price | money | strip_html }}"{% endif %}>
                                             {%- if first_inventory > 0 -%}
                                                 {%- if show_subtotal_text and subtotal_style == '2' -%}
                                                     {%- assign subtotal = subtotal | strip_html -%}
 
                                                     {{ 'products.product.sub_total' | t : value : subtotal }}
                                                 {%- else -%}
-                                                    {{ 'products.product.add_to_cart' | t}}
+                                                    {{ 'products.product.add_to_cart' | t }}
                                                 {%- endif -%}
                                             {%- else -%}
                                                 {{ 'products.product.pre_order' | t }}
                                             {%- endif -%}
                                         </button>
                                     {%- else -%}
-                                        <button type="submit" name="add" data-btn-addToCart class="product-form__submit button button--secondary an-{{ atc_animation }}{% if show_subtotal_text %} button-text-change{% endif %}{% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %} button-not-animation{% endif %}" id="product-add-to-cart">
+                                        <button type="submit" name="add" data-btn-addToCart class="product-form__submit button button--secondary an-{{ atc_animation }}{% if show_subtotal_text %} button-text-change{% endif %}{% if settings.animations_hover_elements == '3d-lift' or settings.animations_hover_elements == 'vertical-lift' %} button-not-animation{% endif %}{% if block.settings.show_price_on_atc %} amz-btn-price{% endif %}" id="product-add-to-cart" {% if block.settings.show_price_on_atc %}data-amz-atc-price="{{ current_variant.price | money | strip_html }}"{% endif %}>
                                             {%- if show_subtotal_text and subtotal_style == '2' -%}
                                                 {%- assign subtotal = subtotal | strip_html -%}
                                                 {{ 'products.product.sub_total' | t : value : subtotal }}
                                             {%- else -%}
-                                                {{ 'products.product.add_to_cart' | t}}
+                                                {{ 'products.product.add_to_cart' | t }}
                                             {%- endif -%}
                                         </button>
                                     {%- endif -%}
@@ -138,3 +138,55 @@
         </div>
     {%- endif -%}
 </div>
+
+{%- if block.settings.show_price_on_atc -%}
+<style>
+  .amz-btn-price::after {
+    content: " — " attr(data-amz-atc-price);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+  }
+</style>
+<script>
+(function () {
+  var productId = {{ product.id }};
+  var variants  = {{ product.variants | json }};
+  var btn       = document.getElementById('product-add-to-cart');
+  if (!btn) return;
+
+  /* Money format from Shopify */
+  var moneyFormat = {{ shop.money_format | json }};
+
+  function formatMoney(cents) {
+    var amount = (cents / 100).toFixed(2);
+    return moneyFormat
+      .replace(/\{\{\s*amount\s*\}\}/,           amount)
+      .replace(/\{\{\s*amount_no_decimals\s*\}\}/, Math.round(cents / 100))
+      .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/,             amount.replace('.', ','))
+      .replace(/\{\{\s*amount_no_decimals_with_comma_separator\s*\}\}/, String(Math.round(cents / 100)).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'));
+  }
+
+  /* Update on theme's variant change — works with both radio + select pickers */
+  document.addEventListener('change', function (e) {
+    var form = document.getElementById('product-form-' + productId);
+    if (!form) return;
+
+    /* The theme writes the selected variant id into a hidden input */
+    var idInput = form.querySelector('input[name="id"]');
+    if (!idInput) return;
+
+    var variantId = parseInt(idInput.value, 10);
+    var variant   = variants.find(function (v) { return v.id === variantId; });
+    if (!variant) return;
+
+    if (variant.available) {
+      btn.dataset.amzAtcPrice = formatMoney(variant.price);
+    } else {
+      btn.dataset.amzAtcPrice = '';
+    }
+  });
+})();
+</script>
+{%- endif -%}

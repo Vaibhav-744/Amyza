@@ -149,7 +149,7 @@
 							</div>
 							<div class="tab-popup-content">
 						{%- endif -%}
-							{{ content }}
+							{{ content  | metafield_tag }}
 							{%- if block.settings.enable_btn_show_more -%}
 								{% assign letter = content | size %}
 								<div class="tab-showMore is-show" data-letter="{{ letter }}" data-des-max="{{ block.settings.maximum_des_to_show }}">
