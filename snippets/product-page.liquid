@@ -442,7 +442,7 @@
     <link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
 {%- endif -%}
-<div class="{{tab_layout_mobile}} product-details product-default{% if has_sidebar %} has-sidebar{% endif %}" data-section-id="{{ section.id }}" data-section-type="product" id="ProductSection-{{ section.id }}" data-has-combo="{{ has_product_combo }}" data-image-opo>
+<div class="{{tab_layout_mobile}} {% if template == 'product %}product-detail_custom{% endif%} product-details product-default{% if has_sidebar %} has-sidebar{% endif %}" data-section-id="{{ section.id }}" data-section-type="product" id="ProductSection-{{ section.id }}" data-has-combo="{{ has_product_combo }}" data-image-opo>
     {% if has_breadcrumb %}
         {%- liquid
             if breadcrumb_gradient != 'rgba(0,0,0,0)' or breadcrumb_bg != 'rgba(0,0,0,0)' or breadcrumb_gradient_mb != 'rgba(0,0,0,0)' or breadcrumb_bg_mb != 'rgba(0,0,0,0)'
@@ -473,7 +473,7 @@
             {% endif %}
         </div>
     {% endif %}
-    <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %} productView-container">
+    <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %} productView-container product-detail_custom">
         <div class="productView halo-productView layout-{{ thumnail_layout }} positionMainImage--{{ main_image_position }}{% if product.media.size == 0 %} productView-no-media{% endif %}{% if show_sticky_info %} productView-sticky{% endif %}{% if main_image_enable_parallax_mb %} productView-parallax-mobile{%endif %}{% if has_sidebar %} has-left-sidebar sidebar--layout_{{ sidebar_type }}{% endif %}" data-product-handle="{{ product.handle }}">
             {%- if has_sidebar -%}
                 {{ 'component-main-sidebar.css' | asset_url | stylesheet_tag }}
