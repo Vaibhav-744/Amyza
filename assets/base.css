@@ -2908,6 +2908,8 @@ summary::-webkit-details-marker {
 
     .header__icon .icon {
         display: block;
+        width:17px;
+        height:17px;
     }
 
     .header__icon--menu .icon{
@@ -8136,4 +8138,11 @@ h3{font-size:1.3rem}
   object-fit: cover;
   display: block;
   transition: opacity .35s ease;
+}
+.header-navigation-wrapper{
+    background: rgba(241, 237, 236, .92);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(115, 17, 87, .1);
+    transition: background .3s, box-shadow .3s;
 }
