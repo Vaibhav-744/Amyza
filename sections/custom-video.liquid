@@ -259,6 +259,9 @@
 
     {% if section.settings.heading != blank %}
       <div class="hero-title">
+        {% if settings.shape != blank %}
+        <span class="shape">{{ settings.shape }}</span>
+        {% endif %}
         {{ section.settings.heading }}
       </div>
     {% endif %}
