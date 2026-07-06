@@ -253,9 +253,9 @@
 
     {% if section.settings.eyebrow != blank %}
       <p class="eyebrow">
-        {% comment %} {% if settings.shape != blank %}
+        {% if settings.shape != blank %}
         <span class="shape">{{ settings.shape }}</span>
-        {% endif %} {% endcomment %}
+        {% endif %}
         {{ section.settings.eyebrow }}
       </p>
     {% endif %}
