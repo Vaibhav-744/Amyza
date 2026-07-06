@@ -15,7 +15,7 @@
       "settings": {
         "video": "shopify://files/videos/14912587_1920_1080_50fps (1).mp4",
         "fallback_bg": "#731157",
-        "eyebrow": "✦ Introducing the Golden Nectar",
+        "eyebrow": "Introducing the Golden Nectar",
         "eyebrow_color": "#eaacc9",
         "heading": "<h1><em>The Glow</em><br/>You Deserve.</h1>",
         "heading_color": "#f1edec",
@@ -415,7 +415,7 @@
         "mg_bottom_desktop": 50,
         "mg_bottom_tablet": 30,
         "mg_bottom_mobile": 30,
-        "bg_color_product": "#E8E2E0",
+        "bg_color_product": "#e8e2e0",
         "title": "",
         "color_title": "#ffffff",
         "fontsize_title": 60,
