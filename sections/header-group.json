@@ -195,7 +195,7 @@
           "settings": {
             "logo_position": "always",
             "logo": "shopify://shop_images/High-res_AMYZA_Logo-01-plum.png",
-            "logo_width": 60,
+            "logo_width": 100,
             "logo_width_fixed": 100,
             "logo_text": "",
             "logo_font_size": 20,
