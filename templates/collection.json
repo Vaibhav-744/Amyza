@@ -160,10 +160,10 @@
           "type": "panel",
           "settings": {
             "fallback_bg": "linear-gradient(135deg, #731157 0%, #4e0a3a 100%)",
-            "eyebrow": "New Collection",
-            "title": "The Ritual Edit",
-            "description": "Slow-luxury skincare rooted in ancestral botanical wisdom — crafted in small batches, made for the woman who knows her worth.",
-            "link_label": "Shop Now",
+            "eyebrow": "",
+            "title": "",
+            "description": "",
+            "link_label": "",
             "link": ""
           }
         },
@@ -171,10 +171,10 @@
           "type": "panel",
           "settings": {
             "fallback_bg": "linear-gradient(135deg, #EAACC9 0%, #731157 100%)",
-            "eyebrow": "Bestseller",
-            "title": "Golden Nectar Serum",
-            "description": "Saffron, Jasmine, Rose, Sandalwood & Turmeric — traditional recipes treasured for centuries, bottled into a ritual that works.",
-            "link_label": "Shop Now",
+            "eyebrow": "",
+            "title": "",
+            "description": "",
+            "link_label": "",
             "link": ""
           }
         }
