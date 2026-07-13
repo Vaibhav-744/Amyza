@@ -142,7 +142,7 @@
             <div class="ceb-fallback" style="background: {{ block.settings.fallback_bg }};"></div>
           {% endif %}
         </a>
-
+      {% if block.settings.eyebrow != blank or block.settings.title != blank or block.settings.description != blank or block.settings.link_label != blank %}
         <div class="ceb-body">
           {% if block.settings.eyebrow != blank %}
             <span class="ceb-eyebrow">{{ block.settings.eyebrow }}</span>
@@ -160,7 +160,7 @@
             <a href="{{ link_url }}" class="ceb-link">{{ block.settings.link_label }}</a>
           {% endif %}
         </div>
-
+      {% endif %}
       </article>
     {% endfor %}
   </div>
