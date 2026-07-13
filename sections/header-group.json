@@ -259,7 +259,7 @@
           "type": "logo",
           "settings": {
             "logo_mobile": "shopify://shop_images/High-res_AMYZA_Logo-01-plum.png",
-            "logo_width_mobile": 60,
+            "logo_width_mobile": 80,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
