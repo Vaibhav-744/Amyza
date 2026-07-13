@@ -2,7 +2,12 @@
 
 <style>
   #shopify-section-{{ section.id }} .faq-section {
-    padding: clamp(5rem, 10vw, 9rem) 6vw;
+    padding-top: clamp(5rem, 10vw, 9rem);
+    padding-bottom: clamp(5rem, 10vw, 9rem);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left:  3rem !important;
+    padding-right:  3rem !important;
     background: {{ section.settings.section_bg }};
   }
 
