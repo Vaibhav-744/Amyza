@@ -7759,7 +7759,7 @@ h3{font-size:1.3rem}
   min-width: 130px;
   vertical-align: top;
   float: none !important;
-  margin: 0 !important;
+  /* margin: 0 !important; */
 }
 .product-detail_custom .halo-productView-right .product-form__label:hover {
   border-color: var(--plum);
