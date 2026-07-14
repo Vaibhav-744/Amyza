@@ -252,7 +252,7 @@
     "gdpr_cookie_consent_color_privacy": "#818181",
     "gdpr_cookie_consent_bg": "#141414",
     "show_newsletter_popup": true,
-    "newsletter_popup_delay": 60,
+    "newsletter_popup_delay": 11,
     "newsletter_popup_image": "shopify://shop_images/amz_ritual.png",
     "popup_newsletter_link_image": "",
     "newsletter_popup_title": "Be the First to Know",
