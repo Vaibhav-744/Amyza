@@ -8146,3 +8146,8 @@ h3{font-size:1.3rem}
     border-bottom: 1px solid rgba(115, 17, 87, .1);
     transition: background .3s, box-shadow .3s;
 }
+.halo-newsletter-popup .field__input {
+    border: 1px solid var(--plum);
+    color: var(--plum);
+    margin-bottom: 10px;
+}
