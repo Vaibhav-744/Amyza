@@ -7240,7 +7240,7 @@ h3{font-size:1.3rem}
 .product-item .card .card-product .card-product__wrapper {}
 .product-item .card .card-product .card-product__wrapper .card-media {
     padding: 0px !important;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
 }
 .product-item .card .card-product .card-product__wrapper .card-media img {
     object-fit: cover;
