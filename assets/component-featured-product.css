@@ -97,7 +97,12 @@
 .featured-product .productView-payment .shopify-payment-button .shopify-payment-button__button:hover {
 	background-origin: border-box;
 	width:100%;
-	font-weight:normal;
+	padding: .95rem 1.8rem;
+    border-radius: 4px;
+    font-size: .7rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .featured-product .productView-thumbnail.slick-current .productView-thumbnail-link img {
