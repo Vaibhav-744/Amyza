@@ -8153,7 +8153,7 @@ h3{font-size:1.3rem}
 }
 .halo-newsletter-popup .newsletter-form__button{
     background: var(--plum);
-    color: #f1edec;
+    color: var(--porcelain);
     border-color: var(--plum);
     width: 100%;
 }
