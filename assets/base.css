@@ -8147,13 +8147,13 @@ h3{font-size:1.3rem}
     transition: background .3s, box-shadow .3s;
 }
 .halo-newsletter-popup .field__input {
-    border: 1px solid var(--plum);
+    border: 1px solid var(--plum) !important;
     color: var(--plum) !important;
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
-.halo-newsletter-popup .newsletter-form__button{
-    background: var(--plum);
-    color: var(--porcelain);
-    border-color: var(--plum);
-    width: 100%;
+.halo-newsletter-popup .newsletter-form__button {
+    background: var(--plum) !important;
+    color: var(--porcelain) !important;
+    border-color: var(--plum) !important;
+    width: 100% !important;
 }
