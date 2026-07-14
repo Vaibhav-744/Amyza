@@ -238,7 +238,7 @@
         "padding_full_width": 0,
         "header_navigation_bg": "#f1edec",
         "header_navigation_bg_gradient": "",
-        "sticky_header_type": "always",
+        "sticky_header_type": "on_scroll",
         "sticky_header_width": "default",
         "enable_transparent": false,
         "transparent_color": "#2a0a20",
