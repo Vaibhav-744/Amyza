@@ -8148,6 +8148,6 @@ h3{font-size:1.3rem}
 }
 .halo-newsletter-popup .field__input {
     border: 1px solid var(--plum);
-    color: var(--plum);
+    color: var(--plum) !important;
     margin-bottom: 10px;
 }
