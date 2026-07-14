@@ -59,6 +59,58 @@
     {%- endfor -%}
   </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".about-stats");
+
+  if (!section) return;
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const counters = entry.target.querySelectorAll(".stat-item strong");
+
+      counters.forEach(counter => {
+        const finalText = counter.textContent.trim();
+
+        // Extract numeric value
+        const target = parseInt(finalText.replace(/\D/g, ""), 10);
+
+        if (isNaN(target)) return;
+
+        // Preserve prefixes/suffixes
+        const prefix = finalText.match(/^[^\d]+/)?.[0] || "";
+        const suffix = finalText.match(/[^\d]+$/)?.[0] || "";
+
+        const duration = 2000;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+          const value = Math.floor(progress * target);
+
+          counter.textContent = `${prefix}${value}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = finalText;
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.4
+  });
+
+  observer.observe(section);
+});
+</script>
 
 {% schema %}
 {
