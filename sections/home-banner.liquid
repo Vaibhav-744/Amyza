@@ -1,0 +1,485 @@
+{% comment %} home-banner.liquid — Cinematic Full-Width Pinned Expand Banner {% endcomment %}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.outer_bg }};
+  }
+
+  #shopify-section-{{ section.id }} .home-banner {
+    position: relative;
+    width: 100%;
+    {%- if section.settings.full_width -%}
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+    {%- else -%}
+      padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px 2rem;
+      max-width: {{ section.settings.container_width }}px;
+      margin: 0 auto;
+    {%- endif -%}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .pe-media {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    {%- if section.settings.enable_scroll_animation -%}
+      width: calc({{ section.settings.initial_width }}% + (100% - {{ section.settings.initial_width }}%) * var(--pe, 0));
+      min-height: calc({{ section.settings.min_height_desktop }}vh + (20vh * var(--pe, 0)));
+      border-radius: calc({{ section.settings.initial_radius }}px * (1 - var(--pe, 0)));
+    {%- else -%}
+      width: 100%;
+      min-height: {{ section.settings.min_height_desktop }}vh;
+      border-radius: {{ section.settings.initial_radius }}px;
+    {%- endif -%}
+    margin: 0 auto;
+    overflow: hidden;
+    will-change: width, min-height, border-radius;
+    transition: width 0.1s ease-out, min-height 0.1s ease-out, border-radius 0.1s ease-out;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    {%- if section.settings.image != blank -%}
+      background-image: url('{{ section.settings.image | image_url: width: 2200 }}');
+    {%- else -%}
+      background-image: url('https://cdn.shopify.com/s/files/1/0879/0956/4726/files/amz_ritual.png?v=1730000000'), linear-gradient(135deg, {{ section.settings.bg_from }} 0%, {{ section.settings.bg_to }} 60%, #2A0A20 100%);
+    {%- endif -%}
+    transform: scale(1.06);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #shopify-section-{{ section.id }} .pe-media:hover .home-banner-bg {
+    transform: scale(1.1);
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: {{ section.settings.overlay_color }};
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 880px;
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-eyebrow {
+    font-family: var(--sans, 'Public Sans', system-ui, sans-serif);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-weight: 500;
+    color: {{ section.settings.eyebrow_color }};
+    margin-bottom: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-quote {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp({{ section.settings.quote_font_size_mobile }}px, 3.4vw, {{ section.settings.quote_font_size_desktop }}px);
+    line-height: 1.35;
+    color: {{ section.settings.quote_color }};
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-subtext {
+    font-family: var(--sans, 'Public Sans', system-ui, sans-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: {{ section.settings.subtext_color }};
+    margin-top: 0.5rem;
+    max-width: 680px;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: {{ section.settings.button_color }};
+    background-color: {{ section.settings.button_bg }};
+    border: 1px solid {{ section.settings.button_bg }};
+    border-radius: var(--radius-sm, 3px);
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .home-banner-btn:hover {
+    background-color: {{ section.settings.button_hover_bg }};
+    border-color: {{ section.settings.button_hover_bg }};
+    color: {{ section.settings.button_hover_color }};
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  @media (max-width: 980px) {
+    #shopify-section-{{ section.id }} .home-banner {
+      {%- if section.settings.full_width -%}
+        padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px 0;
+      {%- else -%}
+        padding: {{ section.settings.mobile_padding_top }}px 1.2rem {{ section.settings.mobile_padding_bottom }}px 1.2rem;
+      {%- endif -%}
+    }
+    #shopify-section-{{ section.id }} .pe-media {
+      min-height: {{ section.settings.min_height_mobile }}vh;
+    }
+    #shopify-section-{{ section.id }} .home-banner-content {
+      padding: 2rem 1.2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="home-banner" id="home-banner-{{ section.id }}" data-pin-expand>
+  <div class="pe-media">
+    <div class="home-banner-bg"></div>
+    <div class="home-banner-overlay"></div>
+    <div class="home-banner-content reveal-up">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="home-banner-eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.quote != blank -%}
+        <blockquote class="home-banner-quote">
+          {{ section.settings.quote }}
+        </blockquote>
+      {%- endif -%}
+
+      {%- if section.settings.subtext != blank -%}
+        <div class="home-banner-subtext">
+          {{ section.settings.subtext }}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <a href="{{ section.settings.button_link }}" class="home-banner-btn magnetic">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.enable_scroll_animation -%}
+  <script>
+    (function() {
+      function initHomeBannerExpand() {
+        var section = document.getElementById('home-banner-{{ section.id }}');
+        if (!section) return;
+        
+        var media = section.querySelector('.pe-media');
+        if (!media) return;
+
+        var running = false;
+        var cur = 0;
+
+        function clamp(val, min, max) { return Math.min(Math.max(val, min), max); }
+        function lerp(start, end, amt) { return (1 - amt) * start + amt * end; }
+
+        function update() {
+          var r = section.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          
+          var prog = clamp((vh - r.top) / (vh + r.height), 0, 1);
+          var target = clamp((prog - 0.1) / 0.55, 0, 1);
+
+          cur = lerp(cur, target, 0.08);
+          section.style.setProperty('--pe', cur.toFixed(3));
+
+          if (Math.abs(cur - target) > 0.001) {
+            requestAnimationFrame(update);
+          } else {
+            running = false;
+          }
+        }
+
+        function onScroll() {
+          if (!running) {
+            running = true;
+            requestAnimationFrame(update);
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        onScroll();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHomeBannerExpand);
+      } else {
+        initHomeBannerExpand();
+      }
+      document.addEventListener('shopify:section:load', initHomeBannerExpand);
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Home Banner — Quote",
+  "tag": "section",
+  "class": "section-home-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Container & Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width Section",
+      "default": true,
+      "info": "Enable to make banner span edge to edge."
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Boxed Container Max Width (px)",
+      "min": 1000,
+      "max": 1800,
+      "step": 20,
+      "default": 1600
+    },
+    {
+      "type": "color",
+      "id": "outer_bg",
+      "label": "Outer Background Color",
+      "default": "#F1EDEC",
+      "info": "Default: --porcelain (#F1EDEC)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop Padding Top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop Padding Bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom (px)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Scroll Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_scroll_animation",
+      "label": "Enable Pinned Expand Animation",
+      "default": true,
+      "info": "Expands media width and height as page is scrolled."
+    },
+    {
+      "type": "range",
+      "id": "initial_width",
+      "label": "Initial Width (%)",
+      "min": 40,
+      "max": 95,
+      "step": 5,
+      "default": 60,
+      "info": "Width before scroll expansion."
+    },
+    {
+      "type": "range",
+      "id": "initial_radius",
+      "label": "Initial Border Radius (px)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Background Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image",
+      "info": "Leave blank to use default brand image."
+    },
+    {
+      "type": "color",
+      "id": "bg_from",
+      "label": "Gradient From",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "bg_to",
+      "label": "Gradient To",
+      "default": "#4E0A3A"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_color",
+      "label": "Overlay Gradient",
+      "default": "linear-gradient(180deg, rgba(42,10,32,0.30) 0%, rgba(78,10,58,0.55) 60%, rgba(42,10,32,0.72) 100%)"
+    },
+    {
+      "type": "range",
+      "id": "min_height_desktop",
+      "label": "Desktop Min Height (vh)",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "label": "Mobile Min Height (vh)",
+      "min": 35,
+      "max": 90,
+      "step": 5,
+      "default": 55
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ The AMYZA Promise"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#EAACC9"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote Text",
+      "default": "\"We don't sell skincare. We hand you a ritual your grandmother would recognise — and your future self will thank you for.\""
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "range",
+      "id": "quote_font_size_desktop",
+      "label": "Quote Desktop Font Size (px)",
+      "min": 20,
+      "max": 50,
+      "step": 1,
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "quote_font_size_mobile",
+      "label": "Quote Mobile Font Size (px)",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Subtext (Optional)"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "header",
+      "content": "Button / Link (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Text Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#4E0A3A"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Text Color",
+      "default": "#F1EDEC"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Banner — Quote"
+    }
+  ]
+}
+{% endschema %}

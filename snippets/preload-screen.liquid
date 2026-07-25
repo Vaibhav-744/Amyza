@@ -1,115 +1,132 @@
-{%- if request.design_mode == false and settings.enable_preloading_screen -%}
+{%- if settings.enable_preloading_screen -%}
   <style>
-    .preload-screen {
-      background-color: {{settings.preloading_screen_bg}};
-      z-index: 9999;
-      opacity: 1;
-      visibility: visible;
-      transition: opacity .35s ease, visibility .35s ease;
-      overflow: hidden;
-      left: 0;
+    .preloader {
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background: {{ settings.preloading_screen_bg | default: '#4e0a3a' }};
+      color: {{ settings.preloading_screen_text_color | default: '#EAACC9' }};
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
-      height: 100vh;
-      width: 100vw;
-      position: fixed;
-      display: flex;
+      gap: 1.5rem;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      pointer-events: all;
     }
-  
-    .preload-screen.loaded {
+    .preloader.done {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
     }
-
-    .preload-screen .icon {
-      width: 7rem;
-      height: 7rem;
+    .preloader-mark {
+      width: 64px;
+      height: 64px;
+      animation: floatMark 2.4s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-  
-    .preload-screen__loading-bar {
-      width: 13rem;
-      height: 0.2rem;
-      border-radius: 0.2rem;
-      background-color: #ebebeb;
-      overflow: hidden;
-      position: relative;
-      display: block;
-    }
-  
-    .preload-screen__loading-bar::after {
-      content: "";
+    .preloader-mark svg {
+      width: 100%;
       height: 100%;
-      width: 6.8rem;
-      position: absolute;
-      transform: translate(-3.4rem);
-      background-color: #212326;
-      border-radius: 0.2rem;
-      animation: initial-loading 1s ease infinite;
     }
-
-    .preload-screen__rolling {
-      display: inline-block;
-      border: 5px solid #f6f6f6;
-      border-radius: 50%;
-      border-top: 5px solid var(--spinner-top-color);
-      border-right: 5px solid var(--spinner-right-color);
-      border-bottom: 5px solid var(--spinner-bottom-color);
-      border-left: 5px solid var(--spinner-left-color);
-      width: 50px;
-      height: 50px;
-      animation: spin-icon 1.4s linear infinite;
+    .preloader-mark img,
+    .preloader-logo-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      width: auto;
+      height: auto;
     }
-  
-    @keyframes initial-loading {
-      0% {
-        transform: translate(-6.8rem);
-      }
-      100% {
-        transform: translate(13rem);
-      }
+    @keyframes floatMark {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-10px) rotate(8deg); }
+    }
+    .preloader-word {
+      font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+      font-style: italic;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: {{ settings.preloading_screen_text_color | default: '#EAACC9' }};
+      text-transform: uppercase;
+    }
+    .preloader-bar {
+      width: 160px;
+      height: 2px;
+      background: rgba(241, 237, 236, 0.2);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    .preloader-bar span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, {{ settings.preloading_screen_text_color | default: '#EAACC9' }}, var(--olive, #9F9F46));
+      transition: width 0.2s ease;
     }
   </style>
 
-  <preload-screen class="preload-screen no-js-hidden">
-    {%- if settings.preloading_screen_image != blank -%}
-      <div class="preload-screen__image">
+  <div class="preloader no-js-hidden" id="preloader">
+    <div class="preloader-mark">
+      {%- if settings.preloading_screen_image != blank -%}
         {%- assign logo_alt = settings.preloading_screen_image.alt | default: shop.name | escape -%}
-        {%- assign logo_height = settings.preloading_screen_image.width | divided_by: settings.preloading_screen_image.aspect_ratio -%}
-        {% capture sizes %}(max-width: {{ settings.preloading_screen_image.width | times: 2 }}px) 50vw, {{ settings.preloading_screen_image.width }}px{% endcapture %}
-        {% capture widths %}{{ settings.preloading_screen_image.width }}, {{ settings.preloading_screen_image.width | times: 1.5 | round }}, {{ settings.preloading_screen_image.width | times: 2 }}{% endcapture %}
-        {{ settings.preloading_screen_image | image_url: width: 600 | image_tag:
-          class: 'header__heading-logo motion-reduce',
-          widths: widths,
-          height: logo_height,
-          width: settings.preloading_screen_image.width,
-          alt: logo_alt,
-          sizes: sizes,
-          preload: true
-        }}
-      </div>
-    {%- else -%}
-      {%- case settings.preloading_screen_icon -%}
-        {%- when 'loading-bar' -%}
-          <span class="preload-screen__loading-bar"></span>
-        {%- when 'rolling' -%}
-          <span class="preload-screen__rolling"></span>
-      {%- endcase -%}
-    {%- endif -%}
-  </preload-screen>
-  
+        <img
+          src="{{ settings.preloading_screen_image | image_url: width: 300 }}"
+          alt="{{ logo_alt }}"
+          width="{{ settings.preloading_screen_image.width }}"
+          height="{{ settings.preloading_screen_image.height }}"
+          loading="eager"
+          class="preloader-logo-img"
+        >
+      {%- else -%}
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="{{ settings.preloading_screen_text_color | default: '#EAACC9' }}" d="M50 8 C 56 20, 64 24, 74 22 C 72 32, 76 40, 88 50 C 76 60, 72 68, 74 78 C 64 76, 56 80, 50 92 C 44 80, 36 76, 26 78 C 28 68, 24 60, 12 50 C 24 40, 28 32, 26 22 C 36 24, 44 20, 50 8 Z"/>
+        </svg>
+      {%- endif -%}
+    </div>
+    <div class="preloader-word">
+      {%- if settings.preloading_screen_text != blank -%}
+        {{ settings.preloading_screen_text }}
+      {%- else -%}
+        AMYZA
+      {%- endif -%}
+    </div>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+
   <script>
-    class PreloadScreen extends HTMLElement {
-      constructor() {
-        super();
-        document.addEventListener("DOMContentLoaded", () => {this.show()});
+    (function initPreloader() {
+      var pre = document.getElementById('preloader');
+      if (!pre) { document.body.classList.add('loaded'); return; }
+      var bar = pre.querySelector('.preloader-bar span');
+      var p = 0;
+      var tick = setInterval(function () {
+        p += Math.random() * 14 + 4;
+        if (p > 96) p = 96;
+        if (bar) bar.style.width = p + '%';
+      }, 120);
+      function done() {
+        clearInterval(tick);
+        if (bar) bar.style.width = '100%';
+        setTimeout(function () {
+          pre.classList.add('done');
+          document.body.classList.add('loaded');
+        }, 260);
       }
-  
-      show() {
-        this.classList.add('loaded');
+      var fired = false;
+      function fire() { if (!fired) { fired = true; done(); } }
+      if (document.readyState === 'complete') {
+        setTimeout(fire, 400);
+      } else {
+        window.addEventListener('load', function () { setTimeout(fire, 400); });
       }
-    }
-    customElements.define('preload-screen', PreloadScreen);
+      setTimeout(fire, 2600);
+    })();
   </script>
 {%- endif -%}

@@ -2,14 +2,18 @@
 
 <style>
     @media screen and (min-width: 1025px) {
-        body:not([allow-transparency]) .header-navigation {position: static !important;}
+        body:not([allow-transparency]) .header-navigation {position: static !important; box-shadow: 0 2px 20px rgba(115, 17, 87, .1);}
         .header-nav-plain:not(.header-plain--transparent),.scrolled-past-header .header-plain--transparent {
             {%- if section.settings.header_navigation_bg_gradient != 'rgba(0,0,0,0)' and section.settings.header_navigation_bg_gradient != blank -%}
-                 background: {{ section.settings.header_navigation_bg_gradient }}
+                 background: {{ section.settings.header_navigation_bg_gradient }};
             {%- else -%}
                 {%- if section.settings.header_navigation_bg != 'rgba(0,0,0,0)' and section.settings.header_navigation_bg != blank -%}
-                   background: {{ section.settings.header_navigation_bg }}
+                   background: {{ section.settings.header_navigation_bg }};
                 {%- endif -%}
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                border-bottom: 1px solid rgba(115, 17, 87, .1);
+                transition: background .3s, box-shadow .3s;
             {%- endif -%}
         }
         {%- if section.settings.header_navigation_bg_gradient == 'rgba(0,0,0,0)' or section.settings.header_navigation_bg_gradient == blank -%}

@@ -8990,36 +8990,32 @@
       {
         "type": "checkbox",
         "id": "enable_preloading_screen",
-        "label": "t:settings_schema.preloading_screen.settings.enable_preloading_screen.label",
-        "default": false
+        "label": "Enable Preloader Screen",
+        "default": true
       },
       {
         "type": "image_picker",
         "id": "preloading_screen_image",
-        "label": "t:settings_schema.preloading_screen.settings.image.label",
-        "info": "t:settings_schema.preloading_screen.settings.image.info"
+        "label": "Preloader Logo / Icon Image",
+        "info": "Upload a logo image to display above the text on the preloader screen."
       },
       {
-        "type": "select",
-        "id": "preloading_screen_icon",
-        "label": "t:settings_schema.preloading_screen.settings.icon.label",
-        "info": "t:settings_schema.preloading_screen.settings.icon.info",
-        "options": [
-          {
-            "value": "loading-bar",
-            "label": "t:settings_schema.preloading_screen.settings.icon.option__1"
-          },
-          {
-            "value": "rolling",
-            "label": "t:settings_schema.preloading_screen.settings.icon.option__2"
-          }
-        ]
+        "type": "text",
+        "id": "preloading_screen_text",
+        "label": "Preloader Text",
+        "default": "AMYZA"
       },
       {
         "type": "color",
         "id": "preloading_screen_bg",
-        "label": "t:settings_schema.colors.settings.colors_name.background_color",
-        "default": "#fff"
+        "label": "Background Color",
+        "default": "#4e0a3a"
+      },
+      {
+        "type": "color",
+        "id": "preloading_screen_text_color",
+        "label": "Text / Icon Color",
+        "default": "#EAACC9"
       }
     ]
   }
