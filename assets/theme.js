@@ -514,6 +514,8 @@
                 $('[data-search-close-sidebar], .background-overlay').on('click', (event) => {
                     event.preventDefault();
                     $('body').removeClass('open_search_mobile');
+                    $('.search__input').val('');
+                    $('.quickSearchResultsWrap').hide();
                 });
             }else{
                 if($('.header').hasClass('header-01')){
@@ -521,15 +523,26 @@
                 }
                 searchDetails.removeAttr('open');
 
-                $('.search-modal__close-button').on('click', (event) => {
+                $('.search-modal__close-button, .header-search-close').on('click', (event) => {
                     $('.search_details').removeAttr('open');
                     $('body').removeClass('open_search_menu');
+                    $('.search__input').val('');
+                    $('.quickSearchResultsWrap').hide();
                 });
 
                 // Click Search Icon On Header Nav And Sticky Menu
                 $('[data-search-menu]').on('click', (event) => {
                     event.preventDefault();
                     $('body').addClass('open_search_menu');
+                });
+
+                $(document).on('keyup', (event) => {
+                    if (event.key === 'Escape') {
+                        $('.search_details').removeAttr('open');
+                        $('body').removeClass('open_search_menu open_search_mobile');
+                        $('.search__input').val('');
+                        $('.quickSearchResultsWrap').hide();
+                    }
                 });
             }
         },

@@ -1,0 +1,540 @@
+{% comment %} footer-custom.liquid — Custom Brand Footer matching Chuck's style with AMYZA design system {% endcomment %}
+
+{%- liquid
+  assign section_id = section.id
+  assign bg_color = section.settings.bg_color | default: '#f1edec'
+  assign text_color = section.settings.text_color | default: '#2a0a20'
+  assign heading_color = section.settings.heading_color | default: '#2a0a20'
+  assign link_color = section.settings.link_color | default: '#2a0a20'
+  assign watermark_text = section.settings.watermark_text | default: 'amyza'
+  assign watermark_color = section.settings.watermark_color | default: 'rgba(115, 17, 87, 0.08)'
+  assign btn_bg = section.settings.btn_bg | default: '#2a0a20'
+  assign btn_color = section.settings.btn_color | default: '#ffffff'
+-%}
+
+<style>
+  #shopify-section-{{ section_id }} {
+    background-color: {{ bg_color }};
+    color: {{ text_color }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .custom-footer {
+    padding: 4rem 4vw 2rem 4vw;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Top Section Grid */
+  .custom-footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Left Side: Menus & Socials */
+  .custom-footer-menus {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .custom-footer-menu-heading {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: {{ heading_color }};
+    margin-bottom: 1.2rem;
+  }
+
+  .custom-footer-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .custom-footer-menu-list a {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: {{ link_color }};
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .custom-footer-menu-list a:hover {
+    opacity: 0.65;
+  }
+
+  /* Social Icons */
+  .custom-footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .custom-footer-socials a {
+    color: {{ text_color }};
+    font-size: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+  }
+
+  .custom-footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 0.75;
+  }
+
+  .custom-footer-socials svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  /* Right Side: Newsletter */
+  .custom-footer-newsletter {
+    max-width: 480px;
+  }
+
+  .custom-footer-newsletter-heading {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: {{ heading_color }};
+    margin-bottom: 0.6rem;
+  }
+
+  .custom-footer-newsletter-desc {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: {{ text_color }};
+    opacity: 0.8;
+    margin-bottom: 1.8rem;
+  }
+
+  .custom-footer-newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .custom-footer-input-wrapper {
+    position: relative;
+    border-bottom: 1px solid rgba(42, 10, 32, 0.4);
+    padding-bottom: 0.4rem;
+  }
+
+  .custom-footer-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ text_color }};
+    padding: 0.4rem 0;
+  }
+
+  .custom-footer-input::placeholder {
+    color: {{ text_color }};
+    opacity: 0.5;
+  }
+
+  .custom-footer-submit-btn {
+    width: 100%;
+    background: {{ btn_bg }};
+    color: {{ btn_color }};
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .custom-footer-submit-btn:hover {
+    opacity: 0.92;
+  }
+
+  .custom-footer-submit-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  /* Center Giant Watermark Logo */
+  .custom-footer-watermark {
+    text-align: center;
+    user-select: none;
+    pointer-events: none;
+    margin: 3rem 0 2rem 0;
+    line-height: 0.9;
+  }
+
+  .custom-footer-watermark-text {
+    font-family: var(--serif, 'Instrument Serif', serif);
+    font-size: clamp(90px, 17vw, 240px);
+    font-weight: 400;
+    color: {{ watermark_color }};
+    text-transform: lowercase;
+    letter-spacing: -0.04em;
+    display: inline-block;
+  }
+
+  /* Bottom Bar */
+  .custom-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(42, 10, 32, 0.08);
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.85rem;
+    color: {{ text_color }};
+    opacity: 0.8;
+  }
+
+  .custom-footer-email a {
+    color: {{ text_color }};
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .custom-footer-email a:hover {
+    text-decoration: underline;
+  }
+
+  .custom-footer-policies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 0.8rem;
+    justify-content: center;
+  }
+
+  .custom-footer-policies a {
+    color: {{ text_color }};
+    font-size: 0.82rem;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+
+  .custom-footer-policies a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* Mobile Responsive Styling (Matching Image 2) */
+  @media (max-width: 860px) {
+    .custom-footer {
+      padding: 3rem 1.25rem 2rem 1.25rem;
+    }
+
+    .custom-footer-top {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .custom-footer-newsletter {
+      order: 1;
+      max-width: 100%;
+    }
+
+    .custom-footer-menus {
+      order: 2;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .custom-footer-socials {
+      order: 3;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .custom-footer-watermark {
+      margin: 2rem 0 1.5rem 0;
+    }
+
+    .custom-footer-watermark-text {
+      font-size: clamp(70px, 22vw, 120px);
+    }
+
+    .custom-footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<footer class="custom-footer">
+  <div class="custom-footer-top">
+    {%- comment -%} MENUS & SOCIAL (Desktop Left / Mobile Middle) {%- endcomment -%}
+    <div class="custom-footer-left">
+      <div class="custom-footer-menus">
+        {%- if section.settings.menu_1 != blank -%}
+          <div class="custom-footer-menu-col">
+            <h4 class="custom-footer-menu-heading">{{ section.settings.menu_1_heading | default: section.settings.menu_1.title }}</h4>
+            <ul class="custom-footer-menu-list">
+              {%- for link in section.settings.menu_1.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.menu_2 != blank -%}
+          <div class="custom-footer-menu-col">
+            <h4 class="custom-footer-menu-heading">{{ section.settings.menu_2_heading | default: section.settings.menu_2.title }}</h4>
+            <ul class="custom-footer-menu-list">
+              {%- for link in section.settings.menu_2.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_social -%}
+        <div class="custom-footer-socials">
+          {%- if settings.social_facebook_link != blank -%}
+            <a href="{{ settings.social_facebook_link }}" target="_blank" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.77 5.6c1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 3h-2.33v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_instagram_link != blank -%}
+            <a href="{{ settings.social_instagram_link }}" target="_blank" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}
+            <a href="{{ settings.social_tiktok_link }}" target="_blank" aria-label="TikTok">
+              <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.67 2.58-4.9 1.45-1.22 3.32-1.84 5.2-1.72.03 1.47.01 2.93.01 4.4-.98-.07-1.97.26-2.73.88-.73.61-1.18 1.53-1.22 2.49-.06 1.34.62 2.64 1.74 3.37 1.11.72 2.56.78 3.73.16.89-.47 1.54-1.29 1.77-2.27.12-.55.15-1.12.14-1.68V.02z"/></svg>
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} NEWSLETTER FORM (Desktop Right / Mobile Top) {%- endcomment -%}
+    <div class="custom-footer-newsletter">
+      {%- if section.settings.newsletter_title != blank -%}
+        <h3 class="custom-footer-newsletter-heading">{{ section.settings.newsletter_title }}</h3>
+      {%- endif -%}
+      {%- if section.settings.newsletter_desc != blank -%}
+        <p class="custom-footer-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
+      {%- endif -%}
+
+      {%- form 'customer', id: 'CustomFooterNewsletterForm', class: 'custom-footer-newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="custom-footer-input-wrapper">
+          <input
+            type="email"
+            name="contact[email]"
+            class="custom-footer-input"
+            placeholder="{{ section.settings.input_placeholder | default: 'ENTER YOUR EMAIL' }}"
+            required
+            aria-label="Email address"
+          >
+        </div>
+        <button type="submit" class="custom-footer-submit-btn">
+          <span>{{ section.settings.btn_text | default: 'JOIN NOW' }}</span>
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+
+        {%- if form.posted_successfully? -%}
+          <p style="color: {{ heading_color }}; font-size: 0.85rem; margin-top: 0.5rem;">
+            Thank you for subscribing to AMYZA!
+          </p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+
+  {%- comment -%} GIANT WATERMARK BRAND TEXT {%- endcomment -%}
+  <div class="custom-footer-watermark">
+    <span class="custom-footer-watermark-text">{{ watermark_text }}</span>
+  </div>
+
+  {%- comment -%} BOTTOM FOOTER BAR {%- endcomment -%}
+  <div class="custom-footer-bottom">
+    {%- if section.settings.support_email != blank -%}
+      <div class="custom-footer-email">
+        <a href="mailto:{{ section.settings.support_email }}">{{ section.settings.support_email }}</a>
+      </div>
+    {%- endif -%}
+
+    <div class="custom-footer-copyright">
+      {{ section.settings.copyright_text | default: '© Copyright, AMYZA, 2026. Powered by Shopify' }}
+    </div>
+  </div>
+
+  {%- if section.settings.show_policy_links and shop.policies.size > 0 -%}
+    <div class="custom-footer-policies">
+      {%- for policy in shop.policies -%}
+        <a href="{{ policy.url }}">{{ policy.title }}</a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</footer>
+
+{% schema %}
+{
+  "name": "Footer — Custom Brand",
+  "tag": "section",
+  "class": "shopify-section-custom-footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Footer Background Color",
+      "default": "#f1edec"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#2a0a20"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2a0a20"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Menu Link Color",
+      "default": "#2a0a20"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu Column 1 (e.g. SHOP)",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "Menu 1 Custom Heading",
+      "default": "SHOP"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu Column 2 (e.g. CUSTOMER SERVICE)",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "Menu 2 Custom Heading",
+      "default": "CUSTOMER SERVICE"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show Social Media Icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "Stay in Touch"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_desc",
+      "label": "Newsletter Description",
+      "default": "Stay up to date on all the latest happenings, exclusive news, sales and invites from the AMYZA universe."
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "label": "Email Input Placeholder",
+      "default": "ENTER YOUR EMAIL"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "JOIN NOW"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "watermark_text",
+      "label": "Giant Background Watermark Text",
+      "default": "amyza"
+    },
+    {
+      "type": "color",
+      "id": "watermark_color",
+      "label": "Watermark Text Color",
+      "default": "rgba(115, 17, 87, 0.08)"
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support Email Address",
+      "default": "hello@amyza.com"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© Copyright, AMYZA, 2026. Powered by Shopify"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy_links",
+      "label": "Show Shop Policy Links",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer — Custom Brand"
+    }
+  ]
+}
+{% endschema %}

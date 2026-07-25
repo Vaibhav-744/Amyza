@@ -113,17 +113,6 @@
                     {% render 'product-item-size', product: product_card_product %}
                 {%- endif -%}
                 
-                {%- if settings.show_action -%}
-                    <div class="card-action{% if settings.show_compare and settings.product_compare_type == 'default' %} has-compare{% endif %}">
-                        {%- if settings.show_quick_view and settings.product_quick_view_type == 'default' -%}
-                            <div class="card-quickview above-button">
-                                <button type="button" title="{{ 'products.product.quick_view' | t }}" class="quickview-button button" data-product-id="{{ product_card_product.id }}" data-open-quick-view-popup data-product-handle="{{ product_card_product.handle }}">{{ 'products.product.quick_view' | t }}</button>
-                            </div>
-                        {%- endif -%}
-                        {% render 'add-to-cart-form', product: product_card_product, id: 'form', position: position, sectionId: sectionId %}
-                    </div>
-                {%- endif -%}
-
                 {%- if settings.show_compare and settings.product_compare_type == 'default' -%}
                     {% render 'product-compare', product: product_card_product, sectionId: sectionId, class: 'card-compare' %}
                 {%- endif -%}
@@ -146,14 +135,20 @@
             <div class="product-desc">{{ product_card_product.metafields.custom.product_info | metafield_tag }}</div>
             <div class="product-footer">
                 {%- if show_price -%}
-                    <span class="product-price">
-                        {{ product_card_product.price | money_without_trailing_zeros }}
-                    </span>
-                    <span class="price-note">
-                        / {{ product_card_product.variants.first.title }}
-                    </span>
+                    <div class="product-price-wrapper">
+                        <span class="product-price">
+                            {{ product_card_product.price | money_without_trailing_zeros }}
+                        </span>
+                        <span class="price-note">
+                            / {{ product_card_product.variants.first.title }}
+                        </span>
+                    </div>
                 {%- endif -%}
-                {% comment %} <div class="product-rating">★★★★★ <em>(41)</em></div> {% endcomment %}
+                {%- if settings.show_action -%}
+                    <div class="card-action card-action-footer">
+                        {% render 'add-to-cart-form', product: product_card_product, id: 'form', position: position, sectionId: sectionId %}
+                    </div>
+                {%- endif -%}
             </div>
         </div>
 

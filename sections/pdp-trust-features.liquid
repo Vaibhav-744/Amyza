@@ -1,0 +1,434 @@
+{% comment %} pdp-trust-features.liquid — Trust Factor & Key Product Symbols Showcase (Metafield Ready) {% endcomment %}
+
+{%- liquid
+  assign section_id = section.id
+  assign bg_color = section.settings.section_bg | default: '#f7f4f3'
+  assign card_bg = section.settings.card_bg | default: '#ffffff'
+  assign heading = section.settings.heading
+  assign heading_color = section.settings.heading_color | default: '#731157'
+  assign subheading = section.settings.subheading
+  assign subheading_color = section.settings.subheading_color | default: '#731157'
+
+  assign title_color = section.settings.title_color | default: '#2a0a20'
+  assign body_color = section.settings.body_color | default: '#5a4350'
+  assign badge_bg = section.settings.badge_bg | default: '#731157'
+  assign badge_color = section.settings.badge_color | default: '#ffffff'
+  
+  assign showcase_image = section.settings.side_image | default: product.featured_image
+-%}
+
+<style>
+  #shopify-section-{{ section_id }} {
+    background-color: {{ bg_color }};
+  }
+
+  .pdp-tf-section {
+    padding: {{ section.settings.padding_top }}px 1.5rem {{ section.settings.padding_bottom }}px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .pdp-tf-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .pdp-tf-subheading {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: {{ subheading_color }};
+    margin-bottom: 0.5rem;
+  }
+
+  .pdp-tf-heading {
+    font-family: var(--serif, 'Instrument Serif', serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: {{ heading_color }};
+    line-height: 1.18;
+    margin: 0;
+  }
+
+  /* Main Card Container */
+  .pdp-tf-card {
+    background: {{ card_bg }};
+    border-radius: 16px;
+    padding: 2.2rem;
+    box-shadow: 0 10px 40px rgba(42, 10, 32, 0.05);
+    border: 1px solid rgba(115, 17, 87, 0.08);
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  /* Side Image Box */
+  .pdp-tf-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgba(42, 10, 32, 0.08);
+  }
+
+  .pdp-tf-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .pdp-tf-image-wrapper:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Trust List Column */
+  .pdp-tf-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Trust Feature Item */
+  .pdp-tf-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid rgba(115, 17, 87, 0.12);
+  }
+
+  .pdp-tf-item:first-child {
+    padding-top: 0;
+  }
+
+  .pdp-tf-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Symbol & Tag Header */
+  .pdp-tf-badge-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .pdp-tf-icon-badge {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: {{ badge_bg }};
+    color: {{ badge_color }};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .pdp-tf-icon-badge svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+  }
+
+  .pdp-tf-tag {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: {{ badge_bg }};
+  }
+
+  .pdp-tf-title {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: {{ title_color }};
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .pdp-tf-desc {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: {{ body_color }};
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Responsive Layout */
+  @media (max-width: 989px) {
+    .pdp-tf-card {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+      gap: 2rem;
+    }
+
+    .pdp-tf-image-wrapper {
+      max-height: 340px;
+    }
+
+    .pdp-tf-title {
+      font-size: 1rem;
+    }
+
+    .pdp-tf-item {
+      padding: 1.1rem 0;
+    }
+  }
+</style>
+
+<div class="pdp-tf-section">
+  {%- if heading != blank or subheading != blank -%}
+    <div class="pdp-tf-header">
+      {%- if subheading != blank -%}
+        <div class="pdp-tf-subheading">{{ subheading }}</div>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h2 class="pdp-tf-heading">{{ heading }}</h2>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="pdp-tf-card">
+    {%- comment -%} LEFT SIDE IMAGE SHOWCASE {%- endcomment -%}
+    <div class="pdp-tf-image-wrapper">
+      {%- if section.settings.side_image != blank -%}
+        <img
+          src="{{ section.settings.side_image | image_url: width: 900 }}"
+          alt="{{ heading | escape }}"
+          loading="lazy"
+          width="450"
+          height="450"
+        >
+      {%- elsif product.featured_image != blank -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 900 }}"
+          alt="{{ product.title | escape }}"
+          loading="lazy"
+          width="450"
+          height="450"
+        >
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} RIGHT TRUST ITEMS LIST {%- endcomment -%}
+    <div class="pdp-tf-list">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign tag_val = block.settings.tag
+          assign title_val = block.settings.title
+          assign desc_val = block.settings.description
+
+          if block.settings.metafield_key != blank
+            assign mf_key = block.settings.metafield_key | strip
+            if product.metafields.custom[mf_key] != blank
+              assign desc_val = product.metafields.custom[mf_key] | metafield_tag
+            elsif product.metafields[mf_key] != blank
+              assign desc_val = product.metafields[mf_key]
+            endif
+          endif
+        -%}
+
+        {%- if tag_val != blank or title_val != blank or desc_val != blank -%}
+          <div class="pdp-tf-item" {{ block.shopify_attributes }}>
+            {%- if tag_val != blank -%}
+              <div class="pdp-tf-badge-header">
+                <span class="pdp-tf-icon-badge">
+                  {%- if block.settings.custom_icon != blank -%}
+                    {{ block.settings.custom_icon }}
+                  {%- else -%}
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  {%- endif -%}
+                </span>
+                <span class="pdp-tf-tag">{{ tag_val }}</span>
+              </div>
+            {%- endif -%}
+
+            {%- if title_val != blank -%}
+              <h3 class="pdp-tf-title">{{ title_val }}</h3>
+            {%- endif -%}
+
+            {%- if desc_val != blank -%}
+              <div class="pdp-tf-desc">{{ desc_val }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PDP — Trust Features",
+  "tag": "section",
+  "class": "shopify-section-pdp-trust-features",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background Color",
+      "default": "#f7f4f3"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Inner Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading / Tagline",
+      "default": "✦ PROVEN FORMULATION"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#731157"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Key Clinical Benefits & Trust Factors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#731157"
+    },
+    {
+      "type": "image_picker",
+      "id": "side_image",
+      "label": "Side Image / Model Portrait (Supports Metafields)"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Symbol Badge Color",
+      "default": "#731157"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Symbol Icon Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Feature Title Color",
+      "default": "#2a0a20"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Feature Description Color",
+      "default": "#5a4350"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Feature",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "tag",
+          "label": "Badge Tag / Category (Supports Metafields)",
+          "default": "BENEFIT 01"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Feature Headline (Supports Metafields)",
+          "default": "Helps defend against UV-related oxidative stress"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "description",
+          "label": "Feature Details (Supports Metafields)"
+        },
+        {
+          "type": "text",
+          "id": "custom_icon",
+          "label": "Custom Icon Character / Emoji (Optional)",
+          "info": "Leave blank to use default checkmark ✔ icon"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Custom Metafield Key Fallback (Optional)",
+          "info": "e.g. trust_factor_1 or benefit_1. Fetches from product.metafields.custom[key]"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP — Trust Features",
+      "blocks": [
+        {
+          "type": "trust_item",
+          "settings": {
+            "tag": "BENEFIT 01",
+            "title": "Helps defend against UV-related oxidative stress (sunny days, commute days, everyday)"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "tag": "BENEFIT 02",
+            "title": "Supports brighter, more even-looking skin over time"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "tag": "BENEFIT 03",
+            "title": "Supports bouncy hydration + barrier strength for comfortable, resilient-looking skin"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

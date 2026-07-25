@@ -267,6 +267,106 @@
         "total_btn_bg_gradient_hover": ""
       }
     },
+    "pdp_key_features_main": {
+      "type": "pdp-key-features",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "tag": "✦ RENEW",
+            "title": "Stimulates Cell Renewal",
+            "description": "Ancestral botanicals support the skin's natural renewal process while replenishing moisture, leaving skin refreshed, resilient, and revitalised."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "tag": "✦ HYDRATE",
+            "title": "Deep Moisture Lock",
+            "description": "Tremella mushroom & botanical extracts hold moisture like silk, deeply hydrating skin layers without any heavy or greasy residue."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "tag": "✦ AGELESS",
+            "title": "Slows Visible Signs of Ageing",
+            "description": "Saffron and collagen-rich botanical complex improves elasticity and softens fine lines, coaxes a lit-from-within glow."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "tag": "✦ GLOW",
+            "title": "Promotes a Radiant Complexion",
+            "description": "Rose & Jasmine floral waters energise and revitalise the skin while defending against daily environmental stressors."
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
+      "settings": {
+        "section_bg": "#f7f4f3",
+        "subheading": "✦ RITUAL BENEFITS",
+        "subheading_color": "#731157",
+        "heading": "Why You'll Love AMYZA",
+        "heading_color": "#731157",
+        "image_bg_color": "#f1edec",
+        "title_color": "#2a0a20",
+        "body_color": "#5a4350",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "pdp_trust_features_main": {
+      "type": "pdp-trust-features",
+      "blocks": {
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "tag": "BENEFIT 01",
+            "title": "Helps defend against UV-related oxidative stress (sunny days, commute days, everyday)"
+          }
+        },
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "tag": "BENEFIT 02",
+            "title": "Supports brighter, more even-looking skin over time"
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "tag": "BENEFIT 03",
+            "title": "Supports bouncy hydration + barrier strength for comfortable, resilient-looking skin"
+          }
+        }
+      },
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3"
+      ],
+      "settings": {
+        "section_bg": "#f7f4f3",
+        "card_bg": "#ffffff",
+        "subheading": "✦ PROVEN FORMULATION",
+        "subheading_color": "#731157",
+        "heading": "Key Clinical Benefits & Trust Factors",
+        "heading_color": "#731157",
+        "badge_bg": "#731157",
+        "badge_color": "#ffffff",
+        "title_color": "#2a0a20",
+        "body_color": "#5a4350",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "pdp_ingredient_story_pyMaQC": {
       "type": "pdp-ingredient-story",
       "blocks": {
@@ -595,6 +695,8 @@
   },
   "order": [
     "main",
+    "pdp_key_features_main",
+    "pdp_trust_features_main",
     "pdp_ingredient_story_pyMaQC",
     "pdp_reviews_t8XqAT",
     "product_block_kzhqDX",
