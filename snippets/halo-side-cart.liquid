@@ -331,9 +331,9 @@
                 <button class="button button-1 button-checkout" onclick="window.location='{{ routes.cart_url | split: '/cart' | first }}/checkout'"{% if settings.show_global_checkbox %} disabled="disabled"{% endif %} id="cart-sidebar-checkout">
                     {{ 'sections.cart.checkout' | t }}
                 </button>
-                <a class="button button-2 button-view-cart" href="{{ routes.cart_url }}">
+                {% comment %} <a class="button button-2 button-view-cart" href="{{ routes.cart_url }}">
                     {{ 'sections.cart.view_cart' | t }}
-                </a>
+                </a> {% endcomment %}
             </div>
         </div>
     </div>
