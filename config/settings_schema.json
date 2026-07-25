@@ -2842,7 +2842,7 @@
         "info": "t:settings_schema.general.settings.favicon.info"
       },
       {
-        "type": "image_picker",
+        "type": "html",
         "id": "shape",
         "label":"Title Shape Image"
       },

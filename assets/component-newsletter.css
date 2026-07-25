@@ -162,7 +162,7 @@ body.newsletter-message-show .halo-newsletter-message-popup{
     margin: 0 auto;
 }
 .halo-newsletter-popup .halo-popup-content {
-    max-width: 270px;
+    max-width: 400px;
     margin: 0 auto;
     overflow: unset;
 }

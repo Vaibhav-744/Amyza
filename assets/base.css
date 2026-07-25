@@ -7240,7 +7240,7 @@ h3{font-size:1.3rem}
 .product-item .card .card-product .card-product__wrapper {}
 .product-item .card .card-product .card-product__wrapper .card-media {
     padding: 0px !important;
-    aspect-ratio: 3/4;
+    aspect-ratio: 1/1;
 }
 .product-item .card .card-product .card-product__wrapper .card-media img {
     object-fit: cover;
@@ -7384,7 +7384,7 @@ h3{font-size:1.3rem}
 }
 .featured_icontext .featured-text-wrapper .text-wrapper .description-text {
     font-size: .82rem;
-    color: #f1edec;
+    color: var(--plum);
     line-height: 1.4;
 }
 
@@ -7759,7 +7759,7 @@ h3{font-size:1.3rem}
   min-width: 130px;
   vertical-align: top;
   float: none !important;
-  margin: 0 !important;
+  /* margin: 0 !important; */
 }
 .product-detail_custom .halo-productView-right .product-form__label:hover {
   border-color: var(--plum);
@@ -8145,4 +8145,18 @@ h3{font-size:1.3rem}
     -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(115, 17, 87, .1);
     transition: background .3s, box-shadow .3s;
+}
+.halo-newsletter-popup .field__input {
+    border: 1px solid var(--plum) !important;
+    color: var(--plum) !important;
+    margin-bottom: 10px !important;
+}
+.halo-newsletter-popup .newsletter-form__button {
+    background: var(--plum) !important;
+    color: var(--porcelain) !important;
+    border-color: var(--plum) !important;
+    width: 100% !important;
+}
+.halo-newsletter-popup .newsletter-form__button:hover{
+    background:var(--plum-deep);
 }

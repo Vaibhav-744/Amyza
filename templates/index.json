@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "custom_video_Y9yRha": {
@@ -15,7 +6,7 @@
       "settings": {
         "video": "shopify://files/videos/14912587_1920_1080_50fps (1).mp4",
         "fallback_bg": "#731157",
-        "eyebrow": "✦ Introducing the Golden Nectar",
+        "eyebrow": "Introducing the Golden Nectar",
         "eyebrow_color": "#eaacc9",
         "heading": "<h1><em>The Glow</em><br/>You Deserve.</h1>",
         "heading_color": "#f1edec",
@@ -140,7 +131,7 @@
         "pd_top_title": 30,
         "product_small_tagline": "<p>✦ The Collection</p>",
         "product_small_description": "<p>Botanical heritage, bottled with intention.</p>",
-        "product_block_title": "<h2>Shop <em>The Ritual</em></h2>",
+        "product_block_title": "<h2><em>Shop</em> <em>The Ritual</em></h2>",
         "enable_border_title": false,
         "enable_border_title_style2": false,
         "fontsize_title": 16,
@@ -382,7 +373,7 @@
             "fontsize_text": 14,
             "content_spacing": 0,
             "custom_block_align": "left",
-            "color_title": "#f1edec",
+            "color_title": "#731157",
             "background_color_block": "rgba(0,0,0,0)",
             "background_gradient_color_block": "",
             "spacing_top": 0,
@@ -528,7 +519,7 @@
       "name": "Ritual",
       "settings": {
         "section_bg": "#e8e2e0",
-        "card_bg": "#f1edec",
+        "card_bg": "#EAACC9",
         "eyebrow": "✦ Step into",
         "eyebrow_color": "#731157",
         "heading": "<h2>The <em>Ritual</em> You Need</h2>",
@@ -538,7 +529,7 @@
         "subheading_color": "#666655",
         "number_color": "#731157",
         "card_title_color": "#2a0a20",
-        "card_desc_color": "#666655"
+        "card_desc_color": "#000000"
       }
     },
     "heritage_xH3aVg": {
@@ -648,7 +639,7 @@
       ],
       "name": "Botanicals",
       "settings": {
-        "section_bg": "#1d4f3b",
+        "section_bg": "#427661",
         "section_text_color": "#f1edec",
         "eyebrow": "✦ The Catalogue",
         "eyebrow_color": "#eaacc9",

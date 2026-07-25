@@ -2,13 +2,18 @@
 
 <style>
   #shopify-section-{{ section.id }} .faq-section {
-    padding: clamp(5rem, 10vw, 9rem) 6vw;
+    padding-top: clamp(5rem, 10vw, 9rem);
+    padding-bottom: clamp(5rem, 10vw, 9rem);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left:  3rem !important;
+    padding-right:  3rem !important;
     background: {{ section.settings.section_bg }};
   }
 
   /* ── Section header ── */
   #shopify-section-{{ section.id }} .faq-header {
-    max-width: 1100px;
+    max-width: 100%;
     margin: 0 auto clamp(3rem, 6vw, 5rem);
     text-align: {{ section.settings.header_align }};
   }
@@ -34,11 +39,11 @@
 
   /* ── Main two-col grid ── */
   #shopify-section-{{ section.id }} .faq-body {
-    max-width: 1100px;
+    max-width: 100%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 0 clamp(2.5rem, 5vw, 5rem);
+    grid-template-columns: 400px 1fr;
+    gap: 0 clamp(2.5rem, 5vw, 3rem);
     align-items: start;
   }
 
