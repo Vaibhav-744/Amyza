@@ -24,10 +24,12 @@
   /* ── Botanical image ── */
   #shopify-section-{{ section.id }} .botanical-img {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1/1;
+    overflow:hidden;
+    background-color:transparent;
     border-radius: var(--radius-sm);
     margin-bottom: .8rem;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
   }
 
