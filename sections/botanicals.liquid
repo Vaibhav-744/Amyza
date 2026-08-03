@@ -109,6 +109,7 @@
         {% for block in section.blocks %}
           <div class="botanical-card carousel-slide" {{ block.shopify_attributes }}>
             {% if block.settings.image != blank %}
+              <div class="botanical-image_wrapper">
               <img
                 class="botanical-img"
                 src="{{ block.settings.image | image_url: width: 600 }}"
@@ -117,6 +118,7 @@
                 height="600"
                 loading="lazy"
               />
+            </div>
             {% else %}
               <div class="botanical-img" style="background: {{ block.settings.fallback_bg }};"></div>
             {% endif %}
