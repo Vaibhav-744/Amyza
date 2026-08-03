@@ -528,7 +528,7 @@
       "name": "Ritual",
       "settings": {
         "section_bg": "#e8e2e0",
-        "card_bg": "#EAACC9",
+        "card_bg": "#eaacc9",
         "eyebrow": "✦ Step into",
         "eyebrow_color": "#731157",
         "heading": "<h2>The <em>Ritual</em> You Need</h2>",
@@ -574,6 +574,7 @@
         "botanical_eCqRRC": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/2.jpg",
             "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
             "title": "Saffron",
             "description": "The golden thread of heritage. Delivers unparalleled radiance."
@@ -582,6 +583,7 @@
         "botanical_jDjycM": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/1.jpg",
             "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
             "title": "Jasmine",
             "description": "Our fragrant base. Replaces water with a floral kiss."
@@ -590,6 +592,7 @@
         "botanical_WemzmL": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/6.jpg",
             "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
             "title": "Rose",
             "description": "A centuries-old symbol of softness and renewal."
@@ -598,6 +601,7 @@
         "botanical_DAw7fr": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/4.jpg",
             "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)",
             "title": "Turmeric",
             "description": "The ancestral glow-giver. Anti-inflammatory, luminous."
@@ -606,6 +610,7 @@
         "botanical_eVGAMX": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/3.jpg",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
             "title": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens."
@@ -622,6 +627,7 @@
         "botanical_fzErJT": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/5.jpg",
             "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
             "title": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother."
@@ -630,6 +636,7 @@
         "botanical_8YmYeH": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/7.jpg",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
             "title": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless."
