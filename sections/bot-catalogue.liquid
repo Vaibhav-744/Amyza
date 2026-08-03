@@ -52,13 +52,14 @@
 
   /* ── Swatch — image or fallback gradient ── */
   #shopify-section-{{ section.id }} .bot-card-swatch {
-    height: 120px;
+    height: auto;
     border-radius: var(--radius-sm);
     margin-bottom: 1.1rem;
     overflow: hidden;
     position: relative;
     background: {{ section.settings.swatch_fallback }};
     aspect-ratio:1/1;
+    Width:100%;
     overflow:hidden;
   }
   #shopify-section-{{ section.id }} .bot-card-swatch img {
