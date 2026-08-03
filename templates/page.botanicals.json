@@ -51,6 +51,7 @@
         "botanical_MJAaxx": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/2.jpg",
             "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
             "name": "Saffron",
             "description": "The golden thread of heritage. Unrivalled radiance.",
@@ -60,6 +61,7 @@
         "botanical_JjgtH4": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/6.jpg",
             "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
             "name": "Rose",
             "description": "A centuries-old symbol of softness and renewal.",
@@ -69,6 +71,7 @@
         "botanical_HGLXPA": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/1.jpg",
             "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
             "name": "Jasmine",
             "description": "Our fragrant base. A floral kiss in place of water.",
@@ -78,6 +81,7 @@
         "botanical_AjVLPi": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/4.jpg",
             "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)",
             "name": "Turmeric",
             "description": "The ancestral glow-giver. Anti-inflammatory, luminous.",
@@ -87,6 +91,7 @@
         "botanical_HFjfYT": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/3.jpg",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
             "name": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens.",
@@ -105,6 +110,7 @@
         "botanical_dzy77j": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/5.jpg",
             "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
             "name": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother.",
@@ -114,6 +120,7 @@
         "botanical_zBrWiR": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/7.jpg",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
             "name": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless.",
@@ -144,7 +151,7 @@
         "card_bg": "#ffffff",
         "card_border": "#73115714",
         "swatch_fallback": "#ead9e4",
-        "card_title_color": "#4E0A3A",
+        "card_title_color": "#4e0a3a",
         "card_desc_color": "#2a0a20",
         "tag_color": "#731157",
         "tag_bg": "#eaacc938"
@@ -187,14 +194,14 @@
       "settings": {
         "section_bg": "#731157",
         "eyebrow": "✦ The Sourcing Promise",
-        "eyebrow_color": "#EAACC9",
+        "eyebrow_color": "#eaacc9",
         "heading": "From soil to skin.",
-        "heading_color": "#F1EDEC",
-        "heading_italic_color": "#EAACC9",
-        "step_border_color": "rgba(241,237,236,0.25)",
-        "step_num_color": "#EAACC9",
-        "step_title_color": "#F1EDEC",
-        "step_body_color": "#F1EDEC"
+        "heading_color": "#f1edec",
+        "heading_italic_color": "#eaacc9",
+        "step_border_color": "#f1edec40",
+        "step_num_color": "#eaacc9",
+        "step_title_color": "#f1edec",
+        "step_body_color": "#f1edec"
       }
     },
     "product_block_krFWEJ": {
