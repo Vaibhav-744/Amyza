@@ -391,9 +391,12 @@
     {%- endif -%}
 
     <div class="custom-footer-copyright">
-      {{ section.settings.copyright_text | default: '© Copyright, AMYZA, 2026. Powered by Shopify' }}
-    </div>
-  </div>
+  {{ section.settings.copyright_text | default: '© Copyright, AMYZA, 2026.' }}
+  Design and developed by 
+  <a href="https://raisemybusiness.com/" target="_blank" rel="noopener noreferrer">
+    Harshit
+  </a>
+</div>
 
   {%- if section.settings.show_policy_links and shop.policies.size > 0 -%}
     <div class="custom-footer-policies">
