@@ -91,7 +91,7 @@
         "botanical_HFjfYT": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/3.jpg",
+            "image": "shopify://shop_images/Untitled_design_2.png",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
             "name": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens.",
@@ -101,6 +101,7 @@
         "botanical_rbe3pB": {
           "type": "botanical",
           "settings": {
+            "image": "shopify://shop_images/3.jpg",
             "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
             "name": "Tremella",
             "description": "The supreme hydrator, revered in TCM.",
