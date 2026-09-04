@@ -75,6 +75,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    function updateCenterSlide(){
+      if (carousel.dataset.carousel === 'testimonials'){
+        const perView = getPerView();
+        slides.forEach(function(s){
+          s.classList.remove('featured');
+        });
+
+        let centerIdx = index;
+        if (perView >= 3) {
+          centerIdx = index + 1;
+        }
+
+        if (slides[centerIdx]) {
+          slides[centerIdx].classList.add('featured');
+        }
+      }
+    }
+
+
     function update(){
 
       const slideW = slides[0].offsetWidth;
@@ -83,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
       track.style.transform =
         'translateX(-' + (index * (slideW + gap)) + 'px)';
 
+      updateCenterSlide();
       renderDots();
     }
 

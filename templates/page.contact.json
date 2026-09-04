@@ -11,10 +11,139 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {}
+    },
+    "contact_page_epXe9X": {
+      "type": "contact-page",
+      "blocks": {
+        "info_card_cRVqT7": {
+          "type": "info_card",
+          "settings": {
+            "title": "Email us",
+            "link_text": "hello@amyzaskin.com",
+            "link_url": "mailto:hello@amyzaskin.com",
+            "content": "<p>We reply within one working day.</p>",
+            "show_socials": false,
+            "instagram_url": "",
+            "tiktok_url": "",
+            "youtube_url": ""
+          }
+        },
+        "info_card_XkW3tV": {
+          "type": "info_card",
+          "settings": {
+            "title": "WhatsApp",
+            "link_text": "+60 12-345 6789",
+            "link_url": "",
+            "content": "<p>Mon–Sat, 10am–7pm MYT.</p>",
+            "show_socials": false,
+            "instagram_url": "",
+            "tiktok_url": "",
+            "youtube_url": ""
+          }
+        },
+        "info_card_ELikid": {
+          "type": "info_card",
+          "settings": {
+            "title": "The Studio",
+            "link_text": "hello@amyzaskin.com",
+            "link_url": "",
+            "content": "<p>AMYZA Skin Sdn Bhd<br/>Bangsar, Kuala Lumpur, Malaysia</p>",
+            "show_socials": false,
+            "instagram_url": "",
+            "tiktok_url": "",
+            "youtube_url": ""
+          }
+        },
+        "info_card_VXVkPX": {
+          "type": "info_card",
+          "settings": {
+            "title": "Follow the ritual",
+            "link_text": "hello@amyzaskin.com",
+            "link_url": "",
+            "content": "<p>We reply within one working day.</p>",
+            "show_socials": true,
+            "instagram_url": "",
+            "tiktok_url": "",
+            "youtube_url": ""
+          }
+        },
+        "faq_item_xC6cQc": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Orders within Malaysia arrive in 2–4 working days. We dispatch within 1–2 days and email you tracking the moment it ships.",
+            "open_by_default": true
+          }
+        },
+        "faq_item_YV6PDY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's your returns policy?",
+            "answer": "Love it or return it within 30 days — even if the bottle is empty. We'll refund you in full, no awkward questions.",
+            "open_by_default": false
+          }
+        },
+        "faq_item_y4JiAf": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can you help me build a routine?",
+            "answer": "Absolutely. Drop us a note with your skin type and concerns and our concierge will hand-build a ritual just for you.",
+            "open_by_default": false
+          }
+        },
+        "faq_item_GYx4h9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your products suitable for sensitive skin?",
+            "answer": "Yes — our formulas are fragrance-free, barrier-loving and dermatologically tested. Still, we always recommend a patch test first.",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "info_card_cRVqT7",
+        "info_card_XkW3tV",
+        "info_card_ELikid",
+        "info_card_VXVkPX",
+        "faq_item_xC6cQc",
+        "faq_item_YV6PDY",
+        "faq_item_y4JiAf",
+        "faq_item_GYx4h9"
+      ],
+      "name": "Contact Page",
+      "settings": {
+        "section_bg": "#F1EDEC",
+        "text_color": "#2A0A20",
+        "card_bg": "#F7F4F3",
+        "input_bg": "#F7F4F3",
+        "hero_bg_gradient": "linear-gradient(135deg, rgba(234, 172, 201, 1), rgba(243, 214, 227, 1) 50%, rgba(241, 237, 236, 1) 100%)",
+        "eyebrow": "Concierge",
+        "eyebrow_color": "#731157",
+        "heading": "Let's talk <em>skin.</em>",
+        "hero_heading_color": "#4e0a3a",
+        "hero_heading_italic_color": "#731157",
+        "subheading": "Questions about your ritual, your order, or where to begin? Think of us as your older sister — pull up a chair and ask away.",
+        "hero_text_color": "#5a4350",
+        "form_name_label": "Your name",
+        "form_name_placeholder": "e.g. Aishah",
+        "form_email_label": "Email",
+        "form_email_placeholder": "your@email.com",
+        "form_topic_label": "What's this about?",
+        "form_message_label": "Your message",
+        "form_message_placeholder": "Tell us a little about your skin or your question…",
+        "form_button_label": "Send Message →",
+        "btn_bg": "#731157",
+        "btn_color": "#F1EDEC",
+        "btn_hover_bg": "#4e0a3a",
+        "show_faq": true,
+        "faq_heading": "Quick <em>answers.</em>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "contact_page_epXe9X"
   ]
 }

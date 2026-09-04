@@ -63,6 +63,13 @@
     border-radius: var(--radius-md, 4px);
     border: 1px solid rgba(115,17,87,.06);
     height: 100%;
+    transition: background-color .4s ease, border-color .4s ease, color .4s ease;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial .stars,
+  #shopify-section-{{ section.id }} .testimonial .testimonial-content p,
+  #shopify-section-{{ section.id }} .testimonial .author {
+    transition: color .4s ease;
   }
 
   #shopify-section-{{ section.id }} .testimonial.featured{
