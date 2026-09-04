@@ -2329,13 +2329,13 @@ input.form-input-hiddenPlaceholder::placeholder {
     position: absolute;
     top: 0px;
     right: 0px;
-    min-width: 23px;
-    min-height: 23px;
+    min-width: 20px;
+    min-height: 20px;
     text-align: center;
     border-radius: 50%;
     font-size: var(--font-body-size);
     font-weight: var(--font-weight-normal);
-    line-height: 22px;
+    line-height: 20px;
     letter-spacing: var(--body-letter-spacing);
     background-color: var(--color-global);
     color: var(--color-white);
