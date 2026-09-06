@@ -35,7 +35,7 @@
           "settings": {
             "title": "WhatsApp",
             "link_text": "+60 12-345 6789",
-            "link_url": "",
+            "link_url": "https://wa.me/60123456789",
             "content": "<p>Mon–Sat, 10am–7pm MYT.</p>",
             "show_socials": false,
             "instagram_url": "",
@@ -48,7 +48,7 @@
           "settings": {
             "title": "The Studio",
             "link_text": "hello@amyzaskin.com",
-            "link_url": "",
+            "link_url": "mailto:hello@amyzaskin.com",
             "content": "<p>AMYZA Skin Sdn Bhd<br/>Bangsar, Kuala Lumpur, Malaysia</p>",
             "show_socials": false,
             "instagram_url": "",
@@ -61,7 +61,7 @@
           "settings": {
             "title": "Follow the ritual",
             "link_text": "hello@amyzaskin.com",
-            "link_url": "",
+            "link_url": "mailto:hello@amyzaskin.com",
             "content": "<p>We reply within one working day.</p>",
             "show_socials": true,
             "instagram_url": "",
@@ -114,10 +114,10 @@
       ],
       "name": "Contact Page",
       "settings": {
-        "section_bg": "#F1EDEC",
-        "text_color": "#2A0A20",
-        "card_bg": "#F7F4F3",
-        "input_bg": "#F7F4F3",
+        "section_bg": "#f1edec",
+        "text_color": "#2a0a20",
+        "card_bg": "#f7f4f3",
+        "input_bg": "#f7f4f3",
         "hero_bg_gradient": "linear-gradient(135deg, rgba(234, 172, 201, 1), rgba(243, 214, 227, 1) 50%, rgba(241, 237, 236, 1) 100%)",
         "eyebrow": "Concierge",
         "eyebrow_color": "#731157",
@@ -135,7 +135,7 @@
         "form_message_placeholder": "Tell us a little about your skin or your question…",
         "form_button_label": "Send Message →",
         "btn_bg": "#731157",
-        "btn_color": "#F1EDEC",
+        "btn_color": "#f1edec",
         "btn_hover_bg": "#4e0a3a",
         "show_faq": true,
         "faq_heading": "Quick <em>answers.</em>"
