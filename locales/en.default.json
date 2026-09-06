@@ -188,7 +188,7 @@
     "article": {
       "blog": "Blog",
       "read_more_title": "Read more: {{ title }}",
-      "read_more": "View details",
+      "read_more": "Read More",
       "author": "{{ author }}",
       "comments": {
         "one": "{{ count }} comment",

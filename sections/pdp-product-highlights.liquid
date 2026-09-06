@@ -1,0 +1,472 @@
+{% comment %} pdp-product-highlights.liquid — Product Icon Highlights Grid (Supports Metafields & Metaobject Entries) {% endcomment %}
+
+{%- liquid
+  assign section_id = section.id
+  assign bg_color = section.settings.section_bg | default: '#f7f4f3'
+  assign text_color = section.settings.text_color | default: '#2a0a20'
+  assign icon_color = section.settings.icon_color | default: '#2a0a20'
+  assign heading = section.settings.heading
+  assign heading_color = section.settings.heading_color | default: '#731157'
+  assign subheading = section.settings.subheading
+  assign subheading_color = section.settings.subheading_color | default: '#731157'
+  
+  assign mf_key = section.settings.metafield_key | default: 'product_highlights' | strip
+  
+  assign metaobjects = nil
+  if product.metafields.custom[mf_key].value != blank
+    assign metaobjects = product.metafields.custom[mf_key].value
+  elsif product.metafields[mf_key].value != blank
+    assign metaobjects = product.metafields[mf_key].value
+  elsif product.metafields.custom[mf_key] != blank
+    assign metaobjects = product.metafields.custom[mf_key]
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section_id }} {
+    background-color: {{ bg_color }};
+  }
+
+  .pdp-ph-wrapper {
+    padding: {{ section.settings.padding_top }}px 1.5rem {{ section.settings.padding_bottom }}px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pdp-ph-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  .pdp-ph-subheading {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: {{ subheading_color }};
+    margin-bottom: 0.4rem;
+  }
+
+  .pdp-ph-heading {
+    font-family: var(--serif, 'Instrument Serif', serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: {{ heading_color }};
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .pdp-ph-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop | default: 3 }}, 1fr);
+    gap: 2.2rem 2.8rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pdp-ph-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.2rem 0;
+  }
+
+  .pdp-ph-icon-box {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ icon_color }};
+  }
+
+  .pdp-ph-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .pdp-ph-icon-box svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+  }
+
+  .pdp-ph-label {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: {{ text_color }};
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 989px) {
+    .pdp-ph-grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop | default: 3 }}, 1fr);
+      gap: 1.8rem 1.8rem;
+    }
+    .pdp-ph-icon-box {
+      width: 42px;
+      height: 42px;
+    }
+    .pdp-ph-label {
+      font-size: 1.05rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .pdp-ph-grid {
+      grid-template-columns: repeat({{ section.settings.columns_mobile | default: 2 }}, 1fr);
+      gap: 1.5rem 1.2rem;
+    }
+    .pdp-ph-item {
+      gap: 0.85rem;
+    }
+    .pdp-ph-icon-box {
+      width: 38px;
+      height: 38px;
+    }
+    .pdp-ph-label {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .pdp-ph-grid {
+      grid-template-columns: repeat({{ section.settings.columns_mobile | default: 2 }}, 1fr);
+      gap: 1.2rem 0.75rem;
+    }
+    .pdp-ph-icon-box {
+      width: 34px;
+      height: 34px;
+    }
+    .pdp-ph-label {
+      font-size: 0.88rem;
+    }
+  }
+</style>
+
+<div class="pdp-ph-wrapper">
+  {%- if heading != blank or subheading != blank -%}
+    <div class="pdp-ph-header">
+      {%- if subheading != blank -%}
+        <div class="pdp-ph-subheading">{{ subheading }}</div>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h2 class="pdp-ph-heading">{{ heading }}</h2>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="pdp-ph-grid">
+    {%- if metaobjects != blank -%}
+      {%- comment -%} DYNAMIC METAOBJECT ENTRIES RENDERING {%- endcomment -%}
+      {%- for entry in metaobjects -%}
+        {%- liquid
+          assign item_label = ''
+          assign item_icon_img = ''
+          assign item_svg = ''
+          assign item_preset = ''
+
+          if entry.title != blank
+            assign item_label = entry.title.value | default: entry.title
+          elsif entry.name != blank
+            assign item_label = entry.name.value | default: entry.name
+          elsif entry.label != blank
+            assign item_label = entry.label.value | default: entry.label
+          elsif entry.text != blank
+            assign item_label = entry.text.value | default: entry.text
+          elsif entry.heading != blank
+            assign item_label = entry.heading.value | default: entry.heading
+          endif
+
+          if entry.icon != blank
+            if entry.icon.value.image_url or entry.icon.image_url or entry.icon.value.src
+              assign item_icon_img = entry.icon.value | default: entry.icon
+            elsif entry.icon.value contains '<svg' or entry.icon contains '<svg'
+              assign item_svg = entry.icon.value | default: entry.icon
+            else
+              assign item_preset = entry.icon.value | default: entry.icon | handleize
+            endif
+          elsif entry.image != blank
+            assign item_icon_img = entry.image.value | default: entry.image
+          elsif entry.svg != blank or entry.svg_code != blank
+            assign item_svg = entry.svg.value | default: entry.svg | default: entry.svg_code.value | default: entry.svg_code
+          elsif entry.symbol != blank or entry.preset != blank
+            assign item_preset = entry.symbol.value | default: entry.symbol | default: entry.preset.value | default: entry.preset | handleize
+          endif
+
+          if item_preset == blank and item_label != blank
+            assign item_preset = item_label | handleize
+          endif
+        -%}
+
+        {%- if item_label != blank or item_icon_img != blank or item_svg != blank or item_preset != blank -%}
+          <div class="pdp-ph-item">
+            <div class="pdp-ph-icon-box">
+              {%- if item_icon_img != blank -%}
+                <img src="{{ item_icon_img | image_url: width: 120 }}" alt="{{ item_label | escape }}" width="48" height="48" loading="lazy">
+              {%- elsif item_svg != blank -%}
+                {{ item_svg }}
+              {%- else -%}
+                {%- case item_preset -%}
+                  {%- when 'no-mineral-oils', 'no_mineral_oils', 'mineral-oils', 'mineral_oils', 'drop-leaf', 'drop_leaf' -%}
+                    <svg viewBox="0 0 48 48"><path d="M22 6C22 6 10 20 10 28C10 34.6274 15.3726 40 22 40C28.6274 40 34 34.6274 34 28C34 20 22 6 22 6Z"/><path d="M22 40C22 34 26 30 32 29"/><path d="M22 40C16 38 14 31 16 26"/></svg>
+                  {%- when 'no-parabens', 'no_parabens', 'parabens', 'chemical', 'chemical-formula' -%}
+                    <svg viewBox="0 0 48 48"><polygon points="16,14 28,14 34,24 28,34 16,34 10,24"/><line x1="16" y1="14" x2="13" y2="9"/><line x1="28" y1="14" x2="30" y2="7"/><line x1="29" y1="7" x2="31" y2="7"/><line x1="16" y1="34" x2="13" y2="39"/></svg>
+                  {%- when 'protects-skin-barrier', 'protects_skin_barrier', 'skin-barrier', 'skin_barrier', 'shield-check', 'shield_check' -%}
+                    <svg viewBox="0 0 48 48"><path d="M24 6L36 10V22C36 30 24 38 24 38C24 38 12 30 12 22V10L24 6Z"/><polyline points="19 21 23 25 30 17"/><line x1="8" y1="42" x2="40" y2="42"/><line x1="14" y1="45" x2="20" y2="45"/><line x1="24" y1="45" x2="34" y2="45"/></svg>
+                  {%- when 'anti-ageing', 'anti_ageing', 'anti-aging', 'anti_aging', 'hourglass' -%}
+                    <svg viewBox="0 0 48 48"><line x1="12" y1="6" x2="36" y2="6"/><line x1="12" y1="42" x2="36" y2="42"/><path d="M14 6L24 22L34 6"/><path d="M14 42L24 26L34 42"/><path d="M17 37C20 34 28 34 31 37"/></svg>
+                  {%- when 'hydrates', 'hydration', 'water-drops', 'water_drops' -%}
+                    <svg viewBox="0 0 48 48"><path d="M20 12C20 12 10 24 10 31C10 36.5 14.5 41 20 41C25.5 41 30 36.5 30 31C30 24 20 12 20 12Z"/><path d="M33 12C33 12 27 19 27 24C27 27.5 29.7 30 33 30C36.3 30 39 27.5 39 24C39 19 33 12 33 12Z"/></svg>
+                  {%- when 'brightening', 'sparkles', 'radiance' -%}
+                    <svg viewBox="0 0 48 48"><path d="M24 6C24 14 26 16 34 16C26 16 24 18 24 26C24 18 22 16 14 16C22 16 24 14 24 6Z"/><path d="M36 26C36 31 37.5 32 42.5 32C37.5 32 36 33 36 38C36 33 34.5 32 29.5 32C34.5 32 36 31 36 26Z"/><path d="M14 32C14 35 15 36 18 36C15 36 14 37 14 40C14 37 13 36 10 36C13 36 14 35 14 32Z"/></svg>
+                  {%- else -%}
+                    <svg viewBox="0 0 48 48"><path d="M24 6C24 14 26 16 34 16C26 16 24 18 24 26C24 18 22 16 14 16C22 16 24 14 24 6Z"/><path d="M36 26C36 31 37.5 32 42.5 32C37.5 32 36 33 36 38C36 33 34.5 32 29.5 32C34.5 32 36 31 36 26Z"/></svg>
+                {%- endcase -%}
+              {%- endif -%}
+            </div>
+            {%- if item_label != blank -%}
+              <div class="pdp-ph-label">{{ item_label }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      {%- comment -%} SECTION BLOCKS FALLBACK (THEME CUSTOMIZER) {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign item_label = block.settings.title
+          assign item_icon_img = block.settings.custom_image
+          assign item_svg = block.settings.custom_svg
+          assign item_preset = block.settings.preset_icon
+        -%}
+        <div class="pdp-ph-item" {{ block.shopify_attributes }}>
+          <div class="pdp-ph-icon-box">
+            {%- if item_icon_img != blank -%}
+              <img src="{{ item_icon_img | image_url: width: 120 }}" alt="{{ item_label | escape }}" width="48" height="48" loading="lazy">
+            {%- elsif item_svg != blank -%}
+              {{ item_svg }}
+            {%- else -%}
+              {%- case item_preset -%}
+                {%- when 'no_mineral_oils' -%}
+                  <svg viewBox="0 0 48 48"><path d="M22 6C22 6 10 20 10 28C10 34.6274 15.3726 40 22 40C28.6274 40 34 34.6274 34 28C34 20 22 6 22 6Z"/><path d="M22 40C22 34 26 30 32 29"/><path d="M22 40C16 38 14 31 16 26"/></svg>
+                {%- when 'no_parabens' -%}
+                  <svg viewBox="0 0 48 48"><polygon points="16,14 28,14 34,24 28,34 16,34 10,24"/><line x1="16" y1="14" x2="13" y2="9"/><line x1="28" y1="14" x2="30" y2="7"/><line x1="29" y1="7" x2="31" y2="7"/><line x1="16" y1="34" x2="13" y2="39"/></svg>
+                {%- when 'protects_skin_barrier' -%}
+                  <svg viewBox="0 0 48 48"><path d="M24 6L36 10V22C36 30 24 38 24 38C24 38 12 30 12 22V10L24 6Z"/><polyline points="19 21 23 25 30 17"/><line x1="8" y1="42" x2="40" y2="42"/><line x1="14" y1="45" x2="20" y2="45"/><line x1="24" y1="45" x2="34" y2="45"/></svg>
+                {%- when 'anti_ageing' -%}
+                  <svg viewBox="0 0 48 48"><line x1="12" y1="6" x2="36" y2="6"/><line x1="12" y1="42" x2="36" y2="42"/><path d="M14 6L24 22L34 6"/><path d="M14 42L24 26L34 42"/><path d="M17 37C20 34 28 34 31 37"/></svg>
+                {%- when 'hydrates' -%}
+                  <svg viewBox="0 0 48 48"><path d="M20 12C20 12 10 24 10 31C10 36.5 14.5 41 20 41C25.5 41 30 36.5 30 31C30 24 20 12 20 12Z"/><path d="M33 12C33 12 27 19 27 24C27 27.5 29.7 30 33 30C36.3 30 39 27.5 39 24C39 19 33 12 33 12Z"/></svg>
+                {%- when 'brightening' -%}
+                  <svg viewBox="0 0 48 48"><path d="M24 6C24 14 26 16 34 16C26 16 24 18 24 26C24 18 22 16 14 16C22 16 24 14 24 6Z"/><path d="M36 26C36 31 37.5 32 42.5 32C37.5 32 36 33 36 38C36 33 34.5 32 29.5 32C34.5 32 36 31 36 26Z"/><path d="M14 32C14 35 15 36 18 36C15 36 14 37 14 40C14 37 13 36 10 36C13 36 14 35 14 32Z"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 48 48"><path d="M24 6C24 14 26 16 34 16C26 16 24 18 24 26C24 18 22 16 14 16C22 16 24 14 24 6Z"/><path d="M36 26C36 31 37.5 32 42.5 32C37.5 32 36 33 36 38C36 33 34.5 32 29.5 32C34.5 32 36 31 36 26Z"/></svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          {%- if item_label != blank -%}
+            <div class="pdp-ph-label">{{ item_label }}</div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PDP — Icon Highlights",
+  "tag": "section",
+  "class": "shopify-section-pdp-product-highlights",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#f7f4f3"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Label Text Color",
+      "default": "#2a0a20"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Stroke Color",
+      "default": "#2a0a20"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading (Optional)"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#731157"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (Optional)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Product Metafield Key (Metaobjects List)",
+      "default": "product_highlights",
+      "info": "Key under product.metafields.custom[key] containing a list of Metaobject entries."
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop Columns",
+      "options": [
+        { "value": "2", "label": "2 Columns" },
+        { "value": "3", "label": "3 Columns" },
+        { "value": "4", "label": "4 Columns" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile Columns",
+      "options": [
+        { "value": "1", "label": "1 Column" },
+        { "value": "2", "label": "2 Columns" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Label Text",
+          "default": "No Mineral Oils"
+        },
+        {
+          "type": "select",
+          "id": "preset_icon",
+          "label": "Preset Theme Vector Icon",
+          "options": [
+            { "value": "no_mineral_oils", "label": "Drop + Leaf (No Mineral Oils)" },
+            { "value": "no_parabens", "label": "Chemical Ring (No Parabens)" },
+            { "value": "protects_skin_barrier", "label": "Shield + Check (Protects Barrier)" },
+            { "value": "anti_ageing", "label": "Hourglass (Anti-Ageing)" },
+            { "value": "hydrates", "label": "Dual Droplets (Hydrates)" },
+            { "value": "brightening", "label": "Sparkles (Brightening)" }
+          ],
+          "default": "no_mineral_oils"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Icon Image (Optional)"
+        },
+        {
+          "type": "html",
+          "id": "custom_svg",
+          "label": "Custom SVG Code (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP — Icon Highlights",
+      "blocks": [
+        {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "no_mineral_oils"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "title": "No Parabens",
+            "preset_icon": "no_parabens"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "title": "Protects Skin Barrier",
+            "preset_icon": "protects_skin_barrier"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "title": "Anti-Ageing",
+            "preset_icon": "anti_ageing"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "title": "Hydrates",
+            "preset_icon": "hydrates"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "title": "Brightening",
+            "preset_icon": "brightening"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

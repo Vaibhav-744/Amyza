@@ -31,7 +31,7 @@
   /* Top Section Grid */
   .custom-footer-top {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
     align-items: start;
   }
@@ -319,6 +319,28 @@
             </ul>
           </div>
         {%- endif -%}
+
+        {%- if section.settings.menu_3 != blank -%}
+          <div class="custom-footer-menu-col">
+            <h4 class="custom-footer-menu-heading">{{ section.settings.menu_3_heading | default: section.settings.menu_3.title }}</h4>
+            <ul class="custom-footer-menu-list">
+              {%- for link in section.settings.menu_3.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.menu_4 != blank -%}
+          <div class="custom-footer-menu-col">
+            <h4 class="custom-footer-menu-heading">{{ section.settings.menu_4_heading | default: section.settings.menu_4.title }}</h4>
+            <ul class="custom-footer-menu-list">
+              {%- for link in section.settings.menu_4.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
       </div>
 
       {%- if section.settings.show_social -%}
@@ -460,6 +482,27 @@
       "id": "menu_2_heading",
       "label": "Menu 2 Custom Heading",
       "default": "CUSTOMER SERVICE"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_3",
+      "label": "Menu Column 3 (e.g. POLICY)"
+    },
+    {
+      "type": "text",
+      "id": "menu_3_heading",
+      "label": "Menu 3 Custom Heading",
+      "default": "POLICY"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_4",
+      "label": "Menu Column 4"
+    },
+    {
+      "type": "text",
+      "id": "menu_4_heading",
+      "label": "Menu 4 Custom Heading"
     },
     {
       "type": "checkbox",

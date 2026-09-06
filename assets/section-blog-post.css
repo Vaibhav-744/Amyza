@@ -1,5 +1,5 @@
 .article-template .page-header {
-  padding-bottom: 25px;
+  padding: 20px 0 40px;
 }
 
 .halo-article-block {
@@ -15,7 +15,7 @@
 .article__pagination {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 
 .article__pagination--item {
@@ -204,7 +204,7 @@
 }
 
 /* START: Article lookbook */
-.articleLookbook-block .articleLookbook-item  {
+.articleLookbook-block .articleLookbook-item {
   position: relative;
 }
 
@@ -241,7 +241,7 @@
   background: var(--btn-hover-bg);
 }
 
-.articleLookbook-block .articleLookbook-item .articleLookbook-item-content .button + .button {
+.articleLookbook-block .articleLookbook-item .articleLookbook-item-content .button+.button {
   margin-top: 15px;
 }
 
@@ -342,7 +342,7 @@
   align-items: flex-start;
 }
 
-.article-template__comments-comment + .article-template__comments-comment {
+.article-template__comments-comment+.article-template__comments-comment {
   margin-top: 50px;
 }
 
@@ -378,7 +378,8 @@
   color: #3c3c3c;
 }
 
-.comment-form .form-label, .comment-form .field__label {
+.comment-form .form-label,
+.comment-form .field__label {
   margin-bottom: 5px;
   font-weight: var(--font-weight-medium);
 }
@@ -403,7 +404,7 @@
   font-weight: var(--font-weight-semibold) !important;
 }
 
-.article-template > *:first-child:not(.article-template__hero-container) {
+.article-template>*:first-child:not(.article-template__hero-container) {
   margin-top: 2rem;
 }
 
@@ -488,7 +489,7 @@
   margin: 0 0 1rem;
 }
 
-.article-template__comment-fields > * {
+.article-template__comment-fields>* {
   margin-bottom: 1.5rem;
 }
 
@@ -497,8 +498,8 @@
   color: #999999;
 }
 
-@media (max-width: 1024px){
-  .article-template > *:first-child:not(.article-template__hero-container) {
+@media (max-width: 1024px) {
+  .article-template>*:first-child:not(.article-template__hero-container) {
     margin-top: 0rem;
   }
 
@@ -515,7 +516,7 @@
   .articleBlockQuote-content.has-bg {
     padding: 20px;
   }
-  
+
   .articleLookbook-block .articleLookbook-item .articleLookbook-item-content .lookbook-banner-title {
     font-size: var(--title-fs-mb);
     margin-bottom: 10px;
@@ -548,7 +549,8 @@
     width: 100%;
   }
 
-  .article-content .column-2.column-list .item ul, .article-content .column-2.column-list .item ol {
+  .article-content .column-2.column-list .item ul,
+  .article-content .column-2.column-list .item ol {
     margin-bottom: 0;
     padding-bottom: 0;
   }
@@ -583,6 +585,7 @@
 }
 
 @media (min-width: 768px) {
+
   .article-content .column-3 .item,
   .article-content .column-4 .item,
   .article-content .column-5 .item,
@@ -592,13 +595,14 @@
 }
 
 @media (min-width: 992px) {
+
   .article-content .column-4 .item,
   .article-content .column-5 .item,
   .article-content .column-6 .item {
     width: 25%;
   }
 
-  .article-template > *:first-child:not(.article-template__hero-container) {
+  .article-template>*:first-child:not(.article-template__hero-container) {
     margin-top: 2rem;
   }
 

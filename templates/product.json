@@ -275,7 +275,8 @@
           "settings": {
             "tag": "✦ RENEW",
             "title": "Stimulates Cell Renewal",
-            "description": "Ancestral botanicals support the skin's natural renewal process while replenishing moisture, leaving skin refreshed, resilient, and revitalised."
+            "description": "Ancestral botanicals support the skin's natural renewal process while replenishing moisture, leaving skin refreshed, resilient, and revitalised.",
+            "metafield_key": ""
           }
         },
         "feature_2": {
@@ -283,7 +284,8 @@
           "settings": {
             "tag": "✦ HYDRATE",
             "title": "Deep Moisture Lock",
-            "description": "Tremella mushroom & botanical extracts hold moisture like silk, deeply hydrating skin layers without any heavy or greasy residue."
+            "description": "Tremella mushroom & botanical extracts hold moisture like silk, deeply hydrating skin layers without any heavy or greasy residue.",
+            "metafield_key": ""
           }
         },
         "feature_3": {
@@ -291,7 +293,8 @@
           "settings": {
             "tag": "✦ AGELESS",
             "title": "Slows Visible Signs of Ageing",
-            "description": "Saffron and collagen-rich botanical complex improves elasticity and softens fine lines, coaxes a lit-from-within glow."
+            "description": "Saffron and collagen-rich botanical complex improves elasticity and softens fine lines, coaxes a lit-from-within glow.",
+            "metafield_key": ""
           }
         },
         "feature_4": {
@@ -299,7 +302,8 @@
           "settings": {
             "tag": "✦ GLOW",
             "title": "Promotes a Radiant Complexion",
-            "description": "Rose & Jasmine floral waters energise and revitalise the skin while defending against daily environmental stressors."
+            "description": "Rose & Jasmine floral waters energise and revitalise the skin while defending against daily environmental stressors.",
+            "metafield_key": ""
           }
         }
       },
@@ -322,6 +326,81 @@
         "padding_bottom": 60
       }
     },
+    "pdp_product_highlights_main": {
+      "type": "pdp-product-highlights",
+      "blocks": {
+        "highlight_HwnJTa": {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "brightening",
+            "custom_svg": ""
+          }
+        },
+        "highlight_GB4aYN": {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "hydrates",
+            "custom_svg": ""
+          }
+        },
+        "highlight_wXLa3C": {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "anti_ageing",
+            "custom_svg": ""
+          }
+        },
+        "highlight_jFkez3": {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "protects_skin_barrier",
+            "custom_svg": ""
+          }
+        },
+        "highlight_yhHwnq": {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "no_parabens",
+            "custom_svg": ""
+          }
+        },
+        "highlight_dEp6V7": {
+          "type": "highlight",
+          "settings": {
+            "title": "No Mineral Oils",
+            "preset_icon": "no_mineral_oils",
+            "custom_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight_HwnJTa",
+        "highlight_GB4aYN",
+        "highlight_wXLa3C",
+        "highlight_jFkez3",
+        "highlight_yhHwnq",
+        "highlight_dEp6V7"
+      ],
+      "settings": {
+        "section_bg": "#f7f4f3",
+        "text_color": "#2a0a20",
+        "icon_color": "#2a0a20",
+        "subheading": "",
+        "subheading_color": "#731157",
+        "heading": "",
+        "heading_color": "#731157",
+        "metafield_key": "product_highlights",
+        "columns_desktop": "3",
+        "columns_mobile": "2",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "pdp_trust_features_main": {
       "type": "pdp-trust-features",
       "blocks": {
@@ -329,21 +408,30 @@
           "type": "trust_item",
           "settings": {
             "tag": "BENEFIT 01",
-            "title": "Helps defend against UV-related oxidative stress (sunny days, commute days, everyday)"
+            "title": "Helps defend against UV-related oxidative stress (sunny days, commute days, everyday)",
+            "description": "",
+            "custom_icon": "",
+            "metafield_key": ""
           }
         },
         "trust_2": {
           "type": "trust_item",
           "settings": {
             "tag": "BENEFIT 02",
-            "title": "Supports brighter, more even-looking skin over time"
+            "title": "Supports brighter, more even-looking skin over time",
+            "description": "",
+            "custom_icon": "",
+            "metafield_key": ""
           }
         },
         "trust_3": {
           "type": "trust_item",
           "settings": {
             "tag": "BENEFIT 03",
-            "title": "Supports bouncy hydration + barrier strength for comfortable, resilient-looking skin"
+            "title": "Supports bouncy hydration + barrier strength for comfortable, resilient-looking skin",
+            "description": "",
+            "custom_icon": "",
+            "metafield_key": ""
           }
         }
       },
@@ -696,6 +784,7 @@
   "order": [
     "main",
     "pdp_key_features_main",
+    "pdp_product_highlights_main",
     "pdp_trust_features_main",
     "pdp_ingredient_story_pyMaQC",
     "pdp_reviews_t8XqAT",

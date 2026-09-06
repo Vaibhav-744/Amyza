@@ -118,6 +118,86 @@
         text-transform: {{ text_text_transform }};
     }
 
+    /* Featured Image Full Width */
+    #ArticleSection-{{ section.id }} .article-header .article-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 24px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    #ArticleSection-{{ section.id }} .article-header .article-image .image {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block;
+    }
+
+    #ArticleSection-{{ section.id }} .article-header .article-image img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Chronological Headings Hierarchy (h2: 30px, h3: 28px, h4: 24px, h5: 20px, h6: 16px) */
+    #ArticleSection-{{ section.id }} .article-content h2,
+    .halo-article-content .halo-text-format h2 {
+        font-family: var(--font-heading-family);
+        font-size: 30px !important;
+        font-weight: 400 !important;
+        line-height: 1.3 !important;
+        color: #2a0a20 !important;
+        margin-top: 1.8em !important;
+        margin-bottom: 0.6em !important;
+    }
+
+    #ArticleSection-{{ section.id }} .article-content h3,
+    .halo-article-content .halo-text-format h3 {
+        font-family: var(--font-heading-family);
+        font-size: 28px !important;
+        font-weight: 400 !important;
+        line-height: 1.35 !important;
+        color: #2a0a20 !important;
+        margin-top: 1.6em !important;
+        margin-bottom: 0.5em !important;
+    }
+
+    #ArticleSection-{{ section.id }} .article-content h4,
+    .halo-article-content .halo-text-format h4 {
+        font-family: var(--font-heading-family);
+        font-size: 24px !important;
+        font-weight: 500 !important;
+        line-height: 1.4 !important;
+        color: #2a0a20 !important;
+        margin-top: 1.5em !important;
+        margin-bottom: 0.5em !important;
+    }
+
+    #ArticleSection-{{ section.id }} .article-content h5,
+    .halo-article-content .halo-text-format h5 {
+        font-family: var(--font-heading-family);
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        line-height: 1.4 !important;
+        color: #2a0a20 !important;
+        margin-top: 1.4em !important;
+        margin-bottom: 0.4em !important;
+    }
+
+    #ArticleSection-{{ section.id }} .article-content h6,
+    .halo-article-content .halo-text-format h6 {
+        font-family: var(--font-heading-family);
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        line-height: 1.4 !important;
+        color: #2a0a20 !important;
+        margin-top: 1.2em !important;
+        margin-bottom: 0.4em !important;
+    }
+
     @media (max-width: 1024px) {
         #ArticleSection-{{ section.id }}{
             padding-top: {{ padding_top_tablet }};

@@ -39,11 +39,6 @@
         </div>
     {%- endif -%}
     <div class="blog-content text-{{ blog_text_align }}">
-        <h3 class="blog-title" id="Article-{{ article.id }}">
-            <a {% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %}>
-                {{ title | escape }}
-            </a>
-        </h3>
         {%- if show_author or show_date or show_comment -%}
             <p class="blog-info">
                 {% if show_date %}
@@ -57,6 +52,11 @@
                 {% endif %}
             </p>
         {%- endif -%}
+        <h3 class="blog-title" id="Article-{{ article.id }}">
+            <a {% if link == blank %} role="link" aria-disabled="true"{% else %} href="{{ link }}"{% endif %}>
+                {{ title | escape }}
+            </a>
+        </h3>
         {%- if show_summary and summary != blank -%}
             <div class="blog-summary">
                 {{ summary }}

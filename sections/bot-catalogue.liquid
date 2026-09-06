@@ -111,9 +111,65 @@
       padding: 2.6rem 1.2rem;
     }
   }
-  @media (max-width: 480px) {
-    #shopify-section-{{ section.id }} .bot-grid {
-      grid-template-columns: 1fr;
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized {
+      display: block;
+      position: relative;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-track {
+      display: flex !important;
+      align-items: stretch;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-slide {
+      height: auto;
+      display: flex !important;
+      flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .bot-card {
+      margin: 0 8px;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-arrow {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: {{ section.settings.card_bg }};
+      color: {{ section.settings.heading_color }};
+      border: 1px solid {{ section.settings.card_border }};
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(42, 10, 32, 0.1);
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-arrow:hover {
+      background: {{ section.settings.eyebrow_color }};
+      color: #ffffff;
+      border-color: {{ section.settings.eyebrow_color }};
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      stroke: currentColor;
+      display: block;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-prev {
+      left: 4px;
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-prev svg {
+      transform: rotate(180deg);
+    }
+    #shopify-section-{{ section.id }} .bot-grid.slick-initialized .slick-next {
+      right: 4px;
     }
   }
 </style>
@@ -168,6 +224,89 @@
   </div>
 
 </section>
+
+<script>
+  (function() {
+    function initBotCatalogueSlider() {
+      var $ = window.jQuery;
+      if (!$ || !$.fn || !$.fn.slick) {
+        setTimeout(initBotCatalogueSlider, 100);
+        return;
+      }
+      var $grid = $('#shopify-section-{{ section.id }} .bot-grid');
+      if (!$grid.length) return;
+
+      function checkAndInit() {
+        if (window.innerWidth <= 767) {
+          if (!$grid.hasClass('slick-initialized')) {
+            var nextArrowIcon = (window.arrows && window.arrows.icon_next) ? window.arrows.icon_next : '<button type="button" class="slick-next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" fill="currentColor"></path></svg></button>';
+            var prevArrowIcon = (window.arrows && window.arrows.icon_prev) ? window.arrows.icon_prev : '<button type="button" class="slick-prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z" fill="currentColor"></path></svg></button>';
+
+            $grid.slick({
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              autoplay: true,
+              autoplaySpeed: 3000,
+              dots: false,
+              arrows: true,
+              nextArrow: nextArrowIcon,
+              prevArrow: prevArrowIcon,
+              infinite: true,
+              centerMode: false,
+              adaptiveHeight: false,
+              responsive: [
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    dots: false,
+                    arrows: true,
+                    nextArrow: nextArrowIcon,
+                    prevArrow: prevArrowIcon
+                  }
+                },
+                {
+                  breakpoint: 576,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    dots: false,
+                    arrows: true,
+                    nextArrow: nextArrowIcon,
+                    prevArrow: prevArrowIcon
+                  }
+                }
+              ]
+            });
+          }
+        } else {
+          if ($grid.hasClass('slick-initialized')) {
+            $grid.slick('unslick');
+          }
+        }
+      }
+
+      checkAndInit();
+      $(window).off('resize.botCatalogue{{ section.id }} orientationchange.botCatalogue{{ section.id }}').on('resize.botCatalogue{{ section.id }} orientationchange.botCatalogue{{ section.id }}', checkAndInit);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBotCatalogueSlider);
+    } else {
+      initBotCatalogueSlider();
+    }
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+        initBotCatalogueSlider();
+      }
+    });
+  })();
+</script>
 
 {% schema %}
 {
