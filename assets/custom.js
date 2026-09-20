@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
        AUTOPLAY (per-carousel settings)
     ========================================= */
     const autoplayConfig = {
-      testimonials: 6000,   // ms between slides
+      testimonials: 4000,   // ms between slides
       botanicals:   4000    // change to whatever speed you like
     };
 
