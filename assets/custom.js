@@ -206,29 +206,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /* =========================================
-       AUTO SLIDE TESTIMONIALS
+       AUTOPLAY (per-carousel settings)
     ========================================= */
+    const autoplayConfig = {
+      testimonials: 6000,   // ms between slides
+      botanicals:   4000    // change to whatever speed you like
+    };
+
+    const autoDelay = autoplayConfig[carousel.dataset.carousel];
     let autoTimer;
 
-    if(carousel.dataset.carousel === 'testimonials'){
+    function stopAuto(){
+      clearInterval(autoTimer);
+    }
 
-      function startAuto(){
+    function startAuto(){
+      if (!autoDelay) return;
+      stopAuto();
+      autoTimer = setInterval(function(){
+        go(1);
+      }, autoDelay);
+    }
 
-        clearInterval(autoTimer);
-
-        autoTimer = setInterval(function(){
-          go(1);
-        }, 6000);
-      }
-
-      function stopAuto(){
-        clearInterval(autoTimer);
-      }
-
+    if (autoDelay) {
       startAuto();
 
+      // Pause on hover (desktop)
       carousel.addEventListener('mouseenter', stopAuto);
       carousel.addEventListener('mouseleave', startAuto);
+
+      // Pause while touching, resume after (mobile)
+      carousel.addEventListener('touchstart', stopAuto, { passive: true });
+      carousel.addEventListener('touchend', startAuto, { passive: true });
+
+      // Restart the timer after a manual click so it doesn't jump right after
+      [prevBtn, nextBtn].forEach(function(btn){
+        if (btn) btn.addEventListener('click', startAuto);
+      });
+      if (dotsWrap) dotsWrap.addEventListener('click', startAuto);
+
+      // Don't run while the tab is hidden
+      document.addEventListener('visibilitychange', function(){
+        if (document.hidden) stopAuto();
+        else startAuto();
+      });
     }
 
 
