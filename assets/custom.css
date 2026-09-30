@@ -638,6 +638,10 @@ h3 {
 
 .featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for {
     padding: 0px;
+    display:none;
+}
+.featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for.slick-initialized{
+    display:block;
 }
 
 .featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for .slick-arrow {
