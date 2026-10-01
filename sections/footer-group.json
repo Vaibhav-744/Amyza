@@ -14,10 +14,10 @@
     "footer_custom_brand": {
       "type": "footer-custom",
       "settings": {
-        "bg_color": "#f1edec",
-        "text_color": "#2a0a20",
-        "heading_color": "#2a0a20",
-        "link_color": "#2a0a20",
+        "bg_color": "#731157",
+        "text_color": "#F1EDEC",
+        "heading_color": "#F1EDEC",
+        "link_color": "#F1EDEC",
         "menu_1": "main-menu",
         "menu_1_heading": "SHOP",
         "menu_2": "footer",
@@ -31,10 +31,10 @@
         "newsletter_desc": "Stay up to date on all the latest happenings, exclusive news, sales and invites from the AMYZA universe.",
         "input_placeholder": "ENTER YOUR EMAIL",
         "btn_text": "JOIN NOW",
-        "btn_bg": "#731157",
-        "btn_color": "#ffffff",
+        "btn_bg": "#F1EDEC",
+        "btn_color": "#731157",
         "watermark_text": "amyza",
-        "watermark_color": "#73115714",
+        "watermark_color": "#F1EDEC",
         "support_email": "hello@amyza.com",
         "copyright_text": "© Copyright, AMYZA, 2026. Powered by Shopify",
         "show_policy_links": true
