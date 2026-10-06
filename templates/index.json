@@ -656,7 +656,7 @@
       ],
       "name": "Botanicals",
       "settings": {
-        "section_bg": "#1d4f3b",
+        "section_bg": "#731157",
         "section_text_color": "#f1edec",
         "eyebrow": "✦ The Catalogue",
         "eyebrow_color": "#eaacc9",
@@ -669,7 +669,7 @@
         "card_desc_color": "#f1edec",
         "btn_text": "Explore Botanicals",
         "btn_url": "",
-        "btn_bg": "#731157",
+        "btn_bg": "#4E0A3A",
         "btn_text_color": "#f1edec",
         "btn_hover_bg": "#4e0a3a"
       }
