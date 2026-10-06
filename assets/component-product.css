@@ -3199,3 +3199,6 @@ quantity-input.disabled {
         display: none !important;
     }
 }
+.featured-product.product-default .productView{
+    padding-bottom:0;
+}
