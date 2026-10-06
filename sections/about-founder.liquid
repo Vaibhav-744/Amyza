@@ -23,7 +23,7 @@
   }
   #shopify-section-{{ section.id }} .founder-eyebrow {
     font-size: .72rem;
-    letter-spacing: .2em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ section.settings.eyebrow_color }};
     margin-bottom: 1.6rem;
@@ -34,6 +34,7 @@
     line-height: 1.8;
     color: {{ section.settings.body_color }};
     margin-bottom: 1.2rem;
+    letter-spacing: var(--ls-body, 0);
   }
   #shopify-section-{{ section.id }} .founder-body p {
     margin-bottom: 1rem;
@@ -47,6 +48,7 @@
     margin-top: 1.6rem;
     margin-bottom: .6rem;
     display: block;
+    letter-spacing: var(--ls-body, 0);
   }
   #shopify-section-{{ section.id }} .founder-sig-img {
     display: block;
@@ -59,7 +61,7 @@
     display: block;
     font-size: .95rem;
     color: {{ section.settings.sign_name_color }};
-    letter-spacing: .04em;
+    letter-spacing: var(--ls-meta, 0.08em);
     font-weight: 600;
   }
   #shopify-section-{{ section.id }} .founder-sig-text span {

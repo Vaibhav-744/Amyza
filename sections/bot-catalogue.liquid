@@ -22,6 +22,7 @@
     color: {{ section.settings.heading_color }};
     margin: .6rem 0 .8rem;
     line-height: 1.1;
+    letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .bot-catalogue .section-header h2 em {
     color: {{ section.settings.heading_italic_color }};
@@ -30,6 +31,7 @@
     color: {{ section.settings.sub_color }};
     font-size: 1rem;
     line-height: 1.6;
+    letter-spacing: var(--ls-body, 0);
   }
 
   /* ── Grid ── */
@@ -80,6 +82,7 @@
     color: {{ section.settings.card_title_color }};
     margin-bottom: 0;
     line-height: 1.1;
+    letter-spacing: var(--ls-heading, -0.01em);
   }
   #shopify-section-{{ section.id }} .bot-card p {
     font-size: .9rem;
@@ -87,13 +90,14 @@
     opacity: .78;
     margin: .4rem 0 .9rem;
     line-height: 1.5;
+    letter-spacing: var(--ls-body, 0);
   }
 
   /* ── Tag pill ── */
   #shopify-section-{{ section.id }} .bot-card-tag {
     display: inline-block;
     font-size: .68rem;
-    letter-spacing: .1em;
+    letter-spacing: var(--ls-meta, 0.08em);
     text-transform: uppercase;
     color: {{ section.settings.tag_color }};
     background: {{ section.settings.tag_bg }};

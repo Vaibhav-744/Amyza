@@ -19,12 +19,13 @@
     font-size: clamp(2.4rem, 5vw, 3.6rem);
     color: {{ section.settings.stat_num_color }};
     line-height: 1;
+    letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .stat-item span {
     display: block;
     margin-top: .6rem;
     font-size: .82rem;
-    letter-spacing: .12em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ section.settings.stat_label_color }};
   }

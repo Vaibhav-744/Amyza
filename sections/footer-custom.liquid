@@ -48,7 +48,7 @@
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     color: {{ heading_color }};
     margin-bottom: 1.2rem;
   }
@@ -66,6 +66,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.95rem;
     font-weight: 500;
+    letter-spacing: var(--ls-body, 0);
     color: {{ link_color }};
     text-decoration: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -113,6 +114,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 1.05rem;
     font-weight: 700;
+    letter-spacing: var(--ls-heading, -0.01em);
     color: {{ heading_color }};
     margin-bottom: 0.6rem;
   }
@@ -121,6 +123,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.9rem;
     line-height: 1.55;
+    letter-spacing: var(--ls-body, 0);
     color: {{ text_color }};
     opacity: 0.8;
     margin-bottom: 1.8rem;
@@ -146,7 +149,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.82rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--ls-nav, 0.1em);
     text-transform: uppercase;
     color: {{ text_color }};
     padding: 0.4rem 0;
@@ -166,7 +169,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.85rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;

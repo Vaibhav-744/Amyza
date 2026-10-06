@@ -83,7 +83,7 @@
     font-family: var(--sans, 'Public Sans', system-ui, sans-serif);
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.25em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     font-weight: 500;
     color: {{ section.settings.eyebrow_color }};
     margin-bottom: 0.5rem;
@@ -95,6 +95,7 @@
     font-weight: 400;
     font-size: clamp({{ section.settings.quote_font_size_mobile }}px, 3.4vw, {{ section.settings.quote_font_size_desktop }}px);
     line-height: 1.35;
+    letter-spacing: var(--ls-title, -0.015em);
     color: {{ section.settings.quote_color }};
     margin: 0;
     text-wrap: balance;
@@ -104,6 +105,7 @@
     font-family: var(--sans, 'Public Sans', system-ui, sans-serif);
     font-size: 1rem;
     line-height: 1.6;
+    letter-spacing: var(--ls-body, 0);
     color: {{ section.settings.subtext_color }};
     margin-top: 0.5rem;
     max-width: 680px;
@@ -114,7 +116,7 @@
     margin-top: 1.5rem;
     padding: 1rem 2.2rem;
     font-size: 0.85rem;
-    letter-spacing: 0.15em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     font-weight: 600;
     color: {{ section.settings.button_color }};

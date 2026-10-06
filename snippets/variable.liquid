@@ -97,13 +97,23 @@
         --font-family-1: {{fonts_name}};
         --font-family-2: {{fonts_name_2}};
 
+        /* AMZYA Standardized Letter Spacing Tokens */
+        --ls-display: -0.02em;
+        --ls-title: -0.015em;
+        --ls-heading: -0.01em;
+        --ls-body: 0em;
+        --ls-eyebrow: 0.2em;
+        --ls-button: 0.18em;
+        --ls-nav: 0.1em;
+        --ls-meta: 0.08em;
+
         /* Settings Body */
         {%- if settings.type_body == 'font_1' -%}
             --font-body-family: {{fonts_name}};
         {%- else -%}
             --font-body-family: {{fonts_name_2}};
         {%- endif -%}
-        --font-body-size: {{ settings.type_body_font_size | append: 'px' }};--font-body-weight: {{ settings.type_body_font_weight }};--body-line-height: {{ settings.type_body_line_height | append: 'px' }};--body-letter-spacing: {{ settings.type_body_letter_spacing }};
+        --font-body-size: {{ settings.type_body_font_size | append: 'px' }};--font-body-weight: {{ settings.type_body_font_weight }};--body-line-height: {{ settings.type_body_line_height | append: 'px' }};--body-letter-spacing: {{ settings.type_body_letter_spacing | default: '0em' }};
 
         /* Settings Heading */
         {%- if settings.type_heading == 'font_1' -%}
@@ -111,7 +121,7 @@
         {%- else -%}
             --font-heading-family: {{fonts_name_2}};
         {%- endif -%}
-        --font-heading-size: {{ settings.type_heading_font_size | append: 'px' }};--font-heading-weight: {{ settings.type_heading_font_weight }};--font-heading-style: {{ settings.type_heading_font_style }};--heading-line-height: {{ settings.type_heading_line_height | append: 'px' }};--heading-letter-spacing: {{ settings.type_heading_letter_spacing }};--heading-text-transform: {{ settings.type_heading_text_transform }};--heading-border-height: {{ settings.type_heading_border_height | append: 'px' }};
+        --font-heading-size: {{ settings.type_heading_font_size | append: 'px' }};--font-heading-weight: {{ settings.type_heading_font_weight }};--font-heading-style: {{ settings.type_heading_font_style }};--heading-line-height: {{ settings.type_heading_line_height | append: 'px' }};--heading-letter-spacing: {{ settings.type_heading_letter_spacing | default: '-0.015em' }};--heading-text-transform: {{ settings.type_heading_text_transform }};--heading-border-height: {{ settings.type_heading_border_height | append: 'px' }};
 
         /* Menu Lv1 */
         {%- if settings.type_menu_lv_1 == 'font_1' -%}
@@ -119,7 +129,7 @@
         {%- else -%}
             --font-menu-lv1-family: {{fonts_name_2}};
         {%- endif -%}
-        --font-menu-lv1-size: {{ settings.type_menu_lv1_font_size | append: 'px' }};--font-menu-lv1-weight: {{ settings.type_menu_lv1_font_weight }};--menu-lv1-line-height: {{ settings.type_menu_lv1_line_height | append: 'px' }};--menu-lv1-letter-spacing: {{ settings.type_menu_lv1_letter_spacing }};--menu-lv1-text-transform: {{ settings.type_menu_lv1_text_transform }};
+        --font-menu-lv1-size: {{ settings.type_menu_lv1_font_size | append: 'px' }};--font-menu-lv1-weight: {{ settings.type_menu_lv1_font_weight }};--menu-lv1-line-height: {{ settings.type_menu_lv1_line_height | append: 'px' }};--menu-lv1-letter-spacing: {{ settings.type_menu_lv1_letter_spacing | default: '0.1em' }};--menu-lv1-text-transform: {{ settings.type_menu_lv1_text_transform }};
 
         /* Menu Lv2 */
         {%- if settings.type_menu_lv_2 == 'font_1' -%}

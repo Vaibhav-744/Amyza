@@ -39,7 +39,7 @@
   #shopify-section-{{ section.id }} .av-eyebrow {
     display: block;
     font-size: .78rem;
-    letter-spacing: .2em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ section.settings.eyebrow_color }};
     margin-bottom: 1.1rem;
@@ -49,6 +49,7 @@
     font-weight: 400;
     font-size: clamp(2.6rem, 6.5vw, 5.4rem);
     line-height: 1.04;
+    letter-spacing: var(--ls-display, -0.02em);
     color: {{ section.settings.heading_color }};
     margin: 0 auto 1.4rem;
     max-width: 20ch;
@@ -56,6 +57,7 @@
   #shopify-section-{{ section.id }} .av-sub {
     font-size: clamp(1.02rem, 1.6vw, 1.2rem);
     line-height: 1.7;
+    letter-spacing: var(--ls-body, 0);
     color: {{ section.settings.sub_color }};
     max-width: 60ch;
     margin: 0 auto 2rem;
@@ -67,7 +69,7 @@
     align-items: center;
     gap: .9rem;
     font-size: .8rem;
-    letter-spacing: .14em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ section.settings.tags_color }};
   }

@@ -14,6 +14,24 @@
     --header-h: 70px;
     --radius-sm: 3px;
     --radius-md: 4px;
+
+    /* ── Consistent Typography Letter-Spacing System ── */
+    --ls-display: -0.02em;
+    /* Hero titles, H1 display titles, large quotes (40px+) */
+    --ls-title: -0.015em;
+    /* H2 section headings, major titles (28px - 40px) */
+    --ls-heading: -0.01em;
+    /* H3/H4 headings, card titles, drawer/modal titles (20px - 28px) */
+    --ls-body: 0;
+    /* Body paragraphs, product descriptions, article text, list text */
+    --ls-eyebrow: 0.2em;
+    /* Eyebrows, category tags, step numbers, uppercase kickers */
+    --ls-button: 0.18em;
+    /* Buttons, CTAs, ATC buttons, checkout buttons, submit buttons */
+    --ls-nav: 0.1em;
+    /* Main menu, header links, mobile drawer links */
+    --ls-meta: 0.08em;
+    /* Small badges, cart count, counters, auxiliary uppercase notes */
 }
 
 * {
@@ -31,7 +49,7 @@ body {
     color: var(--ink);
     background: var(--porcelain);
     line-height: 1.6;
-    letter-spacing: .005em;
+    letter-spacing: var(--ls-body);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -55,27 +73,48 @@ img {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
     font-family: var(--serif);
     font-weight: 400;
-    letter-spacing: -.01em;
+    letter-spacing: var(--ls-heading);
     line-height: 1.1;
 }
 
-h1 {
+h1,
+.h1 {
     font-size: clamp(2.4rem, 7vw, 5.4rem);
-    letter-spacing: -.02em;
+    letter-spacing: var(--ls-display);
     line-height: 1;
 }
 
-h2 {
+h2,
+.h2 {
     font-size: clamp(2rem, 4.2vw, 3.4rem);
-    letter-spacing: -.015em;
+    letter-spacing: var(--ls-title);
     line-height: 1.08;
 }
 
-h3 {
+.section-header h2 {
+    letter-spacing: var(--ls-title);
+}
+
+h3,
+.h3 {
     font-size: 1.3rem;
+    letter-spacing: var(--ls-heading);
+}
+
+h4,
+.h4 {
+    letter-spacing: var(--ls-heading);
 }
 
 .serif-italic {
@@ -87,7 +126,7 @@ h3 {
 .eyebrow {
     font-size: .7rem;
     text-transform: uppercase;
-    letter-spacing: .25em;
+    letter-spacing: var(--ls-eyebrow);
     color: var(--plum);
     margin-bottom: .9rem;
     font-weight: 500;
@@ -102,7 +141,7 @@ h3 {
     padding: .95rem 1.8rem;
     border-radius: var(--radius-md);
     font-size: .7rem;
-    letter-spacing: .24em;
+    letter-spacing: var(--ls-button);
     text-transform: uppercase;
     font-weight: 500;
     transition: background .3s, color .3s, transform .3s, box-shadow .3s, border-color .3s;
@@ -427,7 +466,7 @@ h3 {
     padding: .65rem 1.2rem;
     border-radius: var(--radius-sm);
     font-size: .62rem;
-    letter-spacing: .2em;
+    letter-spacing: var(--ls-button);
     text-transform: uppercase;
     font-weight: 500;
     font-family: var(--sans);
@@ -457,7 +496,7 @@ h3 {
 
 .product-item .product-category {
     font-size: .58rem;
-    letter-spacing: .22em;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: #888;
     margin-bottom: .25rem;
@@ -470,12 +509,13 @@ h3 {
     font-size: 1.3rem;
     line-height: 1.15;
     color: var(--ink);
+    letter-spacing: var(--ls-heading);
 }
 
 .product-item .product-desc {
     font-size: 0.8rem;
     color: #665;
-    letter-spacing: .04em;
+    letter-spacing: var(--ls-body);
     line-height: 1.3;
 }
 
@@ -501,7 +541,7 @@ h3 {
     font-family: var(--sans);
     font-size: .65rem;
     color: #888;
-    letter-spacing: .1em;
+    letter-spacing: var(--ls-meta);
     text-transform: uppercase;
 }
 
@@ -638,10 +678,11 @@ h3 {
 
 .featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for {
     padding: 0px;
-    display:none;
+    display: none;
 }
-.featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for.slick-initialized{
-    display:block;
+
+.featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for.slick-initialized {
+    display: block;
 }
 
 .featured-product .halo-productView-left .productView-thumbnail-wrapper .productView-for .slick-arrow {
@@ -741,7 +782,7 @@ h3 {
     font-size: clamp(2.4rem, 5.5vw, 4rem);
     color: var(--ink);
     line-height: 1.04;
-    letter-spacing: -.02em;
+    letter-spacing: var(--ls-display);
     margin-bottom: 2.8rem;
     padding-bottom: 1.8rem;
     border-bottom: 1px solid rgba(115, 17, 87, .14);
@@ -752,6 +793,7 @@ h3 {
     font-size: 1rem;
     line-height: 1.8;
     color: #5c4350;
+    letter-spacing: var(--ls-body);
 }
 
 .shopify-policy__body h2 {
@@ -761,7 +803,7 @@ h3 {
     color: var(--plum-deep);
     margin: 2.8rem 0 .8rem;
     line-height: 1.15;
-    letter-spacing: -.01em;
+    letter-spacing: var(--ls-title);
 }
 
 .shopify-policy__body h3 {
@@ -771,11 +813,12 @@ h3 {
     color: var(--plum);
     margin: 2rem 0 .6rem;
     line-height: 1.2;
+    letter-spacing: var(--ls-heading);
 }
 
 .shopify-policy__body h4 {
     font-size: .82rem;
-    letter-spacing: .16em;
+    letter-spacing: var(--ls-button);
     text-transform: uppercase;
     color: var(--plum);
     font-weight: 600;
@@ -786,6 +829,7 @@ h3 {
 .shopify-policy__body p {
     margin-bottom: 1.2rem;
     color: #5c4350;
+    letter-spacing: var(--ls-body);
 }
 
 .shopify-policy__body p:last-child {
@@ -904,7 +948,7 @@ h3 {
 .product-detail_custom .halo-productView-right .product-form__input .form__label,
 .product-detail_custom .halo-productView-right .form__label {
     font-size: .7rem;
-    letter-spacing: .2em;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     color: #998;
     margin-bottom: .3rem;
@@ -943,7 +987,7 @@ h3 {
     display: inline !important;
     color: var(--ink);
     font-weight: 500;
-    letter-spacing: .04em;
+    letter-spacing: var(--ls-body);
     text-transform: none;
     font-size: .78rem;
     margin-left: .3rem;
@@ -1029,11 +1073,12 @@ h3 {
     line-height: 1.7;
     font-size: .9rem;
     padding: 0 0 1.2rem;
+    letter-spacing: var(--ls-body);
 }
 
 .product-detail_custom .halo-productView-right .moreItem-productCustomInformation .custom-information-title {
     font-size: .76rem;
-    letter-spacing: .08em;
+    letter-spacing: var(--ls-meta);
     color: #8a7280;
 }
 
@@ -1049,7 +1094,7 @@ h3 {
 
 .product-custom_taginfo .metafield-rich_text_field li {
     font-size: .72rem;
-    letter-spacing: .22em;
+    letter-spacing: var(--ls-eyebrow);
     text-transform: uppercase;
     font-weight: 500;
     color: var(--plum);
@@ -1207,7 +1252,7 @@ h3 {
     border-radius: var(--radius-sm);
     font-family: var(--sans);
     font-size: .72rem;
-    letter-spacing: .22em;
+    letter-spacing: var(--ls-button);
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
@@ -1238,7 +1283,7 @@ h3 {
 .product-detail_custom .halo-productView-right .moreItem-productCustomInformation .text {
     font-size: .78rem;
     color: #8a7280;
-    letter-spacing: .04em;
+    letter-spacing: var(--ls-body);
     font-family: var(--serif);
     font-style: italic;
 }
@@ -1292,6 +1337,7 @@ h3 {
     color: #5a4350;
     line-height: 1.7;
     font-size: .9rem;
+    letter-spacing: var(--ls-body);
 }
 
 .product-detail_custom .productView-image.fit-unset .productView-img-container img {
@@ -1319,7 +1365,7 @@ h3 {
     color: var(--ink) !important;
     font-family: var(--serif) !important;
     font-weight: 400 !important;
-    letter-spacing: -.01em !important;
+    letter-spacing: var(--ls-display) !important;
 }
 
 .product-detail_custom .productView-images-wrapper>.productView-image .productView-img-container,
@@ -1358,6 +1404,7 @@ h3 {
     color: var(--porcelain) !important;
     border-color: var(--plum) !important;
     width: 100% !important;
+    letter-spacing: var(--ls-button) !important;
 }
 
 .halo-newsletter-popup .newsletter-form__button:hover {
@@ -1406,7 +1453,7 @@ h3 {
     padding: 0.55rem 1rem !important;
     border-radius: var(--radius-sm, 4px) !important;
     font-size: 0.62rem !important;
-    letter-spacing: 0.18em !important;
+    letter-spacing: var(--ls-button) !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
     font-family: var(--sans);
@@ -1485,7 +1532,7 @@ h3 {
     font-size: 1.35rem !important;
     font-weight: 500 !important;
     color: var(--plum, #731157) !important;
-    letter-spacing: -0.01em !important;
+    letter-spacing: var(--ls-heading) !important;
     line-height: 1.2 !important;
     margin: 0 !important;
 }
@@ -1499,7 +1546,7 @@ h3 {
     padding: 0.2rem 0.55rem !important;
     border-radius: 20px !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: var(--ls-meta) !important;
     margin-left: 0.5rem !important;
 }
 
@@ -1515,7 +1562,7 @@ h3 {
     cursor: pointer !important;
     font-size: 0.68rem !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: var(--ls-meta) !important;
     font-weight: 600 !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -1832,7 +1879,7 @@ h3 {
     font-size: 0.85rem !important;
     color: var(--ink, #2a0a20) !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: var(--ls-nav) !important;
 }
 
 .halo-cart-sidebar .previewCartTotals.total .previewCartTotals-value {
@@ -1847,6 +1894,7 @@ h3 {
     color: #887788 !important;
     text-align: center !important;
     margin-top: 0.15rem !important;
+    letter-spacing: var(--ls-body) !important;
 }
 
 .halo-cart-sidebar .previewCartTotals.shipTotal .previewCartTotals-value {
@@ -1872,7 +1920,7 @@ h3 {
     font-family: var(--sans, 'Public Sans', sans-serif) !important;
     font-size: 0.7rem !important;
     font-weight: 600 !important;
-    letter-spacing: 0.12em !important;
+    letter-spacing: var(--ls-button) !important;
     text-transform: uppercase !important;
     transition: all 0.25s ease !important;
     cursor: pointer !important;
@@ -1941,6 +1989,7 @@ h3 {
         font-size: 1.4rem !important;
         font-weight: 400 !important;
         color: var(--plum, #731157) !important;
+        letter-spacing: var(--ls-heading) !important;
         margin: 0 !important;
     }
 
@@ -1986,6 +2035,7 @@ h3 {
         font-family: var(--sans, 'Public Sans', sans-serif) !important;
         font-size: 0.95rem !important;
         color: #2a0a20 !important;
+        letter-spacing: var(--ls-body) !important;
         outline: none !important;
         transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }
@@ -2114,6 +2164,7 @@ h3 {
     .halo-sidebar_search .product-item .title {
         font-family: var(--serif, 'Instrument Serif', serif) !important;
         font-size: 1.2rem !important;
+        letter-spacing: var(--ls-heading) !important;
         color: #2a0a20 !important;
         text-align: center !important;
         margin: 0.3rem auto !important;
@@ -2135,6 +2186,7 @@ h3 {
     .halo-sidebar_search .summary-tag,
     .halo-sidebar_search .spot-treatment {
         text-align: center !important;
+        letter-spacing: var(--ls-eyebrow) !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -2258,6 +2310,7 @@ h3 {
         font-family: var(--sans, 'Public Sans', sans-serif) !important;
         font-size: 1.15rem !important;
         color: #2a0a20 !important;
+        letter-spacing: var(--ls-body) !important;
         outline: none !important;
         transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
     }
@@ -2339,7 +2392,7 @@ h3 {
         font-family: var(--sans, 'Public Sans', sans-serif) !important;
         font-size: 0.82rem !important;
         font-weight: 700 !important;
-        letter-spacing: 0.16em !important;
+        letter-spacing: 0.14em !important;
         text-transform: uppercase !important;
         color: #731157 !important;
         border-bottom: 1px solid rgba(115, 17, 87, 0.12) !important;
@@ -2375,6 +2428,7 @@ h3 {
         font-weight: 400 !important;
         color: #2a0a20 !important;
         line-height: 1.2 !important;
+        letter-spacing: var(--ls-heading) !important;
         margin-top: 0.5rem !important;
     }
 
@@ -2391,4 +2445,55 @@ h3 {
     .search-modal .product-details {
         padding-top: 0.5rem !important;
     }
+}
+
+/* ── Global Header & Navigation Letter Spacing Consistency ── */
+.header__menu-item,
+.menu-drawer__menu-item,
+.list-menu__item,
+.header-navigation-wrapper .menu-lv-1__item>a,
+.site-nav__link {
+    letter-spacing: var(--ls-nav);
+}
+
+.halo-block-header .title,
+.section-header .title,
+.page-header h1,
+.page-header h2,
+.main-page-title,
+.page-title {
+    letter-spacing: var(--ls-title);
+}
+
+.product-item .product-title,
+.product-item .card-title,
+.card-information .card-title {
+    letter-spacing: var(--ls-heading);
+}
+
+.scrolled-past-header .header-navigation.header-nav-plain,
+.scrolled-past-header .header-mobile {
+    background: var(--plum);
+}
+
+.scrolled-past-header .header-navigation.header-nav-plain .header__menu-item {
+    color: var(--porcelain) !important;
+}
+
+.scrolled-past-header .header-navigation .header-icons .stroke-icon svg {
+    stroke: var(--porcelain) !important;
+}
+
+.scrolled-past-header .header__icon svg {
+    fill: var(--porcelain) !important;
+}
+
+.scrolled-past-header .header-mobile .mobileMenu-toggle__Icon,
+.scrolled-past-header .header-mobile .mobileMenu-toggle__Icon:before,
+.scrolled-past-header .header-mobile .mobileMenu-toggle__Icon:after {
+    background: var(--porcelain);
+}
+
+.scrolled-past-header .header__heading-logo {
+    filter: brightness(0) saturate(100%) invert(95%) sepia(5%) saturate(180%) hue-rotate(320deg) brightness(100%) contrast(90%);
 }

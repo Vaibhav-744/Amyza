@@ -28,16 +28,19 @@
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
     font-style: italic;
     font-size: 2.6rem;
+    letter-spacing: var(--ls-title, -0.015em);
     color: {{ section.settings.number_color }};
     margin-bottom: .4rem;
     line-height: 1;
   }
   #shopify-section-{{ section.id }} .ritual-card h3 {
     margin-bottom: .4rem;
+    letter-spacing: var(--ls-heading, -0.01em);
     color: {{ section.settings.card_title_color }};
   }
   #shopify-section-{{ section.id }} .ritual-card p {
     font-size: .85rem;
+    letter-spacing: var(--ls-body, 0);
     color: {{ section.settings.card_desc_color }};
   }
 

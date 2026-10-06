@@ -98,6 +98,7 @@
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
     font-size: 1.05rem;
     line-height: 1.45;
+    letter-spacing: var(--ls-body, 0);
     margin: 0 0 .8rem;
     color: {{ section.settings.review_color }};
   }
@@ -123,7 +124,7 @@
   /* Author */
   #shopify-section-{{ section.id }} .testimonial .author{
     font-size: .68rem;
-    letter-spacing: .15em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     opacity: .7;
     color: {{ section.settings.author_color }};

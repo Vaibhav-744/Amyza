@@ -37,7 +37,7 @@
   #shopify-section-{{ section.id }} .eyebrow{
     font-size:.7rem;
     text-transform:uppercase;
-    letter-spacing:.25em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     color: {{ section.settings.eyebrow_color }};
     margin-bottom:.9rem;
     font-weight:500;
@@ -48,7 +48,7 @@
     padding:.95rem 1.8rem;
     border-radius: var(--radius-md, 4px);
     font-size:.7rem;
-    letter-spacing:.24em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform:uppercase;
     font-weight:500;
     transition:.3s;
@@ -78,6 +78,7 @@
     align-items:center;
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
     font-size:1.6rem;
+    letter-spacing: var(--ls-heading, -0.01em);
     list-style:none;
     cursor:pointer;
     gap:1rem;
@@ -104,6 +105,7 @@
   #shopify-section-{{ section.id }} .faq-item p{
     margin-top:.6rem;
     font-size:.95rem;
+    letter-spacing: var(--ls-body, 0);
     color: {{ section.settings.answer_color }};
   }
 

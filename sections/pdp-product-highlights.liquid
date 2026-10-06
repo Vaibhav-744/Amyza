@@ -44,7 +44,7 @@
     font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     color: {{ subheading_color }};
     margin-bottom: 0.4rem;
   }
@@ -53,6 +53,7 @@
     font-family: var(--serif, 'Instrument Serif', serif);
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     font-weight: 400;
+    letter-spacing: var(--ls-title, -0.015em);
     color: {{ heading_color }};
     line-height: 1.2;
     margin: 0;
@@ -107,7 +108,7 @@
     font-weight: 400;
     color: {{ text_color }};
     line-height: 1.25;
-    letter-spacing: -0.01em;
+    letter-spacing: var(--ls-heading, -0.01em);
   }
 
   @media (max-width: 989px) {

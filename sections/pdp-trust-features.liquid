@@ -39,7 +39,7 @@
     font-size: 0.78rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     color: {{ subheading_color }};
     margin-bottom: 0.5rem;
   }
@@ -48,6 +48,7 @@
     font-family: var(--serif, 'Instrument Serif', serif);
     font-size: clamp(2rem, 3.5vw, 2.8rem);
     font-weight: 400;
+    letter-spacing: var(--ls-title, -0.015em);
     color: {{ heading_color }};
     line-height: 1.18;
     margin: 0;
@@ -144,7 +145,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ badge_bg }};
   }
@@ -153,6 +154,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 1.08rem;
     font-weight: 600;
+    letter-spacing: var(--ls-heading, -0.01em);
     color: {{ title_color }};
     line-height: 1.4;
     margin: 0;
@@ -162,6 +164,7 @@
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.88rem;
     font-weight: 400;
+    letter-spacing: var(--ls-body, 0);
     color: {{ body_color }};
     line-height: 1.55;
     margin: 0;

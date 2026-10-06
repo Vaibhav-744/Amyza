@@ -36,6 +36,7 @@
     line-height: 1.1;
     color: {{ section.settings.heading_color }};
     margin: .8rem 0 1.4rem;
+    letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .about-story-text h2 em,
   #shopify-section-{{ section.id }} .about-story-text h2 .serif-italic {
@@ -46,6 +47,7 @@
     line-height: 1.8;
     color: {{ section.settings.body_color }};
     margin-bottom: 1.2rem;
+    letter-spacing: var(--ls-body, 0);
   }
   #shopify-section-{{ section.id }} .about-story-text em {
     font-style: italic;
@@ -57,7 +59,7 @@
     padding: .95rem 1.8rem;
     border-radius: 4px;
     font-size: .7rem;
-    letter-spacing: .24em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     font-weight: 500;
     text-decoration: none;

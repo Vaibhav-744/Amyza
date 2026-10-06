@@ -17,6 +17,7 @@
     color: {{ section.settings.heading_color }};
     margin-bottom: 1rem;
     line-height: 1.05;
+    letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .about-cta-inner h2 em,
   #shopify-section-{{ section.id }} .about-cta-inner h2 .serif-italic {
@@ -26,6 +27,7 @@
     font-size: 1.1rem;
     color: {{ section.settings.body_color }};
     margin-bottom: 2rem;
+    letter-spacing: var(--ls-body, 0);
   }
   #shopify-section-{{ section.id }} .about-cta-btns {
     display: flex;
@@ -38,7 +40,7 @@
     padding: .95rem 1.8rem;
     border-radius: 4px;
     font-size: .7rem;
-    letter-spacing: .24em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     font-weight: 500;
     text-decoration: none;

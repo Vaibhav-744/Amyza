@@ -59,7 +59,7 @@
 
   #shopify-section-{{ section.id }} .ceb-eyebrow {
     font-size: .68rem;
-    letter-spacing: .25em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ section.settings.eyebrow_color }};
     font-weight: 500;
@@ -69,7 +69,7 @@
 
   #shopify-section-{{ section.id }} .ceb-title {
     font-size: clamp(1.1rem, 2vw, 1.45rem);
-    letter-spacing: .06em;
+    letter-spacing: var(--ls-heading, -0.01em);
     text-transform: uppercase;
     color: {{ section.settings.title_color }};
     font-weight: 500;
@@ -83,13 +83,14 @@
     color: {{ section.settings.desc_color }};
     margin: 0 0 1.2rem;
     max-width: 52ch;
+    letter-spacing: var(--ls-body, 0);
   }
 
   /* ── "Shop Now" link — mirrors .link-arrow from heritage ── */
   #shopify-section-{{ section.id }} .ceb-link {
     display: inline-block;
     font-size: .72rem;
-    letter-spacing: .22em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     font-weight: 600;
     color: {{ section.settings.link_color }};

@@ -18,6 +18,7 @@
     margin-bottom: 1.2rem;
     color: {{ section.settings.heading_color }};
     line-height:1;
+    letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .heritage-text h2 em,
   #shopify-section-{{ section.id }} .heritage-text h2 .serif-italic {
@@ -27,6 +28,7 @@
     margin-bottom: 1.2rem;
     font-size: 1.05rem;
     color: {{ section.settings.body_color }};
+    letter-spacing: var(--ls-body, 0);
   }
   #shopify-section-{{ section.id }} .heritage-text p em {
     font-style: italic;
@@ -39,7 +41,7 @@
     display: inline-block;
     margin-top: 0;
     font-size: .82rem;
-    letter-spacing: .18em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     border-bottom: 1px solid {{ section.settings.link_color }};
     color: {{ section.settings.link_color }};
@@ -47,7 +49,7 @@
     transition: letter-spacing .3s;
   }
   #shopify-section-{{ section.id }} .link-arrow:hover {
-    letter-spacing: .25em;
+    letter-spacing: var(--ls-eyebrow, 0.22em);
   }
 
   /* ── Visual column ── */
@@ -92,12 +94,13 @@
     font-size: 1.5rem;
     line-height: 1.25;
     color: {{ section.settings.card_text_color }};
+    letter-spacing: var(--ls-heading, -0.01em);
     margin: 0 0 1rem;
   }
   #shopify-section-{{ section.id }} .floating-card .quote-author {
     font-family: var(--sans);
     font-size: .7rem;
-    letter-spacing: .2em;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
     color: {{ section.settings.card_text_color }};
     opacity: .6;

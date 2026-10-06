@@ -52,11 +52,13 @@
     margin-bottom: .3rem;
     color: {{ section.settings.card_title_color }};
     font-size: 1.2rem;
+    letter-spacing: var(--ls-heading, -0.01em);
   }
   #shopify-section-{{ section.id }} .botanical-card p {
     font-size: .82rem;
     opacity: .85;
     color: {{ section.settings.card_desc_color }};
+    letter-spacing: var(--ls-body, 0);
   }
 
   /* ── Section header overrides (light variant) ── */
@@ -87,7 +89,7 @@
     padding: .95rem 1.8rem;
     border-radius: 4px;
     font-size: .7rem;
-    letter-spacing: .24em;
+    letter-spacing: var(--ls-button, 0.18em);
     text-transform: uppercase;
     font-weight: 500;
     transition: .3s;

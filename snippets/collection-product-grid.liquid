@@ -79,7 +79,7 @@
         }
 
     {%- if has_sidebar -%}
-        #CollectionSection-{{ section.id }} .sidebarBlock-heading, .sidebarBlock .sidebarBlock-slide__content-close{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }}}
+        #CollectionSection-{{ section.id }} .sidebarBlock-heading, .sidebarBlock .sidebarBlock-slide__content-close{font-family: var(--sidebar-heading-font);font-size: {{ sidebar_heading_font_size | append: 'px' }};font-weight: {{ sidebar_heading_font_weight }};text-transform: {{ sidebar_heading_text_transform }};letter-spacing: var(--ls-heading, -0.01em)}
     {%- endif -%}
 
     @media (max-width: 1024px) {

@@ -37,6 +37,7 @@
     color: {{ section.settings.step_num_color }};
     display: block;
     line-height: 1;
+    letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .bot-step h3 {
     font-family: var(--serif);
@@ -44,12 +45,14 @@
     font-size: 1.4rem;
     color: {{ section.settings.step_title_color }};
     margin: .6rem 0 .5rem;
+    letter-spacing: var(--ls-heading, -0.01em);
   }
   #shopify-section-{{ section.id }} .bot-step p {
     color: {{ section.settings.step_body_color }};
     font-size: .95rem;
     line-height: 1.6;
     opacity: .82;
+    letter-spacing: var(--ls-body, 0);
   }
 
   @media (max-width: 860px) {
