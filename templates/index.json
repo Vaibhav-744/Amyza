@@ -574,7 +574,7 @@
         "botanical_eCqRRC": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/2.jpg",
+            "image": "shopify://shop_images/2-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
             "title": "Saffron",
             "description": "The golden thread of heritage. Delivers unparalleled radiance."
@@ -583,7 +583,7 @@
         "botanical_jDjycM": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/1.jpg",
+            "image": "shopify://shop_images/1-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
             "title": "Jasmine",
             "description": "Our fragrant base. Replaces water with a floral kiss."
@@ -592,7 +592,7 @@
         "botanical_WemzmL": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/6.jpg",
+            "image": "shopify://shop_images/6-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
             "title": "Rose",
             "description": "A centuries-old symbol of softness and renewal."
@@ -601,7 +601,7 @@
         "botanical_DAw7fr": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/4.jpg",
+            "image": "shopify://shop_images/4-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)",
             "title": "Turmeric",
             "description": "The ancestral glow-giver. Anti-inflammatory, luminous."
@@ -619,7 +619,7 @@
         "botanical_CyKxHi": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/3.jpg",
+            "image": "shopify://shop_images/3-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
             "title": "Tremella",
             "description": "The supreme hydrator, revered in TCM."
@@ -628,7 +628,7 @@
         "botanical_fzErJT": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/5.jpg",
+            "image": "shopify://shop_images/5-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
             "title": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother."
@@ -637,7 +637,7 @@
         "botanical_8YmYeH": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/7.jpg",
+            "image": "shopify://shop_images/7-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
             "title": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless."
