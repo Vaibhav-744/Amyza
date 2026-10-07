@@ -228,70 +228,6 @@
         "border_color_card": "#f0f1f4"
       }
     },
-    "glow_gallery_main": {
-      "type": "glow-gallery",
-      "blocks": {
-        "image_panel_1": {
-          "type": "image_item",
-          "settings": {
-            "default_asset": "amyza_model_1.jpg",
-            "alt_text": "AMYZA Model 1",
-            "link": ""
-          }
-        },
-        "image_panel_2": {
-          "type": "image_item",
-          "settings": {
-            "default_asset": "amyza_model_2.jpg",
-            "alt_text": "AMYZA Model 2",
-            "link": ""
-          }
-        },
-        "image_panel_3": {
-          "type": "image_item",
-          "settings": {
-            "default_asset": "amyza_model_3.jpg",
-            "alt_text": "AMYZA Model 3",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_panel_1",
-        "image_panel_2",
-        "image_panel_3"
-      ],
-      "name": "Full Width Image Gallery",
-      "settings": {
-        "section_bg": "#f1edec",
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0,
-        "eyebrow": "",
-        "eyebrow_color": "#731157",
-        "heading": "",
-        "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
-        "subheading": "",
-        "subheading_color": "#666655",
-        "header_align": "center",
-        "header_margin_bottom": 35,
-        "columns_desktop": "3",
-        "aspect_ratio": "3_4",
-        "gap_desktop": 0,
-        "gap_mobile": 0,
-        "enable_hover_zoom": true,
-        "card_bg": "#f1edec",
-        "mobile_layout": "scroll",
-        "mobile_card_width": "85%",
-        "columns_mobile": "1",
-        "slider_arrows": true,
-        "slider_dots": true,
-        "slider_autoplay": true,
-        "slider_speed": 3500
-      }
-    },
     "featured_product_9RJ63M": {
       "type": "featured-product",
       "blocks": {
@@ -510,6 +446,70 @@
         "video_layout": "thumbnail",
         "show_badge": false,
         "show_qty": false
+      }
+    },
+    "glow_gallery_main": {
+      "type": "glow-gallery",
+      "blocks": {
+        "image_panel_1": {
+          "type": "image_item",
+          "settings": {
+            "default_asset": "amyza_model_1.jpg",
+            "alt_text": "AMYZA Model 1",
+            "link": ""
+          }
+        },
+        "image_panel_2": {
+          "type": "image_item",
+          "settings": {
+            "default_asset": "amyza_model_2.jpg",
+            "alt_text": "AMYZA Model 2",
+            "link": ""
+          }
+        },
+        "image_panel_3": {
+          "type": "image_item",
+          "settings": {
+            "default_asset": "amyza_model_3.jpg",
+            "alt_text": "AMYZA Model 3",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_panel_1",
+        "image_panel_2",
+        "image_panel_3"
+      ],
+      "name": "Full Width Image Gallery",
+      "settings": {
+        "section_bg": "#f1edec",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "eyebrow": "",
+        "eyebrow_color": "#731157",
+        "heading": "",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#731157",
+        "subheading": "",
+        "subheading_color": "#666655",
+        "header_align": "center",
+        "header_margin_bottom": 35,
+        "columns_desktop": "3",
+        "aspect_ratio": "3_4",
+        "gap_desktop": 0,
+        "gap_mobile": 0,
+        "enable_hover_zoom": true,
+        "card_bg": "#f1edec",
+        "mobile_layout": "scroll",
+        "mobile_card_width": "85%",
+        "columns_mobile": "1",
+        "slider_arrows": true,
+        "slider_dots": true,
+        "slider_autoplay": true,
+        "slider_speed": 3500
       }
     },
     "home_banner_cinematic": {
@@ -909,8 +909,8 @@
     "custom_video_Y9yRha",
     "marquee_announcement_acFEcL",
     "product_block_VRB8WC",
-    "glow_gallery_main",
     "featured_product_9RJ63M",
+    "glow_gallery_main",
     "home_banner_cinematic",
     "rituals_yhwWfj",
     "heritage_xH3aVg",
