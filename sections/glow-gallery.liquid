@@ -1,0 +1,692 @@
+{% comment %}
+  glow-gallery.liquid — AMYZA Full-Width Image Gallery Section
+  Edge-to-edge full width, 0 gap between images, no text on images.
+  Mobile layout supports default smooth horizontal scroll or slider mechanism.
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .glow-gallery-section {
+    background: {{ section.settings.section_bg | default: '#F1EDEC' }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Optional Section Header ── */
+  {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank -%}
+    #shopify-section-{{ section.id }} .glow-gallery-header {
+      text-align: {{ section.settings.header_align | default: 'center' }};
+      max-width: 800px;
+      margin: 0 auto {{ section.settings.header_margin_bottom | default: 35 }}px;
+      padding: 0 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .glow-gallery-header .eyebrow {
+      color: {{ section.settings.eyebrow_color | default: '#731157' }};
+      margin-bottom: 0.6rem;
+    }
+
+    #shopify-section-{{ section.id }} .glow-gallery-header h2 {
+      color: {{ section.settings.heading_color | default: '#2A0A20' }};
+      font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+      letter-spacing: var(--ls-title, -0.015em);
+      line-height: 1.1;
+      margin: 0.4rem 0 0.8rem;
+    }
+
+    #shopify-section-{{ section.id }} .glow-gallery-header h2 em,
+    #shopify-section-{{ section.id }} .glow-gallery-header h2 i {
+      font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+      font-style: italic;
+      color: {{ section.settings.heading_italic_color | default: '#731157' }};
+    }
+
+    #shopify-section-{{ section.id }} .glow-gallery-header .section-sub {
+      color: {{ section.settings.subheading_color | default: '#666655' }};
+      font-size: 1rem;
+      line-height: 1.6;
+      letter-spacing: var(--ls-body, 0);
+      margin: 0;
+    }
+  {%- endif -%}
+
+  /* ── Full Width Container (Edge-to-Edge) ── */
+  #shopify-section-{{ section.id }} .glow-gallery-fullwidth {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Grid: 0 gap, full width ── */
+  #shopify-section-{{ section.id }} .glow-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop | default: 3 }}, 1fr);
+    gap: {{ section.settings.gap_desktop | default: 0 }}px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Card / Column ── */
+  #shopify-section-{{ section.id }} .glow-card {
+    position: relative;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    background: {{ section.settings.card_bg | default: '#F1EDEC' }};
+    text-decoration: none;
+    line-height: 0;
+  }
+
+  /* ── Media Aspect Ratio & Image ── */
+  #shopify-section-{{ section.id }} .glow-card-media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    {%- case section.settings.aspect_ratio -%}
+      {%- when '3_4' -%}
+        aspect-ratio: 3 / 4;
+      {%- when '4_5' -%}
+        aspect-ratio: 4 / 5;
+      {%- when '9_16' -%}
+        aspect-ratio: 9 / 16;
+      {%- when '1_1' -%}
+        aspect-ratio: 1 / 1;
+      {%- when 'auto' -%}
+        aspect-ratio: auto;
+    {%- endcase -%}
+  }
+
+  #shopify-section-{{ section.id }} .glow-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  {% if section.settings.enable_hover_zoom %}
+    #shopify-section-{{ section.id }} .glow-card:hover .glow-card-img {
+      transform: scale(1.05);
+    }
+  {% endif %}
+
+  #shopify-section-{{ section.id }} .glow-card-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #731157 0%, #4e0a3a 100%);
+    color: #F1EDEC;
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-size: 1.4rem;
+    font-style: italic;
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .glow-gallery-section {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+
+  /* ── Mobile Layouts: DEFAULT HORIZONTAL SCROLL vs SLIDER vs GRID ── */
+  @media (max-width: 767px) {
+    {%- if section.settings.mobile_layout == 'scroll' -%}
+      /* ── Default Mobile Horizontal Snap Scroll ── */
+      #shopify-section-{{ section.id }} .glow-gallery-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        gap: {{ section.settings.gap_mobile | default: 0 }}px;
+        padding: 0;
+        margin: 0;
+        scrollbar-width: none; /* Firefox */
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+      }
+      #shopify-section-{{ section.id }} .glow-card {
+        flex: 0 0 {{ section.settings.mobile_card_width | default: '85%' }};
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+
+    {%- elsif section.settings.mobile_layout == 'slider' -%}
+      /* ── Slick Carousel Slider Mode ── */
+      #shopify-section-{{ section.id }} .glow-gallery-grid.slick-initialized {
+        display: block;
+        position: relative;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid.slick-initialized .slick-track {
+        display: flex !important;
+        align-items: stretch;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid.slick-initialized .slick-slide {
+        height: auto;
+        display: flex !important;
+        flex-direction: column;
+        padding: 0 {{ section.settings.gap_mobile | divided_by: 2 }}px;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid.slick-initialized .glow-card {
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Slider Arrows */
+      #shopify-section-{{ section.id }} .glow-gallery-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #2A0A20;
+        border: 1px solid rgba(115, 17, 87, 0.15);
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(42, 10, 32, 0.12);
+        transition: all 0.3s ease;
+        padding: 0;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-arrow:hover {
+        background: {{ section.settings.eyebrow_color | default: '#731157' }};
+        color: #ffffff;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-arrow svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-prev {
+        left: 8px;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-next {
+        right: 8px;
+      }
+
+      /* Slider Dots */
+      #shopify-section-{{ section.id }} .glow-gallery-grid .slick-dots {
+        position: relative;
+        bottom: auto;
+        margin: 1rem 0 0;
+        padding: 0;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        list-style: none;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid .slick-dots li {
+        margin: 0;
+        padding: 0;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid .slick-dots li button {
+        width: 7px;
+        height: 7px;
+        padding: 0;
+        border-radius: 50%;
+        background: rgba(115, 17, 87, 0.25);
+        border: none;
+        cursor: pointer;
+        text-indent: -9999px;
+        transition: all 0.3s ease;
+      }
+      #shopify-section-{{ section.id }} .glow-gallery-grid .slick-dots li.slick-active button {
+        width: 20px;
+        border-radius: 10px;
+        background: {{ section.settings.eyebrow_color | default: '#731157' }};
+      }
+
+    {%- else -%}
+      /* ── Vertical Grid Mode ── */
+      #shopify-section-{{ section.id }} .glow-gallery-grid {
+        grid-template-columns: repeat({{ section.settings.columns_mobile | default: 1 }}, 1fr);
+        gap: {{ section.settings.gap_mobile | default: 0 }}px;
+      }
+    {%- endif -%}
+  }
+</style>
+
+<section class="glow-gallery-section" id="glow-gallery-{{ section.id }}">
+  {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank -%}
+    <div class="glow-gallery-header reveal-up">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <div>{{ section.settings.heading }}</div>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="section-sub">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="glow-gallery-fullwidth">
+    <div class="glow-gallery-grid" id="glow-grid-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign card_link = block.settings.link
+          assign custom_img = block.settings.image
+          assign default_asset = block.settings.default_asset
+          assign alt_text = block.settings.alt_text | default: custom_img.alt | default: shop.name
+        -%}
+
+        <{% if card_link != blank %}a href="{{ card_link }}"{% else %}div{% endif %}
+          class="glow-card"
+          {{ block.shopify_attributes }}
+        >
+          <div class="glow-card-media">
+            {%- if custom_img != blank -%}
+              <img
+                class="glow-card-img"
+                src="{{ custom_img | image_url: width: 1000 }}"
+                alt="{{ alt_text | escape }}"
+                width="1000"
+                height="1333"
+                loading="lazy"
+              >
+            {%- elsif default_asset != blank -%}
+              <img
+                class="glow-card-img"
+                src="{{ default_asset | asset_url }}"
+                alt="{{ alt_text | escape }}"
+                width="1000"
+                height="1333"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="glow-card-placeholder">
+                <span>AMYZA Glow</span>
+              </div>
+            {%- endif -%}
+          </div>
+        </{% if card_link != blank %}a{% else %}div{% endif %}>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.mobile_layout == 'slider' -%}
+<script>
+  (function() {
+    function initGlowSlider_{{ section.id | replace: '-', '_' }}() {
+      var $ = window.jQuery;
+      if (!$ || !$.fn || !$.fn.slick) {
+        setTimeout(initGlowSlider_{{ section.id | replace: '-', '_' }}, 80);
+        return;
+      }
+      var $grid = $('#glow-grid-{{ section.id }}');
+      if (!$grid.length) return;
+
+      function handleMobileSlider() {
+        if (window.innerWidth <= 767) {
+          if (!$grid.hasClass('slick-initialized')) {
+            var prevSvg = '<button type="button" class="glow-gallery-arrow glow-gallery-prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>';
+            var nextSvg = '<button type="button" class="glow-gallery-arrow glow-gallery-next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>';
+
+            $grid.slick({
+              slidesToShow: {% if section.settings.mobile_card_width == '100%' %}1{% else %}1.15{% endif %},
+              slidesToScroll: 1,
+              autoplay: {{ section.settings.slider_autoplay | default: true }},
+              autoplaySpeed: {{ section.settings.slider_speed | default: 3500 }},
+              dots: {{ section.settings.slider_dots | default: true }},
+              arrows: {{ section.settings.slider_arrows | default: true }},
+              prevArrow: prevSvg,
+              nextArrow: nextSvg,
+              infinite: true,
+              centerMode: false,
+              adaptiveHeight: false
+            });
+          }
+        } else {
+          if ($grid.hasClass('slick-initialized')) {
+            $grid.slick('unslick');
+          }
+        }
+      }
+
+      handleMobileSlider();
+      $(window).off('resize.glowSlider{{ section.id }} orientationchange.glowSlider{{ section.id }}')
+               .on('resize.glowSlider{{ section.id }} orientationchange.glowSlider{{ section.id }}', handleMobileSlider);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGlowSlider_{{ section.id | replace: '-', '_' }});
+    } else {
+      initGlowSlider_{{ section.id | replace: '-', '_' }}();
+    }
+
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+        initGlowSlider_{{ section.id | replace: '-', '_' }}();
+      }
+    });
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Full Width Image Gallery",
+  "tag": "section",
+  "class": "shopify-section-glow-gallery",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Background & Spacing"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background Color",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Optional Header (Leave blank to hide)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#731157"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#731157"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#666655"
+    },
+    {
+      "type": "select",
+      "id": "header_align",
+      "label": "Header Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "label": "Header Margin Bottom",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Gallery Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "options": [
+        { "value": "2", "label": "2 Columns" },
+        { "value": "3", "label": "3 Columns" },
+        { "value": "4", "label": "4 Columns" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        { "value": "3_4", "label": "Portrait 3:4 (Recommended)" },
+        { "value": "4_5", "label": "Portrait 4:5" },
+        { "value": "9_16", "label": "Story 9:16" },
+        { "value": "1_1", "label": "Square 1:1" },
+        { "value": "auto", "label": "Natural Adapt" }
+      ],
+      "default": "3_4"
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap between images (Desktop)",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "info": "Set to 0 for flush edge-to-edge images."
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap between images (Mobile)",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hover_zoom",
+      "label": "Enable Image Hover Zoom",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Image Background Fallback",
+      "default": "#F1EDEC"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Mechanism (Scroll / Slider)"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile Layout Mechanism",
+      "options": [
+        { "value": "scroll", "label": "Horizontal Snap Scroll (Default)" },
+        { "value": "slider", "label": "Interactive Slider / Carousel (Slick)" },
+        { "value": "grid", "label": "Vertical Grid" }
+      ],
+      "default": "scroll",
+      "info": "Choose between default smooth horizontal scroll or interactive swipe slider on mobile."
+    },
+    {
+      "type": "select",
+      "id": "mobile_card_width",
+      "label": "Mobile Card Width (Peek next item)",
+      "options": [
+        { "value": "100%", "label": "100% (1 image full screen)" },
+        { "value": "85%", "label": "85% (Hints next image)" },
+        { "value": "78%", "label": "78% (Prominent next image)" }
+      ],
+      "default": "85%"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on Mobile (if Vertical Grid selected)",
+      "options": [
+        { "value": "1", "label": "1 Column" },
+        { "value": "2", "label": "2 Columns" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_arrows",
+      "label": "Show Slider Arrows (if Slider active)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_dots",
+      "label": "Show Slider Dots (if Slider active)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_autoplay",
+      "label": "Enable Slider Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "label": "Autoplay Speed (ms)",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "default": 3500
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_item",
+      "name": "Image Panel",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Upload Image"
+        },
+        {
+          "type": "text",
+          "id": "default_asset",
+          "label": "Theme Asset Fallback Image",
+          "default": "amyza_model_1.jpg",
+          "info": "Name of image file in assets folder (e.g. amyza_model_1.jpg)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Image Alt Text",
+          "default": "AMYZA Model"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Image Click Link (Optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Full Width Image Gallery",
+      "blocks": [
+        {
+          "type": "image_item",
+          "settings": {
+            "default_asset": "amyza_model_1.jpg",
+            "alt_text": "AMYZA Model 1"
+          }
+        },
+        {
+          "type": "image_item",
+          "settings": {
+            "default_asset": "amyza_model_2.jpg",
+            "alt_text": "AMYZA Model 2"
+          }
+        },
+        {
+          "type": "image_item",
+          "settings": {
+            "default_asset": "amyza_model_3.jpg",
+            "alt_text": "AMYZA Model 3"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
