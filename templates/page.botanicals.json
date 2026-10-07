@@ -51,7 +51,7 @@
         "botanical_MJAaxx": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/2.jpg",
+            "image": "shopify://shop_images/2-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
             "name": "Saffron",
             "description": "The golden thread of heritage. Unrivalled radiance.",
@@ -61,7 +61,7 @@
         "botanical_JjgtH4": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/6.jpg",
+            "image": "shopify://shop_images/6-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
             "name": "Rose",
             "description": "A centuries-old symbol of softness and renewal.",
@@ -71,7 +71,7 @@
         "botanical_HGLXPA": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/1.jpg",
+            "image": "shopify://shop_images/1-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
             "name": "Jasmine",
             "description": "Our fragrant base. A floral kiss in place of water.",
@@ -81,7 +81,7 @@
         "botanical_AjVLPi": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/4.jpg",
+            "image": "shopify://shop_images/4-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#e8a95b,#9F9F46)",
             "name": "Turmeric",
             "description": "The ancestral glow-giver. Anti-inflammatory, luminous.",
@@ -91,7 +91,7 @@
         "botanical_HFjfYT": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/Untitled_design_2.png",
+            "image": "shopify://shop_images/Untitled_design_2-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
             "name": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens.",
@@ -101,7 +101,7 @@
         "botanical_rbe3pB": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/3.jpg",
+            "image": "shopify://shop_images/3-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
             "name": "Tremella",
             "description": "The supreme hydrator, revered in TCM.",
@@ -111,7 +111,7 @@
         "botanical_dzy77j": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/5.jpg",
+            "image": "shopify://shop_images/5-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
             "name": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother.",
@@ -121,7 +121,7 @@
         "botanical_zBrWiR": {
           "type": "botanical",
           "settings": {
-            "image": "shopify://shop_images/7.jpg",
+            "image": "shopify://shop_images/7-removebg-preview.png",
             "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
             "name": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless.",
