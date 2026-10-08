@@ -514,6 +514,7 @@
     },
     "home_banner_cinematic": {
       "type": "home-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "container_width": 1600,
