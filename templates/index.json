@@ -882,6 +882,7 @@
         "faq_item_7BTc7f",
         "faq_item_LFDLDM"
       ],
+      "disabled": true,
       "name": "FAQ Teaser",
       "settings": {
         "section_bg": "#f1edec",
