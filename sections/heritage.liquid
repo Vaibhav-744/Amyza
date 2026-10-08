@@ -3,8 +3,8 @@
 <style>
   /* ── Layout & structure (from theme CSS) ── */
   #shopify-section-{{ section.id }} .heritage {
-    padding: 7rem 3rem;
-    max-width: 1200px;
+    padding: 0;
+    max-width: 100%;
     margin: 0 auto;
     background: {{ section.settings.section_bg }};
   }
@@ -61,7 +61,7 @@
     aspect-ratio: 1 / 1;
     max-height: 560px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 0;
     display: block;
   }
 
@@ -139,16 +139,22 @@
   }
   @keyframes spinSlow { to { transform: rotate(360deg); } }
 
+  #shopify-section-{{ section.id }} .heritage-text.reveal-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8%;
+}
   /* ── Responsive ── */
   @media(max-width:1200px){
-    #shopify-section-{{ section.id }} .heritage{padding:6rem 1.2rem}
+    #shopify-section-{{ section.id }} .heritage{padding:0}
     #shopify-section-{{ section.id }} .floating-card {max-width:260px;padding:1.8rem 1.6rem 1.5rem}
     #shopify-section-{{ section.id }} .floating-card p{font-size:1.3rem}
   }
   @media (max-width: 980px) {
     #shopify-section-{{ section.id }} .heritage-grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
     }
     #shopify-section-{{ section.id }} .heritage-text h2 {
       font-size: 1.9rem;
@@ -181,9 +187,12 @@
     #shopify-section-{{ section.id }} .heritage-visual .sticker text {
       font-size: 13px;
     }
+    #shopify-section-{{ section.id }} .heritage-text.reveal-left {
+      padding: 30px 15px 0;
+    }
   }
   @media (max-width: 640px) {
-    #shopify-section-{{ section.id }} .heritage{padding: 3.5rem 1.2rem;}
+    #shopify-section-{{ section.id }} .heritage{padding: 0;}
     #shopify-section-{{ section.id }} .heritage-visual .sticker {
       width: 70px;
       height: 70px;
@@ -229,13 +238,13 @@
         />
       {% endif %}
 
-      <div class="floating-card">
+      {% comment %} <div class="floating-card">
         <span class="quote-mark">"</span>
         <p>{{ section.settings.quote_text }}</p>
         <span class="quote-author">{{ section.settings.quote_author }}</span>
-      </div>
+      </div> {% endcomment %}
 
-      <div class="sticker">
+      {% comment %} <div class="sticker">
         <svg viewBox="0 0 120 120">
           <defs>
             <path id="circ-{{ section.id }}" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
@@ -243,7 +252,7 @@
           <text><textPath href="#circ-{{ section.id }}">{{ section.settings.sticker_text }}</textPath></text>
         </svg>
         <span class="sticker-center">{{ section.settings.sticker_icon }}</span>
-      </div>
+      </div> {% endcomment %}
     </div>
 
   </div>

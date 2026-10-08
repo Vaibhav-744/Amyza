@@ -505,6 +505,7 @@ h4,
     flex: 1;
     text-align: left;
     background: transparent !important;
+    border-top: 1px solid rgba(42, 10, 32, 0.12);
     border-bottom: 1px solid rgba(42, 10, 32, 0.12);
 }
 
@@ -631,7 +632,7 @@ h4,
     min-width: 38px;
     aspect-ratio: 1;
     height: auto;
-    background: rgba(234, 172, 201, .25);
+    /* background: rgba(234, 172, 201, .25); */
     border-radius: 4px;
     line-height: 0;
     display: flex;
@@ -653,9 +654,9 @@ h4,
 }
 
 .featured_icontext .featured-text-wrapper .text-wrapper .title-text {
-    font-style: italic;
+    /* font-style: italic; */
     font-weight: 400;
-    color: var(--plum);
+    color: #000;
     font-size: 1.05rem;
     line-height: 1.2;
     margin-bottom: .15rem;

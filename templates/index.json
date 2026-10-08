@@ -15,12 +15,12 @@
       "settings": {
         "video": "shopify://files/videos/14912587_1920_1080_50fps (1).mp4",
         "fallback_bg": "#731157",
-        "eyebrow": "Introducing the Golden Nectar",
+        "eyebrow": "",
         "eyebrow_color": "#f1edec",
-        "heading": "<h1><em>The Glow</em><br/>You Deserve.</h1>",
+        "heading": "<h1><em>YOUR GLOW<br/>INHERITED</em></h1>",
         "heading_color": "#731157",
         "heading_italic_color": "#731157",
-        "subheading": "A slow-luxury ritual rooted in ancestral botanical wisdom — reimagined for the modern woman.",
+        "subheading": "",
         "subheading_color": "#f1edeceb",
         "primary_button_label": "Shop The Serum",
         "primary_button_link": "",
@@ -28,7 +28,7 @@
         "primary_button_text": "#f1edec",
         "primary_button_border": "#731157",
         "primary_button_hover_bg": "#4e0a3a",
-        "secondary_button_label": "Discover The Ritual",
+        "secondary_button_label": "",
         "secondary_button_link": "",
         "secondary_button_text": "#f1edec",
         "secondary_button_border": "#f1edec",
@@ -49,68 +49,6 @@
         "scroll_line_color": "#f1edec",
         "scroll_animation_speed": 2,
         "text_color": "#f1edec"
-      }
-    },
-    "marquee_announcement_acFEcL": {
-      "type": "marquee_announcement",
-      "blocks": {
-        "announcement_RhTUyh": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p><em>✦</em> Botanical Heritage</p>"
-          }
-        },
-        "announcement_mfYn3r": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p><em>✦</em> Cruelty-Free</p>"
-          }
-        },
-        "announcement_JbAH48": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p><em>✦</em> Paraben-Free</p>"
-          }
-        },
-        "announcement_6xJQcY": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p>✦ Crafted in Malaysia</p>"
-          }
-        },
-        "announcement_QCAXP6": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p><em>✦</em> Slow Luxury</p>"
-          }
-        },
-        "announcement_C3Lp4Q": {
-          "type": "announcement",
-          "settings": {
-            "text": "<p><em>✦</em> Alcohol-Free</p>"
-          }
-        }
-      },
-      "block_order": [
-        "announcement_RhTUyh",
-        "announcement_mfYn3r",
-        "announcement_JbAH48",
-        "announcement_6xJQcY",
-        "announcement_QCAXP6",
-        "announcement_C3Lp4Q"
-      ],
-      "name": "Announcement Bar",
-      "settings": {
-        "bg_color": "#731157",
-        "text_color": "#f1edec",
-        "padding_top_desktop": 10,
-        "padding_bottom_desktop": 10,
-        "padding_top_mobile": 10,
-        "padding_bottom_mobile": 10,
-        "font_size_min": 1,
-        "font_size_max": 1,
-        "animation_speed": 40,
-        "pause_on_hover": true
       }
     },
     "product_block_VRB8WC": {
@@ -226,6 +164,68 @@
         "border_layout_card": "full",
         "border_width_card": 5,
         "border_color_card": "#f0f1f4"
+      }
+    },
+    "marquee_announcement_acFEcL": {
+      "type": "marquee_announcement",
+      "blocks": {
+        "announcement_RhTUyh": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Botanical Heritage</p>"
+          }
+        },
+        "announcement_mfYn3r": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Cruelty-Free</p>"
+          }
+        },
+        "announcement_JbAH48": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Paraben-Free</p>"
+          }
+        },
+        "announcement_6xJQcY": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>✦ Crafted in Malaysia</p>"
+          }
+        },
+        "announcement_QCAXP6": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Slow Luxury</p>"
+          }
+        },
+        "announcement_C3Lp4Q": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p><em>✦</em> Alcohol-Free</p>"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_RhTUyh",
+        "announcement_mfYn3r",
+        "announcement_JbAH48",
+        "announcement_6xJQcY",
+        "announcement_QCAXP6",
+        "announcement_C3Lp4Q"
+      ],
+      "name": "Announcement Bar",
+      "settings": {
+        "bg_color": "#731157",
+        "text_color": "#f1edec",
+        "padding_top_desktop": 10,
+        "padding_bottom_desktop": 10,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 10,
+        "font_size_min": 1,
+        "font_size_max": 1,
+        "animation_speed": 40,
+        "pause_on_hover": true
       }
     },
     "featured_product_9RJ63M": {
@@ -386,7 +386,7 @@
             "background_color_block": "rgba(0,0,0,0)",
             "background_gradient_color_block": "",
             "spacing_top": 0,
-            "spacing_bottom": 26
+            "spacing_bottom": 0
           }
         }
       },
@@ -406,7 +406,7 @@
       "name": "t:sections.product_block.settings.header__2.feature_product",
       "settings": {
         "id_section": "",
-        "container": "1770",
+        "container": "fullwidth",
         "padding_full_width": 0,
         "show_sticky_info": false,
         "mg_top_desktop": 0,
@@ -433,7 +433,7 @@
         "main_image_counter_mobile": true,
         "main_image_position": "left",
         "main_image_bg_color": "#f1edec",
-        "show_thumbnail_mobile": true,
+        "show_thumbnail_mobile": false,
         "thumnail_layout": "4",
         "thumbnail_to_show": 4,
         "thumbnail_active_color": "#e11ecb",
@@ -623,12 +623,12 @@
         "link_url": "#",
         "link_color": "#731157",
         "image": "shopify://shop_images/amz_ritual.png",
-        "quote_text": "Bottled generational wisdom.",
-        "quote_author": "— The AMYZA Story",
+        "quote_text": "",
+        "quote_author": "",
         "card_bg": "#f1edec",
         "card_text_color": "#731157",
-        "sticker_text": "✦ MADE WITH LOVE ✦ SINCE HERITAGE ✦",
-        "sticker_icon": "♥",
+        "sticker_text": "",
+        "sticker_icon": "",
         "sticker_color": "#731157"
       }
     },
@@ -726,7 +726,7 @@
         "eyebrow_color": "#eaacc9",
         "heading": "<h2>Our <em>Botanicals</em></h2>",
         "heading_color": "#f1edec",
-        "heading_italic_color": "#eaacc9",
+        "heading_italic_color": "#1d4f3b",
         "subheading": "Every ingredient tells a story.",
         "subheading_color": "#f1edec",
         "card_title_color": "#eaacc9",
@@ -907,8 +907,8 @@
   },
   "order": [
     "custom_video_Y9yRha",
-    "marquee_announcement_acFEcL",
     "product_block_VRB8WC",
+    "marquee_announcement_acFEcL",
     "featured_product_9RJ63M",
     "glow_gallery_main",
     "home_banner_cinematic",
