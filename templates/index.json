@@ -231,6 +231,8 @@
         "pause_on_hover": true
       }
     },
+<<<<<<< HEAD
+=======
     "product_block_VRB8WC": {
       "type": "product-block",
       "name": "t:sections.product_block.presets.name",
@@ -252,7 +254,7 @@
         "mg_bottom_tablet": 50,
         "mg_bottom_mobile": 50,
         "product_block_layout": "slider",
-        "product_bg": "#f2edec",
+        "product_bg": "#f1edec",
         "product_bg_gradient": "",
         "style_block_header": "style4",
         "pd_top_title": 30,
@@ -346,6 +348,7 @@
         "border_color_card": "#f0f1f4"
       }
     },
+>>>>>>> a6c9d701c9e22de945a35abe6414dc307729bfb8
     "featured_product_9RJ63M": {
       "type": "featured-product",
       "blocks": {
@@ -970,7 +973,10 @@
         "nav_hover_bg": "#7d0a50",
         "nav_hover_color": "#f2edec",
         "dot_color": "",
+<<<<<<< HEAD
         "dot_active_color": "#7d0a50"
+=======
+        "dot_active_color": "#731157"
       }
     },
     "custom_faq_fkRWCi": {
@@ -1018,7 +1024,7 @@
       "disabled": true,
       "name": "FAQ Teaser",
       "settings": {
-        "section_bg": "#f2edec",
+        "section_bg": "#f1edec",
         "section_padding_desktop": "5rem 2rem",
         "section_padding_mobile": "3rem 1.2rem",
         "eyebrow": "✦ Curious?",
@@ -1026,17 +1032,18 @@
         "lead": "From ingredient sourcing to skincare routines — everything you want to know about AMYZA.",
         "button_label": "Visit the FAQ",
         "button_link": "shopify://pages/faqs",
-        "eyebrow_color": "#7d0a50",
+        "eyebrow_color": "#731157",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#7d0a50",
+        "heading_italic_color": "#731157",
         "lead_color": "#5a3545",
         "question_color": "#2a0a20",
         "answer_color": "#666655",
-        "icon_color": "#7d0a50",
+        "icon_color": "#731157",
         "border_color": "",
-        "button_bg": "#7d0a50",
-        "button_text": "#f2edec",
+        "button_bg": "#731157",
+        "button_text": "#f1edec",
         "button_hover_bg": "#4e0a3a"
+>>>>>>> a6c9d701c9e22de945a35abe6414dc307729bfb8
       }
     }
   },
@@ -1052,4 +1059,11 @@
     "botanicals_JzPkmR",
     "testimonial_MtGxfE"
   ]
+}
+    "home_banner_cinematic",
+"rituals_yhwWfj",
+"heritage_xH3aVg",
+"botanicals_JzPkmR",
+"testimonial_MtGxfE"
+]
 }
