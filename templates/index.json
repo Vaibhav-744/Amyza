@@ -231,6 +231,121 @@
         "pause_on_hover": true
       }
     },
+    "product_block_VRB8WC": {
+      "type": "product-block",
+      "name": "t:sections.product_block.presets.name",
+      "settings": {
+        "unique_class": "home_ritual-products",
+        "container": "1770",
+        "padding_full_width": 0,
+        "disable_padding_content": false,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "border_height": 1,
+        "color_border_bottom": "#e8e8e8",
+        "enable_minus_mg_top": false,
+        "minus_spacing_top": 0,
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "product_block_layout": "slider",
+        "product_bg": "#f2edec",
+        "product_bg_gradient": "",
+        "style_block_header": "style4",
+        "pd_top_title": 30,
+        "product_small_tagline": "<p>✦ The Collection</p>",
+        "product_small_description": "<p>Botanical heritage, bottled with intention.</p>",
+        "product_block_title": "<h2><em>Shop</em>&nbsp;<em>The Ritual</em></h2>",
+        "enable_border_title": false,
+        "enable_border_title_style2": false,
+        "fontsize_title": 16,
+        "fontsize_title_mb": 16,
+        "mg_bottom_title": 5,
+        "mg_bottom_title_mb": 5,
+        "border_color_title": "#232323",
+        "color_title": "#2a0a20",
+        "view_all": "View All Products",
+        "view_all_align": "center",
+        "font_weight_view_all": "400",
+        "mg_bottom_view": 30,
+        "mg_bottom_view_mb": 0,
+        "enable_border_view_all": true,
+        "link_view_all": "",
+        "color_view_all": "#3c3c3c",
+        "icon_view_all": "",
+        "color_view_all_icon": "#eb492f",
+        "title_align": "center",
+        "button_text": "",
+        "button_text_font_size": 14,
+        "button_text_font_weight": "500",
+        "button_text_text_transform": "uppercase",
+        "product_button_width": 270,
+        "pd_top_product_button": 12,
+        "pd_bottom_product_button": 12,
+        "button_icon": "",
+        "mg_bottom_button": 55,
+        "enable_button_shadow": false,
+        "color_button": "#fff",
+        "border_color_button": "#232323",
+        "bg_color_button": "#232323",
+        "bg_color_gradient_button": "",
+        "color_button_hover": "",
+        "border_color_button_hover": "",
+        "bg_color_button_hover": "",
+        "bg_color_gradient_button_hover": "",
+        "product_block_collection": "the-ritual",
+        "product_block_limit": 4,
+        "grid_gap": 30,
+        "pb_style": "style1",
+        "style_countdown": "style_1",
+        "countdown": "",
+        "font_size_countdown_text": 14,
+        "color_countdown": "#f42b23",
+        "countdown_margin_left": 15,
+        "product_block_per_row": "4",
+        "product_block_infinite_scroll": true,
+        "product_block_swipe_on_mobile": true,
+        "enable_product_card_pd_bottom": false,
+        "product_card_pd_bottom": 40,
+        "product_block_dots": true,
+        "product_block_dots_mb": true,
+        "spacing_top_dots": 0,
+        "product_block_arrows": true,
+        "product_block_arrows_mb": true,
+        "product_block_progress_bar": false,
+        "product_block_counter_number": false,
+        "enable_hover_arrow": false,
+        "enable_infinite": true,
+        "product_block_show": "4",
+        "position_vertical_arrow": "70px",
+        "product_block_per_view": "3",
+        "show_half": true,
+        "scroll_height": 4,
+        "scroll_track_bg": "#f1f1f1",
+        "scroll_thumb_color": "#000",
+        "scroll_thumb_hover_color": "#444",
+        "enable_hover_drag_icon": true,
+        "position": "left",
+        "width_banner": 40,
+        "display_list_collection": false,
+        "collection_color": "#202020",
+        "collection_color_hover": "#3e8cc4",
+        "collection_bg_color": "#fff",
+        "collection_bg_color_gradient": "",
+        "text_list": "View all categories",
+        "url_list": "",
+        "enable_layout_special": false,
+        "bg_card": "#fff",
+        "padding_card": 15,
+        "border_radius_card": 5,
+        "border_layout_card": "full",
+        "border_width_card": 5,
+        "border_color_card": "#f0f1f4"
+      }
+    },
     "featured_product_9RJ63M": {
       "type": "featured-product",
       "blocks": {
@@ -520,6 +635,7 @@
     },
     "home_banner_cinematic": {
       "type": "home-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "container_width": 1600,
@@ -855,6 +971,72 @@
         "nav_hover_color": "#f2edec",
         "dot_color": "",
         "dot_active_color": "#7d0a50"
+      }
+    },
+    "custom_faq_fkRWCi": {
+      "type": "custom-faq",
+      "blocks": {
+        "faq_item_9f89GU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is Golden Nectar suitable for sensitive skin?",
+            "answer": "Yes — it's free of alcohol, parabens, and artificial fragrance. The Pegaga and Aloe Vera actively calm reactive skin.",
+            "open_by_default": true
+          }
+        },
+        "faq_item_didALq": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When should I use the serum?",
+            "answer": "Use AM and PM after cleansing, before moisturiser. Press gently into skin as part of your ritual.",
+            "open_by_default": false
+          }
+        },
+        "faq_item_7BTc7f": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long before I see results?",
+            "answer": "Most see visible glow within 7 days, with deeper skin transformation around 4 weeks of consistent use.",
+            "open_by_default": false
+          }
+        },
+        "faq_item_LFDLDM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where do you ship?",
+            "answer": "We ship across Malaysia and Singapore. Free shipping on orders over RM150.",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_9f89GU",
+        "faq_item_didALq",
+        "faq_item_7BTc7f",
+        "faq_item_LFDLDM"
+      ],
+      "disabled": true,
+      "name": "FAQ Teaser",
+      "settings": {
+        "section_bg": "#f2edec",
+        "section_padding_desktop": "5rem 2rem",
+        "section_padding_mobile": "3rem 1.2rem",
+        "eyebrow": "✦ Curious?",
+        "heading": "<h2>Questions? <em>We've got answers.</em></h2>",
+        "lead": "From ingredient sourcing to skincare routines — everything you want to know about AMYZA.",
+        "button_label": "Visit the FAQ",
+        "button_link": "shopify://pages/faqs",
+        "eyebrow_color": "#7d0a50",
+        "heading_color": "#2a0a20",
+        "heading_italic_color": "#7d0a50",
+        "lead_color": "#5a3545",
+        "question_color": "#2a0a20",
+        "answer_color": "#666655",
+        "icon_color": "#7d0a50",
+        "border_color": "",
+        "button_bg": "#7d0a50",
+        "button_text": "#f2edec",
+        "button_hover_bg": "#4e0a3a"
       }
     }
   },
