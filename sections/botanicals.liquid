@@ -3,21 +3,54 @@
 <style>
   /* ── Section ── */
   #shopify-section-{{ section.id }} .botanicals {
-    background: {{ section.settings.section_bg }};
+    position: relative;
+    background-color: {{ section.settings.section_bg }};
+    {%- if section.settings.section_bg_image != blank -%}
+      background-image: url('{{ section.settings.section_bg_image | image_url: width: 2500 }}');
+      background-size: {{ section.settings.bg_image_size | default: 'cover' }};
+      background-position: {{ section.settings.bg_image_position | default: 'center center' }};
+      background-repeat: {{ section.settings.bg_image_repeat | default: 'no-repeat' }};
+    {%- else -%}
+      background: {{ section.settings.section_bg }};
+    {%- endif -%}
     color: {{ section.settings.section_text_color }};
     padding: 5rem 2rem;
   }
 
+  {%- if section.settings.section_bg_image != blank and section.settings.bg_overlay_opacity > 0 -%}
+    #shopify-section-{{ section.id }} .botanicals::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: {{ section.settings.bg_overlay_color | default: '#000000' }};
+      opacity: {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }};
+      pointer-events: none;
+      z-index: 0;
+    }
+    #shopify-section-{{ section.id }} .botanicals > * {
+      position: relative;
+      z-index: 1;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.section_bg_image_mobile != blank -%}
+    @media (max-width: 768px) {
+      #shopify-section-{{ section.id }} .botanicals {
+        background-image: url('{{ section.settings.section_bg_image_mobile | image_url: width: 1200 }}');
+      }
+    }
+  {%- endif -%}
+
   /* ── Cards ── */
   #shopify-section-{{ section.id }} .botanical-card {
-    background: rgba(241,237,236,.06);
-    border: 1px solid rgba(241,237,236,.15);
+    background: rgba(242, 237, 236,.06);
+    border: 1px solid rgba(242, 237, 236,.15);
     border-radius: var(--radius-md);
     padding: 1.2rem;
     transition: .4s;
   }
   #shopify-section-{{ section.id }} .botanical-card:hover {
-    background: rgba(241,237,236,.1);
+    background: rgba(242, 237, 236,.1);
     transform: translateY(-5px);
   }
 
@@ -163,21 +196,90 @@
   "settings": [
     {
       "type": "header",
-      "content": "Section"
+      "content": "Section Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image",
+      "label": "Background Image (Desktop)",
+      "info": "First priority. If uploaded, this image is used as the section background."
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "Optional. Overrides desktop background image on mobile screens (≤768px)."
+    },
+    {
+      "type": "select",
+      "id": "bg_image_size",
+      "label": "Background Size",
+      "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Cover (Fill section)" },
+        { "value": "contain", "label": "Contain (Fit inside)" },
+        { "value": "auto", "label": "Auto / Original size" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg_image_position",
+      "label": "Background Position",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center Center" },
+        { "value": "top center", "label": "Top Center" },
+        { "value": "bottom center", "label": "Bottom Center" },
+        { "value": "center left", "label": "Center Left" },
+        { "value": "center right", "label": "Center Right" },
+        { "value": "top left", "label": "Top Left" },
+        { "value": "top right", "label": "Top Right" },
+        { "value": "bottom left", "label": "Bottom Left" },
+        { "value": "bottom right", "label": "Bottom Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg_image_repeat",
+      "label": "Background Repeat",
+      "default": "no-repeat",
+      "options": [
+        { "value": "no-repeat", "label": "No Repeat" },
+        { "value": "repeat", "label": "Repeat Tile" },
+        { "value": "repeat-x", "label": "Repeat Horizontally" },
+        { "value": "repeat-y", "label": "Repeat Vertically" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_overlay_color",
+      "label": "Image Overlay Color",
+      "default": "#000000",
+      "info": "Applies a color overlay over the background image."
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Overlay Opacity",
+      "default": 0
     },
     {
       "type": "color",
       "id": "section_bg",
-      "label": "Background",
-      "default": "#1D4F3B",
-      "info": "Default: --emerald (#1D4F3B)"
+      "label": "Background Color",
+      "default": "#224F3C",
+      "info": "Used when no image is uploaded, or as underlay behind transparent images. Default: --emerald (#224F3C)"
     },
     {
       "type": "color",
       "id": "section_text_color",
       "label": "Section Text Color",
-      "default": "#F1EDEC",
-      "info": "Default: --porcelain (#F1EDEC)"
+      "default": "#F2EDEC",
+      "info": "Default: --porcelain (#F2EDEC)"
     },
     {
       "type": "header",
@@ -193,8 +295,8 @@
       "type": "color",
       "id": "eyebrow_color",
       "label": "Eyebrow Color",
-      "default": "#EAACC9",
-      "info": "Default: --blush (#EAACC9)"
+      "default": "#F0AEBC",
+      "info": "Default: --blush (#F0AEBC)"
     },
     {
       "type": "richtext",
@@ -207,15 +309,15 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading Color",
-      "default": "#F1EDEC",
-      "info": "Default: --porcelain (#F1EDEC)"
+      "default": "#F2EDEC",
+      "info": "Default: --porcelain (#F2EDEC)"
     },
     {
       "type": "color",
       "id": "heading_italic_color",
       "label": "Heading Italic Color",
-      "default": "#EAACC9",
-      "info": "Default: --blush (#EAACC9)"
+      "default": "#F0AEBC",
+      "info": "Default: --blush (#F0AEBC)"
     },
     {
       "type": "text",
@@ -227,8 +329,8 @@
       "type": "color",
       "id": "subheading_color",
       "label": "Subheading Color",
-      "default": "#F1EDEC",
-      "info": "Default: --porcelain (#F1EDEC)"
+      "default": "#F2EDEC",
+      "info": "Default: --porcelain (#F2EDEC)"
     },
     {
       "type": "header",
@@ -238,15 +340,15 @@
       "type": "color",
       "id": "card_title_color",
       "label": "Card Title Color",
-      "default": "#EAACC9",
-      "info": "Default: --blush (#EAACC9)"
+      "default": "#F0AEBC",
+      "info": "Default: --blush (#F0AEBC)"
     },
     {
       "type": "color",
       "id": "card_desc_color",
       "label": "Card Description Color",
-      "default": "#F1EDEC",
-      "info": "Default: --porcelain (#F1EDEC)"
+      "default": "#F2EDEC",
+      "info": "Default: --porcelain (#F2EDEC)"
     },
        {
           "type": "header",
@@ -268,13 +370,13 @@
           "type": "color",
           "id": "btn_bg",
           "label": "Button Background",
-          "default": "#731157"
+          "default": "#7D0A50"
         },
         {
           "type": "color",
           "id": "btn_text_color",
           "label": "Button Text",
-          "default": "#F1EDEC"
+          "default": "#F2EDEC"
         },
         {
           "type": "color",
@@ -297,7 +399,7 @@
           "type": "text",
           "id": "fallback_bg",
           "label": "Fallback Background",
-          "default": "linear-gradient(135deg,#9F9F46,#731157)",
+          "default": "linear-gradient(135deg,#9F9F46,#7D0A50)",
           "info": "Shown while no image is uploaded. CSS gradient or hex color."
         },
         {
@@ -324,7 +426,7 @@
           "settings": {
             "title": "Saffron",
             "description": "The golden thread of heritage. Delivers unparalleled radiance.",
-            "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)"
+            "fallback_bg": "linear-gradient(135deg,#9F9F46,#7D0A50)"
           }
         },
         {
@@ -332,7 +434,7 @@
           "settings": {
             "title": "Jasmine",
             "description": "Our fragrant base. Replaces water with a floral kiss.",
-            "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)"
+            "fallback_bg": "linear-gradient(135deg,#F2EDEC,#F0AEBC)"
           }
         },
         {
@@ -340,7 +442,7 @@
           "settings": {
             "title": "Rose",
             "description": "A centuries-old symbol of softness and renewal.",
-            "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)"
+            "fallback_bg": "linear-gradient(135deg,#F0AEBC,#7D0A50)"
           }
         },
         {
@@ -356,7 +458,7 @@
           "settings": {
             "title": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens.",
-            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)"
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#9F9F46)"
           }
         },
         {
@@ -364,7 +466,7 @@
           "settings": {
             "title": "Tremella",
             "description": "The supreme hydrator, revered in TCM.",
-            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)"
+            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#F0AEBC)"
           }
         },
         {
@@ -372,7 +474,7 @@
           "settings": {
             "title": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother.",
-            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)"
+            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#7D0A50)"
           }
         },
         {
@@ -380,7 +482,7 @@
           "settings": {
             "title": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless.",
-            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)"
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#F2EDEC)"
           }
         }
       ]

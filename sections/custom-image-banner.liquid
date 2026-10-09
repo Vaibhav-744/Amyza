@@ -2,7 +2,7 @@
 {%- assign swipe = section.settings.custom_image_banner_block_swipe_on_mobile -%}
 <link rel="stylesheet" href="{{ 'component-custom-image-banner-block.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'component-custom-image-banner-block.css' | asset_url | stylesheet_tag }}</noscript>
-<div class="custom-image-banner-block section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="custom-image-banner-{{section.id}}">
+<div class="custom-image-banner-block section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="custom-image-banner-{{section.id}}" allow-transparent-header>
 <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1170' %}container-1170{% elsif section.settings.container == '1770' %}container-1770{% else %}container{% endif %}">
     {%- if section.settings.custom_image_banner_title != blank -%}
         <div class="halo-block-header text-{{ section.settings.title_align }}">   

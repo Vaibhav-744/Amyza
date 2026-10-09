@@ -10,7 +10,7 @@
       height: 100vh;
       z-index: 999999;
       background: {{ settings.preloading_screen_bg | default: '#4e0a3a' }};
-      color: {{ settings.preloading_screen_text_color | default: '#EAACC9' }};
+      color: {{ settings.preloading_screen_text_color | default: '#F0AEBC' }};
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -53,13 +53,13 @@
       font-style: italic;
       font-size: 1.6rem;
       letter-spacing: 0.05em;
-      color: {{ settings.preloading_screen_text_color | default: '#EAACC9' }};
+      color: {{ settings.preloading_screen_text_color | default: '#F0AEBC' }};
       text-transform: uppercase;
     }
     .preloader-bar {
       width: 160px;
       height: 2px;
-      background: rgba(241, 237, 236, 0.2);
+      background: rgba(242, 237, 236, 0.2);
       overflow: hidden;
       border-radius: 2px;
     }
@@ -67,7 +67,7 @@
       display: block;
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, {{ settings.preloading_screen_text_color | default: '#EAACC9' }}, var(--olive, #9F9F46));
+      background: linear-gradient(90deg, {{ settings.preloading_screen_text_color | default: '#F0AEBC' }}, var(--olive, #9F9F46));
       transition: width 0.2s ease;
     }
   </style>
@@ -86,7 +86,7 @@
         >
       {%- else -%}
         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill="{{ settings.preloading_screen_text_color | default: '#EAACC9' }}" d="M50 8 C 56 20, 64 24, 74 22 C 72 32, 76 40, 88 50 C 76 60, 72 68, 74 78 C 64 76, 56 80, 50 92 C 44 80, 36 76, 26 78 C 28 68, 24 60, 12 50 C 24 40, 28 32, 26 22 C 36 24, 44 20, 50 8 Z"/>
+          <path fill="{{ settings.preloading_screen_text_color | default: '#F0AEBC' }}" d="M50 8 C 56 20, 64 24, 74 22 C 72 32, 76 40, 88 50 C 76 60, 72 68, 74 78 C 64 76, 56 80, 50 92 C 44 80, 36 76, 26 78 C 28 68, 24 60, 12 50 C 24 40, 28 32, 26 22 C 36 24, 44 20, 50 8 Z"/>
         </svg>
       {%- endif -%}
     </div>

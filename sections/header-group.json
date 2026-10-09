@@ -55,8 +55,8 @@
       "disabled": true,
       "name": "Announcement Bar",
       "settings": {
-        "bg_color": "#731157",
-        "text_color": "#f1edec",
+        "bg_color": "#7d0a50",
+        "text_color": "#f2edec",
         "padding_top_desktop": 50,
         "padding_bottom_desktop": 50,
         "padding_top_mobile": 10,
@@ -133,8 +133,8 @@
         "enable_announcement": true,
         "layout": "slider",
         "enable_close": false,
-        "color_text": "#f1edec",
-        "bg_color_text": "#731157",
+        "color_text": "#f2edec",
+        "bg_color_text": "#7d0a50",
         "bg_color_text_gradient": "",
         "font_size_text": 12,
         "font_style_text": "normal",
@@ -194,7 +194,8 @@
           "type": "logo",
           "settings": {
             "logo_position": "always",
-            "logo": "shopify://shop_images/High-res_AMYZA_Logo-01-plum.png",
+            "logo": "shopify://shop_images/High-res_AMYZA_Logo-03-plum.png",
+            "logo_transparent": "shopify://shop_images/High-res_AMYZA_Logo-07-white.png",
             "logo_width": 100,
             "logo_width_fixed": 100,
             "logo_text": "",
@@ -223,7 +224,7 @@
             "header_icons_border_color": "rgba(0,0,0,0)",
             "header_icons_border_sticky_color": "rgba(0,0,0,0)",
             "cart_count_bubble_color": "#ffffff",
-            "cart_count_bubble_bg": "#731157",
+            "cart_count_bubble_bg": "#7d0a50",
             "cart_count_bubble_bg_gradient": ""
           }
         }
@@ -236,13 +237,13 @@
       "settings": {
         "container": "1470",
         "padding_full_width": 0,
-        "header_navigation_bg": "#f1edec",
+        "header_navigation_bg": "#f2edec",
         "header_navigation_bg_gradient": "",
         "sticky_header_type": "always",
         "sticky_header_width": "default",
-        "enable_transparent": false,
-        "transparent_color": "#2a0a20",
-        "transparent_color_hover": "#2a0a20"
+        "enable_transparent": true,
+        "transparent_color": "#f2edec",
+        "transparent_color_hover": "#f2edec"
       }
     },
     "header-mobile": {
@@ -251,26 +252,27 @@
         "7de2266e-0cd4-4fda-9f09-06f75a17f944": {
           "type": "menu",
           "settings": {
-            "color": "#731157",
-            "menu_tab_bg": "#f1edec"
+            "color": "#7d0a50",
+            "menu_tab_bg": "#f2edec"
           }
         },
         "550fbd21-75fb-4051-9dee-77d91b5239f0": {
           "type": "logo",
           "settings": {
-            "logo_mobile": "shopify://shop_images/High-res_AMYZA_Logo-01-plum.png",
+            "logo_mobile": "shopify://shop_images/High-res_AMYZA_Logo-03-plum.png",
+            "logo_transparent": "shopify://shop_images/High-res_AMYZA_Logo-07-white.png",
             "logo_width_mobile": 80,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",
             "logo_text_transform": "uppercase",
-            "logo_color": "#f1edec"
+            "logo_color": "#f2edec"
           }
         },
         "163e2cb5-14f2-4af6-9ac3-77193c082f53": {
           "type": "search",
           "settings": {
-            "color": "#731157"
+            "color": "#7d0a50"
           }
         },
         "20dae707-64c0-4ea3-a05e-561cae9836d8": {
@@ -278,16 +280,16 @@
           "disabled": true,
           "settings": {
             "icon": "1",
-            "color": "#731157"
+            "color": "#7d0a50"
           }
         },
         "633f9dae-3f65-4bda-9ca8-9d3e231aaf9d": {
           "type": "cart",
           "settings": {
             "icon": "2",
-            "color": "#731157",
+            "color": "#7d0a50",
             "color_bubble": "#ffffff",
-            "bg_bubble": "#731157"
+            "bg_bubble": "#7d0a50"
           }
         }
       },
@@ -299,10 +301,10 @@
         "633f9dae-3f65-4bda-9ca8-9d3e231aaf9d"
       ],
       "settings": {
-        "background": "#f1edec",
+        "background": "#f2edec",
         "gradient": "",
         "sticky_header_type": "always",
-        "enable_transparent": false,
+        "enable_transparent": true,
         "transparent_color": "#ffffff",
         "transparent_border_color": "",
         "padding_top": 0,

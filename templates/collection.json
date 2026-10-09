@@ -87,12 +87,12 @@
         "bg_gradient": "",
         "padding_desktop": 9,
         "eyebrow": "The AMYZA Collection",
-        "eyebrow_color": "#eaacc9",
+        "eyebrow_color": "#F0AEBC",
         "heading": "<p>Every <em>Ritual.</em></p>",
         "heading_tag": "h2",
-        "heading_italic_color": "#eaacc9",
+        "heading_italic_color": "#F0AEBC",
         "subtext": "Slow-luxury skincare rooted in ancestral botanical wisdom — crafted in small batches, made for the woman who knows her worth.",
-        "marquee_text_color": "#eaacc9",
+        "marquee_text_color": "#F0AEBC",
         "marquee_separator_color": "#eaacc966",
         "marquee_speed": 26,
         "pause_on_hover": true
@@ -101,7 +101,7 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
-        "colors_bg": "#f1edec",
+        "colors_bg": "#F2EDEC",
         "colors_bg_gradient": "",
         "container": "1170",
         "padding_full_width": 0,
@@ -159,7 +159,7 @@
         "panel_JzHETW": {
           "type": "panel",
           "settings": {
-            "fallback_bg": "linear-gradient(135deg, #731157 0%, #4e0a3a 100%)",
+            "fallback_bg": "linear-gradient(135deg, #7D0A50 0%, #4e0a3a 100%)",
             "eyebrow": "",
             "title": "",
             "description": "",
@@ -170,7 +170,7 @@
         "panel_zLyH8F": {
           "type": "panel",
           "settings": {
-            "fallback_bg": "linear-gradient(135deg, #EAACC9 0%, #731157 100%)",
+            "fallback_bg": "linear-gradient(135deg, #F0AEBC 0%, #7D0A50 100%)",
             "eyebrow": "",
             "title": "",
             "description": "",
@@ -187,13 +187,13 @@
       "settings": {
         "image_ratio": "1 / 1",
         "text_padding_desktop": 20,
-        "section_bg": "#f1edec",
+        "section_bg": "#F2EDEC",
         "divider_color": "#e8e0e4",
-        "eyebrow_color": "#731157",
-        "title_color": "#731157",
+        "eyebrow_color": "#7D0A50",
+        "title_color": "#7D0A50",
         "desc_color": "#666655",
-        "link_color": "#731157",
-        "link_hover_color": "#731157"
+        "link_color": "#7D0A50",
+        "link_hover_color": "#7D0A50"
       }
     }
   },

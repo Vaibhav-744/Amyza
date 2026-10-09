@@ -13,42 +13,45 @@
       "type": "custom-video",
       "name": "Custom Hero Video",
       "settings": {
-        "video": "shopify://files/videos/14912587_1920_1080_50fps (1).mp4",
-        "fallback_bg": "#731157",
+        "media_type": "image",
+        "image": "shopify://shop_images/ywsp5xdoy9vhldfcxekf.webp",
+        "image_mobile": "shopify://shop_images/ywsp5xdoy9vhldfcxekf.webp",
+        "image_position": "top center",
+        "fallback_bg": "#7d0a50",
         "eyebrow": "",
-        "eyebrow_color": "#f1edec",
+        "eyebrow_color": "#f2edec",
         "heading": "<h1><em>YOUR GLOW<br/>INHERITED</em></h1>",
-        "heading_color": "#731157",
-        "heading_italic_color": "#731157",
+        "heading_color": "#7d0a50",
+        "heading_italic_color": "#7d0a50",
         "subheading": "",
         "subheading_color": "#f1edeceb",
         "primary_button_label": "Shop The Serum",
         "primary_button_link": "",
-        "primary_button_bg": "#731157",
-        "primary_button_text": "#f1edec",
-        "primary_button_border": "#731157",
+        "primary_button_bg": "#7d0a50",
+        "primary_button_text": "#f2edec",
+        "primary_button_border": "#7d0a50",
         "primary_button_hover_bg": "#4e0a3a",
         "secondary_button_label": "",
         "secondary_button_link": "",
-        "secondary_button_text": "#f1edec",
-        "secondary_button_border": "#f1edec",
-        "secondary_button_hover_bg": "#f1edec",
-        "secondary_button_hover_text": "#731157",
-        "overlay_top": "rgba(42,10,32,0.25)",
-        "overlay_middle": "rgba(42,10,32,0.5)",
-        "overlay_bottom": "rgba(42,10,32,0.85)",
-        "overlay_glow": "rgba(115,17,87,0.35)",
+        "secondary_button_text": "#f2edec",
+        "secondary_button_border": "#f2edec",
+        "secondary_button_hover_bg": "#f2edec",
+        "secondary_button_hover_text": "#7d0a50",
+        "overlay_top": "",
+        "overlay_middle": "",
+        "overlay_bottom": "",
+        "overlay_glow": "",
         "show_mute_button": true,
         "mute_button_bg": "rgba(42,10,32,0.45)",
         "mute_button_border": "#ffffff",
-        "mute_button_icon": "#f1edec",
+        "mute_button_icon": "#f2edec",
         "mute_button_hover_bg": "rgba(42,10,32,0.7)",
         "show_scroll_hint": true,
         "scroll_text": "Scroll",
-        "scroll_text_color": "#f1edec",
-        "scroll_line_color": "#f1edec",
+        "scroll_text_color": "#f2edec",
+        "scroll_line_color": "#f2edec",
         "scroll_animation_speed": 2,
-        "text_color": "#f1edec"
+        "text_color": "#f2edec"
       }
     },
     "product_block_VRB8WC": {
@@ -72,7 +75,7 @@
         "mg_bottom_tablet": 50,
         "mg_bottom_mobile": 50,
         "product_block_layout": "slider",
-        "product_bg": "#f1edec",
+        "product_bg": "#f2edec",
         "product_bg_gradient": "",
         "style_block_header": "style4",
         "pd_top_title": 30,
@@ -117,7 +120,7 @@
         "bg_color_button_hover": "",
         "bg_color_gradient_button_hover": "",
         "product_block_collection": "the-ritual",
-        "product_block_limit": 3,
+        "product_block_limit": 4,
         "grid_gap": 30,
         "pb_style": "style1",
         "style_countdown": "style_1",
@@ -125,7 +128,7 @@
         "font_size_countdown_text": 14,
         "color_countdown": "#f42b23",
         "countdown_margin_left": 15,
-        "product_block_per_row": "3",
+        "product_block_per_row": "4",
         "product_block_infinite_scroll": true,
         "product_block_swipe_on_mobile": true,
         "enable_product_card_pd_bottom": false,
@@ -139,7 +142,7 @@
         "product_block_counter_number": false,
         "enable_hover_arrow": false,
         "enable_infinite": true,
-        "product_block_show": "3",
+        "product_block_show": "4",
         "position_vertical_arrow": "70px",
         "product_block_per_view": "3",
         "show_half": true,
@@ -216,8 +219,8 @@
       ],
       "name": "Announcement Bar",
       "settings": {
-        "bg_color": "#731157",
-        "text_color": "#f1edec",
+        "bg_color": "#7d0a50",
+        "text_color": "#f2edec",
         "padding_top_desktop": 10,
         "padding_bottom_desktop": 10,
         "padding_top_mobile": 10,
@@ -240,7 +243,7 @@
             "fontsize_text": 12,
             "content_spacing": 0,
             "custom_block_align": "left",
-            "color_title": "#731157",
+            "color_title": "#7d0a50",
             "background_color_block": "rgba(0,0,0,0)",
             "background_gradient_color_block": "",
             "spacing_top": 0,
@@ -266,7 +269,7 @@
             "fontsize_text": 16,
             "content_spacing": 0,
             "custom_block_align": "left",
-            "color_title": "#731157",
+            "color_title": "#7d0a50",
             "background_color_block": "rgba(0,0,0,0)",
             "background_gradient_color_block": "",
             "spacing_top": 0,
@@ -282,7 +285,7 @@
             "fontsize_text": 16,
             "content_spacing": 0,
             "custom_block_align": "left",
-            "color_title": "#731157",
+            "color_title": "#7d0a50",
             "background_color_block": "rgba(0,0,0,0)",
             "background_gradient_color_block": "",
             "spacing_top": 0,
@@ -355,11 +358,11 @@
             "wishlist_border_color_hover": "#232323",
             "wishlist_bg_color_hover": "#ffffff",
             "atc_animation": "none",
-            "atc_color": "#f1edec",
-            "atc_border_color": "#731157",
-            "atc_bg_color": "#731157",
+            "atc_color": "#f2edec",
+            "atc_border_color": "#7d0a50",
+            "atc_bg_color": "#7d0a50",
             "atc_bg_color_gradient": "",
-            "atc_color_hover": "#f1edec",
+            "atc_color_hover": "#f2edec",
             "atc_border_color_hover": "#4e0a3a",
             "atc_bg_color_hover": "#4e0a3a",
             "atc_bg_color_gradient_hover": "",
@@ -382,7 +385,7 @@
             "fontsize_text": 14,
             "content_spacing": 0,
             "custom_block_align": "left",
-            "color_title": "#731157",
+            "color_title": "#7d0a50",
             "background_color_block": "rgba(0,0,0,0)",
             "background_gradient_color_block": "",
             "spacing_top": 0,
@@ -415,7 +418,7 @@
         "mg_bottom_desktop": 0,
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
-        "bg_color_product": "#f1edec",
+        "bg_color_product": "#f2edec",
         "title": "",
         "color_title": "#ffffff",
         "fontsize_title": 60,
@@ -432,7 +435,7 @@
         "main_image_arrows_desktop": true,
         "main_image_counter_mobile": true,
         "main_image_position": "left",
-        "main_image_bg_color": "#f1edec",
+        "main_image_bg_color": "#f2edec",
         "show_thumbnail_mobile": false,
         "thumnail_layout": "4",
         "thumbnail_to_show": 4,
@@ -454,6 +457,7 @@
         "image_panel_1": {
           "type": "image_item",
           "settings": {
+            "image": "shopify://shop_images/3_Photo_Section_1_1.webp",
             "default_asset": "amyza_model_1.jpg",
             "alt_text": "AMYZA Model 1",
             "link": ""
@@ -462,6 +466,7 @@
         "image_panel_2": {
           "type": "image_item",
           "settings": {
+            "image": "shopify://shop_images/3_Photo_Section_2_1.webp",
             "default_asset": "amyza_model_2.jpg",
             "alt_text": "AMYZA Model 2",
             "link": ""
@@ -470,6 +475,7 @@
         "image_panel_3": {
           "type": "image_item",
           "settings": {
+            "image": "shopify://shop_images/3_Photo_Section_3_1.webp",
             "default_asset": "amyza_model_3.jpg",
             "alt_text": "AMYZA Model 3",
             "link": ""
@@ -483,16 +489,16 @@
       ],
       "name": "Full Width Image Gallery",
       "settings": {
-        "section_bg": "#f1edec",
+        "section_bg": "#f2edec",
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0,
         "eyebrow": "",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7d0a50",
         "heading": "",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
+        "heading_italic_color": "#7d0a50",
         "subheading": "",
         "subheading_color": "#666655",
         "header_align": "center",
@@ -502,7 +508,7 @@
         "gap_desktop": 0,
         "gap_mobile": 0,
         "enable_hover_zoom": true,
-        "card_bg": "#f1edec",
+        "card_bg": "#f2edec",
         "mobile_layout": "scroll",
         "mobile_card_width": "85%",
         "columns_mobile": "1",
@@ -517,7 +523,7 @@
       "settings": {
         "full_width": true,
         "container_width": 1600,
-        "outer_bg": "#f1edec",
+        "outer_bg": "#f2edec",
         "padding_top": 0,
         "padding_bottom": 0,
         "mobile_padding_top": 0,
@@ -526,25 +532,25 @@
         "initial_width": 60,
         "initial_radius": 20,
         "image": "shopify://shop_images/amz_ritual.png",
-        "bg_from": "#731157",
+        "bg_from": "#7d0a50",
         "bg_to": "#4e0a3a",
         "overlay_color": "linear-gradient(180deg, rgba(42, 10, 32, 0.3), rgba(78, 10, 58, 0.55) 60%, rgba(42, 10, 32, 0.72) 100%)",
         "min_height_desktop": 65,
         "min_height_mobile": 55,
         "eyebrow": "✦ The AMYZA Promise",
-        "eyebrow_color": "#eaacc9",
+        "eyebrow_color": "#f0aebc",
         "quote": "\"We don't sell skincare. We hand you a ritual your grandmother would recognise — and your future self will thank you for.\"",
-        "quote_color": "#f1edec",
+        "quote_color": "#f2edec",
         "quote_font_size_desktop": 38,
         "quote_font_size_mobile": 24,
         "subtext": "",
-        "subtext_color": "#f1edec",
+        "subtext_color": "#f2edec",
         "button_label": "",
         "button_link": "",
-        "button_bg": "#731157",
-        "button_color": "#f1edec",
+        "button_bg": "#7d0a50",
+        "button_color": "#f2edec",
         "button_hover_bg": "#4e0a3a",
-        "button_hover_color": "#f1edec"
+        "button_hover_color": "#f2edec"
       }
     },
     "rituals_yhwWfj": {
@@ -591,16 +597,23 @@
       ],
       "name": "Ritual",
       "settings": {
-        "section_bg": "#731157",
-        "card_bg": "#eaacc9",
+        "section_bg_image": "shopify://shop_images/h12k743gxgazdavtn2yh.webp",
+        "section_bg_image_mobile": "shopify://shop_images/h12k743gxgazdavtn2yh.webp",
+        "bg_image_size": "cover",
+        "bg_image_position": "center center",
+        "bg_image_repeat": "no-repeat",
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 0,
+        "section_bg": "#7d0a50",
+        "card_bg": "#f0aebc",
         "eyebrow": "✦ Step into",
-        "eyebrow_color": "#f1edec",
+        "eyebrow_color": "#f2edec",
         "heading": "<h2>The <em>Ritual</em> You Need</h2>",
-        "heading_color": "#eaacc9",
-        "heading_italic_color": "#f1edec",
+        "heading_color": "#f0aebc",
+        "heading_italic_color": "#f2edec",
         "subheading": "Four intentional moments. One glowing result.",
-        "subheading_color": "#f1edec",
-        "number_color": "#731157",
+        "subheading_color": "#f2edec",
+        "number_color": "#7d0a50",
         "card_title_color": "#2a0a20",
         "card_desc_color": "#000000"
       }
@@ -609,27 +622,27 @@
       "type": "heritage",
       "name": "Heritage",
       "settings": {
-        "section_bg": "#f1edec",
+        "section_bg": "#f2edec",
         "eyebrow": "✦ Our Heritage",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7d0a50",
         "heading": "<h2>An ode to the <em>women who raised us.</em></h2>",
-        "heading_color": "#731157",
-        "heading_italic_color": "#731157",
+        "heading_color": "#7d0a50",
+        "heading_italic_color": "#7d0a50",
         "body_1": "<p>AMYZA merges two Arabic names — <em>MYZA</em> (grace) and <em>AMARAH</em> (eternal beauty). A tribute to the grandmothers whose recipes inspired every drop.</p>",
         "body_2": "<p>Rooted in South Asian heritage, blended with Malaysian healing heroes — we bridge cultures with one intentional ritual.</p>",
         "body_color": "#5a3545",
-        "body_em_color": "#731157",
+        "body_em_color": "#7d0a50",
         "link_label": "Read our story →",
         "link_url": "#",
-        "link_color": "#731157",
-        "image": "shopify://shop_images/amz_ritual.png",
+        "link_color": "#7d0a50",
+        "image": "shopify://shop_images/Our_Heritage_Photo.webp",
         "quote_text": "",
         "quote_author": "",
-        "card_bg": "#f1edec",
-        "card_text_color": "#731157",
+        "card_bg": "#f2edec",
+        "card_text_color": "#7d0a50",
         "sticker_text": "",
         "sticker_icon": "",
-        "sticker_color": "#731157"
+        "sticker_color": "#7d0a50"
       }
     },
     "botanicals_JzPkmR": {
@@ -639,7 +652,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/2-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
+            "fallback_bg": "linear-gradient(135deg,#9F9F46,#7D0A50)",
             "title": "Saffron",
             "description": "The golden thread of heritage. Delivers unparalleled radiance."
           }
@@ -648,7 +661,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/1-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
+            "fallback_bg": "linear-gradient(135deg,#F2EDEC,#F0AEBC)",
             "title": "Jasmine",
             "description": "Our fragrant base. Replaces water with a floral kiss."
           }
@@ -657,7 +670,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/6-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
+            "fallback_bg": "linear-gradient(135deg,#F0AEBC,#7D0A50)",
             "title": "Rose",
             "description": "A centuries-old symbol of softness and renewal."
           }
@@ -675,7 +688,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_2-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#9F9F46)",
             "title": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens."
           }
@@ -684,7 +697,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/3-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
+            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#F0AEBC)",
             "title": "Tremella",
             "description": "The supreme hydrator, revered in TCM."
           }
@@ -693,7 +706,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/5-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
+            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#7D0A50)",
             "title": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother."
           }
@@ -702,7 +715,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/7-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#F2EDEC)",
             "title": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless."
           }
@@ -720,21 +733,26 @@
       ],
       "name": "Botanicals",
       "settings": {
-        "section_bg": "#731157",
-        "section_text_color": "#f1edec",
+        "bg_image_size": "cover",
+        "bg_image_position": "center center",
+        "bg_image_repeat": "no-repeat",
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 0,
+        "section_bg": "#7d0a50",
+        "section_text_color": "#f2edec",
         "eyebrow": "✦ The Catalogue",
-        "eyebrow_color": "#eaacc9",
+        "eyebrow_color": "#f0aebc",
         "heading": "<h2>Our <em>Botanicals</em></h2>",
-        "heading_color": "#f1edec",
-        "heading_italic_color": "#1d4f3b",
+        "heading_color": "#f2edec",
+        "heading_italic_color": "#224f3c",
         "subheading": "Every ingredient tells a story.",
-        "subheading_color": "#f1edec",
-        "card_title_color": "#eaacc9",
-        "card_desc_color": "#f1edec",
+        "subheading_color": "#f2edec",
+        "card_title_color": "#f0aebc",
+        "card_desc_color": "#f2edec",
         "btn_text": "Explore Botanicals",
         "btn_url": "",
         "btn_bg": "#4e0a3a",
-        "btn_text_color": "#f1edec",
+        "btn_text_color": "#f2edec",
         "btn_hover_bg": "#4e0a3a"
       }
     },
@@ -818,90 +836,25 @@
       "settings": {
         "section_bg": "#f7f4f3",
         "eyebrow": "✦ Word of Mouth",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7d0a50",
         "heading": "<h2>From <em>our girls.</em></h2>",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
+        "heading_italic_color": "#7d0a50",
         "subheading": "Over 500 5-star reviews and counting.",
         "subheading_color": "#666655",
         "card_bg": "#ffffff",
         "review_color": "#2a0a20",
         "author_color": "#666655",
-        "featured_bg": "#731157",
-        "featured_text": "#f1edec",
+        "featured_bg": "#7d0a50",
+        "featured_text": "#f2edec",
         "star_color": "#9f9f46",
-        "featured_star_color": "#eaacc9",
-        "nav_bg": "#f1edec",
+        "featured_star_color": "#f0aebc",
+        "nav_bg": "#f2edec",
         "nav_color": "#2a0a20",
-        "nav_hover_bg": "#731157",
-        "nav_hover_color": "#f1edec",
+        "nav_hover_bg": "#7d0a50",
+        "nav_hover_color": "#f2edec",
         "dot_color": "",
-        "dot_active_color": "#731157"
-      }
-    },
-    "custom_faq_fkRWCi": {
-      "type": "custom-faq",
-      "blocks": {
-        "faq_item_9f89GU": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is Golden Nectar suitable for sensitive skin?",
-            "answer": "Yes — it's free of alcohol, parabens, and artificial fragrance. The Pegaga and Aloe Vera actively calm reactive skin.",
-            "open_by_default": true
-          }
-        },
-        "faq_item_didALq": {
-          "type": "faq_item",
-          "settings": {
-            "question": "When should I use the serum?",
-            "answer": "Use AM and PM after cleansing, before moisturiser. Press gently into skin as part of your ritual.",
-            "open_by_default": false
-          }
-        },
-        "faq_item_7BTc7f": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How long before I see results?",
-            "answer": "Most see visible glow within 7 days, with deeper skin transformation around 4 weeks of consistent use.",
-            "open_by_default": false
-          }
-        },
-        "faq_item_LFDLDM": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Where do you ship?",
-            "answer": "We ship across Malaysia and Singapore. Free shipping on orders over RM150.",
-            "open_by_default": false
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_9f89GU",
-        "faq_item_didALq",
-        "faq_item_7BTc7f",
-        "faq_item_LFDLDM"
-      ],
-      "name": "FAQ Teaser",
-      "settings": {
-        "section_bg": "#f1edec",
-        "section_padding_desktop": "5rem 2rem",
-        "section_padding_mobile": "3rem 1.2rem",
-        "eyebrow": "✦ Curious?",
-        "heading": "<h2>Questions? <em>We've got answers.</em></h2>",
-        "lead": "From ingredient sourcing to skincare routines — everything you want to know about AMYZA.",
-        "button_label": "Visit the FAQ",
-        "button_link": "shopify://pages/faqs",
-        "eyebrow_color": "#731157",
-        "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
-        "lead_color": "#5a3545",
-        "question_color": "#2a0a20",
-        "answer_color": "#666655",
-        "icon_color": "#731157",
-        "border_color": "",
-        "button_bg": "#731157",
-        "button_text": "#f1edec",
-        "button_hover_bg": "#4e0a3a"
+        "dot_active_color": "#7d0a50"
       }
     }
   },
@@ -915,7 +868,6 @@
     "rituals_yhwWfj",
     "heritage_xH3aVg",
     "botanicals_JzPkmR",
-    "testimonial_MtGxfE",
-    "custom_faq_fkRWCi"
+    "testimonial_MtGxfE"
   ]
 }

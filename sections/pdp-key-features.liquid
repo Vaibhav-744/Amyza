@@ -4,9 +4,9 @@
   assign section_id = section.id
   assign bg_color = section.settings.section_bg | default: '#f7f4f3'
   assign heading = section.settings.heading
-  assign heading_color = section.settings.heading_color | default: '#731157'
+  assign heading_color = section.settings.heading_color | default: '#7D0A50'
   assign subheading = section.settings.subheading
-  assign subheading_color = section.settings.subheading_color | default: '#731157'
+  assign subheading_color = section.settings.subheading_color | default: '#7D0A50'
 
   assign title_color = section.settings.title_color | default: '#2a0a20'
   assign body_color = section.settings.body_color | default: '#5a4350'
@@ -87,7 +87,7 @@
     font-weight: 700;
     letter-spacing: var(--ls-eyebrow, 0.2em);
     text-transform: uppercase;
-    color: var(--plum, #731157);
+    color: var(--plum, #7D0A50);
     margin-bottom: 0.1rem;
   }
 
@@ -134,9 +134,9 @@
   .pdp-kf-badge-backdrop {
     position: absolute;
     inset: -10px;
-    background: {{ section.settings.image_bg_color | default: '#f1edec' }};
+    background: {{ section.settings.image_bg_color | default: '#F2EDEC' }};
     border-radius: 50%;
-    box-shadow: 0 15px 45px rgba(115, 17, 87, 0.08);
+    box-shadow: 0 15px 45px rgba(125, 10, 80, 0.08);
   }
 
   /* Scalloped Wavy Frame Image Container */
@@ -347,7 +347,7 @@
       "type": "color",
       "id": "subheading_color",
       "label": "Subheading Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "inline_richtext",
@@ -359,7 +359,7 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "image_picker",
@@ -370,7 +370,7 @@
       "type": "color",
       "id": "image_bg_color",
       "label": "Scalloped Frame Tint",
-      "default": "#f1edec"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",

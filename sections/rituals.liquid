@@ -2,9 +2,42 @@
 
 <style>
   #shopify-section-{{ section.id }} .ritual {
-    background: {{ section.settings.section_bg }};
+    position: relative;
+    background-color: {{ section.settings.section_bg }};
+    {%- if section.settings.section_bg_image != blank -%}
+      background-image: url('{{ section.settings.section_bg_image | image_url: width: 2500 }}');
+      background-size: {{ section.settings.bg_image_size | default: 'cover' }};
+      background-position: {{ section.settings.bg_image_position | default: 'center center' }};
+      background-repeat: {{ section.settings.bg_image_repeat | default: 'no-repeat' }};
+    {%- else -%}
+      background: {{ section.settings.section_bg }};
+    {%- endif -%}
     padding: 5rem 2rem;
   }
+
+  {%- if section.settings.section_bg_image != blank and section.settings.bg_overlay_opacity > 0 -%}
+    #shopify-section-{{ section.id }} .ritual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: {{ section.settings.bg_overlay_color | default: '#000000' }};
+      opacity: {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }};
+      pointer-events: none;
+      z-index: 0;
+    }
+    #shopify-section-{{ section.id }} .ritual > * {
+      position: relative;
+      z-index: 1;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.section_bg_image_mobile != blank -%}
+    @media (max-width: 768px) {
+      #shopify-section-{{ section.id }} .ritual {
+        background-image: url('{{ section.settings.section_bg_image_mobile | image_url: width: 1200 }}');
+      }
+    }
+  {%- endif -%}
   #shopify-section-{{ section.id }} .ritual-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -17,12 +50,12 @@
     padding: 2rem 1.5rem;
     border-radius: var(--radius-md, 4px);
     transition: .4s;
-    border: 1px solid rgba(115,17,87,.08);
+    border: 1px solid rgba(125, 10, 80,.08);
   }
   {% comment %} #shopify-section-{{ section.id }} .ritual-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(115,17,87,.12);
-    border-color: var(--plum, #731157);
+    box-shadow: 0 20px 40px rgba(125, 10, 80,.12);
+    border-color: var(--plum, #7D0A50);
   } {% endcomment %}
   #shopify-section-{{ section.id }} .ritual-num {
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
@@ -107,19 +140,89 @@
   "settings": [
     {
       "type": "header",
-      "content": "Section"
+      "content": "Section Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image",
+      "label": "Background Image (Desktop)",
+      "info": "First priority. If uploaded, this image is used as the section background."
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "Optional mobile background image (≤768px)."
+    },
+    {
+      "type": "select",
+      "id": "bg_image_size",
+      "label": "Image Size",
+      "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Cover (Fill section)" },
+        { "value": "contain", "label": "Contain (Fit inside)" },
+        { "value": "auto", "label": "Auto / Original size" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg_image_position",
+      "label": "Image Position",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center Center" },
+        { "value": "top center", "label": "Top Center" },
+        { "value": "bottom center", "label": "Bottom Center" },
+        { "value": "center left", "label": "Center Left" },
+        { "value": "center right", "label": "Center Right" },
+        { "value": "top left", "label": "Top Left" },
+        { "value": "top right", "label": "Top Right" },
+        { "value": "bottom left", "label": "Bottom Left" },
+        { "value": "bottom right", "label": "Bottom Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "bg_image_repeat",
+      "label": "Image Repeat",
+      "default": "no-repeat",
+      "options": [
+        { "value": "no-repeat", "label": "No Repeat" },
+        { "value": "repeat", "label": "Repeat Tile" },
+        { "value": "repeat-x", "label": "Repeat Horizontally" },
+        { "value": "repeat-y", "label": "Repeat Vertically" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_overlay_color",
+      "label": "Image Overlay Color",
+      "default": "#000000",
+      "info": "Applies a color overlay over the background image."
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Overlay Opacity",
+      "default": 0
     },
     {
       "type": "color",
       "id": "section_bg",
       "label": "Background Color",
-      "default": "#E8E2E0"
+      "default": "#E8E2E0",
+      "info": "Used when no image is uploaded, or as underlay behind transparent images."
     },
     {
       "type": "color",
       "id": "card_bg",
       "label": "Card Background",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "header",
@@ -135,7 +238,7 @@
       "type": "color",
       "id": "eyebrow_color",
       "label": "Eyebrow Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "richtext",
@@ -154,7 +257,7 @@
       "type": "color",
       "id": "heading_italic_color",
       "label": "Heading Italic Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "text",
@@ -176,7 +279,7 @@
       "type": "color",
       "id": "number_color",
       "label": "Step Number Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "color",

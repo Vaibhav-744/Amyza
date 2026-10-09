@@ -17,6 +17,7 @@
   assign link_color = section.settings.link_color | default: '#ffffff'
   assign card_bg_color = section.settings.card_bg_color | default: '#deb3c4'
   assign card_text_color = section.settings.card_text_color | default: '#610c3d'
+  assign brand_display_type = section.settings.brand_display_type | default: 'image'
   assign watermark_text = section.settings.watermark_text | default: 'aMYZa'
   assign watermark_color = section.settings.watermark_color | default: '#ffffff'
   assign watermark_opacity = section.settings.watermark_opacity | default: 100
@@ -47,7 +48,7 @@
       background-image: url('{{ "footer-newsletter-bg.jpg" | asset_url }}');
     {%- endif -%}
     background-size: cover;
-    background-position: center center;
+    background-position: top center;
     background-repeat: no-repeat;
   }
 
@@ -295,16 +296,62 @@
     display: block;
   }
 
-  /* Giant "aMYZa" Brand Title */
+  /* Giant Brand Title / Image Graphic */
   .custom-footer-brand-title-wrap {
     width: 100%;
     text-align: center;
     user-select: none;
-    pointer-events: none;
     line-height: 0.78;
-    margin-top: 1rem;
-    margin-bottom: 0;
+    margin-top: {{ section.settings.brand_image_margin_top | default: 20 }}px;
+    margin-bottom: {{ section.settings.brand_image_margin_bottom | default: 0 }}px;
     overflow: hidden;
+  }
+
+  .custom-footer-brand-container {
+    {%- if section.settings.brand_container_width == 'full' -%}
+      max-width: 100%;
+      padding: 0 1rem;
+    {%- elsif section.settings.brand_container_width == 'custom' -%}
+      max-width: {{ section.settings.brand_container_custom_width | default: 1300 }}px;
+      padding: 0 2rem;
+    {%- else -%}
+      max-width: 1300px;
+      padding: 0 2rem;
+    {%- endif -%}
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-footer-brand-image-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-footer-brand-image-holder picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .custom-footer-brand-img {
+    width: {{ section.settings.brand_image_width | default: 100 }}%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: {{ section.settings.brand_image_opacity | default: 100 | divided_by: 100.0 }};
+    margin: 0 auto;
+    pointer-events: none;
+  }
+
+  .custom-footer-brand-img--filtered {
+    filter: brightness(0) saturate(100%) invert(95%) sepia(5%) saturate(180%) hue-rotate(320deg) brightness(100%) contrast(90%);
   }
 
   .custom-footer-brand-title {
@@ -422,6 +469,14 @@
     .custom-footer-social-row {
       margin-top: 2.5rem;
       margin-bottom: 1.5rem;
+    }
+
+    .custom-footer-brand-container {
+      padding: 0 1.25rem;
+    }
+
+    .custom-footer-brand-img {
+      width: {{ section.settings.brand_image_width_mobile | default: 100 }}%;
     }
 
     .custom-footer-brand-title {
@@ -597,15 +652,47 @@
       {%- endif -%}
     </div>
 
-    {%- comment -%} 3. GIANT BRAND TITLE (aMYZa) {%- endcomment -%}
+    {%- comment -%} 3. GIANT BRAND TITLE / GRAPHIC IMAGE {%- endcomment -%}
     <div class="custom-footer-brand-title-wrap">
-      <span class="custom-footer-brand-title" aria-label="{{ watermark_text }}">
-        {%- if watermark_text == 'aMYZa' or watermark_text == 'aMYZA' or watermark_text == 'amyza' -%}
-          <span class="brand-glyph brand-glyph-a">a</span><span class="brand-glyph">M</span><span class="brand-glyph">Y</span><span class="brand-glyph">Z</span><span class="brand-glyph brand-glyph-a-end">a</span>
+      <div class="custom-footer-brand-container">
+        {%- if section.settings.brand_display_type == 'text' -%}
+          <span class="custom-footer-brand-title" aria-label="{{ watermark_text }}">
+            {%- if watermark_text == 'aMYZa' or watermark_text == 'aMYZA' or watermark_text == 'amyza' -%}
+              <span class="brand-glyph brand-glyph-a">a</span><span class="brand-glyph">M</span><span class="brand-glyph">Y</span><span class="brand-glyph">Z</span><span class="brand-glyph brand-glyph-a-end">a</span>
+            {%- else -%}
+              {{ watermark_text }}
+            {%- endif -%}
+          </span>
         {%- else -%}
-          {{ watermark_text }}
+          {%- if section.settings.brand_image != blank -%}
+            {%- assign brand_img = section.settings.brand_image -%}
+            {%- assign brand_img_mb = section.settings.brand_image_mobile | default: brand_img -%}
+            <div class="custom-footer-brand-image-holder">
+              <picture>
+                {%- if section.settings.brand_image_mobile != blank -%}
+                  <source media="(max-width: 768px)" srcset="{{ brand_img_mb | image_url: width: 1200 }}">
+                {%- endif -%}
+                <img
+                  src="{{ brand_img | image_url: width: 2400 }}"
+                  alt="{{ brand_img.alt | default: shop.name }}"
+                  loading="lazy"
+                  width="{{ brand_img.width }}"
+                  height="{{ brand_img.height }}"
+                  class="custom-footer-brand-img{% if section.settings.enable_brand_image_filter %} custom-footer-brand-img--filtered{% endif %}"
+                >
+              </picture>
+            </div>
+          {%- else -%}
+            <span class="custom-footer-brand-title" aria-label="{{ watermark_text }}">
+              {%- if watermark_text == 'aMYZa' or watermark_text == 'aMYZA' or watermark_text == 'amyza' -%}
+                <span class="brand-glyph brand-glyph-a">a</span><span class="brand-glyph">M</span><span class="brand-glyph">Y</span><span class="brand-glyph">Z</span><span class="brand-glyph brand-glyph-a-end">a</span>
+              {%- else -%}
+                {{ watermark_text }}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
         {%- endif -%}
-      </span>
+      </div>
     </div>
 
     {%- comment -%} 4. SETTINGS-OPERATABLE BOTTOM BAR {%- endcomment -%}
@@ -793,12 +880,125 @@
     },
     {
       "type": "header",
-      "content": "Brand Typography Title"
+      "content": "Giant Brand Graphic / Image Title"
+    },
+    {
+      "type": "select",
+      "id": "brand_display_type",
+      "label": "Brand Title Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image / Graphic"
+        },
+        {
+          "value": "text",
+          "label": "Text"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand Image / Logo Graphic"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image_mobile",
+      "label": "Brand Image (Mobile — Optional)"
+    },
+    {
+      "type": "select",
+      "id": "brand_container_width",
+      "label": "Container Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Matching Theme Container (1300px)"
+        },
+        {
+          "value": "full",
+          "label": "Full Width (100% of Screen)"
+        },
+        {
+          "value": "custom",
+          "label": "Custom Max Width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "brand_container_custom_width",
+      "label": "Custom Container Max Width (px)",
+      "min": 600,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "brand_image_width",
+      "label": "Desktop Image Width (%)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "brand_image_width_mobile",
+      "label": "Mobile Image Width (%)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "brand_image_opacity",
+      "label": "Image Opacity (%)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "brand_image_margin_top",
+      "label": "Top Spacing (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "brand_image_margin_bottom",
+      "label": "Bottom Spacing (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_brand_image_filter",
+      "label": "Apply Porcelain Color Filter to Image",
+      "info": "Useful if uploading a dark SVG/PNG and want it converted to brand porcelain color",
+      "default": false
     },
     {
       "type": "text",
       "id": "watermark_text",
-      "label": "Giant Brand Text",
+      "label": "Giant Brand Text (When Text Mode Active)",
       "default": "aMYZa"
     },
     {

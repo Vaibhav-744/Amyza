@@ -14,13 +14,30 @@
     background:{{ section.settings.fallback_bg }};
   }
 
-  #shopify-section-{{ section.id }} .hero-video-bg{
+  body[allow-transparency] #shopify-section-{{ section.id }} .hero-video{
+    height:100vh;
+    min-height:100vh;
+  }
+
+  #shopify-section-{{ section.id }} .hero-video-bg,
+  #shopify-section-{{ section.id }} .hero-image-bg {
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
+    object-position:{{ section.settings.image_position | default: 'center center' }};
     z-index:0;
+    display:block;
+  }
+
+  #shopify-section-{{ section.id }} .hero-image-wrap {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    display:block;
   }
 
   #shopify-section-{{ section.id }} .hero-video-overlay{
@@ -232,9 +249,30 @@
   }
 </style>
 
-<section class="hero-video" id="hero-{{ section.id }}">
+{% liquid
+  assign show_video = false
+  assign show_image = false
 
-  {% if section.settings.video != blank %}
+  if section.settings.media_type == 'image'
+    if section.settings.image != blank
+      assign show_image = true
+    endif
+  elsif section.settings.media_type == 'video'
+    if section.settings.video != blank
+      assign show_video = true
+    endif
+  else
+    if section.settings.video != blank
+      assign show_video = true
+    elsif section.settings.image != blank
+      assign show_image = true
+    endif
+  endif
+%}
+
+<section class="hero-video" id="hero-{{ section.id }}" allow-transparent-header>
+
+  {% if show_video %}
     {{
       section.settings.video
       | video_tag:
@@ -246,6 +284,47 @@
         preload: 'auto',
         class: 'hero-video-bg'
     }}
+  {% elsif show_image %}
+    {%- if section.settings.image_mobile != blank -%}
+      <picture class="hero-image-wrap">
+        <source media="(max-width: 768px)" srcset="{{ section.settings.image_mobile | image_url: width: 1200 }}">
+        <img
+          src="{{ section.settings.image | image_url: width: 2000 }}"
+          srcset="
+            {{ section.settings.image | image_url: width: 750 }} 750w,
+            {{ section.settings.image | image_url: width: 1100 }} 1100w,
+            {{ section.settings.image | image_url: width: 1500 }} 1500w,
+            {{ section.settings.image | image_url: width: 2000 }} 2000w,
+            {{ section.settings.image | image_url: width: 2800 }} 2800w
+          "
+          sizes="100vw"
+          alt="{{ section.settings.image.alt | default: section.settings.heading | strip_html | escape }}"
+          class="hero-video-bg hero-image-bg"
+          loading="eager"
+          fetchpriority="high"
+          width="{{ section.settings.image.width | default: 2000 }}"
+          height="{{ section.settings.image.height | default: 1100 }}"
+        >
+      </picture>
+    {%- else -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 2000 }}"
+        srcset="
+          {{ section.settings.image | image_url: width: 750 }} 750w,
+          {{ section.settings.image | image_url: width: 1100 }} 1100w,
+          {{ section.settings.image | image_url: width: 1500 }} 1500w,
+          {{ section.settings.image | image_url: width: 2000 }} 2000w,
+          {{ section.settings.image | image_url: width: 2800 }} 2800w
+        "
+        sizes="100vw"
+        alt="{{ section.settings.image.alt | default: section.settings.heading | strip_html | escape }}"
+        class="hero-video-bg hero-image-bg"
+        loading="eager"
+        fetchpriority="high"
+        width="{{ section.settings.image.width | default: 2000 }}"
+        height="{{ section.settings.image.height | default: 1100 }}"
+      >
+    {%- endif -%}
   {% endif %}
 
   <div class="hero-video-overlay"></div>
@@ -296,7 +375,7 @@
     </div>
   </div>
 
-  {% if section.settings.show_mute_button %}
+  {% if section.settings.show_mute_button and show_video %}
     <button
       class="video-mute-btn muted"
       type="button"
@@ -382,15 +461,62 @@
   "class": "section-hero-video",
   "settings": [
     {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Display Media Type",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Auto (Video > Image)" },
+        { "value": "image", "label": "Image only" },
+        { "value": "video", "label": "Video only" }
+      ],
+      "info": "Choose 'Image only' to show image even if a video is selected."
+    },
+    {
       "type": "video",
       "id": "video",
-      "label": "Background Video"
+      "label": "Background Video",
+      "info": "First priority when in Auto mode."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image (Desktop)",
+      "info": "Second priority. Displayed if no video is selected."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "Optional mobile background image (≤768px)."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center Center" },
+        { "value": "top center", "label": "Top Center" },
+        { "value": "bottom center", "label": "Bottom Center" },
+        { "value": "center left", "label": "Center Left" },
+        { "value": "center right", "label": "Center Right" },
+        { "value": "top left", "label": "Top Left" },
+        { "value": "top right", "label": "Top Right" },
+        { "value": "bottom left", "label": "Bottom Left" },
+        { "value": "bottom right", "label": "Bottom Right" }
+      ]
     },
     {
       "type": "color",
       "id": "fallback_bg",
       "label": "Fallback Background",
-      "default": "#731157"
+      "default": "#7D0A50",
+      "info": "Used if neither video nor image is provided."
     },
     {
       "type": "header",
@@ -406,7 +532,7 @@
       "type": "color",
       "id": "eyebrow_color",
       "label": "Eyebrow Color",
-      "default": "#EAACC9"
+      "default": "#F0AEBC"
     },
     {
       "type": "richtext",
@@ -418,13 +544,13 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading Color",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",
       "id": "heading_italic_color",
       "label": "Italic Color",
-      "default": "#EAACC9"
+      "default": "#F0AEBC"
     },
     {
       "type": "textarea",
@@ -436,7 +562,7 @@
       "type": "color",
       "id": "subheading_color",
       "label": "Subheading Color",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
 
     {
@@ -458,19 +584,19 @@
       "type": "color",
       "id": "primary_button_bg",
       "label": "Background",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "color",
       "id": "primary_button_text",
       "label": "Text",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",
       "id": "primary_button_border",
       "label": "Border",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "color",
@@ -498,25 +624,25 @@
       "type": "color",
       "id": "secondary_button_text",
       "label": "Text",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",
       "id": "secondary_button_border",
       "label": "Border",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",
       "id": "secondary_button_hover_bg",
       "label": "Hover Background",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",
       "id": "secondary_button_hover_text",
       "label": "Hover Text",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
 
     {
@@ -545,7 +671,7 @@
       "type": "color_background",
       "id": "overlay_glow",
       "label": "Glow Overlay",
-      "default": "rgba(115,17,87,0.35)"
+      "default": "rgba(125, 10, 80,0.35)"
     },
 
     {
@@ -574,7 +700,7 @@
       "type": "color",
       "id": "mute_button_icon",
       "label": "Icon",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color_background",
@@ -603,13 +729,13 @@
       "type": "color",
       "id": "scroll_text_color",
       "label": "Text Color",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "color",
       "id": "scroll_line_color",
       "label": "Line Color",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "range",
@@ -626,7 +752,7 @@
       "type": "color",
       "id": "text_color",
       "label": "Base Text Color",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     }
   ],
   "presets": [

@@ -54,9 +54,9 @@
         "fallback_bg": "#2a0a20",
         "overlay": "linear-gradient(0deg, rgba(42, 10, 32, 0.76) 18%, rgba(42, 10, 32, 0.3) 87%)",
         "eyebrow": "✦ Our Story",
-        "eyebrow_color": "#eaacc9",
+        "eyebrow_color": "#F0AEBC",
         "heading": "Beauty, the way our grand mothers knew it.",
-        "heading_color": "#f1edec",
+        "heading_color": "#F2EDEC",
         "subtext": "AMYZA is a love letter to ancestral botanical wisdom — bottled with bold, modern femininity for the woman who refuses to choose between heritage and now.",
         "sub_color": "#f1edecd9",
         "tag_1": "South Asian Roots",
@@ -109,7 +109,7 @@
       "name": "Announcement Bar",
       "settings": {
         "bg_color": "#4e0a3a",
-        "text_color": "#eaacc9",
+        "text_color": "#F0AEBC",
         "padding_top_desktop": 10,
         "padding_bottom_desktop": 10,
         "padding_top_mobile": 10,
@@ -124,22 +124,22 @@
       "type": "about-story",
       "name": "About — Origin Story",
       "settings": {
-        "section_bg": "#f1edec",
+        "section_bg": "#F2EDEC",
         "image_position": "left",
         "image": "shopify://shop_images/amz_botanicals.png",
         "eyebrow": "✦ Where It Began",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7D0A50",
         "heading": "A name born from grace and eternal beauty.",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
+        "heading_italic_color": "#7D0A50",
         "body_1": "<p>AMYZA merges two Arabic names — MYZA, meaning grace, and AMARAH, eternal beauty. It began at a kitchen table, watching the women who raised us blend saffron, turmeric and rose into rituals passed down across generations.</p>",
         "body_2": "<p>Those recipes were never written down. They lived in hands, in scent, in the quiet confidence of women who knew their worth. We bottled that knowing — and gave it a modern soul.</p>",
         "body_color": "#666655",
-        "em_color": "#731157",
+        "em_color": "#7D0A50",
         "btn_text": "Shop the Ritual",
         "btn_url": "",
-        "btn_bg": "#731157",
-        "btn_text_color": "#f1edec",
+        "btn_bg": "#7D0A50",
+        "btn_text_color": "#F2EDEC",
         "btn_hover_bg": "#4e0a3a"
       }
     },
@@ -147,13 +147,13 @@
       "type": "about-banner",
       "name": "About — Quote Banner",
       "settings": {
-        "outer_bg": "#f1edec",
+        "outer_bg": "#F2EDEC",
         "border_radius": 0,
-        "bg_from": "#731157",
+        "bg_from": "#7D0A50",
         "bg_to": "#4e0a3a",
         "overlay_color": "linear-gradient(180deg, rgba(42, 10, 32, 0.3), rgba(78, 10, 58, 0.55) 60%, rgba(42, 10, 32, 0.72) 100%)",
         "quote": "\"We don't sell skincare. We hand you a ritual your grandmother would recognise — and your future self will thank you for.\"",
-        "quote_color": "#f1edec"
+        "quote_color": "#F2EDEC"
       }
     },
     "about_values_DXCPNp": {
@@ -216,16 +216,16 @@
       "settings": {
         "section_bg": "#f7f4f3",
         "eyebrow": "✦ What We Stand For",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7D0A50",
         "heading": "Five quiet promises.",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
+        "heading_italic_color": "#7D0A50",
         "subheading": "The principles behind every drop.",
         "sub_color": "#666655",
-        "card_bg": "#f1edec",
+        "card_bg": "#F2EDEC",
         "card_border": "#ead9e4",
-        "num_color": "#eaacc9",
-        "card_title_color": "#731157",
+        "num_color": "#F0AEBC",
+        "card_title_color": "#7D0A50",
         "card_body_color": "#666655"
       }
     },
@@ -272,14 +272,14 @@
         "section_bg": "#4e0a3a",
         "image": "shopify://shop_images/amz_texture.png",
         "eyebrow": "✦ Our Philosophy",
-        "eyebrow_color": "#eaacc9",
+        "eyebrow_color": "#F0AEBC",
         "heading": "Ingredients with a lineage, not a label.",
-        "heading_color": "#f1edec",
-        "heading_italic_color": "#eaacc9",
+        "heading_color": "#F2EDEC",
+        "heading_italic_color": "#F0AEBC",
         "intro": "We don't chase trends. We honour botanicals that have soothed, healed and brightened skin for centuries — saffron from the highlands, pegaga from Malaysian soil, rose and jasmine from the gardens of memory.",
         "body_color": "#e9d4e2",
         "divider_color": "#eaacc938",
-        "item_title_color": "#eaacc9",
+        "item_title_color": "#F0AEBC",
         "item_desc_color": "#d8bccf"
       }
     },
@@ -287,17 +287,17 @@
       "type": "about-founder",
       "name": "About — Founder",
       "settings": {
-        "section_bg": "#f1edec",
+        "section_bg": "#F2EDEC",
         "image_position": "right",
         "image": "shopify://shop_images/amz_ritual.png",
         "eyebrow": "✦ A note from our Founder",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7D0A50",
         "body": "<p>I built AMYZA for the girl I was — the one who watched her mother and grandmother glow without a single fancy product, and wondered where that wisdom went. It never left. We just had to listen.</p><p>Those recipes were never written down. They lived in hands, in scent, in the quiet confidence of women who knew their worth. We bottled that knowing — and gave it a modern soul.</p><p>AMYZA is a love letter to ancestral botanical wisdom — bottled with bold, modern femininity for the woman who refuses to choose between heritage and now.</p>",
         "body_color": "#666655",
         "closing": "With love,",
         "founder_name": "The AMYZA Founder",
         "founder_role": "Kuala Lumpur, Malaysia",
-        "sign_name_color": "#731157",
+        "sign_name_color": "#7D0A50",
         "sign_role_color": "#666655"
       }
     },
@@ -342,7 +342,7 @@
       "name": "About — Stats",
       "settings": {
         "section_bg": "#f7f4f3",
-        "stat_num_color": "#731157",
+        "stat_num_color": "#7D0A50",
         "stat_label_color": "#666655"
       }
     },
@@ -353,17 +353,17 @@
         "section_bg": "radial-gradient(120% 120% at 50% -10%, var(--porcelain-soft) 0%, var(--porcelain) 55%, #efe3ea 100%)",
         "heading": "Begin your ritual.",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
+        "heading_italic_color": "#7D0A50",
         "body": "Join thousands of women rediscovering the glow that was always theirs.",
         "body_color": "#666655",
         "btn1_text": "Shop Golden Nectar",
         "btn1_url": "shopify://products/golden-nectar",
-        "btn1_bg": "#731157",
-        "btn1_text_color": "#f1edec",
+        "btn1_bg": "#7D0A50",
+        "btn1_text_color": "#F2EDEC",
         "btn1_hover_bg": "#4e0a3a",
         "btn2_text": "Explore the Collection",
         "btn2_url": "shopify://collections/all",
-        "btn2_color": "#731157"
+        "btn2_color": "#7D0A50"
       }
     }
   },

@@ -997,7 +997,7 @@ body.menu-open .halo-sidebar.halo-sidebar-menu {
     transform: translateY(-100%);
 }
 
-.section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .logo__main {
+.section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .has-logo-transparent .logo__main {
     display: none;
 }
 

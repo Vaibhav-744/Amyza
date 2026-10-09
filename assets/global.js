@@ -999,7 +999,8 @@ function checkTransparentHeader() {
 }
 
 function allowTransparent() {
-    if (document.querySelector(".shopify-section:first-child [allow-transparent-header]")) {
+    if (document.querySelector("#MainContent .shopify-section:first-child [allow-transparent-header], #MainContent .shopify-section:first-child[allow-transparent-header], .shopify-section:first-child [allow-transparent-header], .shopify-section:first-child[allow-transparent-header], [allow-transparent-header], .header-plain--transparent, .header-mobile--transparent")) {
+        document.querySelector("body").setAttribute("allow-transparency", "");
         return;
     } else {
         document.querySelector("body").removeAttribute("allow-transparency");

@@ -6,7 +6,7 @@
 
 <style>
   #shopify-section-{{ section.id }} .glow-gallery-section {
-    background: {{ section.settings.section_bg | default: '#F1EDEC' }};
+    background: {{ section.settings.section_bg | default: '#F2EDEC' }};
     padding-top: {{ section.settings.padding_top_desktop }}px;
     padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
     width: 100%;
@@ -24,7 +24,7 @@
     }
 
     #shopify-section-{{ section.id }} .glow-gallery-header .eyebrow {
-      color: {{ section.settings.eyebrow_color | default: '#731157' }};
+      color: {{ section.settings.eyebrow_color | default: '#7D0A50' }};
       margin-bottom: 0.6rem;
     }
 
@@ -40,7 +40,7 @@
     #shopify-section-{{ section.id }} .glow-gallery-header h2 i {
       font-family: var(--serif, 'Instrument Serif', Georgia, serif);
       font-style: italic;
-      color: {{ section.settings.heading_italic_color | default: '#731157' }};
+      color: {{ section.settings.heading_italic_color | default: '#7D0A50' }};
     }
 
     #shopify-section-{{ section.id }} .glow-gallery-header .section-sub {
@@ -76,7 +76,7 @@
     width: 100%;
     display: block;
     overflow: hidden;
-    background: {{ section.settings.card_bg | default: '#F1EDEC' }};
+    background: {{ section.settings.card_bg | default: '#F2EDEC' }};
     text-decoration: none;
     line-height: 0;
   }
@@ -123,8 +123,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #731157 0%, #4e0a3a 100%);
-    color: #F1EDEC;
+    background: linear-gradient(135deg, #7D0A50 0%, #4e0a3a 100%);
+    color: #F2EDEC;
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
     font-size: 1.4rem;
     font-style: italic;
@@ -195,7 +195,7 @@
         border-radius: 50%;
         background: #ffffff;
         color: #2A0A20;
-        border: 1px solid rgba(115, 17, 87, 0.15);
+        border: 1px solid rgba(125, 10, 80, 0.15);
         display: flex !important;
         align-items: center;
         justify-content: center;
@@ -205,7 +205,7 @@
         padding: 0;
       }
       #shopify-section-{{ section.id }} .glow-gallery-arrow:hover {
-        background: {{ section.settings.eyebrow_color | default: '#731157' }};
+        background: {{ section.settings.eyebrow_color | default: '#7D0A50' }};
         color: #ffffff;
       }
       #shopify-section-{{ section.id }} .glow-gallery-arrow svg {
@@ -241,7 +241,7 @@
         height: 7px;
         padding: 0;
         border-radius: 50%;
-        background: rgba(115, 17, 87, 0.25);
+        background: rgba(125, 10, 80, 0.25);
         border: none;
         cursor: pointer;
         text-indent: -9999px;
@@ -250,7 +250,7 @@
       #shopify-section-{{ section.id }} .glow-gallery-grid .slick-dots li.slick-active button {
         width: 20px;
         border-radius: 10px;
-        background: {{ section.settings.eyebrow_color | default: '#731157' }};
+        background: {{ section.settings.eyebrow_color | default: '#7D0A50' }};
       }
 
     {%- else -%}
@@ -392,7 +392,7 @@
       "type": "color",
       "id": "section_bg",
       "label": "Background Color",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "range",
@@ -447,7 +447,7 @@
       "type": "color",
       "id": "eyebrow_color",
       "label": "Eyebrow Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "richtext",
@@ -464,7 +464,7 @@
       "type": "color",
       "id": "heading_italic_color",
       "label": "Heading Italic Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "text",
@@ -557,7 +557,7 @@
       "type": "color",
       "id": "card_bg",
       "label": "Image Background Fallback",
-      "default": "#F1EDEC"
+      "default": "#F2EDEC"
     },
     {
       "type": "header",

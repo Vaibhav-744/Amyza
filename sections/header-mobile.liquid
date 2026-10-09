@@ -1,6 +1,37 @@
 <link rel="stylesheet" href="{{ 'component-menu-mobile.css' | asset_url }}" media="all" onload="this.media='all'">
 <noscript>{{ 'component-menu-mobile.css' | asset_url | stylesheet_tag }}</noscript>
 
+<style>
+    @media screen and (max-width: 1024px) {
+        .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent {
+            background: transparent !important;
+            background-color: transparent !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 10;
+        }
+        .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent > .container {
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .has-logo-transparent .logo__main {
+            display: none;
+        }
+        .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .header__heading-logo,
+        .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent img {
+            filter: brightness(0) saturate(100%) invert(95%) sepia(5%) saturate(180%) hue-rotate(320deg) brightness(100%) contrast(90%);
+        }
+        .scrolled-past-header .header-mobile--transparent .logo--transparent {
+            display: none;
+        }
+    }
+</style>
+
 {%-liquid
     if request.page_type == 'index'
         if section.settings.enable_transparent
@@ -39,7 +70,7 @@
                                                 assign multi_page_handle = pages[block.settings.link].handle
                                                 assign multi_page_url = pages[block.settings.link].url
                                                 assign class = 'header__heading-link focus-inset'
-            
+                            
                                                 if template.suffix contains 'landing'
                                                     if page_handle == multi_page_handle
                                                         assign class = 'header__heading-link focus-inset is-active'
@@ -49,14 +80,14 @@
                                                         assign class = 'header__heading-link focus-inset is-active'
                                                     endif
                                                 endif
-            
+                            
                                                 if multi_page_url != blank
                                                     assign url = multi_page_url
                                                 else
                                                     assign url = routes.root_url
                                                 endif
                                             -%}
-            
+                            
                                             <a href="{{ url }}" class="{{ class }} header__heading-logo 1" style="--width-logo-mb: {{ block.settings.logo_width_mobile | append: 'px'}};">
                                                 {%- if block.settings.logo != blank -%}
                                                     {%- assign logo = block.settings.logo -%}
@@ -78,14 +109,14 @@
                                         {%- endfor -%}
                                     </div>
                                 {% else %}
-                                    <a href="{{ routes.root_url }}" class="header__heading-link focus-inset 2" data-logo-width="{{ block.settings.logo_width_mobile }}" style="--width-logo-mb: {{ block.settings.logo_width_mobile | append: 'px'}};">
-                                        {%- liquid 
-                                            assign logo_transparent = block.settings.logo_transparent
-                                            assign check_transparent = false
-                                            if request.page_type == 'index' and section.settings.enable_transparent and logo_transparent != blank
-                                                assign check_transparent = true
-                                            endif
-                                        -%}
+                                    {%- liquid 
+                                        assign logo_transparent = block.settings.logo_transparent
+                                        assign check_transparent = false
+                                        if request.page_type == 'index' and section.settings.enable_transparent and logo_transparent != blank
+                                            assign check_transparent = true
+                                        endif
+                                    -%}
+                                    <a href="{{ routes.root_url }}" class="header__heading-link focus-inset 2{% if check_transparent %} has-logo-transparent{% endif %}" data-logo-width="{{ block.settings.logo_width_mobile }}" style="--width-logo-mb: {{ block.settings.logo_width_mobile | append: 'px'}};">
                                         {%- if block.settings.logo_mobile != blank -%}
                                             {%- assign logo = block.settings.logo_mobile -%}
                                             {%- assign logo_width = block.settings.logo_width_mobile -%}
@@ -107,7 +138,7 @@
                                             <span class="h2 {{ block.settings.logo_text_transform }}">{% if block.settings.logo_text != blank %}{{ block.settings.logo_text }}{% else %}{{ shop.name }}{% endif %}</span>
                                         {%- endif -%}
                                     </a>
-                                {% endif %}
+                                {%- endif -%}
                             </div>
                         {%-  when 'customer' -%}
                             <div class="header-mobile--icon" style="--i-color: {{ block.settings.color }}">

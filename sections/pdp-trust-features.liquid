@@ -5,13 +5,13 @@
   assign bg_color = section.settings.section_bg | default: '#f7f4f3'
   assign card_bg = section.settings.card_bg | default: '#ffffff'
   assign heading = section.settings.heading
-  assign heading_color = section.settings.heading_color | default: '#731157'
+  assign heading_color = section.settings.heading_color | default: '#7D0A50'
   assign subheading = section.settings.subheading
-  assign subheading_color = section.settings.subheading_color | default: '#731157'
+  assign subheading_color = section.settings.subheading_color | default: '#7D0A50'
 
   assign title_color = section.settings.title_color | default: '#2a0a20'
   assign body_color = section.settings.body_color | default: '#5a4350'
-  assign badge_bg = section.settings.badge_bg | default: '#731157'
+  assign badge_bg = section.settings.badge_bg | default: '#7D0A50'
   assign badge_color = section.settings.badge_color | default: '#ffffff'
   
   assign showcase_image = section.settings.side_image | default: product.featured_image
@@ -60,7 +60,7 @@
     border-radius: 16px;
     padding: 2.2rem;
     box-shadow: 0 10px 40px rgba(42, 10, 32, 0.05);
-    border: 1px solid rgba(115, 17, 87, 0.08);
+    border: 1px solid rgba(125, 10, 80, 0.08);
     display: grid;
     grid-template-columns: 1fr 1.15fr;
     gap: 3rem;
@@ -102,7 +102,7 @@
     flex-direction: column;
     gap: 0.45rem;
     padding: 1.4rem 0;
-    border-bottom: 1px solid rgba(115, 17, 87, 0.12);
+    border-bottom: 1px solid rgba(125, 10, 80, 0.12);
   }
 
   .pdp-tf-item:first-child {
@@ -304,7 +304,7 @@
       "type": "color",
       "id": "subheading_color",
       "label": "Subheading Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "inline_richtext",
@@ -316,7 +316,7 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "image_picker",
@@ -327,7 +327,7 @@
       "type": "color",
       "id": "badge_bg",
       "label": "Symbol Badge Color",
-      "default": "#731157"
+      "default": "#7D0A50"
     },
     {
       "type": "color",

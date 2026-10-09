@@ -1,0 +1,162 @@
+{% comment %}
+  text-ribbon.liquid — Simple Text Ribbon
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} .text-ribbon {
+    width: 100%;
+    background-color: {{ section.settings.section_bg }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding_top_desktop }}px 1.5rem {{ section.settings.padding_bottom_desktop }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .text-ribbon-content {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-style: italic;
+    font-size: {{ section.settings.font_size_desktop }}rem;
+    line-height: 1.25;
+    letter-spacing: var(--ls-heading, -0.01em);
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .text-ribbon-content p {
+    margin: 0;
+    display: inline;
+  }
+
+  #shopify-section-{{ section.id }} .text-ribbon-content em,
+  #shopify-section-{{ section.id }} .text-ribbon-content i {
+    color: inherit;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .text-ribbon {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .text-ribbon-content {
+      font-size: {{ section.settings.font_size_mobile }}rem;
+    }
+  }
+</style>
+
+<section class="text-ribbon" id="text-ribbon-{{ section.id }}">
+  <div class="text-ribbon-content">
+    {{ section.settings.text }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text Ribbon",
+  "tag": "section",
+  "class": "section-text-ribbon",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Ancient Rituals. Reimagined for the Modern Woman</p>"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#7D0A50"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#F2EDEC"
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "label": "Font Size — Desktop",
+      "min": 1.0,
+      "max": 4.5,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 2.2
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font Size — Mobile",
+      "min": 0.8,
+      "max": 3.0,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.3
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top — Desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom — Desktop",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top — Mobile",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom — Mobile",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Ribbon",
+      "settings": {
+        "text": "<p>Ancient Rituals. Reimagined for the Modern Woman</p>",
+        "section_bg": "#7D0A50",
+        "text_color": "#F2EDEC",
+        "font_size_desktop": 2.2,
+        "font_size_mobile": 1.3,
+        "padding_top_desktop": 24,
+        "padding_bottom_desktop": 24,
+        "padding_top_mobile": 18,
+        "padding_bottom_mobile": 18
+      }
+    }
+  ]
+}
+{% endschema %}

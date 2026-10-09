@@ -29,20 +29,20 @@
         "eyebrow": "✦ The AMYZA Apothecary",
         "eyebrow_color": "#f7f4f3",
         "heading": "Our Ingredients",
-        "heading_color": "#f1edec",
-        "heading_italic_color": "#eaacc9",
+        "heading_color": "#F2EDEC",
+        "heading_italic_color": "#F0AEBC",
         "heading_size_min": 2.2,
         "heading_size_max": 4.4,
         "subtext": "Eight ingredients. Centuries of wisdom. Each one chosen not for trend, but for the truth our grandmothers already knew — that real skin care grows from the earth.",
         "sub_color": "#f1edecd9",
         "btn1_text": "",
         "btn1_url": "",
-        "btn1_bg": "#731157",
-        "btn1_text_color": "#f1edec",
+        "btn1_bg": "#7D0A50",
+        "btn1_text_color": "#F2EDEC",
         "btn1_hover_bg": "#4e0a3a",
         "btn2_text": "",
         "btn2_url": "",
-        "btn2_color": "#f1edec"
+        "btn2_color": "#F2EDEC"
       }
     },
     "bot_catalogue_EKMTWa": {
@@ -52,7 +52,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/2-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#9F9F46,#731157)",
+            "fallback_bg": "linear-gradient(135deg,#9F9F46,#7D0A50)",
             "name": "Saffron",
             "description": "The golden thread of heritage. Unrivalled radiance.",
             "tag": "Brightening"
@@ -62,7 +62,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/6-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#EAACC9,#731157)",
+            "fallback_bg": "linear-gradient(135deg,#F0AEBC,#7D0A50)",
             "name": "Rose",
             "description": "A centuries-old symbol of softness and renewal.",
             "tag": "Soothing"
@@ -72,7 +72,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/1-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#F1EDEC,#EAACC9)",
+            "fallback_bg": "linear-gradient(135deg,#F2EDEC,#F0AEBC)",
             "name": "Jasmine",
             "description": "Our fragrant base. A floral kiss in place of water.",
             "tag": "Aromatic"
@@ -92,7 +92,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_2-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#9F9F46)",
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#9F9F46)",
             "name": "Pegaga",
             "description": "Malaysia's local hero. Calms, restores, strengthens.",
             "tag": "Barrier"
@@ -102,7 +102,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/3-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#EAACC9)",
+            "fallback_bg": "linear-gradient(135deg,#F7F4F3,#F0AEBC)",
             "name": "Tremella",
             "description": "The supreme hydrator, revered in TCM.",
             "tag": "Hydrating"
@@ -112,7 +112,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/5-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#731157)",
+            "fallback_bg": "linear-gradient(135deg,#4e0a3a,#7D0A50)",
             "name": "Sandalwood",
             "description": "Grounding, warming, an ancient skin soother.",
             "tag": "Grounding"
@@ -122,7 +122,7 @@
           "type": "botanical",
           "settings": {
             "image": "shopify://shop_images/7-removebg-preview.png",
-            "fallback_bg": "linear-gradient(135deg,#1D4F3B,#F1EDEC)",
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#F2EDEC)",
             "name": "Aloe Vera",
             "description": "The bridge between cultures — soothing, timeless.",
             "tag": "Replenishing"
@@ -143,10 +143,10 @@
       "settings": {
         "section_bg": "#f7f4f3",
         "eyebrow": "✦ The Full Apothecary",
-        "eyebrow_color": "#731157",
+        "eyebrow_color": "#7D0A50",
         "heading": "Every botanical, decoded.",
         "heading_color": "#2a0a20",
-        "heading_italic_color": "#731157",
+        "heading_italic_color": "#7D0A50",
         "subheading": "Eight ingredients we trust enough to name on the front of the bottle.",
         "sub_color": "#7a6270",
         "card_bg": "#ffffff",
@@ -154,7 +154,7 @@
         "swatch_fallback": "#ead9e4",
         "card_title_color": "#4e0a3a",
         "card_desc_color": "#2a0a20",
-        "tag_color": "#731157",
+        "tag_color": "#7D0A50",
         "tag_bg": "#eaacc938"
       }
     },
@@ -193,16 +193,16 @@
       ],
       "name": "Bot — Promise",
       "settings": {
-        "section_bg": "#731157",
+        "section_bg": "#7D0A50",
         "eyebrow": "✦ The Sourcing Promise",
-        "eyebrow_color": "#eaacc9",
+        "eyebrow_color": "#F0AEBC",
         "heading": "From soil to skin.",
-        "heading_color": "#f1edec",
-        "heading_italic_color": "#eaacc9",
+        "heading_color": "#F2EDEC",
+        "heading_italic_color": "#F0AEBC",
         "step_border_color": "#f1edec40",
-        "step_num_color": "#eaacc9",
-        "step_title_color": "#f1edec",
-        "step_body_color": "#f1edec"
+        "step_num_color": "#F0AEBC",
+        "step_title_color": "#F2EDEC",
+        "step_body_color": "#F2EDEC"
       }
     },
     "product_block_krFWEJ": {
