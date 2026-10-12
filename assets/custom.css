@@ -2554,7 +2554,7 @@ h4,
 }
 
 .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .stroke-icon svg {
-    stroke: var(--porcelain, #F2EDEC) !important;
+    stroke: var(--plum, #F2EDEC) !important;
 }
 
 .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header__icon svg {
