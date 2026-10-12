@@ -2554,11 +2554,11 @@ h4,
 }
 
 .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .stroke-icon svg {
-    stroke: var(--plum, #F2EDEC) !important;
+    stroke: var(--plum) !important;
 }
 
 .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header__icon svg {
-    fill: var(--porcelain, #F2EDEC) !important;
+    fill: var(--plum) !important;
 }
 
 /* Transparent Header Image / Logo Filter (Desktop & Mobile) */
