@@ -54,6 +54,21 @@
         "text_color": "#f2edec"
       }
     },
+    "text_ribbon_CrN3ap": {
+      "type": "text-ribbon",
+      "name": "Text Ribbon",
+      "settings": {
+        "text": "<p>Ancient Rituals. Reimagined for the Modern Woman</p>",
+        "section_bg": "#7d0a50",
+        "text_color": "#f2edec",
+        "font_size_desktop": 2.2,
+        "font_size_mobile": 1.3,
+        "padding_top_desktop": 24,
+        "padding_bottom_desktop": 24,
+        "padding_top_mobile": 18,
+        "padding_bottom_mobile": 18
+      }
+    },
     "product_block_VRB8WC": {
       "type": "product-block",
       "name": "t:sections.product_block.presets.name",
@@ -81,7 +96,7 @@
         "pd_top_title": 30,
         "product_small_tagline": "<p>✦ The Collection</p>",
         "product_small_description": "<p>Botanical heritage, bottled with intention.</p>",
-        "product_block_title": "<h2><em>Shop</em>&nbsp;<em>The Ritual</em></h2>",
+        "product_block_title": "<h2>Shop&nbsp;<em>The Ritual</em></h2>",
         "enable_border_title": false,
         "enable_border_title_style2": false,
         "fontsize_title": 16,
@@ -923,21 +938,6 @@
         "button_bg": "#7d0a50",
         "button_text": "#f2edec",
         "button_hover_bg": "#4e0a3a"
-      }
-    },
-    "text_ribbon_CrN3ap": {
-      "type": "text-ribbon",
-      "name": "Text Ribbon",
-      "settings": {
-        "text": "<p>Ancient Rituals. Reimagined for the Modern Woman</p>",
-        "section_bg": "#7d0a50",
-        "text_color": "#f2edec",
-        "font_size_desktop": 2.2,
-        "font_size_mobile": 1.3,
-        "padding_top_desktop": 24,
-        "padding_bottom_desktop": 24,
-        "padding_top_mobile": 18,
-        "padding_bottom_mobile": 18
       }
     }
   },
