@@ -37,29 +37,23 @@
   #shopify-section-{{ section.id }} .eyebrow {
     color: {{ section.settings.eyebrow_color }};
   }
-  #shopify-section-{{ section.id }} .link-arrow {
-    display: inline-block;
-    margin-top: 0;
-    font-size: .82rem;
-    letter-spacing: var(--ls-button, 0.18em);
-    text-transform: uppercase;
-    border-bottom: 1px solid {{ section.settings.link_color }};
-    color: {{ section.settings.link_color }};
-    padding-bottom: .3rem;
-    transition: letter-spacing .3s;
+  #shopify-section-{{ section.id }} .btn {
+    display: flex;
+    width: max-content;
+
   }
-  #shopify-section-{{ section.id }} .link-arrow:hover {
-    letter-spacing: var(--ls-eyebrow, 0.22em);
+  #shopify-section-{{ section.id }} .btn:hover {
+    color: var(--porcelain);
   }
+
 
   /* ── Visual column ── */
   #shopify-section-{{ section.id }} .heritage-visual {
     position: relative;
-  }
+  } 
   #shopify-section-{{ section.id }} .heritage-visual img {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    max-height: 560px;
+    height:100%;
     object-fit: cover;
     border-radius: 0;
     display: block;
@@ -216,7 +210,7 @@
       {% endif %}
 
       {% if section.settings.link_label != blank and section.settings.link_url != blank %}
-        <a href="{{ section.settings.link_url }}" class="link-arrow">{{ section.settings.link_label }}</a>
+        <a href="{{ section.settings.link_url }}" class="btn-primary btn">{{ section.settings.link_label }}</a>
       {% endif %}
     </div>
 

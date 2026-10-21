@@ -42,8 +42,14 @@
     assign max_thumbnail_to_show = section.settings.thumbnail_to_show
     assign current_variant = product.selected_or_first_available_variant
     assign variantCount = product.variants | size
-    assign featured_media_aspect_ratio = product.featured_media.aspect_ratio
-    if product.featured_media.aspect_ratio == nil
+    assign single_image_only = section.settings.single_image_only
+    assign custom_image = section.settings.custom_image
+    if custom_image != blank
+        assign featured_media_aspect_ratio = custom_image.aspect_ratio
+    else
+        assign featured_media_aspect_ratio = product.featured_media.aspect_ratio
+    endif
+    if featured_media_aspect_ratio == nil
         assign featured_media_aspect_ratio = 1
     endif
     assign media_size = section.settings.product_image_ratio
@@ -311,12 +317,51 @@
                                     </div>
                                 {%- endif -%}
 
-                                <div class="productView-nav style-1 image-fit-{{ media_fit }}" 
+                                <div class="productView-nav style-1 image-fit-{{ media_fit }}{% if single_image_only %} is-single-image{% endif %}" 
                                     data-image-gallery-main
-                                    data-arrows-desk="{{ main_image_arrows_desktop }}"
-                                    data-counter-mobi="{{ main_image_counter_mobile }}"
-                                    data-media-count="{{ product.media.size }}"
+                                    data-arrows-desk="{% if single_image_only %}false{% else %}{{ main_image_arrows_desktop }}{% endif %}"
+                                    data-counter-mobi="{% if single_image_only %}false{% else %}{{ main_image_counter_mobile }}{% endif %}"
+                                    data-media-count="{% if single_image_only %}1{% else %}{{ product.media.size }}{% endif %}"
                                 >
+                                    {%- if single_image_only -%}
+                                        {%- assign primary_image = custom_image | default: product.featured_media.preview_image | default: product.featured_image -%}
+                                        {%- if primary_image != blank -%}
+                                            <div class="productView-image productView-image-{{ media_size }} fit-{{ media_fit }}" data-index="1">
+                                                <div class="productView-img-container product-single__media" data-media-id="{{ product.featured_media.id | default: section.id }}"
+                                                    {% unless media_fit == 'unset' %}
+                                                        {% if primary_image %}
+                                                            {% if media_size == 'adapt' %}
+                                                                style="padding-bottom: {{ 1 | divided_by: featured_media_aspect_ratio | times: 100 }}%;"
+                                                            {% elsif media_size == 'square' %}
+                                                                style="padding-bottom: 100%;"
+                                                            {% elsif media_size == 'portrait' %}
+                                                                {% if portrait_aspect_ratio != blank %}
+                                                                    style="padding-bottom: {{ portrait_aspect_ratio }};"
+                                                                {% endif %}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endunless %}
+                                                >
+                                                    <div 
+                                                        class="media"
+                                                        {% if product_image_popup == 'fancybox' and custom_image == blank %} data-fancybox="images" href="{{ primary_image | img_url: 'master' }}" {% endif %}
+                                                    >
+                                                        <img id="product-featured-image-{{ product.featured_media.id | default: section.id }}"
+                                                            {% if settings.enable_lazyload %}data-{% endif %}srcset="{{ primary_image | img_url: 'master' }}"
+                                                            {% unless settings.enable_lazyload %}src="{{ primary_image | img_url: 'master' }}"{% endunless %}
+                                                            alt="{{ primary_image.alt | default: product.title | escape }}"
+                                                            sizes="auto"
+                                                            data-sizes="auto"
+                                                            data-main-image
+                                                            data-index="1"
+                                                            data-cursor-image
+                                                            {% if settings.enable_lazyload %}class="lazyload" loading="lazy"{% endif %}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {%- endif -%}
+                                    {%- else -%}
                                     {%- for media in product.media -%}
                                         {%- case media.media_type -%}
                                             {%- when 'image' -%}
@@ -496,8 +541,9 @@
                                                 </div>
                                         {%- endcase -%}
                                     {%- endfor -%}
+                                {%- endif -%}
                                 </div>
-                                {%- if video_layout == 'popup' -%}
+                                {%- if video_layout == 'popup' and single_image_only != true -%}
                                     <div class="productView-videoPopup">
                                         {%- for media in product.media -%}
                                             {%- case media.media_type -%}
@@ -530,7 +576,7 @@
                                     </div>
                                 {%- endif -%}
                             </div>
-                            {%- if thumnail_layout != '4' -%}
+                            {%- if thumnail_layout != '4' and single_image_only != true -%}
                                 <div class="productView-thumbnail-wrapper{% unless show_thumbnail_mobile %} is-hidden-mobile{% endunless %}{% if section.settings.featured_product == blank %} productView-thumbnail-wrapper-placeholder{% endif %}">
                                     <div class="productView-for clearfix" data-max-thumbnail-to-show="{{ max_thumbnail_to_show }}">
                                         {%- for media in product.media -%}
@@ -1206,6 +1252,19 @@
             "type": "header",
             "content": "t:sections.main-product.settings.header__2.content",
             "info": "t:sections.main-product.settings.header__2.info"
+        },
+        {
+            "type": "checkbox",
+            "id": "single_image_only",
+            "label": "Display single image only",
+            "default": true,
+            "info": "Show only the main featured image instead of all product media."
+        },
+        {
+            "type": "image_picker",
+            "id": "custom_image",
+            "label": "Custom image (optional)",
+            "info": "Overrides the product image if selected."
         },
         {
             "type": "select",

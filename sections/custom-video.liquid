@@ -62,7 +62,7 @@
     position:relative;
     z-index:2;
     max-width:720px;
-    margin:0 0 8vh 6vw;
+    margin:0 0 8vh 8vw;
     padding:2rem 0;
   }
 
@@ -220,6 +220,12 @@
     }
   }
 
+
+  @media screen and (max-width:1440px){
+    #shopify-section-{{ section.id }} .hero-video-content{
+      margin: 0 0 8vh 4%;
+    }
+  }
   @media screen and (max-width:980px){
 
     #shopify-section-{{ section.id }} .hero-video{

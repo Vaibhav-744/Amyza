@@ -73,7 +73,7 @@
   .custom-footer-newsletter-card {
     position: relative;
     z-index: 2;
-    background-color: {{ card_bg_color }};
+    background-color: {{ card_bg_color | color_modify: 'alpha', 0.70 }};
     color: {{ card_text_color }};
     width: 100%;
     max-width: 580px;

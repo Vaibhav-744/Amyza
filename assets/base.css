@@ -4152,6 +4152,7 @@ body.notify-me-show .halo-notify-popup {
 
 .menu-lv-item .text {
     transition: text-decoration var(--duration-short) ease;
+    font-weight: 600;
 }
 
 .menu-lv-item .icon {
