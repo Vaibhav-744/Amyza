@@ -320,7 +320,7 @@
           "type": "image_text",
           "settings": {
             "icon": "shopify://shop_images/drop-energy-fuel-svgrepo-com.svg",
-            "title": "<p>Hydrate</p>",
+            "title": "<p>HYDRATE</p>",
             "description": "<p>Tremella Mushroom & Aloe Vera drench thirsty skin.</p>"
           }
         },
@@ -328,7 +328,7 @@
           "type": "image_text",
           "settings": {
             "icon": "shopify://shop_images/leaf-svgrepo-com.svg",
-            "title": "<p>Soothe</p>",
+            "title": "<p>SOOTHE</p>",
             "description": "<p>Centella Asiatica (Pegaga) calms and restores.</p>"
           }
         },
@@ -336,7 +336,7 @@
           "type": "image_text",
           "settings": {
             "icon": "shopify://shop_images/sparkles-svgrepo-com.svg",
-            "title": "<p>Glow</p>",
+            "title": "<p>GLOW</p>",
             "description": "<p>Saffron & Turmeric awaken unparalleled radiance.</p>"
           }
         },
