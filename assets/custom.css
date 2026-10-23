@@ -657,7 +657,7 @@ h4,
     /* font-style: italic; */
     font-weight: 400;
     color: #000;
-    font-size: 14px;
+    font-size: 2rem;
     line-height: 1.2;
     margin-bottom: .15rem;
     font-family:var(--serif);
