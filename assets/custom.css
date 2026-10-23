@@ -660,6 +660,7 @@ h4,
     font-size: 14px;
     line-height: 1.2;
     margin-bottom: .15rem;
+    font-family:var(--serif);
 }
 
 .featured_icontext .featured-text-wrapper .text-wrapper .description-text {
