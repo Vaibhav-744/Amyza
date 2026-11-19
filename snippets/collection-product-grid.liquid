@@ -112,7 +112,7 @@
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="collection" id="CollectionSection-{{ section.id }}" data-section="{{ section.id }}" class="collection-default">
     {%- if settings.layout != '4' or sidebar_type != 'horizontal' -%}
-        <div class="{% if container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
+        <div class="{% if container == '1000' %}container-1000{% elsif container == '1170' %}container-1170{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %}">
     {%- endif -%}
         <div class="halo-collection-content halo-grid-content sidebar--layout_{{ sidebar_type }}">
             {%- if has_sidebar -%}

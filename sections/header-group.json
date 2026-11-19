@@ -197,7 +197,7 @@
             "logo_position": "always",
             "logo": "shopify://shop_images/High-res_AMYZA_Logo-03-plum.png",
             "logo_transparent": "shopify://shop_images/High-res_AMYZA_Logo-07-white.png",
-            "logo_width": 130,
+            "logo_width": 150,
             "logo_width_fixed": 100,
             "logo_text": "",
             "logo_font_size": 20,
@@ -262,7 +262,7 @@
           "settings": {
             "logo_mobile": "shopify://shop_images/High-res_AMYZA_Logo-03-plum.png",
             "logo_transparent": "shopify://shop_images/High-res_AMYZA_Logo-07-white.png",
-            "logo_width_mobile": 100,
+            "logo_width_mobile": 120,
             "logo_text": "",
             "logo_font_size": 20,
             "logo_font_weight": "900",

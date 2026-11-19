@@ -624,7 +624,7 @@ h4,
 .featured_icontext .featured-text-wrapper {
     display: flex;
     align-items: center;
-    grid-gap: 20px;
+    grid-gap: 10px;
 }
 
 .featured_icontext .featured-text-wrapper .icon-wrapper {
@@ -654,12 +654,12 @@ h4,
 }
 
 .featured_icontext .featured-text-wrapper .text-wrapper .title-text {
-    /* font-style: italic; */
     font-weight: 400;
     color: #000;
-    font-size: 14px;
+    font-size: 1.2rem;
     line-height: 1.2;
     margin-bottom: .15rem;
+    font-family: var(--serif);
 }
 
 .featured_icontext .featured-text-wrapper .text-wrapper .description-text {
@@ -2667,5 +2667,217 @@ h4,
         flex-direction: column !important;
         justify-content: center !important;
         align-self: stretch !important;
+    }
+}
+
+/* ==========================================================================
+   Collection Page ("default collection" template only)
+   ========================================================================== */
+
+/* Header: White search, profile, cart icons on transparent header */
+.template-collection-default .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .stroke-icon svg {
+    stroke: var(--porcelain, #ffffff) !important;
+    fill: var(--porcelain, #ffffff) !important;
+}
+
+.template-collection-default .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .header__icon svg {
+    fill: var(--porcelain, #ffffff) !important;
+    /* stroke: var(--porcelain, #ffffff) !important; */
+}
+
+.template-collection-default .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .cart-count-bubble {
+    color: var(--plum, #7D0A50) !important;
+    background-color: var(--porcelain, #ffffff) !important;
+}
+
+/* Mobile Header icons for default collection */
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .header__icon svg,
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .mobileMenu-toggle__Icon,
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .mobileMenu-toggle__Icon:before,
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .mobileMenu-toggle__Icon:after {
+    fill: var(--porcelain, #ffffff) !important;
+    /* stroke: var(--porcelain, #ffffff) !important; */
+    /* background-color: var(--porcelain, #ffffff) !important; */
+}
+
+/* ==========================================================================
+   Collection Page ("default collection" template only)
+   ========================================================================== */
+
+/* Header: White search, profile, cart icons on transparent header */
+.template-collection-default .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .stroke-icon svg {
+    fill: var(--porcelain, #ffffff) !important;
+}
+
+.template-collection-default .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .header__icon svg {
+    fill: var(--porcelain, #ffffff) !important;
+}
+
+.template-collection-default .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .header-icons .cart-count-bubble {
+    color: var(--plum, #7D0A50) !important;
+    background-color: var(--porcelain, #ffffff) !important;
+}
+
+/* Mobile Header icons for default collection */
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .header__icon svg,
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .mobileMenu-toggle__Icon,
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .mobileMenu-toggle__Icon:before,
+.template-collection-default .section-header-mobile:not(.scrolled-past-header) .header-mobile--transparent .mobileMenu-toggle__Icon:after {
+    fill: var(--porcelain, #ffffff) !important;
+}
+
+/* 1000px Container */
+.container-1000 {
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.template-collection-default .collection-default>.container-1000,
+.template-collection-default .collection-default>.container-1170,
+.template-collection-default .collection-default>.container,
+.template-collection .collection-default>.container-1000,
+.template-collection .collection-default>.container-1170,
+.template-collection .collection-default>.container {
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Main Collection Product Cards refinement so they display cleanly on single viewport */
+.template-collection-default .productGrid .product-item .card,
+.template-collection .productGrid .product-item .card {
+    padding-bottom: 0.25rem;
+}
+
+.template-collection-default .productGrid .product-info,
+.template-collection .productGrid .product-info {
+    padding: 0.6rem 0;
+    gap: 0.2rem;
+}
+
+/* Centered product images on collection page across all devices */
+.template-collection-default .productGrid .product-item .card .card-product__wrapper,
+.template-collection .productGrid .product-item .card .card-product__wrapper {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.template-collection-default .productGrid .product-item .card .card-product__wrapper .card-media,
+.template-collection .productGrid .product-item .card .card-product__wrapper .card-media {
+    aspect-ratio: 1.3 / 1 !important;
+    height: 250px !important;
+    max-height: 270px !important;
+    width: 100% !important;
+    padding: 12px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background: transparent !important;
+    margin: 0 auto !important;
+}
+
+.template-collection-default .productGrid .product-item .card .card-product__wrapper .card-media img,
+.template-collection .productGrid .product-item .card .card-product__wrapper .card-media img {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: auto !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: transparent !important;
+}
+
+@media (max-width: 767px) {
+    .template-collection-default .productGrid .product-item .card .card-product__wrapper .card-media,
+    .template-collection .productGrid .product-item .card .card-product__wrapper .card-media {
+        height: 210px !important;
+        max-height: 230px !important;
+        padding: 8px !important;
+    }
+}
+
+/* ==========================================================================
+   Rotating 360° Circular "Best Seller" Badge
+   ========================================================================== */
+
+.amyza-bestseller-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 74px;
+    height: 74px;
+    z-index: 4;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    transform-origin: center center;
+    animation: amyza-bestseller-spin 14s linear infinite;
+    will-change: transform;
+}
+
+@keyframes amyza-bestseller-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.amyza-bestseller-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.amyza-bestseller-text {
+    font-family: var(--sans, 'Public Sans', system-ui, -apple-system, sans-serif);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    fill: #111111;
+}
+
+@media (max-width: 767px) {
+    .amyza-bestseller-badge {
+        top: 8px;
+        left: 8px;
+        width: 58px;
+        height: 58px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .amyza-bestseller-badge {
+        animation: none;
+    }
+}
+
+/* Offset standard badges if bestseller badge is also present on the left */
+.card-product__wrapper:has(.amyza-bestseller-badge) .halo-productBadges--left {
+    top: 96px;
+}
+@media (max-width: 767px) {
+    .card-product__wrapper:has(.amyza-bestseller-badge) .halo-productBadges--left {
+        top: 76px;
     }
 }

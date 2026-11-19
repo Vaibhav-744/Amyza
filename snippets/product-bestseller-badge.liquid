@@ -1,0 +1,44 @@
+{%- comment -%}
+    Renders rotating 360 circular "Best Seller" badge if product is tagged "Best Seller" (case-insensitive).
+    Accepts:
+    - product_card_product: {Object} Product Liquid object (optional)
+    - product: {Object} Product Liquid object (optional)
+    - sectionId: {String} Section ID for unique SVG path ID
+    - serial: {Integer|String} Loop index for unique SVG path ID
+{%- endcomment -%}
+
+{%- liquid
+    assign prod = product_card_product | default: product
+    assign is_best_seller = false
+
+    if prod.tags.size > 0
+        for tag in prod.tags
+            assign tag_lower = tag | downcase | strip
+            assign tag_simplified = tag_lower | replace: '-', '' | replace: '_', '' | replace: ' ', ''
+            if tag_simplified == 'bestseller'
+                assign is_best_seller = true
+                break
+            endif
+        endfor
+    endif
+-%}
+
+{%- if is_best_seller -%}
+    {%- liquid
+        assign s_id = sectionId | default: section.id | default: 'badge'
+        assign s_num = serial | default: forloop.index | default: 1
+        assign unique_path_id = 'amyza-bestseller-path-' | append: s_id | append: '-' | append: prod.id | append: '-' | append: s_num
+    -%}
+    <div class="amyza-bestseller-badge" aria-label="Best Seller">
+        <svg viewBox="0 0 100 100" class="amyza-bestseller-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <path id="{{ unique_path_id }}" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />
+            </defs>
+            <text class="amyza-bestseller-text">
+                <textPath href="#{{ unique_path_id }}" xlink:href="#{{ unique_path_id }}" startOffset="0%" textLength="220" lengthAdjust="spacing">
+                    BEST SELLER * BEST SELLER *&#160;
+                </textPath>
+            </text>
+        </svg>
+    </div>
+{%- endif -%}

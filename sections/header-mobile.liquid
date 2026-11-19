@@ -33,7 +33,7 @@
 </style>
 
 {%-liquid
-    if request.page_type == 'index'
+    if request.page_type == 'index' or template == 'collection'
         if section.settings.enable_transparent
             assign header_transparent = ' header-mobile--transparent'
             assign sticky_header = ' p-absolute left-0 right-0 w-100 zi-3'
@@ -112,8 +112,10 @@
                                     {%- liquid 
                                         assign logo_transparent = block.settings.logo_transparent
                                         assign check_transparent = false
-                                        if request.page_type == 'index' and section.settings.enable_transparent and logo_transparent != blank
-                                            assign check_transparent = true
+                                        if section.settings.enable_transparent and logo_transparent != blank
+                                            if request.page_type == 'index' or template == 'collection'
+                                                assign check_transparent = true
+                                            endif
                                         endif
                                     -%}
                                     <a href="{{ routes.root_url }}" class="header__heading-link focus-inset 2{% if check_transparent %} has-logo-transparent{% endif %}" data-logo-width="{{ block.settings.logo_width_mobile }}" style="--width-logo-mb: {{ block.settings.logo_width_mobile | append: 'px'}};">

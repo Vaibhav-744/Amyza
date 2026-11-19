@@ -105,7 +105,7 @@
 </style>
 {%-liquid
     assign is_transparent = false
-    if request.page_type == 'index'
+    if request.page_type == 'index' or template == 'collection'
         if section.settings.enable_transparent
             assign header_transparent = ' header-plain--transparent'
             assign is_transparent = true
@@ -121,8 +121,10 @@
                 {%- liquid 
                     assign logo_transparent = block.settings.logo_transparent
                     assign check_transparent = false
-                    if request.page_type == 'index' and section.settings.enable_transparent and logo_transparent != blank
-                        assign check_transparent = true
+                    if section.settings.enable_transparent and logo_transparent != blank
+                        if request.page_type == 'index' or template == 'collection'
+                            assign check_transparent = true
+                        endif
                     endif
                 -%}
                 <div class="header-logo header-item header-item--side d-flex flex-align-center d-flex fs-0 fg-0 pt-2 pb-5{% if block.settings.logo_position == 'main_menu'%} show-main-menu{% elsif block.settings.logo_position == 'sticky_menu'%} hide-main-menu{% else %}{% endif %}{% if check_transparent %} has-logo-transparent{% endif %}" style="--logo_font_size: {{block.settings.logo_font_size | append: 'px'}};--logo_font_weight: {{block.settings.logo_font_weight}};--logo_text_transform: {{block.settings.logo_text_transform}};--logo_text_color: {{block.settings.logo_color}};--logo_width: {{block.settings.logo_width | append: 'px'}};--logo_width_sticky: {{block.settings.logo_width_fixed | append: '%'}}">

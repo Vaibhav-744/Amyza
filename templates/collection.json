@@ -84,15 +84,15 @@
       ],
       "name": "Collection Hero",
       "settings": {
-        "bg_gradient": "",
-        "padding_desktop": 9,
-        "eyebrow": "The AMYZA Collection",
-        "eyebrow_color": "#F0AEBC",
+        "padding_desktop": 6.5,
+        "padding_bottom_desktop": 0,
+        "eyebrow": "",
+        "eyebrow_color": "#f0aebc",
         "heading": "<p>Every <em>Ritual.</em></p>",
         "heading_tag": "h2",
-        "heading_italic_color": "#F0AEBC",
+        "heading_italic_color": "#f0aebc",
         "subtext": "Slow-luxury skincare rooted in ancestral botanical wisdom — crafted in small batches, made for the woman who knows her worth.",
-        "marquee_text_color": "#F0AEBC",
+        "marquee_text_color": "#f0aebc",
         "marquee_separator_color": "#eaacc966",
         "marquee_speed": 26,
         "pause_on_hover": true
@@ -101,16 +101,16 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
-        "colors_bg": "#F2EDEC",
+        "colors_bg": "#f2edec",
         "colors_bg_gradient": "",
-        "container": "1170",
+        "container": "1000",
         "padding_full_width": 0,
-        "mg_top_desktop": 70,
-        "mg_top_tablet": 50,
-        "mg_top_mobile": 50,
-        "mg_bottom_desktop": 70,
-        "mg_bottom_tablet": 50,
-        "mg_bottom_mobile": 50,
+        "mg_top_desktop": 30,
+        "mg_top_tablet": 25,
+        "mg_top_mobile": 20,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 40,
+        "mg_bottom_mobile": 30,
         "show_sidebar": false,
         "sidebar_collapse": "collapse",
         "enable_sticky": false,
@@ -135,7 +135,7 @@
         "show_item_per_page": false,
         "show_view_as": false,
         "products_per_page": "20",
-        "layout": "3",
+        "layout": "2",
         "show_infinite_scrolling": "show_more",
         "show_banner": false,
         "show_banner_1": false,
@@ -147,10 +147,10 @@
         "show_banner_3": false,
         "banner_position_3": "12",
         "link_banner_3": "",
-        "product_space_between_vert_desk": 30,
+        "product_space_between_vert_desk": 60,
         "product_space_between_vert_mb": 20,
-        "product_space_between_horiz_desk": 30,
-        "product_space_between_horiz_mb": 20
+        "product_space_between_horiz_desk": 50,
+        "product_space_between_horiz_mb": 24
       }
     },
     "collection_editorial_8Qm4H9": {
@@ -187,13 +187,13 @@
       "settings": {
         "image_ratio": "1 / 1",
         "text_padding_desktop": 20,
-        "section_bg": "#F2EDEC",
+        "section_bg": "#f2edec",
         "divider_color": "#e8e0e4",
-        "eyebrow_color": "#7D0A50",
-        "title_color": "#7D0A50",
+        "eyebrow_color": "#7d0a50",
+        "title_color": "#7d0a50",
         "desc_color": "#666655",
-        "link_color": "#7D0A50",
-        "link_hover_color": "#7D0A50"
+        "link_color": "#7d0a50",
+        "link_hover_color": "#7d0a50"
       }
     }
   },
