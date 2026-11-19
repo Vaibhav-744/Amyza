@@ -84,6 +84,10 @@
       ],
       "name": "Collection Hero",
       "settings": {
+        "bg_image": "shopify://shop_images/stouszrqnkyszgfc7vcp.webp",
+        "bg_position": "center center",
+        "overlay_color": "#7d0a50",
+        "overlay_opacity": 50,
         "padding_desktop": 6.5,
         "padding_bottom_desktop": 0,
         "eyebrow": "",
@@ -159,6 +163,7 @@
         "panel_JzHETW": {
           "type": "panel",
           "settings": {
+            "image": "shopify://shop_images/3_Photo_Section_2_1.webp",
             "fallback_bg": "linear-gradient(135deg, #7D0A50 0%, #4e0a3a 100%)",
             "eyebrow": "",
             "title": "",
@@ -170,6 +175,7 @@
         "panel_zLyH8F": {
           "type": "panel",
           "settings": {
+            "image": "shopify://shop_images/dn2qsbrnxhw6fw2sik8o.webp",
             "fallback_bg": "linear-gradient(135deg, #F0AEBC 0%, #7D0A50 100%)",
             "eyebrow": "",
             "title": "",
