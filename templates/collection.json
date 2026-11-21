@@ -98,7 +98,7 @@
         "subtext": "Slow-luxury skincare rooted in ancestral botanical wisdom — crafted in small batches, made for the woman who knows her worth.",
         "marquee_text_color": "#f0aebc",
         "marquee_separator_color": "#eaacc966",
-        "marquee_speed": 26,
+        "marquee_speed": 50,
         "pause_on_hover": true
       }
     },
