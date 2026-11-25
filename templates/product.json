@@ -193,6 +193,8 @@
         "mg_bottom_tablet": 0,
         "mg_bottom_mobile": 0,
         "main_image_arrows_desktop": false,
+        "main_image_autoplay": true,
+        "main_image_autoplay_speed": 3,
         "main_image_arrows_mobile": true,
         "main_image_counter_mobile": true,
         "main_image_enable_parallax_mb": false,
@@ -267,42 +269,107 @@
         "total_btn_bg_gradient_hover": ""
       }
     },
+    "sticky_images_and_text_main": {
+      "type": "sticky-images-and-text",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/amz_texture.png",
+            "image_title": "Hydrate.",
+            "eyebrow": "",
+            "heading": "Deep Moisture, Weightless Feel.",
+            "description": "<p>Tremella mushroom and floral waters replenish thirsty skin without heavy or greasy residue.</p>"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/amz_botanicals.png",
+            "image_title": "Soothe.",
+            "eyebrow": "",
+            "heading": "Calm & Strengthen Every Day.",
+            "description": "<p>Malaysian Pegaga and Rose calm reactive skin while reinforcing your natural moisture barrier.</p>"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/amz_ritual.png",
+            "image_title": "Glow.",
+            "eyebrow": "",
+            "heading": "Heirloom Radiance, Bottled.",
+            "description": "<p>Saffron and turmeric work in harmony to awaken a luminous, lit-from-within complexion.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "name": "Sticky Images & Text",
+      "settings": {
+        "section_bg": "#7d0a50",
+        "scroll_height_per_slide": 100,
+        "image_aspect_ratio": "16 / 10",
+        "image_radius": 24,
+        "image_overlay_opacity": 25,
+        "overlay_title_font": "sans",
+        "overlay_title_color": "#f7f4e3",
+        "text_align": "right",
+        "heading_font": "sans",
+        "eyebrow_color": "#f0aebc",
+        "heading_color": "#f2edec",
+        "body_color": "#eedce6",
+        "dot_color": "#f2edec",
+        "dot_active_color": "#f2edec"
+      }
+    },
     "pdp_key_features_main": {
       "type": "pdp-key-features",
       "blocks": {
         "feature_1": {
           "type": "feature",
           "settings": {
-            "tag": "✦ RENEW",
-            "title": "Stimulates Cell Renewal",
-            "description": "Ancestral botanicals support the skin's natural renewal process while replenishing moisture, leaving skin refreshed, resilient, and revitalised.",
+            "icon_image": "shopify://shop_images/icon_alcohol.png",
+            "custom_svg": "",
+            "tag": "",
+            "title": "Alcohol Free",
+            "description": "We dont believe on having any added parabens.",
             "metafield_key": ""
           }
         },
         "feature_2": {
           "type": "feature",
           "settings": {
-            "tag": "✦ HYDRATE",
-            "title": "Deep Moisture Lock",
-            "description": "Tremella mushroom & botanical extracts hold moisture like silk, deeply hydrating skin layers without any heavy or greasy residue.",
+            "icon_image": "shopify://shop_images/icon_natural.png",
+            "custom_svg": "",
+            "tag": "",
+            "title": "Natural Ingredients",
+            "description": "We dont believe on having any added parabens.",
             "metafield_key": ""
           }
         },
         "feature_3": {
           "type": "feature",
           "settings": {
-            "tag": "✦ AGELESS",
-            "title": "Slows Visible Signs of Ageing",
-            "description": "Saffron and collagen-rich botanical complex improves elasticity and softens fine lines, coaxes a lit-from-within glow.",
+            "icon_image": "shopify://shop_images/icon_cruelty.png",
+            "custom_svg": "",
+            "tag": "",
+            "title": "Paraben Free",
+            "description": "We dont believe on having any added parabens.",
             "metafield_key": ""
           }
         },
         "feature_4": {
           "type": "feature",
           "settings": {
-            "tag": "✦ GLOW",
-            "title": "Promotes a Radiant Complexion",
-            "description": "Rose & Jasmine floral waters energise and revitalise the skin while defending against daily environmental stressors.",
+            "icon_image": "shopify://shop_images/icon_colour.png",
+            "custom_svg": "",
+            "tag": "",
+            "title": "No Artificial Colour",
+            "description": "We dont believe on having any added parabens.",
             "metafield_key": ""
           }
         }
@@ -317,13 +384,39 @@
         "section_bg": "#f7f4f3",
         "subheading": "✦ RITUAL BENEFITS",
         "subheading_color": "#7d0a50",
-        "heading": "Why You'll Love AMYZA",
+        "heading": "Good to You. Good to you Skin",
         "heading_color": "#7d0a50",
+        "center_image": "shopify://shop_images/3_Photo_Section_1_1.webp",
         "image_bg_color": "#f2edec",
-        "title_color": "#2a0a20",
+        "title_color": "#9f9f46",
         "body_color": "#5a4350",
+        "icon_size": 44,
+        "icon_color": "#7d0a50",
         "padding_top": 60,
         "padding_bottom": 60
+      }
+    },
+    "about_video_qnnpyn": {
+      "type": "about-video",
+      "name": "About — Video Banner",
+      "settings": {
+        "image": "shopify://shop_images/hero_no_text_desktop.png",
+        "image_mobile": "shopify://shop_images/hero_no_text_mobile_4x5_62ec114a-e236-424e-91fb-1c30b21f7993.png",
+        "image_position": "center center",
+        "fallback_bg": "#2a0a20",
+        "text_position_desktop": "middle-left",
+        "text_position_mobile": "middle-center",
+        "overlay": "",
+        "eyebrow": "",
+        "eyebrow_color": "#f0aebc",
+        "heading": "",
+        "heading_color": "#f2edec",
+        "subtext": "",
+        "sub_color": "#f2edecd9",
+        "tag_1": "",
+        "tag_2": "",
+        "tag_3": "",
+        "tags_color": "#f2edec"
       }
     },
     "pdp_product_highlights_main": {
@@ -386,6 +479,7 @@
         "highlight_yhHwnq",
         "highlight_dEp6V7"
       ],
+      "disabled": true,
       "settings": {
         "section_bg": "#f7f4f3",
         "text_color": "#2a0a20",
@@ -441,12 +535,12 @@
         "trust_3"
       ],
       "settings": {
-        "section_bg": "#f7f4f3",
+        "section_bg": "#7d0a50",
         "card_bg": "#ffffff",
         "subheading": "✦ PROVEN FORMULATION",
-        "subheading_color": "#7d0a50",
+        "subheading_color": "#9f9f46",
         "heading": "Key Clinical Benefits & Trust Factors",
-        "heading_color": "#7d0a50",
+        "heading_color": "#9f9f46",
         "badge_bg": "#7d0a50",
         "badge_color": "#ffffff",
         "title_color": "#2a0a20",
@@ -491,6 +585,7 @@
         "step_CAWrwa",
         "step_4RRDR3"
       ],
+      "disabled": true,
       "name": "PDP — Ingredient Story",
       "settings": {
         "section_bg": "#4e0a3a",
@@ -779,17 +874,63 @@
         "border_width_card": 5,
         "border_color_card": "#f0f1f4"
       }
+    },
+    "custom_video_JCaiPz": {
+      "type": "custom-video",
+      "name": "Custom Hero Video",
+      "settings": {
+        "media_type": "auto",
+        "image_position": "center center",
+        "fallback_bg": "#7d0a50",
+        "eyebrow": "✦ Introducing the Golden Nectar",
+        "eyebrow_color": "#f0aebc",
+        "heading": "<p><em>The Glow</em><br/>You Deserve.</p>",
+        "heading_color": "#f2edec",
+        "heading_italic_color": "#f0aebc",
+        "subheading": "A slow-luxury ritual rooted in ancestral botanical wisdom — reimagined for the modern woman.",
+        "subheading_color": "#f2edec",
+        "primary_button_label": "Shop The Serum",
+        "primary_button_link": "",
+        "primary_button_bg": "#7d0a50",
+        "primary_button_text": "#f2edec",
+        "primary_button_border": "#7d0a50",
+        "primary_button_hover_bg": "#4e0a3a",
+        "secondary_button_label": "Discover The Ritual →",
+        "secondary_button_link": "",
+        "secondary_button_text": "#f2edec",
+        "secondary_button_border": "#f2edec",
+        "secondary_button_hover_bg": "#f2edec",
+        "secondary_button_hover_text": "#7d0a50",
+        "overlay_top": "rgba(42,10,32,0.25)",
+        "overlay_middle": "rgba(42,10,32,0.5)",
+        "overlay_bottom": "rgba(42,10,32,0.85)",
+        "overlay_glow": "rgba(125, 10, 80,0.35)",
+        "show_mute_button": true,
+        "mute_button_bg": "rgba(42,10,32,0.45)",
+        "mute_button_border": "#ffffff",
+        "mute_button_icon": "#f2edec",
+        "mute_button_hover_bg": "rgba(42,10,32,0.7)",
+        "show_scroll_hint": true,
+        "scroll_text": "Scroll",
+        "scroll_text_color": "#f2edec",
+        "scroll_line_color": "#f2edec",
+        "scroll_animation_speed": 2,
+        "text_color": "#f2edec"
+      }
     }
   },
   "order": [
     "main",
+    "sticky_images_and_text_main",
     "pdp_key_features_main",
+    "about_video_qnnpyn",
     "pdp_product_highlights_main",
     "pdp_trust_features_main",
     "pdp_ingredient_story_pyMaQC",
     "pdp_reviews_t8XqAT",
     "product_block_kzhqDX",
     "product-recommendations",
-    "product-recently-viewed"
+    "product-recently-viewed",
+    "custom_video_JCaiPz"
   ]
 }

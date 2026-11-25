@@ -33,7 +33,7 @@
 </style>
 
 {%-liquid
-    if request.page_type == 'index' or template == 'collection'
+    if request.page_type == 'index' or template == 'collection' or template == 'page.template-about-us-1'
         if section.settings.enable_transparent
             assign header_transparent = ' header-mobile--transparent'
             assign sticky_header = ' p-absolute left-0 right-0 w-100 zi-3'
@@ -113,7 +113,7 @@
                                         assign logo_transparent = block.settings.logo_transparent
                                         assign check_transparent = false
                                         if section.settings.enable_transparent and logo_transparent != blank
-                                            if request.page_type == 'index' or template == 'collection'
+                                            if request.page_type == 'index' or template == 'collection' or template == 'page.template-about-us-1'
                                                 assign check_transparent = true
                                             endif
                                         endif

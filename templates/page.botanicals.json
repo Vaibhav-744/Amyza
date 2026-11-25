@@ -18,7 +18,7 @@
       "type": "image-banner-text",
       "name": "Image Banner — Text",
       "settings": {
-        "image": "shopify://shop_images/photo-1556228453-efd6c1ff04f6.jpg",
+        "image": "shopify://shop_images/welcome_banner_no_text.png",
         "fallback_bg": "#2a0a20",
         "focal_point": "center center",
         "aspect_ratio": "21/9",
@@ -26,23 +26,51 @@
         "align_x": "center",
         "align_y": "center",
         "text_align": "center",
-        "eyebrow": "✦ The AMYZA Apothecary",
+        "eyebrow": "",
         "eyebrow_color": "#f7f4f3",
         "heading": "Our Ingredients",
-        "heading_color": "#F2EDEC",
-        "heading_italic_color": "#F0AEBC",
+        "heading_color": "#f2edec",
+        "heading_italic_color": "#f0aebc",
         "heading_size_min": 2.2,
         "heading_size_max": 4.4,
-        "subtext": "Eight ingredients. Centuries of wisdom. Each one chosen not for trend, but for the truth our grandmothers already knew — that real skin care grows from the earth.",
+        "subtext": "",
         "sub_color": "#f1edecd9",
         "btn1_text": "",
         "btn1_url": "",
-        "btn1_bg": "#7D0A50",
-        "btn1_text_color": "#F2EDEC",
+        "btn1_bg": "#7d0a50",
+        "btn1_text_color": "#f2edec",
         "btn1_hover_bg": "#4e0a3a",
         "btn2_text": "",
         "btn2_url": "",
-        "btn2_color": "#F2EDEC"
+        "btn2_color": "#f2edec"
+      }
+    },
+    "bot_curated_main": {
+      "type": "bot-curated",
+      "name": "Carefully Curated",
+      "settings": {
+        "container": "fullwidth",
+        "section_bg": "#f7f4f3",
+        "image_position": "left",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 24,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 24,
+        "image": "shopify://shop_images/golden_nectar_transparent.png",
+        "image_fit": "contain",
+        "image_max_height": 620,
+        "eyebrow": "✦ The Full Apothecary",
+        "eyebrow_color": "#7d0a50",
+        "heading": "Carefully Curated Ingredients",
+        "heading_color": "#9F9F46",
+        "heading_italic_color": "#7d0a50",
+        "body": "<p>Centuries of wisdom.</p><p>Each one chosen not for trend, but for the truth our grandmothers already knew: that real skin care grows from the earth.</p>",
+        "body_color": "#2a0a20",
+        "btn_text": "",
+        "btn_url": "",
+        "btn_bg": "#7d0a50",
+        "btn_text_color": "#f2edec",
+        "btn_hover_bg": "#4e0a3a"
       }
     },
     "bot_catalogue_EKMTWa": {
@@ -143,10 +171,10 @@
       "settings": {
         "section_bg": "#f7f4f3",
         "eyebrow": "✦ The Full Apothecary",
-        "eyebrow_color": "#7D0A50",
+        "eyebrow_color": "#7d0a50",
         "heading": "Every botanical, decoded.",
-        "heading_color": "#2a0a20",
-        "heading_italic_color": "#7D0A50",
+        "heading_color": "#9F9F46",
+        "heading_italic_color": "#7d0a50",
         "subheading": "Eight ingredients we trust enough to name on the front of the bottle.",
         "sub_color": "#7a6270",
         "card_bg": "#ffffff",
@@ -154,7 +182,7 @@
         "swatch_fallback": "#ead9e4",
         "card_title_color": "#4e0a3a",
         "card_desc_color": "#2a0a20",
-        "tag_color": "#7D0A50",
+        "tag_color": "#7d0a50",
         "tag_bg": "#eaacc938"
       }
     },
@@ -193,16 +221,16 @@
       ],
       "name": "Bot — Promise",
       "settings": {
-        "section_bg": "#7D0A50",
+        "section_bg": "#7d0a50",
         "eyebrow": "✦ The Sourcing Promise",
-        "eyebrow_color": "#F0AEBC",
+        "eyebrow_color": "#f0aebc",
         "heading": "From soil to skin.",
-        "heading_color": "#F2EDEC",
-        "heading_italic_color": "#F0AEBC",
+        "heading_color": "#f2edec",
+        "heading_italic_color": "#f0aebc",
         "step_border_color": "#f1edec40",
-        "step_num_color": "#F0AEBC",
-        "step_title_color": "#F2EDEC",
-        "step_body_color": "#F2EDEC"
+        "step_num_color": "#f0aebc",
+        "step_title_color": "#f2edec",
+        "step_body_color": "#f2edec"
       }
     },
     "product_block_krFWEJ": {
@@ -324,6 +352,7 @@
   "order": [
     "main",
     "image_banner_text_r7f6m7",
+    "bot_curated_main",
     "bot_catalogue_EKMTWa",
     "bot_promise_fJWRFk",
     "product_block_krFWEJ"

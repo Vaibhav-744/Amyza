@@ -535,6 +535,8 @@
                                     data-arrows-mobi="{{ main_image_arrows_mobile }}"
                                     data-counter-mobi="{{ main_image_counter_mobile }}"
                                     data-media-count="{{ product.media.size }}"
+                                    data-autoplay="{{ section.settings.main_image_autoplay }}"
+                                    data-autoplay-speed="{{ section.settings.main_image_autoplay_speed | default: 3 | times: 1000 }}"
                                 >
                                     {%- for media in product.media -%}
                                         {%- case media.media_type -%}

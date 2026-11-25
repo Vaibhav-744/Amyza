@@ -1,0 +1,436 @@
+{% comment %} bot-curated.liquid — Carefully Curated Ingredients split section for Botanicals page {% endcomment %}
+
+{%- liquid
+  assign container = section.settings.container | default: 'fullwidth'
+  if container == '1170'
+    assign container_class = 'container-1170'
+  elsif container == '1470'
+    assign container_class = 'container-1470'
+  elsif container == '1770'
+    assign container_class = 'container-1770'
+  elsif container == 'fullwidth'
+    assign container_class = 'container-full'
+  else
+    assign container_class = 'container'
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .bot-curated {
+    background: {{ section.settings.section_bg }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .bot-curated > .container-full {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .bot-curated-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    {%- if container == 'fullwidth' -%}
+      gap: clamp(1.5rem, 4vw, 4rem);
+    {%- else -%}
+      gap: clamp(2rem, 5vw, 5rem);
+    {%- endif -%}
+  }
+
+  /* ── Media side ── */
+  #shopify-section-{{ section.id }} .bot-curated-media {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    {%- if section.settings.image_position == 'right' -%}
+      order: 2;
+      justify-content: flex-end;
+    {%- else -%}
+      order: 1;
+      justify-content: flex-start;
+    {%- endif -%}
+  }
+  #shopify-section-{{ section.id }} .bot-curated-media img {
+    width: 100%;
+    height: auto;
+    max-height: {{ section.settings.image_max_height }}px;
+    object-fit: {{ section.settings.image_fit | default: 'contain' }};
+    {%- if section.settings.image_position == 'right' -%}
+      object-position: right center;
+    {%- else -%}
+      object-position: left center;
+    {%- endif -%}
+    display: block;
+  }
+
+  /* ── Text side ── */
+  #shopify-section-{{ section.id }} .bot-curated-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    {%- if section.settings.image_position == 'right' -%}
+      order: 1;
+      {%- if container == 'fullwidth' -%}
+        padding: 2rem 2rem 2rem clamp(2rem, 8vw, 7rem);
+      {%- endif -%}
+    {%- else -%}
+      order: 2;
+      {%- if container == 'fullwidth' -%}
+        padding: 2rem clamp(2rem, 8vw, 7rem) 2rem 1rem;
+      {%- endif -%}
+    {%- endif -%}
+  }
+  #shopify-section-{{ section.id }} .bot-curated-eyebrow {
+    display: block;
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: .72rem;
+    letter-spacing: var(--ls-eyebrow, 0.2em);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: {{ section.settings.eyebrow_color }};
+    margin-bottom: .75rem;
+  }
+  #shopify-section-{{ section.id }} .bot-curated-heading {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 3.8vw, 3.3rem);
+    line-height: 1.1;
+    letter-spacing: var(--ls-title, -0.015em);
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.4rem;
+  }
+  #shopify-section-{{ section.id }} .bot-curated-heading em,
+  #shopify-section-{{ section.id }} .bot-curated-heading .serif-italic {
+    color: {{ section.settings.heading_italic_color }};
+  }
+  #shopify-section-{{ section.id }} .bot-curated-body {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: clamp(.98rem, 1.3vw, 1.15rem);
+    line-height: 1.65;
+    letter-spacing: var(--ls-body, 0);
+    color: {{ section.settings.body_color }};
+    max-width: 44ch;
+  }
+  #shopify-section-{{ section.id }} .bot-curated-body p {
+    margin: 0 0 .35rem;
+  }
+  #shopify-section-{{ section.id }} .bot-curated-body p:last-child {
+    margin-bottom: 0;
+  }
+  #shopify-section-{{ section.id }} .bot-curated-btn {
+    margin-top: 1.6rem;
+    display: inline-block;
+    width: max-content;
+    padding: .95rem 1.8rem;
+    border-radius: 4px;
+    font-size: .7rem;
+    letter-spacing: var(--ls-button, 0.18em);
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background .3s, border-color .3s, color .3s;
+    background: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_text_color }};
+    border: 1px solid {{ section.settings.btn_bg }};
+  }
+  #shopify-section-{{ section.id }} .bot-curated-btn:hover {
+    background: {{ section.settings.btn_hover_bg }};
+    border-color: {{ section.settings.btn_hover_bg }};
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 860px) {
+    #shopify-section-{{ section.id }} .bot-curated {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    #shopify-section-{{ section.id }} .bot-curated-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    #shopify-section-{{ section.id }} .bot-curated-media {
+      order: 1 !important;
+      justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .bot-curated-media img {
+      max-height: 400px;
+      object-position: center center;
+    }
+    #shopify-section-{{ section.id }} .bot-curated-text {
+      order: 2 !important;
+      {%- if container == 'fullwidth' -%}
+        padding: 0 1.5rem 1rem;
+      {%- endif -%}
+    }
+    #shopify-section-{{ section.id }} .bot-curated-body {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section class="bot-curated" id="bot-curated-{{ section.id }}">
+  <div class="{{ container_class }}">
+    <div class="bot-curated-grid">
+
+      <div class="bot-curated-media reveal-left">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            srcset="
+              {{ section.settings.image | image_url: width: 550 }} 550w,
+              {{ section.settings.image | image_url: width: 800 }} 800w,
+              {{ section.settings.image | image_url: width: 1200 }} 1200w
+            "
+            sizes="(max-width: 860px) 100vw, 52vw"
+            alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+            width="{{ section.settings.image.width | default: 1000 }}"
+            height="{{ section.settings.image.height | default: 1000 }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="https://placehold.co/900x900/F7F4F3/7D0A50?text=Carefully+Curated"
+            alt="Carefully Curated Ingredients"
+            width="900"
+            height="900"
+          >
+        {%- endif -%}
+      </div>
+
+      <div class="bot-curated-text reveal-up">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="bot-curated-eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bot-curated-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.body != blank -%}
+          <div class="bot-curated-body">{{ section.settings.body }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.btn_text != blank -%}
+          <a
+            href="{{ section.settings.btn_url | default: '/collections/all' }}"
+            class="bot-curated-btn"
+          >{{ section.settings.btn_text }}</a>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carefully Curated",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:sections.layout.container.option",
+      "default": "fullwidth",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.layout.container.option1"
+        },
+        {
+          "value": "1170",
+          "label": "t:sections.layout.container.option4"
+        },
+        {
+          "value": "1470",
+          "label": "t:sections.layout.container.option5"
+        },
+        {
+          "value": "1770",
+          "label": "t:sections.layout.container.option3"
+        },
+        {
+          "value": "fullwidth",
+          "label": "t:sections.layout.container.option2"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#F7F4F3"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top Padding (Desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom Padding (Desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top Padding (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom Padding (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image Fit",
+      "default": "contain",
+      "options": [
+        { "value": "contain", "label": "Contain (best for transparent PNG)" },
+        { "value": "cover", "label": "Cover" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_max_height",
+      "label": "Image Max Height (Desktop)",
+      "min": 320,
+      "max": 840,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "✦ The Full Apothecary"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#7D0A50"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Carefully Curated Ingredients"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#9F9F46"
+    },
+    {
+      "type": "color",
+      "id": "heading_italic_color",
+      "label": "Heading Italic Color",
+      "default": "#7D0A50"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body Text",
+      "default": "<p>Centuries of wisdom.</p><p>Each one chosen not for trend, but for the truth our grandmothers already knew: that real skin care grows from the earth.</p>"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#2A0A20"
+    },
+    {
+      "type": "header",
+      "content": "Button (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "info": "Leave blank to hide."
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background",
+      "default": "#7D0A50"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#F2EDEC"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#4E0A3A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carefully Curated"
+    }
+  ]
+}
+{% endschema %}

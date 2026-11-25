@@ -75,10 +75,35 @@
 
   .pdp-kf-col-left .pdp-kf-block {
     text-align: right;
+    align-items: flex-end;
   }
 
   .pdp-kf-col-right .pdp-kf-block {
     text-align: left;
+    align-items: flex-start;
+  }
+
+  .pdp-kf-block-icon {
+    width: {{ section.settings.icon_size | default: 44 }}px;
+    height: {{ section.settings.icon_size | default: 44 }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.45rem;
+    color: {{ section.settings.icon_color | default: '#7D0A50' }};
+  }
+
+  .pdp-kf-block-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .pdp-kf-block-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .pdp-kf-block-tag {
@@ -188,6 +213,7 @@
     .pdp-kf-col-left .pdp-kf-block,
     .pdp-kf-col-right .pdp-kf-block {
       text-align: center;
+      align-items: center;
     }
 
     .pdp-kf-header {
@@ -245,8 +271,23 @@
             endif
           endif
         -%}
-        {%- if tag_val != blank or title_val != blank or desc_val != blank -%}
+        {%- if block.settings.icon_image != blank or block.settings.custom_svg != blank or tag_val != blank or title_val != blank or desc_val != blank -%}
           <div class="pdp-kf-block" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon_image != blank or block.settings.custom_svg != blank -%}
+              <div class="pdp-kf-block-icon">
+                {%- if block.settings.icon_image != blank -%}
+                  <img
+                    src="{{ block.settings.icon_image | image_url: width: 160 }}"
+                    alt="{{ title_val | strip_html | escape }}"
+                    loading="lazy"
+                    width="{{ section.settings.icon_size | default: 44 }}"
+                    height="{{ section.settings.icon_size | default: 44 }}"
+                  >
+                {%- else -%}
+                  {{ block.settings.custom_svg }}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
             {%- if tag_val != blank -%}
               <span class="pdp-kf-block-tag">{{ tag_val }}</span>
             {%- endif -%}
@@ -306,8 +347,23 @@
             endif
           endif
         -%}
-        {%- if tag_val != blank or title_val != blank or desc_val != blank -%}
+        {%- if block.settings.icon_image != blank or block.settings.custom_svg != blank or tag_val != blank or title_val != blank or desc_val != blank -%}
           <div class="pdp-kf-block" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon_image != blank or block.settings.custom_svg != blank -%}
+              <div class="pdp-kf-block-icon">
+                {%- if block.settings.icon_image != blank -%}
+                  <img
+                    src="{{ block.settings.icon_image | image_url: width: 160 }}"
+                    alt="{{ title_val | strip_html | escape }}"
+                    loading="lazy"
+                    width="{{ section.settings.icon_size | default: 44 }}"
+                    height="{{ section.settings.icon_size | default: 44 }}"
+                  >
+                {%- else -%}
+                  {{ block.settings.custom_svg }}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
             {%- if tag_val != blank -%}
               <span class="pdp-kf-block-tag">{{ tag_val }}</span>
             {%- endif -%}
@@ -386,6 +442,22 @@
     },
     {
       "type": "range",
+      "id": "icon_size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Feature Icon Size",
+      "default": 44
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Feature Icon Color (for SVG)",
+      "default": "#7D0A50"
+    },
+    {
+      "type": "range",
       "id": "padding_top",
       "min": 20,
       "max": 120,
@@ -410,6 +482,18 @@
       "type": "feature",
       "name": "Key Feature",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Feature Icon (Image / PNG / SVG)",
+          "info": "Displayed above the feature title. Supports dynamic sources/metafields."
+        },
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG Icon (Optional)",
+          "info": "Paste raw <svg>...</svg> markup if not using an icon image."
+        },
         {
           "type": "inline_richtext",
           "id": "tag",

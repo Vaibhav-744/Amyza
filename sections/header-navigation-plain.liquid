@@ -46,14 +46,19 @@
                 z-index: 10 !important;
             }
             .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent > .container,
-            .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .container,
-            .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .main-menu > .container,
-            .section-header-navigation:not(.scrolled-past-header) .header-container-fullwidth {
+            .section-header-navigation:not(.scrolled-past-header) .header-navigation > .header-container-fullwidth {
+                max-width: 1400px !important;
+                width: 100% !important;
+                margin: 0 auto !important;
+                padding-left: 3rem !important;
+                padding-right: 3rem !important;
+            }
+            .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .main-menu > .container {
                 max-width: 100% !important;
                 width: 100% !important;
                 margin: 0 !important;
-                padding-left: clamp(1.5rem, 4vw, 4rem) !important;
-                padding-right: clamp(1.5rem, 4vw, 4rem) !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
             .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .menu-lv-1:not(.menu-sale) > .header__menu-item,
             .section-header-navigation:not(.scrolled-past-header) .header-plain--transparent .menu-lv-1:not(.menu-sale) .menu-lv-1__action,
@@ -105,7 +110,7 @@
 </style>
 {%-liquid
     assign is_transparent = false
-    if request.page_type == 'index' or template == 'collection'
+    if request.page_type == 'index' or template == 'collection' or template == 'page.template-about-us-1'
         if section.settings.enable_transparent
             assign header_transparent = ' header-plain--transparent'
             assign is_transparent = true
@@ -122,7 +127,7 @@
                     assign logo_transparent = block.settings.logo_transparent
                     assign check_transparent = false
                     if section.settings.enable_transparent and logo_transparent != blank
-                        if request.page_type == 'index' or template == 'collection'
+                        if request.page_type == 'index' or template == 'collection' or template == 'page.template-about-us-1'
                             assign check_transparent = true
                         endif
                     endif

@@ -1,21 +1,97 @@
-{% comment %} about-video.liquid — Cinematic autoplay video with text overlay {% endcomment %}
+{% comment %} about-video.liquid — Cinematic autoplay video or fallback image banner with desktop & mobile text placement {% endcomment %}
+
+{%- liquid
+  assign pos_d = section.settings.text_position_desktop | default: 'middle-left'
+  assign pos_m = section.settings.text_position_mobile | default: 'middle-center'
+
+  assign d_parts = pos_d | split: '-'
+  assign d_v = d_parts[0]
+  assign d_h = d_parts[1]
+
+  if d_v == 'top'
+    assign d_align_items = 'flex-start'
+  elsif d_v == 'bottom'
+    assign d_align_items = 'flex-end'
+  else
+    assign d_align_items = 'center'
+  endif
+
+  if d_h == 'left'
+    assign d_justify = 'flex-start'
+    assign d_text_align = 'left'
+    assign d_margin_l = '0'
+    assign d_margin_r = 'auto'
+  elsif d_h == 'right'
+    assign d_justify = 'flex-end'
+    assign d_text_align = 'right'
+    assign d_margin_l = 'auto'
+    assign d_margin_r = '0'
+  else
+    assign d_justify = 'center'
+    assign d_text_align = 'center'
+    assign d_margin_l = 'auto'
+    assign d_margin_r = 'auto'
+  endif
+
+  assign m_parts = pos_m | split: '-'
+  assign m_v = m_parts[0]
+  assign m_h = m_parts[1]
+
+  if m_v == 'top'
+    assign m_align_items = 'flex-start'
+  elsif m_v == 'bottom'
+    assign m_align_items = 'flex-end'
+  else
+    assign m_align_items = 'center'
+  endif
+
+  if m_h == 'left'
+    assign m_justify = 'flex-start'
+    assign m_text_align = 'left'
+    assign m_margin_l = '0'
+    assign m_margin_r = 'auto'
+  elsif m_h == 'right'
+    assign m_justify = 'flex-end'
+    assign m_text_align = 'right'
+    assign m_margin_l = 'auto'
+    assign m_margin_r = '0'
+  else
+    assign m_justify = 'center'
+    assign m_text_align = 'center'
+    assign m_margin_l = 'auto'
+    assign m_margin_r = 'auto'
+  endif
+
+  assign desktop_img = section.settings.image | default: section.settings.image_mobile
+-%}
 
 <style>
   #shopify-section-{{ section.id }} .av-section {
     position: relative;
     overflow: hidden;
-    padding: clamp(9rem, 16vw, 14rem) 6vw clamp(5rem, 9vw, 8rem);
-    text-align: center;
+    min-height: clamp(480px, 75vh, 760px);
+    padding: clamp(6.5rem, 10vw, 9rem) clamp(1.5rem, 4vw, 3rem) clamp(3.5rem, 6vw, 5.5rem);
+    display: flex;
     background: {{ section.settings.fallback_bg }};
   }
 
-  /* ── Video ── */
-  #shopify-section-{{ section.id }} .av-video {
+  /* ── Media (Video & Fallback Image) ── */
+  #shopify-section-{{ section.id }} .av-video,
+  #shopify-section-{{ section.id }} .av-image {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: {{ section.settings.image_position | default: 'center center' }};
+    display: block;
+    z-index: 0;
+  }
+  #shopify-section-{{ section.id }} .av-picture {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     display: block;
     z-index: 0;
   }
@@ -29,12 +105,22 @@
     pointer-events: none;
   }
 
-  /* ── Content — always on top ── */
-  #shopify-section-{{ section.id }} .av-inner {
+  /* ── Content Container (Desktop Placement) ── */
+  #shopify-section-{{ section.id }} .av-container {
     position: relative;
     z-index: 2;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    flex: 1;
+    align-items: {{ d_align_items }};
+    justify-content: {{ d_justify }};
+  }
+  #shopify-section-{{ section.id }} .av-inner {
+    max-width: 680px;
+    width: 100%;
+    text-align: {{ d_text_align }};
   }
   #shopify-section-{{ section.id }} .av-eyebrow {
     display: block;
@@ -47,25 +133,31 @@
   #shopify-section-{{ section.id }} .av-heading {
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(2.6rem, 6.5vw, 5.4rem);
-    line-height: 1.04;
+    font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+    line-height: 1.06;
     letter-spacing: var(--ls-display, -0.02em);
     color: {{ section.settings.heading_color }};
-    margin: 0 auto 1.4rem;
-    max-width: 20ch;
+    margin: 0 {{ d_margin_r }} 1.2rem {{ d_margin_l }};
+    max-width: 18ch;
+  }
+  #shopify-section-{{ section.id }} .av-heading:last-child {
+    margin-bottom: 0;
   }
   #shopify-section-{{ section.id }} .av-sub {
-    font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
     line-height: 1.7;
     letter-spacing: var(--ls-body, 0);
     color: {{ section.settings.sub_color }};
-    max-width: 60ch;
-    margin: 0 auto 2rem;
+    max-width: 54ch;
+    margin: 0 {{ d_margin_r }} 1.8rem {{ d_margin_l }};
+  }
+  #shopify-section-{{ section.id }} .av-sub:last-child {
+    margin-bottom: 0;
   }
   #shopify-section-{{ section.id }} .av-meta {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: {{ d_justify }};
     align-items: center;
     gap: .9rem;
     font-size: .8rem;
@@ -74,9 +166,29 @@
     color: {{ section.settings.tags_color }};
   }
 
-  @media (max-width: 600px) {
-    #shopify-section-{{ section.id }} .av-section { padding-top: 7rem; }
-    #shopify-section-{{ section.id }} .av-meta { font-size: .72rem; }
+  /* ── Mobile Placement ── */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .av-section {
+      min-height: clamp(380px, 62vh, 560px);
+      padding: 6rem 1.2rem 3rem;
+    }
+    #shopify-section-{{ section.id }} .av-container {
+      align-items: {{ m_align_items }};
+      justify-content: {{ m_justify }};
+    }
+    #shopify-section-{{ section.id }} .av-inner {
+      text-align: {{ m_text_align }};
+    }
+    #shopify-section-{{ section.id }} .av-heading {
+      margin: 0 {{ m_margin_r }} 1rem {{ m_margin_l }};
+    }
+    #shopify-section-{{ section.id }} .av-sub {
+      margin: 0 {{ m_margin_r }} 1.5rem {{ m_margin_l }};
+    }
+    #shopify-section-{{ section.id }} .av-meta {
+      justify-content: {{ m_justify }};
+      font-size: .72rem;
+    }
   }
 </style>
 
@@ -86,6 +198,7 @@
     <video
       class="av-video"
       src="{{ section.settings.video.sources[1].url | default: section.settings.video.sources[0].url }}"
+      {%- if desktop_img != blank %} poster="{{ desktop_img | image_url: width: 1600 }}"{% endif %}
       autoplay
       muted
       loop
@@ -93,61 +206,171 @@
       preload="metadata"
       aria-hidden="true"
     ></video>
+  {%- elsif desktop_img != blank -%}
+    {%- if section.settings.image_mobile != blank and section.settings.image != blank -%}
+      <picture class="av-picture">
+        <source media="(max-width: 768px)" srcset="{{ section.settings.image_mobile | image_url: width: 1200 }}">
+        <img
+          src="{{ section.settings.image | image_url: width: 2000 }}"
+          srcset="
+            {{ section.settings.image | image_url: width: 750 }} 750w,
+            {{ section.settings.image | image_url: width: 1100 }} 1100w,
+            {{ section.settings.image | image_url: width: 1500 }} 1500w,
+            {{ section.settings.image | image_url: width: 2000 }} 2000w,
+            {{ section.settings.image | image_url: width: 2800 }} 2800w
+          "
+          sizes="100vw"
+          alt="{{ section.settings.image.alt | default: section.settings.heading | strip_html | escape }}"
+          class="av-image"
+          loading="eager"
+          fetchpriority="high"
+          width="{{ section.settings.image.width | default: 2000 }}"
+          height="{{ section.settings.image.height | default: 1100 }}"
+        >
+      </picture>
+    {%- else -%}
+      <img
+        src="{{ desktop_img | image_url: width: 2000 }}"
+        srcset="
+          {{ desktop_img | image_url: width: 750 }} 750w,
+          {{ desktop_img | image_url: width: 1100 }} 1100w,
+          {{ desktop_img | image_url: width: 1500 }} 1500w,
+          {{ desktop_img | image_url: width: 2000 }} 2000w,
+          {{ desktop_img | image_url: width: 2800 }} 2800w
+        "
+        sizes="100vw"
+        alt="{{ desktop_img.alt | default: section.settings.heading | strip_html | escape }}"
+        class="av-image"
+        loading="eager"
+        fetchpriority="high"
+        width="{{ desktop_img.width | default: 2000 }}"
+        height="{{ desktop_img.height | default: 1100 }}"
+      >
+    {%- endif -%}
   {%- endif -%}
 
   <div class="av-overlay"></div>
 
-  <div class="av-inner">
+  <div class="av-container">
+    <div class="av-inner">
 
-    {%- if section.settings.eyebrow != blank -%}
-      <span class="av-eyebrow" data-rise>{{ section.settings.eyebrow }}</span>
-    {%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="av-eyebrow" data-rise>{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
 
-    {%- if section.settings.heading != blank -%}
-      <h2 class="av-heading" data-split>{{ section.settings.heading }}</h2>
-    {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="av-heading" data-split>{{ section.settings.heading }}</h1>
+      {%- endif -%}
 
-    {%- if section.settings.subtext != blank -%}
-      <p class="av-sub" data-rise>{{ section.settings.subtext }}</p>
-    {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="av-sub" data-rise>{{ section.settings.subtext }}</p>
+      {%- endif -%}
 
-    {%- assign tag1 = section.settings.tag_1 -%}
-    {%- assign tag2 = section.settings.tag_2 -%}
-    {%- assign tag3 = section.settings.tag_3 -%}
-    {%- if tag1 != blank or tag2 != blank or tag3 != blank -%}
-      <div class="av-meta" data-stagger>
-        {%- if tag1 != blank -%}<span data-rise>{{ tag1 }}</span>{%- endif -%}
-        {%- if tag1 != blank and tag2 != blank -%}<span data-rise>·</span>{%- endif -%}
-        {%- if tag2 != blank -%}<span data-rise>{{ tag2 }}</span>{%- endif -%}
-        {%- if tag2 != blank and tag3 != blank -%}<span data-rise>·</span>{%- endif -%}
-        {%- if tag3 != blank -%}<span data-rise>{{ tag3 }}</span>{%- endif -%}
-      </div>
-    {%- endif -%}
+      {%- assign tag1 = section.settings.tag_1 -%}
+      {%- assign tag2 = section.settings.tag_2 -%}
+      {%- assign tag3 = section.settings.tag_3 -%}
+      {%- if tag1 != blank or tag2 != blank or tag3 != blank -%}
+        <div class="av-meta" data-stagger>
+          {%- if tag1 != blank -%}<span data-rise>{{ tag1 }}</span>{%- endif -%}
+          {%- if tag1 != blank and tag2 != blank -%}<span data-rise>·</span>{%- endif -%}
+          {%- if tag2 != blank -%}<span data-rise>{{ tag2 }}</span>{%- endif -%}
+          {%- if tag2 != blank and tag3 != blank -%}<span data-rise>·</span>{%- endif -%}
+          {%- if tag3 != blank -%}<span data-rise>{{ tag3 }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
 
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "About — Video Hero",
+  "name": "About — Video Banner",
   "tag": "section",
   "settings": [
     {
       "type": "header",
-      "content": "Video"
+      "content": "Media"
     },
     {
       "type": "video",
       "id": "video",
       "label": "Video",
-      "info": "Upload an .mp4 directly from the theme editor. Plays muted, looped, without controls."
+      "info": "Upload an .mp4 directly from the theme editor. Plays muted, looped, without controls. Leave blank to display the fallback image."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback Image (Desktop)",
+      "info": "Displayed when no video is added (also used as video poster while loading)."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Fallback Image (Mobile)",
+      "info": "Optional mobile image (≤768px). Falls back to desktop image if blank."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Focal Position",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center Center" },
+        { "value": "top center", "label": "Top Center" },
+        { "value": "bottom center", "label": "Bottom Center" },
+        { "value": "center left", "label": "Center Left" },
+        { "value": "center right", "label": "Center Right" },
+        { "value": "top left", "label": "Top Left" },
+        { "value": "top right", "label": "Top Right" },
+        { "value": "bottom left", "label": "Bottom Left" },
+        { "value": "bottom right", "label": "Bottom Right" }
+      ]
     },
     {
       "type": "color",
       "id": "fallback_bg",
       "label": "Fallback Background",
       "default": "#2A0A20",
-      "info": "Shown while the video loads or when no video is set."
+      "info": "Shown when neither video nor image is set."
+    },
+    {
+      "type": "header",
+      "content": "Text Placement"
+    },
+    {
+      "type": "select",
+      "id": "text_position_desktop",
+      "label": "Text Placement (Desktop)",
+      "default": "middle-left",
+      "options": [
+        { "value": "top-left", "label": "Top Left" },
+        { "value": "top-center", "label": "Top Center" },
+        { "value": "top-right", "label": "Top Right" },
+        { "value": "middle-left", "label": "Middle Left" },
+        { "value": "middle-center", "label": "Middle Center" },
+        { "value": "middle-right", "label": "Middle Right" },
+        { "value": "bottom-left", "label": "Bottom Left" },
+        { "value": "bottom-center", "label": "Bottom Center" },
+        { "value": "bottom-right", "label": "Bottom Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_position_mobile",
+      "label": "Text Placement (Mobile)",
+      "default": "middle-center",
+      "options": [
+        { "value": "top-left", "label": "Top Left" },
+        { "value": "top-center", "label": "Top Center" },
+        { "value": "top-right", "label": "Top Right" },
+        { "value": "middle-left", "label": "Middle Left" },
+        { "value": "middle-center", "label": "Middle Center" },
+        { "value": "middle-right", "label": "Middle Right" },
+        { "value": "bottom-left", "label": "Bottom Left" },
+        { "value": "bottom-center", "label": "Bottom Center" },
+        { "value": "bottom-right", "label": "Bottom Right" }
+      ]
     },
     {
       "type": "header",
@@ -238,7 +461,7 @@
   ],
   "presets": [
     {
-      "name": "About — Video Hero"
+      "name": "About — Video Banner"
     }
   ]
 }

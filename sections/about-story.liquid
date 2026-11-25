@@ -1,30 +1,79 @@
-{% comment %} about-story.liquid — Origin Story section {% endcomment %}
+{% comment %} about-story.liquid — Origin Story section with full-width (heritage split) or containered layout {% endcomment %}
+
+{%- liquid
+  assign container = section.settings.container | default: 'fullwidth'
+  if container == '1170'
+    assign container_class = 'container-1170'
+  elsif container == '1470'
+    assign container_class = 'container-1470'
+  elsif container == '1770'
+    assign container_class = 'container-1770'
+  elsif container == 'fullwidth'
+    assign container_class = 'container-full'
+  else
+    assign container_class = 'container'
+  endif
+-%}
 
 <style>
   #shopify-section-{{ section.id }} .about-story {
-    padding: clamp(3rem, 10vw, 5rem) 6vw;
     background: {{ section.settings.section_bg }};
+    {%- if container == 'fullwidth' -%}
+      padding: 0;
+    {%- else -%}
+      padding: clamp(3rem, 8vw, 5.5rem) 0;
+    {%- endif -%}
+  }
+  #shopify-section-{{ section.id }} .about-story > .container-full {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
   }
   #shopify-section-{{ section.id }} .about-story-grid {
-    max-width: 1200px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: center;
+    {%- if container == 'fullwidth' -%}
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      max-width: 100%;
+    {%- else -%}
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+      margin: 0 auto;
+    {%- endif -%}
   }
   #shopify-section-{{ section.id }} .about-story-media {
     position: relative;
     width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 8px;
     overflow: hidden;
+    {%- if container == 'fullwidth' -%}
+      border-radius: 0;
+      aspect-ratio: 1 / 1;
+      height: 100%;
+    {%- else -%}
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+    {%- endif -%}
   }
   #shopify-section-{{ section.id }} .about-story-media img {
+    {%- if container == 'fullwidth' -%}
+      position: absolute;
+      inset: 0;
+    {%- endif -%}
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  #shopify-section-{{ section.id }} .about-story-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    {%- if container == 'fullwidth' -%}
+      padding: clamp(3rem, 6vw, 6rem) 8%;
+    {%- endif -%}
   }
   #shopify-section-{{ section.id }} .about-story-text .eyebrow {
     color: {{ section.settings.eyebrow_color }};
@@ -35,7 +84,7 @@
     font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 1.1;
     color: {{ section.settings.heading_color }};
-    margin: .8rem 0 1.4rem;
+    margin: .6rem 0 1.4rem;
     letter-spacing: var(--ls-title, -0.015em);
   }
   #shopify-section-{{ section.id }} .about-story-text h2 em,
@@ -56,6 +105,7 @@
   #shopify-section-{{ section.id }} .about-story-text .btn {
     margin-top: 1rem;
     display: inline-block;
+    width: max-content;
     padding: .95rem 1.8rem;
     border-radius: 4px;
     font-size: .7rem;
@@ -73,89 +123,108 @@
     border-color: {{ section.settings.btn_hover_bg }};
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 980px) {
     #shopify-section-{{ section.id }} .about-story-grid {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      {%- if container == 'fullwidth' -%}
+        gap: 0;
+      {%- else -%}
+        gap: 2.5rem;
+      {%- endif -%}
+    }
+    #shopify-section-{{ section.id }} .about-story-text {
+      {%- if container == 'fullwidth' -%}
+        padding: 3rem 1.5rem;
+      {%- endif -%}
     }
     #shopify-section-{{ section.id }} .about-story-media {
-      max-width: 480px;
-      margin: 0 auto;
+      {%- if container == 'fullwidth' -%}
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+      {%- else -%}
+        max-width: 480px;
+        margin: 0 auto;
+      {%- endif -%}
     }
   }
   @media (max-width: 600px) {
-    #shopify-section-{{ section.id }} .about-story {
-      padding: 3.5rem 1.2rem;
-    }
+    {%- if container != 'fullwidth' -%}
+      #shopify-section-{{ section.id }} .about-story {
+        padding: 3.5rem 0;
+      }
+    {%- endif -%}
   }
 </style>
 
 <section class="about-story" id="about-story-{{ section.id }}">
-  <div class="about-story-grid">
+  <div class="{{ container_class }}">
+    <div class="about-story-grid">
 
-    {%- if section.settings.image_position == 'left' -%}
-      <div class="about-story-media reveal-left">
-        {%- if section.settings.image != blank -%}
-          <img
-            src="{{ section.settings.image | image_url: width: 800 }}"
-            alt="{{ section.settings.image.alt | default: shop.name | escape }}"
-            width="800"
-            height="1000"
-            loading="lazy"
-          >
-        {%- else -%}
-          <img
-            src="https://placehold.co/800x1000/731157/F1EDEC?text=Our+Story"
-            alt="Our Story"
-            width="800"
-            height="1000"
-          >
+      {%- if section.settings.image_position == 'left' -%}
+        <div class="about-story-media reveal-left">
+          {%- if section.settings.image != blank -%}
+            <img
+              src="{{ section.settings.image | image_url: width: 1200 }}"
+              alt="{{ section.settings.image.alt | default: shop.name | escape }}"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="https://placehold.co/800x800/731157/F1EDEC?text=Our+Story"
+              alt="Our Story"
+              width="800"
+              height="800"
+            >
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="about-story-text reveal-up">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2>{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body_1 != blank -%}
+          {{ section.settings.body_1 }}
+        {%- endif -%}
+        {%- if section.settings.body_2 != blank -%}
+          {{ section.settings.body_2 }}
+        {%- endif -%}
+        {%- if section.settings.btn_text != blank -%}
+          <a
+            href="{{ section.settings.btn_url | default: '/collections/all' }}"
+            class="btn"
+          >{{ section.settings.btn_text }}</a>
         {%- endif -%}
       </div>
-    {%- endif -%}
 
-    <div class="about-story-text reveal-up">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- if section.settings.image_position == 'right' -%}
+        <div class="about-story-media reveal-right">
+          {%- if section.settings.image != blank -%}
+            <img
+              src="{{ section.settings.image | image_url: width: 1200 }}"
+              alt="{{ section.settings.image.alt | default: shop.name | escape }}"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="https://placehold.co/800x800/731157/F1EDEC?text=Our+Story"
+              alt="Our Story"
+              width="800"
+              height="800"
+            >
+          {%- endif -%}
+        </div>
       {%- endif -%}
-      {%- if section.settings.heading != blank -%}
-        <h2>{{ section.settings.heading }}</h2>
-      {%- endif -%}
-      {%- if section.settings.body_1 != blank -%}
-        {{ section.settings.body_1 }}
-      {%- endif -%}
-      {%- if section.settings.body_2 != blank -%}
-        {{ section.settings.body_2 }}
-      {%- endif -%}
-      {%- if section.settings.btn_text != blank -%}
-        <a
-          href="{{ section.settings.btn_url | default: '/collections/all' }}"
-          class="btn"
-        >{{ section.settings.btn_text }}</a>
-      {%- endif -%}
+
     </div>
-
-    {%- if section.settings.image_position == 'right' -%}
-      <div class="about-story-media reveal-right">
-        {%- if section.settings.image != blank -%}
-          <img
-            src="{{ section.settings.image | image_url: width: 800 }}"
-            alt="{{ section.settings.image.alt | default: shop.name | escape }}"
-            width="800"
-            height="1000"
-            loading="lazy"
-          >
-        {%- else -%}
-          <img
-            src="https://placehold.co/800x1000/731157/F1EDEC?text=Our+Story"
-            alt="Our Story"
-            width="800"
-            height="1000"
-          >
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
   </div>
 </section>
 
@@ -167,6 +236,34 @@
     {
       "type": "header",
       "content": "Section"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:sections.layout.container.option",
+      "default": "fullwidth",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.layout.container.option1"
+        },
+        {
+          "value": "1170",
+          "label": "t:sections.layout.container.option4"
+        },
+        {
+          "value": "1470",
+          "label": "t:sections.layout.container.option5"
+        },
+        {
+          "value": "1770",
+          "label": "t:sections.layout.container.option3"
+        },
+        {
+          "value": "fullwidth",
+          "label": "t:sections.layout.container.option2"
+        }
+      ]
     },
     {
       "type": "color",
@@ -183,7 +280,7 @@
         { "value": "left", "label": "Left" },
         { "value": "right", "label": "Right" }
       ],
-      "default": "left"
+      "default": "right"
     },
     {
       "type": "image_picker",
@@ -216,7 +313,7 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading Color",
-      "default": "#2A0A20"
+      "default": "#9F9F46"
     },
     {
       "type": "color",

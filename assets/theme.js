@@ -4415,6 +4415,9 @@
                     navArrowsMobi = sliderNav.data('arrows-mobi'),
                     navCounterMobi = sliderNav.data('counter-mobi'),
                     navMediaCount = sliderNav.data('media-count'),
+                    navAutoplayAttr = sliderNav.attr('data-autoplay'),
+                    navAutoplay = (navAutoplayAttr === 'true' || navAutoplayAttr === true) && Number(navMediaCount) > 1,
+                    navAutoplaySpeed = parseInt(sliderNav.attr('data-autoplay-speed'), 10) || 3000,
                     thumbnailToShow = parseInt(sliderFor.data('max-thumbnail-to-show'));
                 
                 let checkNav, checkFor, navSlideCount;
@@ -4541,6 +4544,16 @@
                     checkNav = sliderNav;
                 } else {
                     if (!sliderNav.is('.style-2, .style-3') || window.innerWidth < 768) {
+                        if (navAutoplay) {
+                            sliderNav.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+                                const $nextImg = $(slick.$slides[nextSlide]).find('img.lazyload');
+                                if ($nextImg.length && window.lazySizes && window.lazySizes.loader) {
+                                    $nextImg.each(function() {
+                                        window.lazySizes.loader.unveil(this);
+                                    });
+                                }
+                            });
+                        }
                         sliderNav.slick({
                             fade: true,
                             dots: false,
@@ -4548,6 +4561,10 @@
                             infinite: true,
                             slidesToShow: 1,
                             slidesToScroll: 1,
+                            autoplay: navAutoplay,
+                            autoplaySpeed: navAutoplaySpeed,
+                            pauseOnHover: true,
+                            pauseOnFocus: true,
                             asNavFor: checkFor,
                             nextArrow: window.arrows.icon_next,
                             prevArrow: window.arrows.icon_prev,
