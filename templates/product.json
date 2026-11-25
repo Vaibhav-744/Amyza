@@ -390,7 +390,7 @@
         "image_bg_color": "#f2edec",
         "title_color": "#9f9f46",
         "body_color": "#5a4350",
-        "icon_size": 44,
+        "icon_size": 70,
         "icon_color": "#7d0a50",
         "padding_top": 60,
         "padding_bottom": 60
@@ -874,49 +874,6 @@
         "border_width_card": 5,
         "border_color_card": "#f0f1f4"
       }
-    },
-    "custom_video_JCaiPz": {
-      "type": "custom-video",
-      "name": "Custom Hero Video",
-      "settings": {
-        "media_type": "auto",
-        "image_position": "center center",
-        "fallback_bg": "#7d0a50",
-        "eyebrow": "✦ Introducing the Golden Nectar",
-        "eyebrow_color": "#f0aebc",
-        "heading": "<p><em>The Glow</em><br/>You Deserve.</p>",
-        "heading_color": "#f2edec",
-        "heading_italic_color": "#f0aebc",
-        "subheading": "A slow-luxury ritual rooted in ancestral botanical wisdom — reimagined for the modern woman.",
-        "subheading_color": "#f2edec",
-        "primary_button_label": "Shop The Serum",
-        "primary_button_link": "",
-        "primary_button_bg": "#7d0a50",
-        "primary_button_text": "#f2edec",
-        "primary_button_border": "#7d0a50",
-        "primary_button_hover_bg": "#4e0a3a",
-        "secondary_button_label": "Discover The Ritual →",
-        "secondary_button_link": "",
-        "secondary_button_text": "#f2edec",
-        "secondary_button_border": "#f2edec",
-        "secondary_button_hover_bg": "#f2edec",
-        "secondary_button_hover_text": "#7d0a50",
-        "overlay_top": "rgba(42,10,32,0.25)",
-        "overlay_middle": "rgba(42,10,32,0.5)",
-        "overlay_bottom": "rgba(42,10,32,0.85)",
-        "overlay_glow": "rgba(125, 10, 80,0.35)",
-        "show_mute_button": true,
-        "mute_button_bg": "rgba(42,10,32,0.45)",
-        "mute_button_border": "#ffffff",
-        "mute_button_icon": "#f2edec",
-        "mute_button_hover_bg": "rgba(42,10,32,0.7)",
-        "show_scroll_hint": true,
-        "scroll_text": "Scroll",
-        "scroll_text_color": "#f2edec",
-        "scroll_line_color": "#f2edec",
-        "scroll_animation_speed": 2,
-        "text_color": "#f2edec"
-      }
     }
   },
   "order": [
@@ -930,7 +887,6 @@
     "pdp_reviews_t8XqAT",
     "product_block_kzhqDX",
     "product-recommendations",
-    "product-recently-viewed",
-    "custom_video_JCaiPz"
+    "product-recently-viewed"
   ]
 }
