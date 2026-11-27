@@ -120,8 +120,9 @@
             {%- if settings.layout_body == 'boxed' -%}        
                 </div>
             {%- endif -%}
-            
+            {% unless template.suffix == 'nectar' %}
             <div class="wrapper-footer">{% sections 'footer-group' %}</div>
+            {% endunless %}
 
             {% section 'halo-toolbar-mobile' %}
 
