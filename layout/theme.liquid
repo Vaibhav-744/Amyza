@@ -39,7 +39,9 @@
             <meta name="description" content="{{ page_description | escape }}">
         {%- endif -%}
         {% render 'meta-tags' %}
+        {% unless template.suffix == 'nectar' %}
         {{ content_for_header }}
+        {% endunless %}
         {% render 'variable' %}
         {% render 'global-style' %}
         {% render 'global-script' %}
