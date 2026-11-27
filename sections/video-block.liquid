@@ -1,9 +1,16 @@
 {{ 'video-section.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
+  assign is_nectar = false
+  if template.suffix == 'nectar'
+    assign is_nectar = true
+  endif
   assign autoVideo = section.settings.autoplay
+  if is_nectar
+    assign autoVideo = true
+  endif
 -%}
-<div class="video-section section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" allow-transparent-header data-loader-script="{%- if autoVideo -%}{{ 'autoplay-video.js' | asset_url }}{%- else -%}{{ 'deferred-media.js' | asset_url }}{%- endif -%}">
+<div class="video-section{% if is_nectar %} video-section--nectar{% endif %} section-block-{{section.id}}{% if settings.banner_animation == 'effect_fade_up' and is_nectar == false %} scroll-trigger animate--slide-in{% endif %}" allow-transparent-header data-loader-script="{%- if autoVideo -%}{{ 'autoplay-video.js' | asset_url }}{%- else -%}{{ 'deferred-media.js' | asset_url }}{%- endif -%}">
   <div class="{% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
       {% if section.settings.video_block_title != blank %}
           <div class="halo-block-header text-{{ section.settings.title_align }}">
@@ -48,8 +55,8 @@
           </a>
         </div>
       </noscript>
-      <deferred-media class="video-section__media deferred-media no-js-hidden{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" data-media-id="{{ section.settings.video_url.id }}"
-        {% if section.settings.cover_image != blank %} style="padding-bottom: {{ section.settings.video_height }}%;"{% endif %}
+      <deferred-media class="video-section__media deferred-media no-js-hidden{% if settings.banner_animation == 'effect_fade_up' and is_nectar == false %} scroll-trigger animate--slide-in{% endif %}" data-media-id="{{ section.settings.video_url.id }}"
+        {% unless is_nectar %}{% if section.settings.cover_image != blank %} style="padding-bottom: {{ section.settings.video_height }}%;"{% endif %}{% endunless %}
       >
         <button
           id="Deferred-Poster-Modal-{{ section.settings.video_url.id }}"
@@ -87,17 +94,42 @@
           </span>
         </button>
         <{%- if autoVideo -%}div{%- else -%}template{%- endif -%}>
-            {% if section.settings.style_video == 'youtube' %}
-                {%- if section.settings.video_url.type == 'youtube' -%}
-                    <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1&modestbranding=1&autohide=1&showinfo=0&controls=0&mute=1&autoplay=1&loop=1&playlist={{section.settings.video_url.id}}" class="js-youtube" allow="autoplay; loop; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+            {%- if is_nectar -%}
+                {%- if section.settings.shopify_video != blank -%}
+                    {{
+                      section.settings.shopify_video
+                      | video_tag:
+                        image_size: '2000x',
+                        autoplay: true,
+                        loop: true,
+                        muted: true,
+                        controls: false,
+                        playsinline: true,
+                        preload: 'auto',
+                        class: 'js-video nectar-autoplay-video'
+                    }}
+                {%- elsif section.settings.style_video == 'mp4' and section.settings.url_mp4 != blank -%}
+                    <video class="js-video nectar-autoplay-video" muted playsinline preload="auto" autoplay loop disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen"{% if section.settings.cover_image != blank %} poster="{{ section.settings.cover_image | image_url: width: 1920 }}"{% endif %}>
+                        <source type="video/mp4" src="{{ section.settings.url_mp4 }}">
+                    </video>
+                {%- elsif section.settings.video_url.type == 'youtube' -%}
+                    <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1&modestbranding=1&autohide=1&showinfo=0&controls=0&disablekb=1&fs=0&iv_load_policy=3&mute=1&autoplay=1&loop=1&playsinline=1&rel=0&playlist={{section.settings.video_url.id}}" class="js-youtube" allow="autoplay; loop; encrypted-media" title="{{ section.settings.description | escape }}"></iframe>
                 {%- else -%}
-                    <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&title=0&byline=0&portrait=0&mute=1&loop=1&autopause=0&playlist={{section.settings.video_url.id}}" class="js-vimeo" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+                    <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&background=1&controls=0&title=0&byline=0&portrait=0&mute=1&loop=1&autopause=0&playlist={{section.settings.video_url.id}}" class="js-vimeo" allow="autoplay; encrypted-media" title="{{ section.settings.description | escape }}"></iframe>
                 {%- endif -%}
             {%- else -%}
-                <video class="js-video" muted playsinline preload="none" autoplay loop controls>
-                    <source type="video/mp4" src="{{ section.settings.url_mp4 }}">
-                </video>
-          {% endif %}
+                {% if section.settings.style_video == 'youtube' %}
+                    {%- if section.settings.video_url.type == 'youtube' -%}
+                        <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1&modestbranding=1&autohide=1&showinfo=0&controls=0&mute=1&autoplay=1&loop=1&playlist={{section.settings.video_url.id}}" class="js-youtube" allow="autoplay; loop; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+                    {%- else -%}
+                        <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&title=0&byline=0&portrait=0&mute=1&loop=1&autopause=0&playlist={{section.settings.video_url.id}}" class="js-vimeo" allow="autoplay; encrypted-media" webkitallowfullscreen mozallowfullscreen allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+                    {%- endif -%}
+                {%- else -%}
+                    <video class="js-video" muted playsinline preload="none" autoplay loop controls>
+                        <source type="video/mp4" src="{{ section.settings.url_mp4 }}">
+                    </video>
+                {% endif %}
+            {%- endif -%}
         </{%- if autoVideo -%}div{%- else -%}template{%- endif -%}>
       </deferred-media>
   </div>
@@ -190,7 +222,113 @@
             font-size: {{ fontsize_title_mb | append: 'px' }};
         }
     }
+
+    {%- if is_nectar -%}
+        html,
+        body {
+            height: 100vh !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .body-content-wrapper,
+        #MainContent,
+        .wrapper-body,
+        #shopify-section-{{ section.id }},
+        .section-block-{{ section.id }},
+        .section-block-{{ section.id }} > div,
+        .section-block-{{ section.id }} .video-section__media {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+        }
+
+        .section-block-{{ section.id }} .video-section__media {
+            position: relative !important;
+        }
+
+        .section-block-{{ section.id }} .video-section__media > div {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .section-block-{{ section.id }} .deferred-media__poster {
+            display: none !important;
+        }
+
+        .section-block-{{ section.id }} .video-section__media video {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center center !important;
+            display: block !important;
+            pointer-events: none !important;
+        }
+
+        .section-block-{{ section.id }} .video-section__media video::-webkit-media-controls,
+        .section-block-{{ section.id }} .video-section__media video::-webkit-media-controls-enclosure,
+        .section-block-{{ section.id }} .video-section__media video::-webkit-media-controls-panel,
+        .section-block-{{ section.id }} .video-section__media video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
+        }
+
+        .section-block-{{ section.id }} .video-section__media iframe {
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: max(100vw, 177.78dvh) !important;
+            height: max(100dvh, 56.25vw) !important;
+            min-width: 100% !important;
+            min-height: 100% !important;
+            border: 0 !important;
+            pointer-events: none;
+        }
+    {%- endif -%}
 </style>
+{%- if is_nectar -%}
+<script>
+    (function () {
+        var sec = document.querySelector('.section-block-{{ section.id }}');
+        if (!sec) return;
+        var vid = sec.querySelector('video');
+        if (!vid) return;
+        vid.controls = false;
+        vid.removeAttribute('controls');
+        vid.disablePictureInPicture = true;
+        vid.setAttribute('controlsList', 'nodownload noplaybackrate nofullscreen');
+        vid.muted = true;
+        vid.setAttribute('muted', '');
+        vid.setAttribute('playsinline', '');
+        var tryPlay = function () {
+            var p = vid.play();
+            if (p && typeof p.catch === 'function') {
+                p.catch(function () {});
+            }
+        };
+        if (vid.readyState >= 2) {
+            tryPlay();
+        } else {
+            vid.addEventListener('canplay', tryPlay, { once: true });
+            tryPlay();
+        }
+    })();
+</script>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.video.name",
@@ -434,6 +572,12 @@
         "default": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "label": "t:sections.video.settings.video_url.label",
         "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+        "type": "video",
+        "id": "shopify_video",
+        "label": "Shopify Hosted Video (Nectar / Optional)",
+        "info": "Upload an .mp4 directly from Shopify Files. Used on the Nectar page when set."
     },
     {
         "type": "url",
