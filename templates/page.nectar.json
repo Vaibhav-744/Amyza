@@ -38,7 +38,7 @@
         "title_align": "center",
         "cover_image": "shopify://shop_images/hero_no_text_desktop.png",
         "autoplay": true,
-        "video_height": "54",
+        "video_height": "50",
         "style_video": "youtube",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "url_mp4": "",
