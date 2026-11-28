@@ -1215,8 +1215,8 @@ h4,
 .product-detail_custom .product-custom_usp .metafield-rich_text_field li {
     font-size: .88rem;
     color: var(--plum);
-    background: var(--porcelain-soft);
-    border: 1px solid rgba(125, 10, 80, .15);
+    background: var(--blush);
+    border: 1px solid var(--plum);
     padding: .5rem 1.1rem;
     border-radius: 999px;
     line-height: 1.4;
@@ -1358,7 +1358,7 @@ h4,
     justify-content: space-between;
     align-items: center;
     font-size: .95rem !important;
-    color: var(--ink);
+    color: var(--olive);
     font-weight: 500 !important;
     text-decoration: none;
     background: none;

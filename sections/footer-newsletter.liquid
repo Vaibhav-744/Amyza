@@ -1,0 +1,302 @@
+{% comment %}
+  footer-newsletter.liquid — Standalone Newsletter Callout Banner matching AMYZA Footer design
+{% endcomment %}
+
+{%- liquid
+  assign section_id = section.id
+  assign card_bg_color = section.settings.card_bg_color | default: '#f1edec'
+  assign card_text_color = section.settings.card_text_color | default: '#7d0a50'
+  assign form_id = 'FooterNewsletterForm-' | append: section_id
+-%}
+
+<style>
+  #shopify-section-{{ section_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section_id }} .fn-newsletter-banner {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.5rem 1.5rem;
+    background-color: #520935;
+    {%- if section.settings.newsletter_bg_image != blank -%}
+      background-image: url('{{ section.settings.newsletter_bg_image | image_url: width: 2000 }}');
+    {%- else -%}
+      background-image: url('{{ "footer-newsletter-bg.jpg" | asset_url }}');
+    {%- endif -%}
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+
+  #shopify-section-{{ section_id }} .fn-newsletter-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(74, 6, 47, 0.6) 0%,
+      rgba(97, 12, 61, 0.72) 50%,
+      rgba(97, 12, 61, 0.88) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section_id }} .fn-newsletter-card {
+    position: relative;
+    z-index: 2;
+    background-color: {{ card_bg_color | color_modify: 'alpha', 0.70 }};
+    color: {{ card_text_color }};
+    width: 100%;
+    max-width: 580px;
+    padding: 3.2rem 3rem 2.8rem 3rem;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  #shopify-section-{{ section_id }} .fn-newsletter-card h2,
+  #shopify-section-{{ section_id }} .fn-newsletter-title {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    color: {{ card_text_color }};
+    margin: 0 0 1.2rem 0;
+  }
+
+  #shopify-section-{{ section_id }} .fn-newsletter-desc {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1.65;
+    color: {{ card_text_color }};
+    opacity: 0.92;
+    max-width: 440px;
+    margin: 0 auto 2.2rem auto;
+  }
+
+  #shopify-section-{{ section_id }} .fn-newsletter-form {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section_id }} .fn-input-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid {{ card_text_color | color_modify: 'alpha', 0.45 }};
+    padding-bottom: 0.45rem;
+    transition: border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section_id }} .fn-input-row:focus-within {
+    border-bottom-color: {{ card_text_color }};
+  }
+
+  #shopify-section-{{ section_id }} .fn-email-input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: {{ card_text_color }};
+    padding: 0.35rem 0;
+  }
+
+  #shopify-section-{{ section_id }} .fn-email-input::placeholder {
+    color: {{ card_text_color }};
+    opacity: 0.6;
+  }
+
+  #shopify-section-{{ section_id }} .fn-submit-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: {{ card_text_color }};
+    padding: 0.35rem 0 0.35rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section_id }} .fn-submit-btn:hover {
+    opacity: 0.75;
+    transform: translateX(3px);
+  }
+
+  #shopify-section-{{ section_id }} .fn-submit-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section_id }} .fn-form-success,
+  #shopify-section-{{ section_id }} .fn-form-error {
+    font-family: var(--sans, 'Public Sans', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: {{ card_text_color }};
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 860px) {
+    #shopify-section-{{ section_id }} .fn-newsletter-banner {
+      min-height: 360px;
+      padding: 3.5rem 1.25rem;
+    }
+
+    #shopify-section-{{ section_id }} .fn-newsletter-card {
+      padding: 2.4rem 1.6rem 2rem 1.6rem;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section_id }} .fn-newsletter-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    #shopify-section-{{ section_id }} .fn-newsletter-desc {
+      font-size: 0.72rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.55;
+    }
+  }
+</style>
+
+<div class="fn-newsletter-banner">
+  <div class="fn-newsletter-card">
+    {%- if section.settings.newsletter_title != blank -%}
+      <h2 class="fn-newsletter-title">{{ section.settings.newsletter_title }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.newsletter_desc != blank -%}
+      <p class="fn-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
+    {%- endif -%}
+
+    {%- form 'customer', id: form_id, class: 'fn-newsletter-form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="fn-input-row">
+        <input
+          type="email"
+          name="contact[email]"
+          class="fn-email-input"
+          placeholder="{{ section.settings.input_placeholder | default: 'ENTER YOUR EMAIL' }}"
+          required
+          aria-label="Email address"
+          autocomplete="email"
+        >
+        <button type="submit" class="fn-submit-btn" aria-label="{{ section.settings.btn_text | default: 'JOIN NOW' }}">
+          <span>{{ section.settings.btn_text | default: 'JOIN NOW' }}</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      {%- if form.posted_successfully? -%}
+        <p class="fn-form-success">
+          {{ section.settings.success_message | default: 'Thank you for joining the AMYZA world!' }}
+        </p>
+      {%- elsif form.errors -%}
+        <div class="fn-form-error">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer Newsletter Banner",
+  "tag": "section",
+  "class": "shopify-section-footer-newsletter",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "newsletter_bg_image",
+      "label": "Newsletter Banner Background Image"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "JOIN THE AMYZA WORLD"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_desc",
+      "label": "Newsletter Description",
+      "default": "SUBSCRIBE FOR FIRST ACCESS TO NEW DROPS, BOUTIQUE, AND EXCEPTIONAL OFFERS EXCLUSIVE."
+    },
+    {
+      "type": "text",
+      "id": "input_placeholder",
+      "label": "Input Placeholder",
+      "default": "ENTER YOUR EMAIL"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "JOIN NOW"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thank you for joining the AMYZA world!"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#f1edec"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text & Line Color",
+      "default": "#7d0a50"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Newsletter Banner"
+    }
+  ]
+}
+{% endschema %}

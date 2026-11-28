@@ -939,6 +939,20 @@
         "button_text": "#f2edec",
         "button_hover_bg": "#4e0a3a"
       }
+    },
+    "footer_newsletter_Mt6ard": {
+      "type": "footer-newsletter",
+      "name": "Footer Newsletter Banner",
+      "settings": {
+        "newsletter_bg_image": "shopify://shop_images/stouszrqnkyszgfc7vcp.webp",
+        "newsletter_title": "JOIN THE AMYZA WORLD",
+        "newsletter_desc": "SUBSCRIBE FOR FIRST ACCESS TO NEW DROPS, BOUTIQUE, AND EXCEPTIONAL OFFERS EXCLUSIVE.",
+        "input_placeholder": "ENTER YOUR EMAIL",
+        "btn_text": "JOIN NOW",
+        "success_message": "Thank you for joining the AMYZA world!",
+        "card_bg_color": "#f1edec",
+        "card_text_color": "#7d0a50"
+      }
     }
   },
   "order": [
@@ -953,6 +967,7 @@
     "heritage_xH3aVg",
     "botanicals_JzPkmR",
     "testimonial_MtGxfE",
-    "custom_faq_fkRWCi"
+    "custom_faq_fkRWCi",
+    "footer_newsletter_Mt6ard"
   ]
 }

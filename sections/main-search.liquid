@@ -212,7 +212,7 @@
                                     class: 'pagination-wrapper text-center' 
                                 %}
                             </div>
-                            {%- if settings.search_type == 'all' -%}
+                            {% comment %} {%- if settings.search_type == 'all' -%}
                                 <div class="page-article resultListing{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="main-page-article-grid" data-url="{{'?q=' | append: search.terms | append: '&type=article,page&options%5Bprefix%5D=last&sort_by=' | append: sort_by }}&type=article,page" data-id="{{ section.id }}">
                                     <template>
                                         <div{% if paginate.pages > 1 and paginate.next %} data-next-page="{{ paginate.current_page | plus: 1 }}"{% endif %}>
@@ -262,7 +262,7 @@
                                         </div>
                                     </template>
                                 </div>
-                            {%- endif -%}
+                            {%- endif -%} {% endcomment %}
                         {%- endpaginate -%}
                     {%- else -%}
                         <div class="collection collection--empty{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}" id="main-collection-product-grid" data-id="{{ section.id }}">

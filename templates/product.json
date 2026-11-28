@@ -35,6 +35,7 @@
         },
         "rich_text_yqbxJJ": {
           "type": "rich_text",
+          "disabled": true,
           "settings": {
             "unique_class": "product-custom_info",
             "content": "{{ product.metafields.custom.product_info | metafield_tag }}",
@@ -312,12 +313,12 @@
       "settings": {
         "section_bg": "#7d0a50",
         "scroll_height_per_slide": 100,
-        "image_aspect_ratio": "16 / 10",
-        "image_radius": 24,
+        "image_aspect_ratio": "4 / 3",
+        "image_radius": 0,
         "image_overlay_opacity": 25,
         "overlay_title_font": "sans",
         "overlay_title_color": "#f7f4e3",
-        "text_align": "right",
+        "text_align": "left",
         "heading_font": "sans",
         "eyebrow_color": "#f0aebc",
         "heading_color": "#f2edec",

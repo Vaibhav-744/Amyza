@@ -60,9 +60,9 @@
         "image_fit": "contain",
         "image_max_height": 620,
         "eyebrow": "✦ The Full Apothecary",
-        "eyebrow_color": "#7d0a50",
+        "eyebrow_color": "#5A3545",
         "heading": "Carefully Curated Ingredients",
-        "heading_color": "#9F9F46",
+        "heading_color": "#9f9f46",
         "heading_italic_color": "#7d0a50",
         "body": "<p>Centuries of wisdom.</p><p>Each one chosen not for trend, but for the truth our grandmothers already knew: that real skin care grows from the earth.</p>",
         "body_color": "#2a0a20",
@@ -155,6 +155,33 @@
             "description": "The bridge between cultures — soothing, timeless.",
             "tag": "Replenishing"
           }
+        },
+        "botanical_Ffe3fX": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#F2EDEC)",
+            "name": "Licorice",
+            "description": "The bridge between cultures — soothing, timeless.",
+            "tag": "Replenishing"
+          }
+        },
+        "botanical_aCdTMi": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#F2EDEC)",
+            "name": "Lotus Flower",
+            "description": "The bridge between cultures — soothing, timeless.",
+            "tag": "Replenishing"
+          }
+        },
+        "botanical_9kWe3b": {
+          "type": "botanical",
+          "settings": {
+            "fallback_bg": "linear-gradient(135deg,#224F3C,#F2EDEC)",
+            "name": "Holy Basil",
+            "description": "The bridge between cultures — soothing, timeless.",
+            "tag": "Replenishing"
+          }
         }
       },
       "block_order": [
@@ -165,7 +192,10 @@
         "botanical_HFjfYT",
         "botanical_rbe3pB",
         "botanical_dzy77j",
-        "botanical_zBrWiR"
+        "botanical_zBrWiR",
+        "botanical_Ffe3fX",
+        "botanical_aCdTMi",
+        "botanical_9kWe3b"
       ],
       "name": "Bot — Catalogue",
       "settings": {
@@ -173,7 +203,7 @@
         "eyebrow": "✦ The Full Apothecary",
         "eyebrow_color": "#7d0a50",
         "heading": "Every botanical, decoded.",
-        "heading_color": "#9F9F46",
+        "heading_color": "#9f9f46",
         "heading_italic_color": "#7d0a50",
         "subheading": "Eight ingredients we trust enough to name on the front of the bottle.",
         "sub_color": "#7a6270",

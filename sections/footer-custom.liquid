@@ -30,10 +30,11 @@
     overflow: hidden;
   }
 
+  {%- if section.settings.show_newsletter -%}
   /* -------------------------------------------------------------
      TOP NEWSLETTER CALLOUT BANNER
   ------------------------------------------------------------- */
-  .custom-footer-newsletter-banner {
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-banner {
     position: relative;
     width: 100%;
     min-height: 400px;
@@ -52,7 +53,7 @@
     background-repeat: no-repeat;
   }
 
-  .custom-footer-newsletter-banner::before {
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-banner::before {
     content: '';
     position: absolute;
     top: 0;
@@ -70,7 +71,7 @@
   }
 
   /* Centered Blush Pink Card */
-  .custom-footer-newsletter-card {
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-card {
     position: relative;
     z-index: 2;
     background-color: {{ card_bg_color | color_modify: 'alpha', 0.70 }};
@@ -83,8 +84,8 @@
     border-radius: 2px;
   }
 
-  .custom-footer-newsletter-card h2,
-  .custom-footer-newsletter-title {
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-card h2,
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-title {
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
     font-size: clamp(1.9rem, 3.4vw, 2.75rem);
     font-weight: 400;
@@ -95,7 +96,7 @@
     margin: 0 0 1.2rem 0;
   }
 
-  .custom-footer-newsletter-desc {
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-desc {
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.75rem;
     font-weight: 600;
@@ -108,13 +109,13 @@
     margin: 0 auto 2.2rem auto;
   }
 
-  .custom-footer-newsletter-form {
+  #shopify-section-{{ section_id }} .custom-footer-newsletter-form {
     width: 100%;
     max-width: 440px;
     margin: 0 auto;
   }
 
-  .custom-footer-input-row {
+  #shopify-section-{{ section_id }} .custom-footer-input-row {
     position: relative;
     display: flex;
     align-items: center;
@@ -124,11 +125,11 @@
     transition: border-color 0.2s ease;
   }
 
-  .custom-footer-input-row:focus-within {
+  #shopify-section-{{ section_id }} .custom-footer-input-row:focus-within {
     border-bottom-color: {{ card_text_color }};
   }
 
-  .custom-footer-email-input {
+  #shopify-section-{{ section_id }} .custom-footer-email-input {
     flex: 1;
     min-width: 0;
     background: transparent;
@@ -143,12 +144,12 @@
     padding: 0.35rem 0;
   }
 
-  .custom-footer-email-input::placeholder {
+  #shopify-section-{{ section_id }} .custom-footer-email-input::placeholder {
     color: {{ card_text_color }};
     opacity: 0.6;
   }
 
-  .custom-footer-submit-btn {
+  #shopify-section-{{ section_id }} .custom-footer-submit-btn {
     background: transparent;
     border: none;
     outline: none;
@@ -167,12 +168,12 @@
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
-  .custom-footer-submit-btn:hover {
+  #shopify-section-{{ section_id }} .custom-footer-submit-btn:hover {
     opacity: 0.75;
     transform: translateX(3px);
   }
 
-  .custom-footer-submit-btn svg {
+  #shopify-section-{{ section_id }} .custom-footer-submit-btn svg {
     width: 15px;
     height: 15px;
     fill: none;
@@ -181,7 +182,7 @@
     transition: transform 0.2s ease;
   }
 
-  .custom-footer-form-success {
+  #shopify-section-{{ section_id }} .custom-footer-form-success {
     font-family: var(--sans, 'Public Sans', sans-serif);
     font-size: 0.8rem;
     font-weight: 600;
@@ -190,6 +191,7 @@
     margin-top: 1rem;
     text-transform: uppercase;
   }
+  {%- endif -%}
 
   /* -------------------------------------------------------------
      MAIN FOOTER BODY (Deep Plum Section)
@@ -431,26 +433,28 @@
      RESPONSIVE DESIGN
   ------------------------------------------------------------- */
   @media (max-width: 860px) {
-    .custom-footer-newsletter-banner {
+    {%- if section.settings.show_newsletter -%}
+    #shopify-section-{{ section_id }} .custom-footer-newsletter-banner {
       min-height: 360px;
       padding: 3.5rem 1.25rem;
     }
 
-    .custom-footer-newsletter-card {
+    #shopify-section-{{ section_id }} .custom-footer-newsletter-card {
       padding: 2.4rem 1.6rem 2rem 1.6rem;
       max-width: 100%;
     }
 
-    .custom-footer-newsletter-title {
+    #shopify-section-{{ section_id }} .custom-footer-newsletter-title {
       font-size: 1.8rem;
       margin-bottom: 0.9rem;
     }
 
-    .custom-footer-newsletter-desc {
+    #shopify-section-{{ section_id }} .custom-footer-newsletter-desc {
       font-size: 0.72rem;
       margin-bottom: 1.8rem;
       line-height: 1.55;
     }
+    {%- endif -%}
 
     .custom-footer-main {
       padding-top: 3.5rem;
@@ -509,42 +513,44 @@
 
 <footer class="custom-footer-wrapper">
   {%- comment -%} 1. TOP NEWSLETTER BANNER {%- endcomment -%}
-  <div class="custom-footer-newsletter-banner">
-    <div class="custom-footer-newsletter-card">
-      {%- if section.settings.newsletter_title != blank -%}
-        <h2 class="custom-footer-newsletter-title">{{ section.settings.newsletter_title }}</h2>
-      {%- endif -%}
-
-      {%- if section.settings.newsletter_desc != blank -%}
-        <p class="custom-footer-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
-      {%- endif -%}
-
-      {%- form 'customer', id: 'CustomFooterNewsletterForm', class: 'custom-footer-newsletter-form' -%}
-        <input type="hidden" name="contact[tags]" value="newsletter">
-        <div class="custom-footer-input-row">
-          <input
-            type="email"
-            name="contact[email]"
-            class="custom-footer-email-input"
-            placeholder="{{ section.settings.input_placeholder | default: 'ENTER YOUR EMAIL' }}"
-            required
-            aria-label="Email address"
-            autocomplete="email"
-          >
-          <button type="submit" class="custom-footer-submit-btn" aria-label="{{ section.settings.btn_text | default: 'JOIN NOW' }}">
-            <span>{{ section.settings.btn_text | default: 'JOIN NOW' }}</span>
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-
-        {%- if form.posted_successfully? -%}
-          <p class="custom-footer-form-success">
-            Thank you for joining the AMYZA world!
-          </p>
+  {%- if section.settings.show_newsletter -%}
+    <div class="custom-footer-newsletter-banner">
+      <div class="custom-footer-newsletter-card">
+        {%- if section.settings.newsletter_title != blank -%}
+          <h2 class="custom-footer-newsletter-title">{{ section.settings.newsletter_title }}</h2>
         {%- endif -%}
-      {%- endform -%}
+
+        {%- if section.settings.newsletter_desc != blank -%}
+          <p class="custom-footer-newsletter-desc">{{ section.settings.newsletter_desc }}</p>
+        {%- endif -%}
+
+        {%- form 'customer', id: 'CustomFooterNewsletterForm', class: 'custom-footer-newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="custom-footer-input-row">
+            <input
+              type="email"
+              name="contact[email]"
+              class="custom-footer-email-input"
+              placeholder="{{ section.settings.input_placeholder | default: 'ENTER YOUR EMAIL' }}"
+              required
+              aria-label="Email address"
+              autocomplete="email"
+            >
+            <button type="submit" class="custom-footer-submit-btn" aria-label="{{ section.settings.btn_text | default: 'JOIN NOW' }}">
+              <span>{{ section.settings.btn_text | default: 'JOIN NOW' }}</span>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          {%- if form.posted_successfully? -%}
+            <p class="custom-footer-form-success">
+              Thank you for joining the AMYZA world!
+            </p>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
     </div>
-  </div>
+  {%- endif -%}
 
   {%- comment -%} 2. MAIN FOOTER BODY {%- endcomment -%}
   <div class="custom-footer-main">
@@ -734,6 +740,12 @@
     {
       "type": "header",
       "content": "Newsletter Callout Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter Banner",
+      "default": true
     },
     {
       "type": "image_picker",
